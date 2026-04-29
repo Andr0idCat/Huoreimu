@@ -4,3 +4,4 @@
 .idea/
 /android/
 LocalConfig.targets
+*.DotSettings.user
