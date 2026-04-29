@@ -18,7 +18,7 @@ public static class StringExtensions
 
 	public static string BigCardImagePath(this string path)
 	{
-		return $"res://{MainFile.ModId}/Images/Cards/Big/{path}";
+		return $"res://{MainFile.ModId}/Image/Cards/{path}";
 	}
 
 	public static string PowerImagePath(this string path)
