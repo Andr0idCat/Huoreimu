@@ -1,0 +1,6 @@
+{
+  "AYAMOD-HUOREIMU_ATTACK.description":"造成{Damage:diff()}点伤害。",
+  "AYAMOD-HUOREIMU_ATTACK.title":"打击",
+  "AYAMOD-HUOREIMU_BLOCK.description":"获得{Block:diff()}点格挡。",
+  "AYAMOD-HUOREIMU_BLOCK.title":"防御"
+}
