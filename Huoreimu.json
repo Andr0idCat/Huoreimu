@@ -1,0 +1,11 @@
+{
+  "id": "Huoreimu",
+  "name": "祸灵梦",
+  "author": "古明地绫",
+  "description": "Mod 描述",
+  "version": "1.0",
+  "has_pck": true,
+  "has_dll": true,
+  "dependencies": [],
+  "affects_gameplay": true
+}

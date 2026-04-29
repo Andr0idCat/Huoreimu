@@ -1,0 +1,90 @@
+[gd_scene load_steps=15 format=3 uid="uid://cm838kx8ugthe"]
+
+[ext_resource type="Texture2D" uid="uid://8qv7c5y1r81b" path="res://Huoreimu/Image/Visual/Idle/Idle-1.png" id="1_4fwmn"]
+[ext_resource type="Texture2D" uid="uid://cvaa4xd52vs80" path="res://Huoreimu/Image/Visual/Idle/Idle-2.png" id="2_lx1xo"]
+[ext_resource type="Texture2D" uid="uid://b3u0k0u78c3u3" path="res://Huoreimu/Image/Visual/Idle/Idle-3.png" id="3_brne4"]
+[ext_resource type="Texture2D" uid="uid://2uqtr2fmb11x" path="res://Huoreimu/Image/Visual/Idle/Idle-4.png" id="4_yol6a"]
+[ext_resource type="Texture2D" uid="uid://dqgr7ke8183og" path="res://Huoreimu/Image/Visual/Idle/Idle-5.png" id="5_s70ou"]
+[ext_resource type="Texture2D" uid="uid://d2x3rl4j13fna" path="res://Huoreimu/Image/Visual/Idle/Idle-6.png" id="6_xaitn"]
+[ext_resource type="Texture2D" uid="uid://3lmkbu54vmly" path="res://Huoreimu/Image/Visual/Idle/Idle-7.png" id="7_8vljw"]
+[ext_resource type="Texture2D" uid="uid://de3xfuwvixv2x" path="res://Huoreimu/Image/Visual/Idle/Idle-8.png" id="8_d21n5"]
+[ext_resource type="Texture2D" uid="uid://dev1fcjdsl7pj" path="res://Huoreimu/Image/Visual/Idle/Idle-9.png" id="9_yjwf5"]
+[ext_resource type="Texture2D" uid="uid://cqftgco82wddi" path="res://Huoreimu/Image/Visual/Idle/Idle-10.png" id="10_rj2hi"]
+[ext_resource type="Texture2D" uid="uid://bshqvxi3dkfbb" path="res://Huoreimu/Image/Visual/Idle/Idle-11.png" id="11_jo5q7"]
+[ext_resource type="Texture2D" uid="uid://dnfitmvheiome" path="res://Huoreimu/Image/Visual/Idle/Idle-12.png" id="12_mhres"]
+[ext_resource type="Texture2D" uid="uid://bbsneutyu602l" path="res://Huoreimu/Image/Visual/Idle/Idle-13.png" id="13_8cx4e"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_du3ew"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_4fwmn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_lx1xo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_brne4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_yol6a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_s70ou")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_xaitn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_8vljw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_d21n5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_yjwf5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_rj2hi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_jo5q7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_mhres")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_8cx4e")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 10.0
+}]
+
+[node name="Ironclad" type="Node2D"]
+metadata/_edit_group_ = true
+
+[node name="HuoreimuVisual" type="AnimatedSprite2D" parent="."]
+position = Vector2(-27, -85)
+sprite_frames = SubResource("SpriteFrames_du3ew")
+animation = &"Idle"
+autoplay = "Idle"
+frame = 12
+frame_progress = 0.9380103
+
+[node name="Bounds" type="Control" parent="."]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 0
+offset_left = -121.0
+offset_top = -280.0
+offset_right = 121.0
+mouse_filter = 2
+
+[node name="CenterPos" type="Marker2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(0, -165)
+
+[node name="IntentPos" type="Marker2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(20, -351)

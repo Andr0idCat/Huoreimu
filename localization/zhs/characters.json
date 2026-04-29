@@ -1,0 +1,16 @@
+{
+  "AYAMOD-HUOREIMU.title": "祸灵梦",
+  "AYAMOD-HUOREIMU.titleObject": "祸灵梦",
+  "AYAMOD-HUOREIMU.description": "灾祸缠身的魔人。\n为了生存下去不断地战斗。",
+  "AYAMOD-HUOREIMU.possessiveAdjective": "她的",
+  "AYAMOD-HUOREIMU.pronounObject": "她",
+  "AYAMOD-HUOREIMU.pronounPossessive": "她的",
+  "AYAMOD-HUOREIMU.pronounSubject": "她",
+  "AYAMOD-HUOREIMU.cardsModifierTitle": "Huoreimu Cards",
+  "AYAMOD-HUOREIMU.cardsModifierDescription": "祸灵梦的卡牌现在会出现在奖励和商店中。",
+  "AYAMOD-HUOREIMU.aromaPrinciple": "[sine][white]无论是谁……我的敌人都必须被消灭……[/white][/sine]",
+  "AYAMOD-HUOREIMU.eventDeathPrevention": "原谅我吧，我也不想死啊……",
+  "AYAMOD-HUOREIMU.banter.alive.endTurnPing": "忘记战斗的方式了吗？",
+  "AYAMOD-HUOREIMU.banter.dead.endTurnPing": "……",
+  "AYAMOD-HUOREIMU.goldMonologue": "[sine]灵梦那家伙，看到之后一定会眼红得不得了吧。[/sine]"
+}

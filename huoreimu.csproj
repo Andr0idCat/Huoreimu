@@ -1,0 +1,41 @@
+﻿<Project Sdk="Godot.NET.Sdk/4.5.1">
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <TargetFramework Condition=" '$(GodotTargetPlatform)' == 'android' ">net9.0</TargetFramework>
+    <EnableDynamicLoading>true</EnableDynamicLoading>
+    <AnalysisLevel>none</AnalysisLevel>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+  <Import Project="LocalConfig.targets" Condition="Exists('LocalConfig.targets')" />
+  <ItemGroup>
+    <Reference Include="0Harmony">
+      <HintPath>$(STS2Path)\data_sts2_windows_x86_64\0Harmony.dll</HintPath>
+    </Reference>
+    <Reference Include="BaseLib">
+      <HintPath>$(STS2Path)\mods\BaseLib\BaseLib.dll</HintPath>
+    </Reference>
+    <Reference Include="GodotSharp">
+      <HintPath>$(STS2Path)\data_sts2_windows_x86_64\GodotSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="sts2">
+      <HintPath>$(STS2Path)\data_sts2_windows_x86_64\sts2.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Huoreimu\Image\Cards\" />
+  </ItemGroup>
+  
+  <Target Name="Copy Mod" AfterTargets="PostBuildEvent">
+    <Message Text="Copying mod to Slay the Spire 2 mods folder..." Importance="high" />
+    <MakeDir Directories="$(STS2Path)\mods\" />
+    <Copy SourceFiles="$(TargetPath)" DestinationFolder="$(STS2Path)\mods\$(MSBuildProjectName)\" />
+    <Copy SourceFiles="$(MSBuildProjectName).json" DestinationFolder="$(STS2Path)/mods/$(MSBuildProjectName)/" />
+  </Target>
+  
+  <Target Name="ExportPck">
+    <Message Text="Copying PCK to Slay the Spire 2 mods folder..." Importance="high" />
+    <Exec Command="&quot;$(GodotExe)&quot; --headless --export-pack &quot;Windows Desktop&quot; &quot;$(STS2Path)/mods/$(MSBuildProjectName)/$(MSBuildProjectName).pck&quot;"
+          EnvironmentVariables="IsInnerGodotExport=true;MSBUILDDISABLENODEREUSE=1"
+          ContinueOnError="WarnAndContinue" />
+  </Target>
+</Project>
