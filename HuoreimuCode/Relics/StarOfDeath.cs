@@ -12,14 +12,15 @@ namespace AyaMod.Huoreimu.Relic;
 [Pool(typeof(HuoreimuRelicPool))]
 public class StarOfDeath : CustomRelicModel
 {
+    private const decimal OMEN_OF_DEATH_VALUE = 1;
     public override RelicRarity Rarity => RelicRarity.Starter;
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new("OmenOfDeath", 1)];
+    protected override IEnumerable<DynamicVar> CanonicalVars => [new("OmenOfDeath", OMEN_OF_DEATH_VALUE)];
 
     public override async Task AfterAttack(AttackCommand command)
     {
         foreach (var result in command.Results)
         {
-            await PowerCmd.Apply<OmenOfDeathPower>(result.Receiver, 1, Owner.Creature, null);
+            await PowerCmd.Apply<OmenOfDeathPower>(result.Receiver, OMEN_OF_DEATH_VALUE, Owner.Creature, null);
         }
     }
 }
