@@ -1,6 +1,6 @@
-﻿namespace AyaMod.Huoreimu;
+namespace AyaMod.Huoreimu;
 
 public static class HuoreimuConstants
 {
-    public const string ULTIMATE_SKILL = "UltimateSkill";
+	public const string ULTIMATE_SKILL = "UltimateSkill";
 }
