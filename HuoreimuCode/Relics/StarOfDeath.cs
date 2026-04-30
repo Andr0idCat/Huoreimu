@@ -18,6 +18,11 @@ public class StarOfDeath : CustomRelicModel
 
     public override async Task AfterAttack(AttackCommand command)
     {
+        if (command.Attacker != Owner.Creature)
+        {
+            return;
+        }
+
         foreach (var result in command.Results)
         {
             await PowerCmd.Apply<OmenOfDeathPower>(result.Receiver, OMEN_OF_DEATH_VALUE, Owner.Creature, null);
