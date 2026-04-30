@@ -5,6 +5,8 @@
   "AYAMOD-HUOREIMU_BLOCK.title": "防御",
   "AYAMOD-HEADBUTT_ATTACK.title": "堕头暴",
   "AYAMOD-HEADBUTT_ATTACK.description": "造成{CalculatedDamage:diff()}点伤害。[gold]必杀技[/gold]{UltimateSkill:diff()}：额外造成{ExtraDamage:diff()}点伤害。",
+  "AYAMOD-SKYWARD_KICK.title": "升天脚",
+  "AYAMOD-SKYWARD_KICK.description": "获得{Block:diff()}点格挡。给予精英敌人{WeakPower:diff()}层[gold]虚弱[/gold]。",
   "AYAMOD-HUO.title": "祸",
   "AYAMOD-HUO.description": ""
 }
