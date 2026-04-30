@@ -24,6 +24,13 @@
   <ItemGroup>
     <Folder Include="Huoreimu\Image\Cards\" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Huoreimu\localization\zhs\cards.json" />
+    <Content Include="Huoreimu\localization\zhs\characters.json" />
+    <Content Include="Huoreimu\localization\zhs\powers.json" />
+    <Content Include="Huoreimu\localization\zhs\relics.json" />
+    <Content Include="Huoreimu\localization\zhs\static_hover_tips.json" />
+  </ItemGroup>
   
   <Target Name="Copy Mod" AfterTargets="PostBuildEvent">
     <Message Text="Copying mod to Slay the Spire 2 mods folder..." Importance="high" />

@@ -44,4 +44,9 @@ public static class StringExtensions
 	{
 		return $"res://{MainFile.ModId}/Image/Charui/{path}";
 	}
+
+	public static string PowerIconPath(this string path)
+	{
+		return $"res://{MainFile.ModId}/Image/Powers/{path}";
+	}
 }

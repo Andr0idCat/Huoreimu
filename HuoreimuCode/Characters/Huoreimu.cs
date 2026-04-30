@@ -8,6 +8,7 @@ using MegaCrit.Sts2.Core.Models.RelicPools;
 using AyaMod.Huoreimu.Cards;
 using AyaMod.Huoreimu.Extensions;
 using System;
+using AyaMod.Huoreimu.Relic;
 
 namespace AyaMod.Huoreimu.Character;
 
@@ -36,10 +37,10 @@ public class Huoreimu : PlaceholderCharacterModel
 		ModelDb.Card<HuoreimuBlock>()
 	];
 
-	public override IReadOnlyList<RelicModel> StartingRelics => new List<RelicModel> { ModelDb.GetById<RelicModel>(new ModelId("RELIC", "BURNING_BLOOD")) }.AsReadOnly();
+	public override IReadOnlyList<RelicModel> StartingRelics => new List<RelicModel> { ModelDb.Relic<StarOfDeath>() }.AsReadOnly();
 
 	public override CardPoolModel CardPool => ModelDb.CardPool<HuoreimuCardPool>();
-	public override RelicPoolModel RelicPool => ModelDb.RelicPool<SharedRelicPool>();
+	public override RelicPoolModel RelicPool => ModelDb.RelicPool<HuoreimuRelicPool>();
 	public override PotionPoolModel PotionPool => ModelDb.PotionPool<SharedPotionPool>();
 
 	/*  PlaceholderCharacterModel will utilize placeholder basegame assets for most of your character assets until you
