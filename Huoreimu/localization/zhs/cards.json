@@ -3,8 +3,8 @@
   "AYAMOD-HUOREIMU_ATTACK.title": "打击",
   "AYAMOD-HUOREIMU_BLOCK.description": "获得{Block:diff()}点格挡。",
   "AYAMOD-HUOREIMU_BLOCK.title": "防御",
-  "AYAMOD-ULTIMATE_SKILL_TEST_CARD.title": "测试卡牌",
-  "AYAMOD-ULTIMATE_SKILL_TEST_CARD.description": "造成{Damage:diff()}点伤害。[gold]必杀技[/gold]{UltimateSkill:diff()}：抽{Cards:diff()}张牌。",
+  "AYAMOD-HEADBUTT_ATTACK.title": "堕头暴",
+  "AYAMOD-HEADBUTT_ATTACK.description": "造成{CalculatedDamage:diff()}点伤害。[gold]必杀技[/gold]{UltimateSkill:diff()}：额外造成{ExtraDamage:diff()}点伤害。",
   "AYAMOD-HUO.title": "祸",
   "AYAMOD-HUO.description": ""
 }

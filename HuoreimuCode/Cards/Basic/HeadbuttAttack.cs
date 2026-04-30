@@ -11,14 +11,16 @@ using MegaCrit.Sts2.Core.ValueProps;
 
 namespace AyaMod.Huoreimu.Cards;
 
-public class UltimateSkillTestCard() : HuoreimuCard(1, CardType.Attack, CardRarity.Basic, TargetType.AnyEnemy)
+public class HeadbuttAttack() : HuoreimuCard(1, CardType.Attack, CardRarity.Basic, TargetType.AnyEnemy)
 {
     protected override HashSet<CardTag> CanonicalTags => [HuoreimuTags.UltimateSkill];
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DamageVar(8, ValueProp.Move),
-        new CardsVar(2),
+        new CalculationBaseVar(6),
+        new ExtraDamageVar(8),
+        new CalculatedDamageVar(ValueProp.Move)
+            .WithMultiplier((card, creature) => UltimateSkillAction.CanCast(card, creature) ? 1 : 0),
         new UltimateSkillVar(2)
     ];
 
@@ -29,8 +31,17 @@ public class UltimateSkillTestCard() : HuoreimuCard(1, CardType.Attack, CardRari
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        // 必杀技要在攻击之前，否则攻击会给予一层死兆星，导致必杀技需要的消耗比实际少
-        await UltimateSkillAction.Execute(this, cardPlay, () => CommonActions.Draw(this, choiceContext));
-        await CommonActions.CardAttack(this, cardPlay.Target).Execute(choiceContext);
+        await UltimateSkillAction.EarlyExecute(this, cardPlay, () => Attack(choiceContext, cardPlay),
+            () => Attack(choiceContext, cardPlay));
+    }
+
+    private Task Attack(PlayerChoiceContext choiceContext, CardPlay cardPlay)
+    {
+        return CommonActions.CardAttack(this, cardPlay.Target).Execute(choiceContext);
+    }
+
+    protected override void OnUpgrade()
+    {
+        DynamicVars.CalculationBase.UpgradeValueBy(2);
     }
 }

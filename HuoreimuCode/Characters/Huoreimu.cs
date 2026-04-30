@@ -35,7 +35,7 @@ public class Huoreimu : PlaceholderCharacterModel
 		ModelDb.Card<HuoreimuBlock>(),
 		ModelDb.Card<HuoreimuBlock>(),
 		ModelDb.Card<HuoreimuBlock>(),
-		ModelDb.Card<UltimateSkillTestCard>()
+		ModelDb.Card<HeadbuttAttack>()
 	];
 
 	public override IReadOnlyList<RelicModel> StartingRelics => new List<RelicModel> { ModelDb.Relic<StarOfDeath>() }.AsReadOnly();
