@@ -1,6 +1,7 @@
 ﻿using AyaMod.Huoreimu.Actions;
 using AyaMod.Huoreimu.DynamicVars;
 using AyaMod.Huoreimu.Keywords;
+using AyaMod.Huoreimu.Tags;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
@@ -14,6 +15,8 @@ namespace AyaMod.Huoreimu.Cards.Rare;
 
 public class HellsGate() : HuoreimuCard(3, CardType.Attack, CardRarity.Rare, TargetType.AnyEnemy)
 {
+    protected override HashSet<CardTag> CanonicalTags => [HuoreimuTags.UltimateSkill];
+
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
     [
         StunIntent.GetStaticHoverTip(),
