@@ -5,3 +5,4 @@
 /android/
 LocalConfig.targets
 *.DotSettings.user
+.vscode/
