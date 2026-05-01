@@ -24,6 +24,8 @@
         </Reference>
     </ItemGroup>
     <ItemGroup>
+        <Folder Include="HuoreimuCode\Cards\Common\" />
+        <Folder Include="HuoreimuCode\Cards\Rare\" />
         <Folder Include="Huoreimu\Image\Cards\"/>
     </ItemGroup>
     <ItemGroup>

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bfkecgyal0jps"
-path="res://.godot/imported/omen_of_death.png-43fd0e184d6ac44bcd774a6edceabd34.ctex"
+uid="uid://cfpd6ce5evgtd"
+path="res://.godot/imported/empty_power_big.png-cedd1ca83434f6acfcde99141e816ede.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Huoreimu/Image/Powers/omen_of_death.png"
-dest_files=["res://.godot/imported/omen_of_death.png-43fd0e184d6ac44bcd774a6edceabd34.ctex"]
+source_file="res://Huoreimu/Image/Powers/empty_power_big.png"
+dest_files=["res://.godot/imported/empty_power_big.png-cedd1ca83434f6acfcde99141e816ede.ctex"]
 
 [params]
 
