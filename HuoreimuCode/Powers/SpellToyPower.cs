@@ -11,6 +11,7 @@ public class SpellToyPower() : HuoreimuPowerBase(PowerType.Buff, PowerStackType.
 {
     public override async Task BeforeTurnEnd(PlayerChoiceContext choiceContext, CombatSide side)
     {
+        if (side is not CombatSide.Player) return;
         var player = Owner.Player;
         if (player is null)
         {
