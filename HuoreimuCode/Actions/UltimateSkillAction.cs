@@ -28,6 +28,8 @@ public static class UltimateSkillAction
     private static async Task<bool> InternalExecute(CardModel card, CardPlay cardPlay)
     {
         var (omen, value) = CheckCondition(card, cardPlay.Target);
+        var cast = CanCast(omen, value);
+        if (!cast) return false;
         await PowerCmd.ModifyAmount(omen, -value, card.Owner.Creature, card);
         return true;
     }
