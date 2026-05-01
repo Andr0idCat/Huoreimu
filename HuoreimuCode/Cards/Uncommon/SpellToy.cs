@@ -5,11 +5,11 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 
 namespace AyaMod.Huoreimu.Cards;
 
-public class SpellToy() : HuoreimuCard(2, CardType.Power, CardRarity.Uncommon, TargetType.None)
+public class SpellToy() : HuoreimuCard(2, CardType.Power, CardRarity.Uncommon, TargetType.Self)
 {
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        await CommonActions.Apply<SpellToyPower>(choiceContext, Owner.Creature, this, 1);
+        await CommonActions.ApplySelf<SpellToyPower>(choiceContext, this, 1);
     }
 
     protected override void OnUpgrade()
