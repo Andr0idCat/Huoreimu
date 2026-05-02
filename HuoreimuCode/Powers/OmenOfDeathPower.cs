@@ -5,6 +5,6 @@ using MegaCrit.Sts2.Core.Entities.Powers;
 
 namespace AyaMod.Huoreimu.Powers;
 
-public class OmenOfDeathPower() : HuoreimuPowerBase(PowerType.Buff, PowerStackType.Counter)
+public class OmenOfDeathPower() : HuoreimuPowerBase(PowerType.Debuff, PowerStackType.Counter)
 {
 }
