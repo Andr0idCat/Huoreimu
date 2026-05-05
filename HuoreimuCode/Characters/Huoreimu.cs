@@ -16,7 +16,7 @@ public class Huoreimu : PlaceholderCharacterModel
 {
 	public const string CharacterId = "Huoreimu";
 
-	//public override string CustomCharacterSelectBg => "res://Selphina/Scenes/Char_Select/char_select_bg_selphina.tscn";
+	public override string CustomCharacterSelectBg => "res://Huoreimu/Scenes/Huoreimu_bg.tscn";
 
 	public override string PlaceholderID => "necrobinder";
 
