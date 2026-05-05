@@ -22,5 +22,7 @@
   "AYAMOD-SHICHI.title": "翅薙",
   "AYAMOD-SHICHI.description": "造成{Damage:diff()}点伤害{Repeat:diff()}次。[gold]必杀技[/gold]{UltimateSkill:inverseDiff()}：对所有其他敌人造成等量伤害。",
   "AYAMOD-KICKBACK.title": "接蹴",
-  "AYAMOD-KICKBACK.description": "给予{OmenOfDeathPower:diff()}层[gold]死兆星[/gold]。抽{Cards:diff()}张牌。"
+  "AYAMOD-KICKBACK.description": "给予{OmenOfDeathPower:diff()}层[gold]死兆星[/gold]。抽{Cards:diff()}张牌。",
+  "AYAMOD-SWIFT_STRIKE.title": "疾突",
+  "AYAMOD-SWIFT_STRIKE.description": "造成{Damage:diff()}点伤害。给予{OmenOfDeathPower:diff()}层[gold]死兆星[/gold]。"
 }
