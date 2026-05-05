@@ -7,6 +7,8 @@
   "AYAMOD-HEADBUTT_ATTACK.description": "造成{CalculatedDamage:diff()}点伤害。[gold]必杀技[/gold]{UltimateSkill:inverseDiff()}：额外造成{ExtraDamage:diff()}点伤害。",
   "AYAMOD-SKYWARD_KICK.title": "升天脚",
   "AYAMOD-SKYWARD_KICK.description": "获得{Block:diff()}点格挡。给予精英敌人{WeakPower:diff()}层[gold]虚弱[/gold]。",
+  "AYAMOD-DOWNFALL.title": "凶落",
+  "AYAMOD-DOWNFALL.description": "造成{Damage:diff()}点不可格挡的伤害。",
   "AYAMOD-HUO.title": "祸",
   "AYAMOD-HUO.description": "",
   "AYAMOD-SPELL_TOY.title": "咒玩",
