@@ -24,7 +24,7 @@ public class LeapingKick() : HuoreimuCard(0, CardType.Attack, CardRarity.Common,
         ArgumentNullException.ThrowIfNull(cardPlay.Target);
         await CommonActions.CardAttack(this, cardPlay.Target).Execute(choiceContext);
         if (!HuoreimuSingleton.IsInEliteRoom) return;
-        await CommonActions.Apply<WeakPower>(choiceContext, cardPlay.Target, this, DynamicVars.Weak.BaseValue);
+        await CommonActions.Apply<WeakPower>(choiceContext, cardPlay.Target, this);
     }
 
     protected override void OnUpgrade()

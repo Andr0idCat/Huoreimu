@@ -24,7 +24,7 @@ public class SkywardKick() : HuoreimuCard(1, CardType.Skill, CardRarity.Basic, T
         await CommonActions.CardBlock(this, DynamicVars.Block, cardPlay);
         var target = cardPlay.Target;
         if (target is null || !HuoreimuSingleton.IsInEliteRoom) return;
-        await CommonActions.Apply<WeakPower>(choiceContext, target, this, DynamicVars.Weak.BaseValue);
+        await CommonActions.Apply<WeakPower>(choiceContext, target, this);
     }
 
     protected override void OnUpgrade()
