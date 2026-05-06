@@ -40,5 +40,7 @@
   "AYAMOD-LATENT_DISEASE.title": "伏病",
   "AYAMOD-LATENT_DISEASE.description": "造成{Damage:diff()}点伤害。如果目标是精英敌人，给予1层[gold]易伤[/gold]和1层[gold]虚弱[/gold]。",
   "AYAMOD-KAIKI.title": "回气",
-  "AYAMOD-KAIKI.description": "[gold]必杀技[/gold]{UltimateSkill:inverseDiff()}：获得{Energy:energyIcons()}。"
+  "AYAMOD-KAIKI.description": "[gold]必杀技[/gold]{UltimateSkill:inverseDiff()}：获得{Energy:energyIcons()}。",
+  "AYAMOD-KESHOUSHI.title": "血晶死",
+  "AYAMOD-KESHOUSHI.description": "[gold]必杀技[/gold]{UltimateSkill:inverseDiff()}：给予{VulnerablePower:diff()}层[gold]易伤[/gold]和{WeakPower:diff()}层[gold]虚弱[/gold]。"
 }
