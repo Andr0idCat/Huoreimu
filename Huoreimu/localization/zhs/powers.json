@@ -7,5 +7,8 @@
   "AYAMOD-COLLECT_SPIRIT_POWER.description": "每回合开始时，给予所有敌人与层数相同的死兆星。",
   "AYAMOD-COLLECT_SPIRIT_POWER.smartDescription": "每回合开始时，给予所有敌人[blue]{Amount}[/blue]层[gold]死兆星[/gold]。",
   "AYAMOD-COLLECT_SPIRIT_POWER.title": "凝神",
-  "AYAMOD-SPELL_TOY_POWER.title": "咒玩"
+  "AYAMOD-SPELL_TOY_POWER.title": "咒玩",
+  "AYAMOD-ABIKYOKAN_POWER.description": "每回合开始时，抽[blue]1[/blue]张牌，将[blue]1[/blue]张[gold]祸[/gold]加入你的手牌。",
+  "AYAMOD-ABIKYOKAN_POWER.smartDescription": "每回合开始时，抽[blue]{Amount}[/blue]张牌，将[blue]{Amount}[/blue]张[gold]祸[/gold]加入你的手牌。",
+  "AYAMOD-ABIKYOKAN_POWER.title": "阿鼻叫唤"
 }
