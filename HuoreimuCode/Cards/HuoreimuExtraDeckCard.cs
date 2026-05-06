@@ -24,6 +24,6 @@ public abstract class HuoreimuExtraDeckCard<T>(int cost, CardType type, CardRari
             return;
         }
 
-        await CardsAction.AddCardToDeck<T>(Owner, amount);
+        await CardsAction.AddCardToPile<T>(Owner, PileType.Deck, amount);
     }
 }
