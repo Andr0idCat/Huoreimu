@@ -25,6 +25,7 @@ public class StarOfDeath : CustomRelicModel
 
         foreach (var result in command.Results)
         {
+            Flash();
             await PowerCmd.Apply<OmenOfDeathPower>(result.Receiver, OMEN_OF_DEATH_VALUE, Owner.Creature, null);
         }
     }
