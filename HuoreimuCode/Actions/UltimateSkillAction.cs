@@ -16,8 +16,8 @@ public static class UltimateSkillAction
             return (null, 0);
         }
 
-        if (creature?.Powers?.FirstOrDefault(p => p is OmenOfDeathPower) is not OmenOfDeathPower omen ||
-            omen.Amount < dynamicVar.IntValue)
+        var omen = creature.GetPower<OmenOfDeathPower>();
+        if (omen is null || omen.Amount < dynamicVar.IntValue)
         {
             return (null, 0);
         }
