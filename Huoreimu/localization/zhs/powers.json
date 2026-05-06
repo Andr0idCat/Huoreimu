@@ -4,5 +4,8 @@
   "AYAMOD-OMEN_OF_DEATH_POWER.title": "死兆星",
   "AYAMOD-SPELL_TOY_POWER.description": "回合结束时，获得遗物数量的格挡。",
   "AYAMOD-SPELL_TOY_POWER.smartDescription": "回合结束时，获得遗物数量的格挡。",
+  "AYAMOD-COLLECT_SPIRIT_POWER.description": "每回合开始时，给予所有敌人与层数相同的死兆星。",
+  "AYAMOD-COLLECT_SPIRIT_POWER.smartDescription": "每回合开始时，给予所有敌人[blue]{Amount}[/blue]层[gold]死兆星[/gold]。",
+  "AYAMOD-COLLECT_SPIRIT_POWER.title": "凝神",
   "AYAMOD-SPELL_TOY_POWER.title": "咒玩"
 }
