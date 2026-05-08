@@ -48,5 +48,7 @@
   "AYAMOD-SAISHUWAKIBA.title": "真·最终腋牙",
   "AYAMOD-SAISHUWAKIBA.description": "给予所有敌人{OmenOfDeathPower:diff()}层[gold]死兆星[/gold]。",
   "AYAMOD-NANTORAISHINSHOU.title": "南斗雷侵烧",
-  "AYAMOD-NANTORAISHINSHOU.description": "造成{CalculatedDamage:diff()}点伤害。目标每有一层[gold]死兆星[/gold]，额外造成{ExtraDamage:diff()}点伤害。"
+  "AYAMOD-NANTORAISHINSHOU.description": "造成{CalculatedDamage:diff()}点伤害。目标每有一层[gold]死兆星[/gold]，额外造成{ExtraDamage:diff()}点伤害。",
+  "AYAMOD-NECROTIC.title": "黯蚀",
+  "AYAMOD-NECROTIC.description": "所有敌人每有1层[gold]死兆星[/gold]，在本回合失去[blue]4[/blue]点力量。"
 }
