@@ -5,6 +5,8 @@
   "AYAMOD-HUOREIMU_BLOCK.title": "防御",
   "AYAMOD-HEADBUTT_ATTACK.title": "堕头暴",
   "AYAMOD-HEADBUTT_ATTACK.description": "造成{CalculatedDamage:diff()}点伤害。[gold]必杀技[/gold]{UltimateSkill:inverseDiff()}：额外造成{ExtraDamage:diff()}点伤害。",
+  "AYAMOD-JUBOUSUIKYOUSATSU.title": "夺魂·咒暴祟凶杀",
+  "AYAMOD-JUBOUSUIKYOUSATSU.description": "造成{CalculatedDamage:diff()}点伤害。[gold]必杀技[/gold]X：额外造成{ExtraDamage:diff()}X点伤害。",
   "AYAMOD-SKYWARD_KICK.title": "升天脚",
   "AYAMOD-SKYWARD_KICK.description": "获得{Block:diff()}点格挡。给予精英敌人{WeakPower:diff()}层[gold]虚弱[/gold]。",
   "AYAMOD-DOWNFALL.title": "凶落",
