@@ -44,5 +44,7 @@
   "AYAMOD-KESHOUSHI.title": "血晶死",
   "AYAMOD-KESHOUSHI.description": "[gold]必杀技[/gold]{UltimateSkill:inverseDiff()}：给予{VulnerablePower:diff()}层[gold]易伤[/gold]和{WeakPower:diff()}层[gold]虚弱[/gold]。",
   "AYAMOD-ABIKYOKAN.title": "阿鼻叫唤",
-  "AYAMOD-ABIKYOKAN.description": "每回合开始时，抽1张牌，将1张[gold]祸[/gold]加入你的手牌。"
+  "AYAMOD-ABIKYOKAN.description": "每回合开始时，抽1张牌，将1张[gold]祸[/gold]加入你的手牌。",
+  "AYAMOD-SAISHUWAKIBA.title": "真·最终腋牙",
+  "AYAMOD-SAISHUWAKIBA.description": "给予所有敌人{OmenOfDeathPower:diff()}层[gold]死兆星[/gold]。"
 }
