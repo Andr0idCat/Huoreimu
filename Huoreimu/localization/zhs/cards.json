@@ -64,5 +64,7 @@
   "AYAMOD-NANTOSHOUSHUTOJO.title": "南斗冲袭屠脚",
   "AYAMOD-NANTOSHOUSHUTOJO.description": "造成{CalculatedDamage:diff()}点伤害{Repeat:diff()}次。\n[gold]必杀技[/gold]X：多造成X点伤害。",
   "AYAMOD-GRUDGE.title": "怨仇",
-  "AYAMOD-GRUDGE.description": "每次受到未被格挡的伤害时，获得[blue]{GrudgePower:diff()}[/blue]点[gold]力量[/gold]和[gold]荆棘[/gold]。"
+  "AYAMOD-GRUDGE.description": "每次受到未被格挡的伤害时，获得[blue]{GrudgePower:diff()}[/blue]点[gold]力量[/gold]和[gold]荆棘[/gold]。",
+  "AYAMOD-TENIMUHOU.title": "极剑·天衣无缝",
+  "AYAMOD-TENIMUHOU.description": "每回合开始时，获得{Energy:energyIcons()}并抽[blue]{TenimuhouPower:diff()}[/blue]张牌。受到未被格挡的伤害时，失去此能力。"
 }
