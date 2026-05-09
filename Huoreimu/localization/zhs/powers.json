@@ -16,5 +16,8 @@
   "AYAMOD-HIKOUSHINKETSUSHO_POWER.smartDescription": "每当你抽到诅咒牌时，对所有敌人造成[blue]{Amount}[/blue]点伤害。",
   "AYAMOD-MAJINKA_POWER.title": "魔神化",
   "AYAMOD-MAJINKA_POWER.description": "每当你抽到1张诅咒牌时，抽1张牌并获得[blue]1[/blue]点能量。",
-  "AYAMOD-MAJINKA_POWER.smartDescription": "每当你抽到[blue]1[/blue]张诅咒牌时，抽[blue]{Amount}[/blue]张牌并获得[blue]{Amount}[/blue]点能量。"
+  "AYAMOD-MAJINKA_POWER.smartDescription": "每当你抽到[blue]1[/blue]张诅咒牌时，抽[blue]{Amount}[/blue]张牌并获得[blue]{Amount}[/blue]点能量。",
+  "AYAMOD-GRUDGE_POWER.title": "怨仇",
+  "AYAMOD-GRUDGE_POWER.description": "每次受到未被格挡的伤害时，获得[blue]1[/blue]点力量和[blue]1[/blue]点荆棘。",
+  "AYAMOD-GRUDGE_POWER.smartDescription": "每次受到未被格挡的伤害时，获得[blue]{Amount}[/blue]点力量和[blue]{Amount}[/blue]点荆棘。"
 }
