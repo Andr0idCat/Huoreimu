@@ -54,5 +54,7 @@
   "AYAMOD-NECROTIC.title": "黯蚀",
   "AYAMOD-NECROTIC.description": "所有敌人每有1层[gold]死兆星[/gold]，在本回合失去[blue]4[/blue]点力量。",
   "AYAMOD-SOUKOUSHUKIZAN.title": "葬攻袭鬼斩",
-  "AYAMOD-SOUKOUSHUKIZAN.description": "造成{Damage:diff()}点伤害，手牌中每有1张诅咒牌，额外造成1次伤害。{InCombat:\\n（攻击{CalculatedHits:diff()}次。）|}"
+  "AYAMOD-SOUKOUSHUKIZAN.description": "造成{Damage:diff()}点伤害，手牌中每有1张诅咒牌，额外造成1次伤害。{InCombat:\\n（攻击{CalculatedHits:diff()}次。）|}",
+  "AYAMOD-SHURADO.title": "六道拳·修罗道",
+  "AYAMOD-SHURADO.description": "手牌中每有1张诅咒牌，获得1点[gold]力量[/gold]。"
 }
