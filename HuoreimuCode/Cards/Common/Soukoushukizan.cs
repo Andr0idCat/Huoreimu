@@ -13,14 +13,14 @@ public class Soukoushukizan() : HuoreimuCard(1, CardType.Attack, CardRarity.Comm
         new DamageVar(4, ValueProp.Move),
         new CalculationBaseVar(1),
         new CalculationExtraVar(1),
-        new CalculatedVar("CalculatedHits").WithMultiplier((card, _) =>
+        new CalculatedVar(HuoreimuConstants.CALCULATED_HITS).WithMultiplier((card, _) =>
             PileType.Hand.GetPile(card.Owner).Cards.Count(c => c.Type == CardType.Curse))
     ];
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         ArgumentNullException.ThrowIfNull(cardPlay.Target);
-        var hitCount = (int)((CalculatedVar)DynamicVars["CalculatedHits"]).Calculate(cardPlay.Target);
+        var hitCount = (int)((CalculatedVar)DynamicVars[HuoreimuConstants.CALCULATED_HITS]).Calculate(cardPlay.Target);
         await CommonActions.CardAttack(this, cardPlay.Target, DynamicVars.Damage.IntValue, hitCount)
             .Execute(choiceContext);
     }
