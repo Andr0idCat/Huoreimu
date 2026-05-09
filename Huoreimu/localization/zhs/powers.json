@@ -13,5 +13,8 @@
   "AYAMOD-ABIKYOKAN_POWER.title": "阿鼻叫唤",
   "AYAMOD-HIKOUSHINKETSUSHO_POWER.title": "秘孔深血终",
   "AYAMOD-HIKOUSHINKETSUSHO_POWER.description": "每当你抽到诅咒牌时，对所有敌人造成[blue]5[/blue]点伤害。",
-  "AYAMOD-HIKOUSHINKETSUSHO_POWER.smartDescription": "每当你抽到诅咒牌时，对所有敌人造成[blue]{Amount}[/blue]点伤害。"
+  "AYAMOD-HIKOUSHINKETSUSHO_POWER.smartDescription": "每当你抽到诅咒牌时，对所有敌人造成[blue]{Amount}[/blue]点伤害。",
+  "AYAMOD-MAJINKA_POWER.title": "魔神化",
+  "AYAMOD-MAJINKA_POWER.description": "每当你抽到1张诅咒牌时，抽1张牌并获得[blue]1[/blue]点能量。",
+  "AYAMOD-MAJINKA_POWER.smartDescription": "每当你抽到[blue]1[/blue]张诅咒牌时，抽[blue]{Amount}[/blue]张牌并获得[blue]{Amount}[/blue]点能量。"
 }

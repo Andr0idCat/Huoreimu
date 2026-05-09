@@ -1,0 +1,32 @@
+﻿using AyaMod.Huoreimu.Powers;
+using BaseLib.Utils;
+using MegaCrit.Sts2.Core.Entities.Cards;
+using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.HoverTips;
+using MegaCrit.Sts2.Core.Localization.DynamicVars;
+
+namespace AyaMod.Huoreimu.Cards.Ancient;
+
+public class Majinka() : HuoreimuExtraDeckCard<Huo>(1, CardType.Power, CardRarity.Ancient, TargetType.Self)
+{
+    protected override IEnumerable<DynamicVar> CanonicalVars =>
+    [
+        new PowerVar<MajinkaPower>(1),
+    ];
+
+    protected override IEnumerable<IHoverTip> ExtraHoverTips =>
+    [
+        HoverTipFactory.FromPower<MajinkaPower>(),
+        HoverTipFactory.FromCard<Huo>()
+    ];
+
+    protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
+    {
+        await CommonActions.ApplySelf<MajinkaPower>(choiceContext, this);
+    }
+
+    protected override void OnUpgrade()
+    {
+        AddKeyword(CardKeyword.Innate);
+    }
+}
