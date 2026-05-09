@@ -66,5 +66,7 @@
   "AYAMOD-GRUDGE.title": "怨仇",
   "AYAMOD-GRUDGE.description": "每次受到未被格挡的伤害时，获得[blue]{GrudgePower:diff()}[/blue]点[gold]力量[/gold]和[gold]荆棘[/gold]。",
   "AYAMOD-TENIMUHOU.title": "极剑·天衣无缝",
-  "AYAMOD-TENIMUHOU.description": "每回合开始时，获得{Energy:energyIcons()}并抽[blue]{TenimuhouPower:diff()}[/blue]张牌。受到未被格挡的伤害时，失去此能力。"
+  "AYAMOD-TENIMUHOU.description": "每回合开始时，获得{Energy:energyIcons()}并抽[blue]{TenimuhouPower:diff()}[/blue]张牌。受到未被格挡的伤害时，失去此能力。",
+  "AYAMOD-MIND_EYES.title": "心眼",
+  "AYAMOD-MIND_EYES.description": "每给予1层[gold]死兆星[/gold]时，获得[blue]{MindEyesPower:diff()}[/blue]点格挡。"
 }

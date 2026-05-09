@@ -22,5 +22,8 @@
   "AYAMOD-GRUDGE_POWER.smartDescription": "每次受到未被格挡的伤害时，获得[blue]{Amount}[/blue]点力量和[blue]{Amount}[/blue]点荆棘。",
   "AYAMOD-TENIMUHOU_POWER.title": "天衣无缝",
   "AYAMOD-TENIMUHOU_POWER.description": "每回合开始时，获得[blue]1[/blue]点能量并抽[blue]1[/blue]张牌。受到未被格挡的伤害时，失去此能力。",
-  "AYAMOD-TENIMUHOU_POWER.smartDescription": "每回合开始时，获得[blue]{Amount:energyIcons()}[/blue]点能量并抽[blue]{Amount}[/blue]张牌。受到未被格挡的伤害时，失去此能力。"
+  "AYAMOD-TENIMUHOU_POWER.smartDescription": "每回合开始时，获得[blue]{Amount:energyIcons()}[/blue]点能量并抽[blue]{Amount}[/blue]张牌。受到未被格挡的伤害时，失去此能力。",
+  "AYAMOD-MIND_EYES_POWER.title": "心眼",
+  "AYAMOD-MIND_EYES_POWER.description": "每给予1层[gold]死兆星[/gold]时，获得[blue]1[/blue]点格挡。",
+  "AYAMOD-MIND_EYES_POWER.smartDescription": "每给予1层[gold]死兆星[/gold]时，获得[blue]{Amount}[/blue]点格挡。"
 }
