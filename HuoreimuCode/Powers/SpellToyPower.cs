@@ -20,6 +20,6 @@ public class SpellToyPower() : HuoreimuPowerBase(PowerType.Buff, PowerStackType.
         }
 
         Flash();
-        await CreatureCmd.GainBlock(Owner, player.Relics.Count, ValueProp.Move, null);
+        await CreatureCmd.GainBlock(Owner, player.Relics.Count, ValueProp.Unpowered, null);
     }
 }
