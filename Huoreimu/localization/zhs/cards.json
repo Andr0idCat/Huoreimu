@@ -56,5 +56,7 @@
   "AYAMOD-SOUKOUSHUKIZAN.title": "葬攻袭鬼斩",
   "AYAMOD-SOUKOUSHUKIZAN.description": "造成{Damage:diff()}点伤害，手牌中每有1张诅咒牌，额外造成1次伤害。{InCombat:\\n（攻击{CalculatedHits:diff()}次。）|}",
   "AYAMOD-SHURADO.title": "六道拳·修罗道",
-  "AYAMOD-SHURADO.description": "手牌中每有1张诅咒牌，获得1点[gold]力量[/gold]。"
+  "AYAMOD-SHURADO.description": "手牌中每有1张诅咒牌，获得1点[gold]力量[/gold]。",
+  "AYAMOD-HIKOUSHINKETSUSHO.title": "秘孔深血终",
+  "AYAMOD-HIKOUSHINKETSUSHO.description": "每当你抽到诅咒牌时，对所有敌人造成{HikoushinketsushoPower:diff()}点伤害。\n拾取这张牌时，向牌组中加入一张[gold]祸[/gold]。"
 }

@@ -10,5 +10,8 @@
   "AYAMOD-SPELL_TOY_POWER.title": "咒玩",
   "AYAMOD-ABIKYOKAN_POWER.description": "每回合开始时，抽[blue]1[/blue]张牌，将[blue]1[/blue]张[gold]祸[/gold]加入你的手牌。",
   "AYAMOD-ABIKYOKAN_POWER.smartDescription": "每回合开始时，抽[blue]{Amount}[/blue]张牌，将[blue]{Amount}[/blue]张[gold]祸[/gold]加入你的手牌。",
-  "AYAMOD-ABIKYOKAN_POWER.title": "阿鼻叫唤"
+  "AYAMOD-ABIKYOKAN_POWER.title": "阿鼻叫唤",
+  "AYAMOD-HIKOUSHINKETSUSHO_POWER.title": "秘孔深血终",
+  "AYAMOD-HIKOUSHINKETSUSHO_POWER.description": "每当你抽到诅咒牌时，对所有敌人造成[blue]5[/blue]点伤害。",
+  "AYAMOD-HIKOUSHINKETSUSHO_POWER.smartDescription": "每当你抽到诅咒牌时，对所有敌人造成[blue]{Amount}[/blue]点伤害。"
 }
