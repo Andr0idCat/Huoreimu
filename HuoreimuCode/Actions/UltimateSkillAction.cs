@@ -9,29 +9,6 @@ namespace AyaMod.Huoreimu.Actions;
 
 public static class UltimateSkillAction
 {
-#nullable enable
-    /// <summary>
-    /// 发动必杀技时触发的事件。consumed表示消耗的死兆星层数（可能是0）。
-    /// </summary>
-    public static event Func<CardModel, Creature, int, Task>? OnUltimateSkillCast;
-
-    private static async Task NotifyUltimateSkillCast(CardModel card, Creature? target, int consumed)
-    {
-        if (OnUltimateSkillCast is null) return;
-        foreach (var handler in OnUltimateSkillCast.GetInvocationList().Cast<Func<CardModel, Creature?, int, Task>>())
-        {
-            try
-            {
-                await handler(card, target, consumed);
-            }
-            catch (Exception ex)
-            {
-                Log.Error($"Exception in {nameof(OnUltimateSkillCast)} handler: {ex}");
-            }
-        }
-    }
-#nullable disable
-
     private static (OmenOfDeathPower, int) CheckCondition(CardModel card, Creature creature)
     {
         if (!card.DynamicVars.TryGetValue(HuoreimuConstants.ULTIMATE_SKILL, out var dynamicVar))
@@ -48,12 +25,13 @@ public static class UltimateSkillAction
         return (omen, dynamicVar.IntValue);
     }
 
-    private static async Task<int> InternalExecute(CardModel card, CardPlay cardPlay)
+    private static async Task<bool> InternalExecute(CardModel card, CardPlay cardPlay)
     {
         var (omen, value) = CheckCondition(card, cardPlay.Target);
-        if (omen is null || !CanCast(omen, value)) return 0;
+        var cast = CanCast(omen, value);
+        if (!cast) return false;
         await PowerCmd.ModifyAmount(omen, -value, card.Owner.Creature, card);
-        return value;
+        return true;
     }
 
     private static bool CanCast(OmenOfDeathPower omen, int value)
@@ -81,8 +59,8 @@ public static class UltimateSkillAction
     /// <param name="onCast">如果必杀技可以发动，则执行其返回的Task</param>
     public static async Task Execute(CardModel card, CardPlay cardPlay, Func<Task> onCast)
     {
-        var consumed = await InternalExecute(card, cardPlay);
-        if (consumed <= 0) return;
+        var cast = await InternalExecute(card, cardPlay);
+        if (!cast) return;
         var task = onCast?.Invoke();
         if (task is null)
         {
@@ -91,7 +69,6 @@ public static class UltimateSkillAction
         }
 
         await task;
-        await NotifyUltimateSkillCast(card, cardPlay.Target, consumed);
     }
 
     /// <summary>
@@ -103,8 +80,7 @@ public static class UltimateSkillAction
     /// <param name="onFallback">如果必杀技没有满足发动条件，则执行其返回的Task</param>
     public static async Task Execute(CardModel card, CardPlay cardPlay, Func<Task> onCast, Func<Task> onFallback)
     {
-        var consumed = await InternalExecute(card, cardPlay);
-        var cast = consumed > 0;
+        var cast = await InternalExecute(card, cardPlay);
         var task = cast ? onCast?.Invoke() : onFallback?.Invoke();
         if (task is null)
         {
@@ -113,7 +89,6 @@ public static class UltimateSkillAction
         }
 
         await task;
-        if (cast) await NotifyUltimateSkillCast(card, cardPlay.Target, consumed);
     }
 
     /// <summary>
@@ -138,7 +113,6 @@ public static class UltimateSkillAction
         }
 
         await PowerCmd.ModifyAmount(omen, -value, card.Owner.Creature, card);
-        await NotifyUltimateSkillCast(card, cardPlay.Target, value);
     }
 
     /// <summary>
@@ -162,11 +136,7 @@ public static class UltimateSkillAction
             await task;
         }
 
-        if (cast)
-        {
-            await PowerCmd.ModifyAmount(omen, -value, card.Owner.Creature, card);
-            await NotifyUltimateSkillCast(card, cardPlay.Target, value);
-        }
+        if (cast) await PowerCmd.ModifyAmount(omen, -value, card.Owner.Creature, card);
     }
 
     /// <summary>
@@ -181,7 +151,6 @@ public static class UltimateSkillAction
         var count = omen?.Amount ?? 0;
         if (count > 0 && omen is not null) await PowerCmd.ModifyAmount(omen, -count, card.Owner.Creature, card);
         await onCast(count);
-        await NotifyUltimateSkillCast(card, cardPlay.Target, count);
     }
 
     /// <summary>
@@ -197,6 +166,5 @@ public static class UltimateSkillAction
         await onCast(count);
         omen ??= cardPlay.Target?.GetPower<OmenOfDeathPower>();
         if (count > 0 && omen is not null) await PowerCmd.ModifyAmount(omen, -count, card.Owner.Creature, card);
-        await NotifyUltimateSkillCast(card, cardPlay.Target, count);
     }
 }
