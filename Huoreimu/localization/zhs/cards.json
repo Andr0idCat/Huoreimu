@@ -72,5 +72,7 @@
   "AYAMOD-TENRYUKOKYUHO.title": "转龙呼吸法",
   "AYAMOD-TENRYUKOKYUHO.description": "触发[gold]必杀技[/gold]时，获得{TenryukokyuhoPower:diff()}点[gold]力量[/gold]。",
   "AYAMOD-TENJODO.title": "六道拳·天上道",
-  "AYAMOD-TENJODO.description": "获得{Block:diff()}点格挡。本回合受到攻击时，给予攻击者[blue]{TenjodoPower:diff()}[/blue]层[gold]死兆星[/gold]。"
+  "AYAMOD-TENJODO.description": "获得{Block:diff()}点格挡。本回合受到攻击时，给予攻击者[blue]{TenjodoPower:diff()}[/blue]层[gold]死兆星[/gold]。",
+  "AYAMOD-ZEKAI.title": "绝界",
+  "AYAMOD-ZEKAI.description": "获得[blue]{IntangiblePower:diff()}[/blue]层无实体和[blue]{ArtifactPower:diff()}[/blue]层人工制品。消耗手牌中所有状态牌。"
 }
