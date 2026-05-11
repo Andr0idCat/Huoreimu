@@ -74,5 +74,7 @@
   "AYAMOD-TENJODO.title": "六道拳·天上道",
   "AYAMOD-TENJODO.description": "获得{Block:diff()}点格挡。本回合受到攻击时，给予攻击者[blue]{TenjodoPower:diff()}[/blue]层[gold]死兆星[/gold]。",
   "AYAMOD-ZEKAI.title": "绝界",
-  "AYAMOD-ZEKAI.description": "获得[blue]{IntangiblePower:diff()}[/blue]层无实体和[blue]{ArtifactPower:diff()}[/blue]层人工制品。消耗手牌中所有状态牌。"
+  "AYAMOD-ZEKAI.description": "获得[blue]{IntangiblePower:diff()}[/blue]层无实体和[blue]{ArtifactPower:diff()}[/blue]层人工制品。消耗手牌中所有状态牌。",
+  "AYAMOD-MEIKYOUSHISUI.title": "极剑·明镜止水",
+  "AYAMOD-MEIKYOUSHISUI.description": "丢弃手中所有诅咒牌。每丢弃1张牌，抽1张牌并获得{Block:diff()}点格挡。"
 }
