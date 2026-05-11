@@ -82,5 +82,7 @@
   "AYAMOD-FURIHAKU.description": "从抽牌堆中选择一张牌消耗。如果是诅咒牌，获得{Block:diff()}点格挡。",
   "AYAMOD-KARYU.title": "回祸",
   "AYAMOD-KARYU.selectionScreenPrompt": "选择弃牌堆的一张牌，放到抽牌堆顶",
-  "AYAMOD-KARYU.description": "获得{Block:diff()}点格挡，将弃牌堆中的一张牌放到你的抽牌堆的顶部。"
+  "AYAMOD-KARYU.description": "获得{Block:diff()}点格挡，将弃牌堆中的一张牌放到你的抽牌堆的顶部。",
+  "AYAMOD-SHOUKAJUIN.title": "障祸咒烙印",
+  "AYAMOD-SHOUKAJUIN.description": "获得[blue]{BufferPower:diff()}[/blue]层缓冲，给予[blue]{OmenOfDeathPower:diff()}[/blue]层[gold]死兆星[/gold]。"
 }
