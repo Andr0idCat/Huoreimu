@@ -79,5 +79,8 @@
   "AYAMOD-MEIKYOUSHISUI.description": "丢弃手中所有诅咒牌。每丢弃1张牌，抽1张牌并获得{Block:diff()}点格挡。",
   "AYAMOD-FURIHAKU.title": "払黑",
   "AYAMOD-FURIHAKU.selectionScreenPrompt": "选择抽牌堆的一张牌消耗",
-  "AYAMOD-FURIHAKU.description": "从抽牌堆中选择一张牌消耗。如果是诅咒牌，获得{Block:diff()}点格挡。"
+  "AYAMOD-FURIHAKU.description": "从抽牌堆中选择一张牌消耗。如果是诅咒牌，获得{Block:diff()}点格挡。",
+  "AYAMOD-KARYU.title": "回祸",
+  "AYAMOD-KARYU.selectionScreenPrompt": "选择弃牌堆的一张牌，放到抽牌堆顶",
+  "AYAMOD-KARYU.description": "获得{Block:diff()}点格挡，将弃牌堆中的一张牌放到你的抽牌堆的顶部。"
 }
