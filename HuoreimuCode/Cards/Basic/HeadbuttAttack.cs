@@ -11,7 +11,7 @@ using MegaCrit.Sts2.Core.ValueProps;
 
 namespace AyaMod.Huoreimu.Cards;
 
-public class HeadbuttAttack() : HuoreimuCard(1, CardType.Attack, CardRarity.Basic, TargetType.AnyEnemy)
+public class HeadbuttAttack() : HuoreimuUltimateSkillCard(1, CardType.Attack, CardRarity.Basic, TargetType.AnyEnemy)
 {
     protected override HashSet<CardTag> CanonicalTags => [HuoreimuTags.UltimateSkill];
 

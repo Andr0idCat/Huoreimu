@@ -13,7 +13,7 @@ using MegaCrit.Sts2.Core.ValueProps;
 
 namespace AyaMod.Huoreimu.Cards.Rare;
 
-public class HellsGate() : HuoreimuCard(3, CardType.Attack, CardRarity.Rare, TargetType.AnyEnemy)
+public class HellsGate() : HuoreimuUltimateSkillCard(3, CardType.Attack, CardRarity.Rare, TargetType.AnyEnemy)
 {
     protected override HashSet<CardTag> CanonicalTags => [HuoreimuTags.UltimateSkill];
 

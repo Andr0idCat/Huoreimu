@@ -10,7 +10,7 @@ using MegaCrit.Sts2.Core.Localization.DynamicVars;
 
 namespace AyaMod.Huoreimu.Cards.Uncommon;
 
-public class Kaiki() : HuoreimuCard(0, CardType.Skill, CardRarity.Uncommon, TargetType.AnyEnemy)
+public class Kaiki() : HuoreimuUltimateSkillCard(0, CardType.Skill, CardRarity.Uncommon, TargetType.AnyEnemy)
 {
     protected override HashSet<CardTag> CanonicalTags => [HuoreimuTags.UltimateSkill];
 

@@ -12,7 +12,7 @@ using MegaCrit.Sts2.Core.ValueProps;
 
 namespace AyaMod.Huoreimu.Cards.Rare;
 
-public class Nantoshoushutojo() : HuoreimuCard(3, CardType.Attack, CardRarity.Rare, TargetType.AnyEnemy)
+public class Nantoshoushutojo() : HuoreimuUltimateSkillCard(3, CardType.Attack, CardRarity.Rare, TargetType.AnyEnemy)
 {
     protected override HashSet<CardTag> CanonicalTags => [HuoreimuTags.UltimateSkill];
 
@@ -22,7 +22,8 @@ public class Nantoshoushutojo() : HuoreimuCard(3, CardType.Attack, CardRarity.Ra
         new ExtraDamageVar(1),
         new CalculatedDamageVar(ValueProp.Move)
             .WithMultiplier((_, creature) => creature?.GetPower<OmenOfDeathPower>()?.Amount ?? 0),
-        new RepeatVar(7)
+        new RepeatVar(7),
+        new UltimateSkillVar()
     ];
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>

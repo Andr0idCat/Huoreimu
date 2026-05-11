@@ -10,7 +10,7 @@ using MegaCrit.Sts2.Core.ValueProps;
 
 namespace AyaMod.Huoreimu.Cards;
 
-public class Shichi() : HuoreimuCard(2, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy)
+public class Shichi() : HuoreimuUltimateSkillCard(2, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy)
 {
     protected override HashSet<CardTag> CanonicalTags => [HuoreimuTags.UltimateSkill];
 

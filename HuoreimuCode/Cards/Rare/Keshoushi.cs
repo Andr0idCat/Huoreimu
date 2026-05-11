@@ -12,7 +12,7 @@ using MegaCrit.Sts2.Core.Models.Powers;
 
 namespace AyaMod.Huoreimu.Cards.Rare;
 
-public class Keshoushi() : HuoreimuCard(1, CardType.Skill, CardRarity.Rare, TargetType.AnyEnemy)
+public class Keshoushi() : HuoreimuUltimateSkillCard(1, CardType.Skill, CardRarity.Rare, TargetType.AnyEnemy)
 {
     protected override HashSet<CardTag> CanonicalTags => [HuoreimuTags.UltimateSkill];
 
