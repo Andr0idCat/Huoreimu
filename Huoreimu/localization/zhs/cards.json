@@ -86,5 +86,8 @@
   "AYAMOD-SHOUKAJUIN.title": "障祸咒烙印",
   "AYAMOD-SHOUKAJUIN.description": "获得[blue]{BufferPower:diff()}[/blue]层缓冲，给予[blue]{OmenOfDeathPower:diff()}[/blue]层[gold]死兆星[/gold]。",
   "AYAMOD-SHOUKARYUMAI.title": "瘴祸流舞",
-  "AYAMOD-SHOUKARYUMAI.description": "造成{Damage:diff()}点伤害。[gold]必杀技[/gold]{UltimateSkill:inverseDiff()}：返回手牌。"
+  "AYAMOD-SHOUKARYUMAI.description": "造成{Damage:diff()}点伤害。[gold]必杀技[/gold]{UltimateSkill:inverseDiff()}：返回手牌。",
+  "AYAMOD-NANTOGOKUTOKEN.title": "南斗狱屠拳",
+  "AYAMOD-NANTOGOKUTOKEN.selectionScreenPrompt": "选择弃牌堆的一张牌加入手牌",
+  "AYAMOD-NANTOGOKUTOKEN.description": "造成{Damage:diff()}点伤害。从弃牌堆选择一张牌加入手牌，使其获得[gold]消耗[/gold]并且在本回合可以免费打出。"
 }
