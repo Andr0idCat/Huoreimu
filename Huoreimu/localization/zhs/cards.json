@@ -89,5 +89,7 @@
   "AYAMOD-SHOUKARYUMAI.description": "造成{Damage:diff()}点伤害。[gold]必杀技[/gold]{UltimateSkill:inverseDiff()}：返回手牌。",
   "AYAMOD-NANTOGOKUTOKEN.title": "南斗狱屠拳",
   "AYAMOD-NANTOGOKUTOKEN.selectionScreenPrompt": "选择弃牌堆的一张牌加入手牌",
-  "AYAMOD-NANTOGOKUTOKEN.description": "造成{Damage:diff()}点伤害。从弃牌堆选择一张牌加入手牌，使其获得[gold]消耗[/gold]并且在本回合可以免费打出。"
+  "AYAMOD-NANTOGOKUTOKEN.description": "造成{Damage:diff()}点伤害。从弃牌堆选择一张牌加入手牌，使其获得[gold]消耗[/gold]并且在本回合可以免费打出。",
+  "AYAMOD-MIASMIC_ABYSS.title": "无间瘴狱",
+  "AYAMOD-MIASMIC_ABYSS.description": "获得{Block:diff()}点格挡，将1张[gold]祸[/gold]分别加入你的手牌和抽牌堆中。"
 }
