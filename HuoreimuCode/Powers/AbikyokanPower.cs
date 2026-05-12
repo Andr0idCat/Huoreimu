@@ -23,6 +23,6 @@ public class AbikyokanPower() : HuoreimuPowerBase(PowerType.Buff, PowerStackType
 
         Flash();
         await CardPileCmd.Draw(new BlockingPlayerChoiceContext(), Amount, player);
-        await CardsAction.AddCardToPile<Huo>(player, PileType.Hand, Amount);
+        await CardsAction.AddCardToPileWhenCombat<Huo>(player, PileType.Hand, Amount, combatState);
     }
 }
