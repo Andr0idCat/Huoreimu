@@ -2,10 +2,11 @@
 using AyaMod.Huoreimu.DynamicVars;
 using AyaMod.Huoreimu.Tags;
 using BaseLib.Utils;
+using MegaCrit.Sts2.Core.Commands;
+using MegaCrit.Sts2.Core.Commands.Builders;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
-using MegaCrit.Sts2.Core.Logging;
 using MegaCrit.Sts2.Core.ValueProps;
 
 namespace AyaMod.Huoreimu.Cards;
@@ -23,22 +24,27 @@ public class Shichi() : HuoreimuUltimateSkillCard(2, CardType.Attack, CardRarity
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        await UltimateSkillAction.EarlyExecute(this, cardPlay, () => OnCast(choiceContext),
+        await UltimateSkillAction.EarlyExecute(this, cardPlay, () => OnCast(choiceContext, cardPlay),
             () => OnFail(choiceContext, cardPlay));
     }
 
-    private Task OnCast(PlayerChoiceContext choiceContext)
+    private async Task OnCast(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        if (CombatState == null)
+        ArgumentNullException.ThrowIfNull(CombatState);
+        var target = cardPlay.Target;
+        ArgumentNullException.ThrowIfNull(target);
+        await using var context = await AttackCommand.CreateContextAsync(CombatState, this);
+        var results =
+            (await CommonActions.CardAttack(this, target, DynamicVars.Damage.IntValue, DynamicVars.Repeat.IntValue)
+                .Execute(choiceContext)).Results.ToList();
+        context.AddHit(results);
+        var enemies = CombatState.GetTeammatesOf(target).Where(c => c.IsHittable && c != target).ToList();
+        if (enemies.Count == 0) return;
+        foreach (var result in results)
         {
-            Log.Warn($"{nameof(Shichi)}: CombatState is null, skipping attack.");
-            return Task.CompletedTask;
+            context.AddHit(await CreatureCmd.Damage(choiceContext, enemies, result.TotalDamage + result.OverkillDamage,
+                ValueProp.Unpowered | ValueProp.Move, Owner.Creature, this));
         }
-
-        var instance = CommonActions.CardAttack(this, null, DynamicVars.Damage.IntValue,
-            DynamicVars.Repeat.IntValue);
-        instance.TargetingAllOpponents(CombatState);
-        return instance.Execute(choiceContext);
     }
 
     private Task OnFail(PlayerChoiceContext choiceContext, CardPlay cardPlay)
