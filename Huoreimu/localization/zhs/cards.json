@@ -98,5 +98,7 @@
   "AYAMOD-WARP.selectionScreenPrompt": "选择要消耗的牌",
   "AYAMOD-WARP.description": "消耗3张手牌，抽3张牌。如果消耗的3张牌都是诅咒牌，获得[blue]1[/blue]层无实体。",
   "AYAMOD-OMAEWAMOSHINDEIRU.title": "你已经死了",
-  "AYAMOD-OMAEWAMOSHINDEIRU.description": "目标每有一层[gold]死兆星[/gold]，在本回合受到的伤害提高[blue]{OmaewamoshindeiruPower:diff()}%[/blue]。如果该敌人在本回合死亡，额外提供一组卡牌奖励。{InCombat:\\n（伤害提高[blue]{CalculatedHits:diff()}%[/blue]。）|}"
+  "AYAMOD-OMAEWAMOSHINDEIRU.description": "目标每有一层[gold]死兆星[/gold]，在本回合受到的伤害提高[blue]{OmaewamoshindeiruPower:diff()}%[/blue]。如果该敌人在本回合死亡，额外提供一组卡牌奖励。{InCombat:\\n（伤害提高[blue]{CalculatedHits:diff()}%[/blue]。）|}",
+  "AYAMOD-SIN_GRAVITON.title": "罪业重压",
+  "AYAMOD-SIN_GRAVITON.description": "给予所有敌人{WeakPower:diff()}层[gold]虚弱[/gold]、{VulnerablePower:diff()}层[gold]易伤[/gold]和{OmenOfDeathPower:diff()}层[gold]死兆星[/gold]。\n拾取这张牌时，向牌组中加入一张[gold]祸[/gold]。"
 }
