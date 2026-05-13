@@ -1,4 +1,5 @@
 using BaseLib.Utils;
+using MegaCrit.Sts2.Core.CardSelection;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
@@ -19,9 +20,8 @@ public class Warp() : HuoreimuCard(2, CardType.Skill, CardRarity.Uncommon, Targe
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         const int count = 3;
-        var exhausted =
-            (await CommonActions.SelectCards(this, SelectionScreenPrompt, choiceContext, PileType.Hand, count))
-            .ToList();
+        var exhausted = (await CardSelectCmd.FromHand(choiceContext, Owner,
+            new CardSelectorPrefs(SelectionScreenPrompt, count, count), _ => true, this)).ToList();
         foreach (var card in exhausted)
         {
             await CardCmd.Exhaust(choiceContext, card);
