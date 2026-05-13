@@ -1,5 +1,4 @@
-﻿using AyaMod.Huoreimu.Singletons;
-using BaseLib.Utils;
+﻿using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
@@ -28,7 +27,7 @@ public class LatentDisease() : HuoreimuCard(1, CardType.Attack, CardRarity.Commo
     {
         ArgumentNullException.ThrowIfNull(cardPlay.Target);
         await CommonActions.CardAttack(this, cardPlay.Target).Execute(choiceContext);
-        if (!HuoreimuSingleton.IsInEliteRoom) return;
+        if (!IsInEliteRoom) return;
         await CommonActions.Apply<WeakPower>(choiceContext, cardPlay.Target, this);
         await CommonActions.Apply<VulnerablePower>(choiceContext, cardPlay.Target, this);
     }

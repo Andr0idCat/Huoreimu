@@ -1,5 +1,4 @@
-﻿using AyaMod.Huoreimu.Singletons;
-using BaseLib.Utils;
+﻿using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
@@ -23,7 +22,7 @@ public class LeapingKick() : HuoreimuCard(0, CardType.Attack, CardRarity.Common,
     {
         ArgumentNullException.ThrowIfNull(cardPlay.Target);
         await CommonActions.CardAttack(this, cardPlay.Target).Execute(choiceContext);
-        if (!HuoreimuSingleton.IsInEliteRoom) return;
+        if (!IsInEliteRoom) return;
         await CommonActions.Apply<WeakPower>(choiceContext, cardPlay.Target, this);
     }
 

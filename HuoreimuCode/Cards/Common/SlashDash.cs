@@ -1,5 +1,4 @@
-﻿using AyaMod.Huoreimu.Singletons;
-using BaseLib.Utils;
+﻿using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
@@ -21,7 +20,7 @@ public class SlashDash() : HuoreimuCard(1, CardType.Attack, CardRarity.Common, T
     {
         ArgumentNullException.ThrowIfNull(cardPlay.Target);
         await CommonActions.CardAttack(this, cardPlay.Target).Execute(choiceContext);
-        if (HuoreimuSingleton.IsInEliteRoom)
+        if (IsInEliteRoom)
         {
             await CardPileCmd.Draw(choiceContext,
                 DynamicVars.Cards.IntValue + DynamicVars[HuoreimuConstants.ELITE_EXTRA_DRAW].IntValue, Owner);

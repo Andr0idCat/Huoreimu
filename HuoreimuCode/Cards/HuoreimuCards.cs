@@ -6,6 +6,7 @@ using BaseLib.Utils;
 using Godot;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Logging;
+using MegaCrit.Sts2.Core.Rooms;
 
 
 namespace AyaMod.Huoreimu.Cards;
@@ -52,4 +53,6 @@ public abstract class HuoreimuCard(int cost, CardType type, CardRarity rarity, T
 			return ResourceLoader.Exists(path) ? path : "Beta/card.png".CardImagePath();
 		}
 	}
+
+	protected bool IsInEliteRoom => CombatState?.RunState?.CurrentRoom?.RoomType is RoomType.Elite;
 }
