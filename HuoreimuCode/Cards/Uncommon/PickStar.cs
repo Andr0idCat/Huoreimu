@@ -20,12 +20,12 @@ public class PickStar() : HuoreimuCard(1, CardType.Attack, CardRarity.Uncommon, 
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        ArgumentNullException.ThrowIfNull(cardPlay.Target);
-        await CommonActions.CardAttack(this, cardPlay.Target).Execute(choiceContext);
-
-        var omenPower = cardPlay.Target.GetPower<OmenOfDeathPower>();
-        var drawAmount = omenPower?.Amount ?? 0;
-        await CardPileCmd.Draw(choiceContext, drawAmount, Owner);
+        var target = cardPlay.Target;
+        ArgumentNullException.ThrowIfNull(target);
+        var drawAmount = target.GetPower<OmenOfDeathPower>()?.Amount ?? 0;
+        await CommonActions.CardAttack(this, target).Execute(choiceContext);
+        var drawAmountAfterAttack = target?.GetPower<OmenOfDeathPower>()?.Amount ?? 0;
+        await CardPileCmd.Draw(choiceContext, Math.Max(drawAmount, drawAmountAfterAttack), Owner);
     }
 
     protected override void OnUpgrade()
