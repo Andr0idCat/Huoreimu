@@ -5,4 +5,5 @@ public static class HuoreimuConstants
     public const string ULTIMATE_SKILL = "UltimateSkill";
     public const string ELITE_EXTRA_DRAW = "EliteExtraDraw";
     public const string CALCULATED_HITS = "CalculatedHits";
+    public const string INCREASE_VALUE = "Increase";
 }
