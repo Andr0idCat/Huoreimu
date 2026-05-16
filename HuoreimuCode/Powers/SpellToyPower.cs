@@ -7,7 +7,7 @@ using MegaCrit.Sts2.Core.ValueProps;
 
 namespace AyaMod.Huoreimu.Powers;
 
-public class SpellToyPower() : HuoreimuPowerBase(PowerType.Buff, PowerStackType.Single)
+public class SpellToyPower() : HuoreimuPowerBase(PowerType.Buff, PowerStackType.Counter)
 {
     public override async Task BeforeTurnEnd(PlayerChoiceContext choiceContext, CombatSide side)
     {
@@ -20,6 +20,6 @@ public class SpellToyPower() : HuoreimuPowerBase(PowerType.Buff, PowerStackType.
         }
 
         Flash();
-        await CreatureCmd.GainBlock(Owner, player.Relics.Count, ValueProp.Unpowered, null);
+        await CreatureCmd.GainBlock(Owner, player.Relics.Count * Amount, ValueProp.Unpowered, null);
     }
 }
