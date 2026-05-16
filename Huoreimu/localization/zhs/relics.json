@@ -1,5 +1,8 @@
 ﻿{
   "AYAMOD-STAR_OF_DEATH.title": "死星",
   "AYAMOD-STAR_OF_DEATH.description": "每次攻击给予[blue]{OmenOfDeath:diff()}[/blue]层[gold]死兆星[/gold]。",
-  "AYAMOD-STAR_OF_DEATH.flavor": "看啊，你的死兆星正在天上闪耀！"
+  "AYAMOD-STAR_OF_DEATH.flavor": "看啊，你的死兆星正在天上闪耀！",
+  "AYAMOD-THIRSTY_BLOOD_JADE.title": "渴血的阴阳玉",
+  "AYAMOD-THIRSTY_BLOOD_JADE.description": "进入和结束精英战斗时，恢复[blue]{Heal:diff()}[/blue]点生命值。",
+  "AYAMOD-THIRSTY_BLOOD_JADE.flavor": "[red]这个遗物的细节将在未来揭晓……[/red]"
 }
