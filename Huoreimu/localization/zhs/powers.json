@@ -40,5 +40,8 @@
   "AYAMOD-CHIKUSHODO_POWER.smartDescription": "在本回合失去[blue]{Amount}[/blue]点力量。",
   "AYAMOD-MUGENZANEI_POWER.title": "无元斩影",
   "AYAMOD-MUGENZANEI_POWER.description": "你的回合开始时，受到极剑·无元斩影的攻击。",
-  "AYAMOD-MUGENZANEI_POWER.smartDescription": "你的回合开始时，受到极剑·无元斩影的攻击。"
+  "AYAMOD-MUGENZANEI_POWER.smartDescription": "你的回合开始时，受到极剑·无元斩影的攻击。",
+  "AYAMOD-KAKURO_POWER.title": "祸临",
+  "AYAMOD-KAKURO_POWER.description": "诅咒牌耗能变为0，获得[gold]消耗[/gold]。",
+  "AYAMOD-KAKURO_POWER.smartDescription": "诅咒牌耗能变为0，获得[gold]消耗[/gold]{Retain:cond:>0?与[gold]保留[/gold]|}。"
 }
