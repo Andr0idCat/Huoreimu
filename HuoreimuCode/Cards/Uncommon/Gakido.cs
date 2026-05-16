@@ -1,0 +1,72 @@
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using BaseLib.Utils;
+using MegaCrit.Sts2.Core.Commands;
+using MegaCrit.Sts2.Core.Entities.Cards;
+using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.Localization.DynamicVars;
+using MegaCrit.Sts2.Core.Rooms;
+using MegaCrit.Sts2.Core.Saves.Runs;
+using MegaCrit.Sts2.Core.ValueProps;
+
+namespace AyaMod.Huoreimu.Cards.Uncommon;
+
+public sealed class Gakido() : HuoreimuCard(1, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy)
+{
+    private const string MAX_COMBAT_KEY = "MaxCombat";
+    private const string COMBAT_SEEN_KEY = "CombatSeen";
+    private int _combatsSeen;
+
+    [SavedProperty]
+    public int CombatsSeen
+    {
+        get => _combatsSeen;
+        set
+        {
+            AssertMutable();
+            _combatsSeen = value;
+            DynamicVars[COMBAT_SEEN_KEY].BaseValue = value;
+        }
+    }
+
+    public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Exhaust];
+
+    protected override IEnumerable<DynamicVar> CanonicalVars =>
+    [
+        new DamageVar(10, ValueProp.Move),
+        new HealVar(10),
+        new(MAX_COMBAT_KEY, 2),
+        new(COMBAT_SEEN_KEY, CombatsSeen)
+    ];
+
+    protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
+    {
+        ArgumentNullException.ThrowIfNull(cardPlay.Target);
+
+        await CommonActions.CardAttack(this, cardPlay.Target).Execute(choiceContext);
+
+        if (IsInEliteRoom)
+        {
+            await CreatureCmd.Heal(Owner.Creature, DynamicVars.Heal.IntValue);
+        }
+    }
+
+    public override async Task AfterCombatEnd(CombatRoom room)
+    {
+        if (room.RoomType != RoomType.Elite) return;
+
+        var pile = Pile;
+        if (pile is not { Type: PileType.Deck }) return;
+
+        CombatsSeen++;
+        if (CombatsSeen >= DynamicVars[MAX_COMBAT_KEY].IntValue)
+        {
+            await CardPileCmd.RemoveFromDeck(this);
+        }
+    }
+
+    protected override void OnUpgrade()
+    {
+        DynamicVars[MAX_COMBAT_KEY].UpgradeValueBy(2);
+    }
+}
