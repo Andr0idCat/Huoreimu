@@ -7,5 +7,8 @@
   "AYAMOD-THIRSTY_BLOOD_JADE.flavor": "[red]这个遗物的细节将在未来揭晓……[/red]",
   "AYAMOD-BLACK_GOHEI.title": "漆黑的御币",
   "AYAMOD-BLACK_GOHEI.description": "每当有一名敌人死亡时，自身获得[blue]1[/blue]层无实体。",
-  "AYAMOD-BLACK_GOHEI.flavor": "传播灾祸的武器，并非除秽的礼器，因为使用者也并非巫女。"
+  "AYAMOD-BLACK_GOHEI.flavor": "传播灾祸的武器，并非除秽的礼器，因为使用者也并非巫女。",
+  "AYAMOD-BLOODS_BANE.title": "血之祸",
+  "AYAMOD-BLOODS_BANE.description": "在回合开始时，获得[blue]{Energy:energyIcons()}[/blue]。拾起时，在牌组中加入[blue]2[/blue]张[gold]祸[/gold]。",
+  "AYAMOD-BLOODS_BANE.flavor": "[red]这个遗物的细节将在未来揭晓……[/red]"
 }
