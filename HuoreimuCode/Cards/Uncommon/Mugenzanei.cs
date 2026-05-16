@@ -16,6 +16,10 @@ public class Mugenzanei() : HuoreimuUltimateSkillCard(2, CardType.Attack, CardRa
 {
     protected override HashSet<CardTag> CanonicalTags => [HuoreimuTags.UltimateSkill];
 
+    protected override bool ShouldGlowGoldInternal =>
+        CombatState?.HittableEnemies?.Any(e =>
+            e.GetPower<MugenzaneiPower>() == null && UltimateSkillAction.CanCast(this, e)) ?? false;
+
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new DamageVar(12, ValueProp.Move),
