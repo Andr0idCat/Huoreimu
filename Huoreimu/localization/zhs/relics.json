@@ -4,5 +4,8 @@
   "AYAMOD-STAR_OF_DEATH.flavor": "看啊，你的死兆星正在天上闪耀！",
   "AYAMOD-THIRSTY_BLOOD_JADE.title": "渴血的阴阳玉",
   "AYAMOD-THIRSTY_BLOOD_JADE.description": "进入和结束精英战斗时，恢复[blue]{Heal:diff()}[/blue]点生命值。",
-  "AYAMOD-THIRSTY_BLOOD_JADE.flavor": "[red]这个遗物的细节将在未来揭晓……[/red]"
+  "AYAMOD-THIRSTY_BLOOD_JADE.flavor": "[red]这个遗物的细节将在未来揭晓……[/red]",
+  "AYAMOD-BLACK_GOHEI.title": "漆黑的御币",
+  "AYAMOD-BLACK_GOHEI.description": "每当有一名敌人死亡时，自身获得[blue]1[/blue]层无实体。",
+  "AYAMOD-BLACK_GOHEI.flavor": "传播灾祸的武器，并非除秽的礼器，因为使用者也并非巫女。"
 }
