@@ -34,5 +34,8 @@
   "AYAMOD-TENJODO_POWER.smartDescription": "受到攻击时，给予攻击者[blue]{Amount}[/blue]层[gold]死兆星[/gold]。",
   "AYAMOD-OMAEWAMOSHINDEIRU_POWER.title": "你已经死了",
   "AYAMOD-OMAEWAMOSHINDEIRU_POWER.description": "本回合受到的伤害提高[blue]15%[/blue]。如果本回合死亡，额外提供一组卡牌奖励。",
-  "AYAMOD-OMAEWAMOSHINDEIRU_POWER.smartDescription": "本回合受到的伤害提高[blue]{Amount}%[/blue]。如果本回合死亡，额外提供一组卡牌奖励。"
+  "AYAMOD-OMAEWAMOSHINDEIRU_POWER.smartDescription": "本回合受到的伤害提高[blue]{Amount}%[/blue]。如果本回合死亡，额外提供一组卡牌奖励。",
+  "AYAMOD-CHIKUSHODO_POWER.title": "畜生道",
+  "AYAMOD-CHIKUSHODO_POWER.description": "在本回合失去[blue]4[/blue]点力量。",
+  "AYAMOD-CHIKUSHODO_POWER.smartDescription": "在本回合失去[blue]{Amount}[/blue]点力量。"
 }
