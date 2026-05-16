@@ -102,5 +102,7 @@
   "AYAMOD-SIN_GRAVITON.title": "罪业重压",
   "AYAMOD-SIN_GRAVITON.description": "给予所有敌人{WeakPower:diff()}层[gold]虚弱[/gold]、{VulnerablePower:diff()}层[gold]易伤[/gold]和{OmenOfDeathPower:diff()}层[gold]死兆星[/gold]。\n拾取这张牌时，向牌组中加入一张[gold]祸[/gold]。",
   "AYAMOD-CHIKUSHODO.title": "六道拳·畜生道",
-  "AYAMOD-CHIKUSHODO.description": "造成{Damage:diff()}点伤害。使目标在本回合失去[blue]4[/blue]点力量。每击败过1名精英敌人，减少{energyPrefix:energyIcons(1)}。"
+  "AYAMOD-CHIKUSHODO.description": "造成{Damage:diff()}点伤害。使目标在本回合失去[blue]4[/blue]点力量。每击败过1名精英敌人，减少{energyPrefix:energyIcons(1)}。",
+  "AYAMOD-MUGENZANEI.title": "极剑·无元斩影",
+  "AYAMOD-MUGENZANEI.description": "造成{Damage:diff()}点伤害。[gold]必杀技[/gold]{UltimateSkill:inverseDiff()}：你的回合开始时，对目标打出这张牌。"
 }
