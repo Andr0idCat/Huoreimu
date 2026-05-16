@@ -1,9 +1,11 @@
+using System.Collections.Generic;
 using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.Entities.Powers;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Models;
 
 namespace AyaMod.Huoreimu.Powers;
@@ -13,6 +15,9 @@ public sealed class MugenzaneiPower() : HuoreimuPowerBase(PowerType.Debuff, Powe
     private CardModel _cardRef;
 
     public override bool IsInstanced => true;
+
+    protected override IEnumerable<IHoverTip> ExtraHoverTips =>
+        _cardRef != null ? [HoverTipFactory.FromCard(_cardRef)] : base.ExtraHoverTips;
 
     public override Task AfterApplied(Creature applier, CardModel cardSource)
     {
