@@ -9,5 +9,4 @@ public class Huo() : HuoreimuCard(-1, CardType.Curse, CardRarity.Curse, TargetTy
 {
     public override int MaxUpgradeLevel => 0;
     public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Unplayable];
-    protected override bool IsPlayable => false;
 }
