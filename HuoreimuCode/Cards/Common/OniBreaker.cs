@@ -25,8 +25,7 @@ public sealed class OniBreaker() : HuoreimuCard(1, CardType.Skill, CardRarity.Co
         {
             AssertMutable();
             _eliteDefeated = value;
-            DynamicVars.Power<VulnerablePower>().BaseValue = TotalVulnerable;
-            DynamicVars.Power<WeakPower>().BaseValue = TotalVulnerable;
+            RefreshPowerAmount();
         }
     }
 
@@ -67,7 +66,12 @@ public sealed class OniBreaker() : HuoreimuCard(1, CardType.Skill, CardRarity.Co
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Power<VulnerablePower>().UpgradeValueBy(1);
-        DynamicVars.Power<WeakPower>().UpgradeValueBy(1);
+        RefreshPowerAmount();
+    }
+
+    private void RefreshPowerAmount()
+    {
+        DynamicVars.Power<VulnerablePower>().BaseValue = TotalVulnerable;
+        DynamicVars.Power<WeakPower>().BaseValue = TotalVulnerable;
     }
 }
