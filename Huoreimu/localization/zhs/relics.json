@@ -10,5 +10,8 @@
   "AYAMOD-BLACK_GOHEI.flavor": "传播灾祸的武器，并非除秽的礼器，因为使用者也并非巫女。",
   "AYAMOD-BLOODS_BANE.title": "血之祸",
   "AYAMOD-BLOODS_BANE.description": "在回合开始时，获得[blue]{Energy:energyIcons()}[/blue]。拾起时，在牌组中加入[blue]2[/blue]张[gold]祸[/gold]。",
-  "AYAMOD-BLOODS_BANE.flavor": "[red]这个遗物的细节将在未来揭晓……[/red]"
+  "AYAMOD-BLOODS_BANE.flavor": "[red]这个遗物的细节将在未来揭晓……[/red]",
+  "AYAMOD-HIDDEN_DOOM.title": "潜伏的灾祸",
+  "AYAMOD-HIDDEN_DOOM.description": "在[gold]?[/gold]房间遭遇的战斗变为精英战斗，升级你精英战斗获得的卡牌奖励。",
+  "AYAMOD-HIDDEN_DOOM.flavor": "被当作灾厄而拒绝的存在，无时无刻不在感受着恶意。"
 }
