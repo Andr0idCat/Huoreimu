@@ -114,5 +114,8 @@
   "AYAMOD-GAKIDO.title": "六道拳·饿鬼道",
   "AYAMOD-GAKIDO.description": "造成[blue]{Damage:diff()}[/blue]点伤害。精英战斗中，回复[blue]{Heal:diff()}[/blue]点生命。{MaxCombat:diff()}场精英战斗后从牌组中移除。{InCombat:\\n已经历{CombatSeen:inverseDiff()}场精英战斗。|}",
   "AYAMOD-HAKUREI_HISHOU.title": "飞翔博丽",
-  "AYAMOD-HAKUREI_HISHOU.description": "对全体敌人造成{Damage:diff()}点伤害。{MaxCombat:diff()}场战斗后从牌组中移除。{InCombat:\\n已经历{CombatSeen:inverseDiff()}场战斗。|}"
+  "AYAMOD-HAKUREI_HISHOU.description": "对全体敌人造成{Damage:diff()}点伤害。{MaxCombat:diff()}场战斗后从牌组中移除。{InCombat:\\n已经历{CombatSeen:inverseDiff()}场战斗。|}",
+  "AYAMOD-KASEN.title": "祸染",
+  "AYAMOD-KASEN.selectionScreenPrompt": "选择一张手牌永久变化为[gold]祸[/gold]",
+  "AYAMOD-KASEN.description": "将一张手牌永久变化为[gold]祸[/gold]。"
 }
