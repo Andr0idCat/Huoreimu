@@ -112,5 +112,7 @@
   "AYAMOD-JIGOKUDO.title": "六道拳·地狱道",
   "AYAMOD-JIGOKUDO.description": "将抽牌堆中{Cards:diff()}张诅咒牌加入到手牌。",
   "AYAMOD-GAKIDO.title": "六道拳·饿鬼道",
-  "AYAMOD-GAKIDO.description": "造成[blue]{Damage:diff()}[/blue]点伤害。精英战斗中，回复[blue]{Heal:diff()}[/blue]点生命。{MaxCombat:diff()}场精英战斗后从牌组中移除。{InCombat:\\n已经历{CombatSeen:inverseDiff()}场精英战斗。|}"
+  "AYAMOD-GAKIDO.description": "造成[blue]{Damage:diff()}[/blue]点伤害。精英战斗中，回复[blue]{Heal:diff()}[/blue]点生命。{MaxCombat:diff()}场精英战斗后从牌组中移除。{InCombat:\\n已经历{CombatSeen:inverseDiff()}场精英战斗。|}",
+  "AYAMOD-HAKUREI_HISHOU.title": "飞翔博丽",
+  "AYAMOD-HAKUREI_HISHOU.description": "对全体敌人造成{Damage:diff()}点伤害。{MaxCombat:diff()}场战斗后从牌组中移除。{InCombat:\\n已经历{CombatSeen:inverseDiff()}场战斗。|}"
 }
