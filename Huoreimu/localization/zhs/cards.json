@@ -117,5 +117,7 @@
   "AYAMOD-HAKUREI_HISHOU.description": "对全体敌人造成{Damage:diff()}点伤害。{MaxCombat:diff()}场战斗后从牌组中移除。{InCombat:\\n已经历{CombatSeen:inverseDiff()}场战斗。|}",
   "AYAMOD-KASEN.title": "祸染",
   "AYAMOD-KASEN.selectionScreenPrompt": "选择一张手牌永久变化为[gold]祸[/gold]",
-  "AYAMOD-KASEN.description": "将一张手牌永久变化为[gold]祸[/gold]。"
+  "AYAMOD-KASEN.description": "将一张手牌永久变化为[gold]祸[/gold]。",
+  "AYAMOD-KIBATSU.title": "牙突",
+  "AYAMOD-KIBATSU.description": "造成{Damage:diff()}点伤害。牌组中每有1张诅咒牌，这张牌的能量消耗减少{Decrease:diff()}。"
 }
