@@ -12,14 +12,13 @@ namespace AyaMod.Huoreimu.Cards.Common;
 
 public class Kibatsu() : HuoreimuCard(4, CardType.Attack, CardRarity.Common, TargetType.AnyEnemy)
 {
-    private const string DECREASE = "Decrease";
     private const int MAX_ENERGY_COST = 4;
     private const int DECREASE_COST = 1;
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new DamageVar(24, ValueProp.Move),
-        new(DECREASE, DECREASE_COST)
+        new(HuoreimuConstants.DECREASE_VALUE, DECREASE_COST)
     ];
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)

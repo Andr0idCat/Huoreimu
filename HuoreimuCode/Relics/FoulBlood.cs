@@ -15,8 +15,6 @@ namespace AyaMod.Huoreimu.Relic;
 
 public class FoulBlood : HuoreimuRelic
 {
-    private const string DECREASE = "Decrease";
-    private const string MINIMUM = "Minimum";
     private const int INITIAL_BONUS = 4;
     private const int DECREASE_AMOUNT = 1;
     private const int MINIMUM_AMOUNT = 0;
@@ -48,8 +46,8 @@ public class FoulBlood : HuoreimuRelic
     [
         new PowerVar<StrengthPower>(Bonus),
         new PowerVar<DexterityPower>(Bonus),
-        new(DECREASE, DECREASE_AMOUNT),
-        new(MINIMUM, MINIMUM_AMOUNT),
+        new(HuoreimuConstants.DECREASE_VALUE, DECREASE_AMOUNT),
+        new(HuoreimuConstants.MINIMUM_VALUE, MINIMUM_AMOUNT),
     ];
 
     public override async Task BeforeCombatStart()
