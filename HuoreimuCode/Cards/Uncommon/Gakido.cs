@@ -13,8 +13,6 @@ namespace AyaMod.Huoreimu.Cards.Uncommon;
 
 public sealed class Gakido() : HuoreimuCard(1, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy)
 {
-    private const string MAX_COMBAT_KEY = "MaxCombat";
-    private const string COMBAT_SEEN_KEY = "CombatSeen";
     private int _combatsSeen;
 
     [SavedProperty]
@@ -25,7 +23,7 @@ public sealed class Gakido() : HuoreimuCard(1, CardType.Attack, CardRarity.Uncom
         {
             AssertMutable();
             _combatsSeen = value;
-            DynamicVars[COMBAT_SEEN_KEY].BaseValue = value;
+            DynamicVars[HuoreimuConstants.COMBAT_SEEN_KEY].BaseValue = value;
         }
     }
 
@@ -35,8 +33,8 @@ public sealed class Gakido() : HuoreimuCard(1, CardType.Attack, CardRarity.Uncom
     [
         new DamageVar(10, ValueProp.Move),
         new HealVar(10),
-        new(MAX_COMBAT_KEY, 2),
-        new(COMBAT_SEEN_KEY, CombatsSeen)
+        new(HuoreimuConstants.MAX_COMBAT_KEY, 2),
+        new(HuoreimuConstants.COMBAT_SEEN_KEY, CombatsSeen)
     ];
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
@@ -59,7 +57,7 @@ public sealed class Gakido() : HuoreimuCard(1, CardType.Attack, CardRarity.Uncom
         if (pile is not { Type: PileType.Deck }) return;
 
         CombatsSeen++;
-        if (CombatsSeen >= DynamicVars[MAX_COMBAT_KEY].IntValue)
+        if (CombatsSeen >= DynamicVars[HuoreimuConstants.MAX_COMBAT_KEY].IntValue)
         {
             await CardPileCmd.RemoveFromDeck(this);
         }
@@ -67,6 +65,6 @@ public sealed class Gakido() : HuoreimuCard(1, CardType.Attack, CardRarity.Uncom
 
     protected override void OnUpgrade()
     {
-        DynamicVars[MAX_COMBAT_KEY].UpgradeValueBy(2);
+        DynamicVars[HuoreimuConstants.MAX_COMBAT_KEY].UpgradeValueBy(2);
     }
 }
