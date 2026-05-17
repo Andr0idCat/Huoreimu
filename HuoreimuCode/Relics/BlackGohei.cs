@@ -12,8 +12,7 @@ using MegaCrit.Sts2.Core.Models.Powers;
 
 namespace AyaMod.Huoreimu.Relic;
 
-[Pool(typeof(HuoreimuRelicPool))]
-public class BlackGohei : CustomRelicModel
+public class BlackGohei : HuoreimuRelic
 {
     public override RelicRarity Rarity => RelicRarity.Rare;
 

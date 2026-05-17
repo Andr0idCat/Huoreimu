@@ -14,8 +14,7 @@ using MegaCrit.Sts2.Core.Localization.DynamicVars;
 
 namespace AyaMod.Huoreimu.Relic;
 
-[Pool(typeof(HuoreimuRelicPool))]
-public class BloodsBane : CustomRelicModel
+public class BloodsBane : HuoreimuRelic
 {
     public override RelicRarity Rarity => RelicRarity.Rare;
 

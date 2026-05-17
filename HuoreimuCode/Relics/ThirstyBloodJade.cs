@@ -10,8 +10,7 @@ using MegaCrit.Sts2.Core.Rooms;
 
 namespace AyaMod.Huoreimu.Relic;
 
-[Pool(typeof(HuoreimuRelicPool))]
-public class ThirstyBloodJade : CustomRelicModel
+public class ThirstyBloodJade : HuoreimuRelic
 {
     private const decimal HEAL_AMOUNT = 10;
 

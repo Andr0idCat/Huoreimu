@@ -10,8 +10,7 @@ using MegaCrit.Sts2.Core.Localization.DynamicVars;
 
 namespace AyaMod.Huoreimu.Relic;
 
-[Pool(typeof(HuoreimuRelicPool))]
-public class StarOfDeath : CustomRelicModel
+public class StarOfDeath : HuoreimuRelic
 {
     private const decimal OMEN_OF_DEATH_VALUE = 1;
     public override RelicRarity Rarity => RelicRarity.Starter;
