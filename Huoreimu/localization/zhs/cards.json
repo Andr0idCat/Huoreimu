@@ -119,5 +119,7 @@
   "AYAMOD-KASEN.selectionScreenPrompt": "选择一张手牌永久变化为[gold]祸[/gold]",
   "AYAMOD-KASEN.description": "将一张手牌永久变化为[gold]祸[/gold]。",
   "AYAMOD-KIBATSU.title": "牙突",
-  "AYAMOD-KIBATSU.description": "造成{Damage:diff()}点伤害。牌组中每有1张诅咒牌，这张牌的能量消耗减少{Decrease:diff()}。"
+  "AYAMOD-KIBATSU.description": "造成{Damage:diff()}点伤害。牌组中每有1张诅咒牌，这张牌的能量消耗减少{Decrease:diff()}。",
+  "AYAMOD-ONI_BREAKER.title": "破魔碎",
+  "AYAMOD-ONI_BREAKER.description": "给予{VulnerablePower:diff()}层[gold]易伤[/gold]，每击败过1名精英敌人额外给予{Increase:diff()}层。如果目标是精英敌人，给予等量的[gold]虚弱[/gold]。"
 }
