@@ -7,6 +7,7 @@ using MegaCrit.Sts2.Core.Commands.Builders;
 using MegaCrit.Sts2.Core.Entities.Relics;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
+using MegaCrit.Sts2.Core.Models;
 
 namespace AyaMod.Huoreimu.Relic;
 
@@ -16,6 +17,7 @@ public class StarOfDeath : HuoreimuRelic
     public override RelicRarity Rarity => RelicRarity.Starter;
     protected override IEnumerable<DynamicVar> CanonicalVars => [new PowerVar<OmenOfDeathPower>(OMEN_OF_DEATH_VALUE)];
     protected override IEnumerable<IHoverTip> ExtraHoverTips => [HoverTipFactory.FromPower<OmenOfDeathPower>()];
+    public override RelicModel GetUpgradeReplacement() => ModelDb.Relic<StarOfDoom>();
 
     public override async Task AfterAttack(AttackCommand command)
     {
