@@ -10,4 +10,6 @@ public static class HuoreimuConstants
     public const string MAX_COMBAT_KEY = "MaxCombat";
     public const string COMBAT_SEEN_KEY = "CombatSeen";
     public const string MINIMUM_VALUE = "Minimum";
+    public const string DOLL_COUNT = "DollCount";
+    public const string AUTO_PLAY_CARD_COST = "AutoPlayCardCost";
 }

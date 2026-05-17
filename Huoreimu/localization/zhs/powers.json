@@ -43,5 +43,8 @@
   "AYAMOD-MUGENZANEI_POWER.smartDescription": "你的回合开始时，受到极剑·无元斩影的攻击。",
   "AYAMOD-KAKURO_POWER.title": "祸临",
   "AYAMOD-KAKURO_POWER.description": "诅咒牌耗能变为0，获得[gold]消耗[/gold]。",
-  "AYAMOD-KAKURO_POWER.smartDescription": "诅咒牌耗能变为0，获得[gold]消耗[/gold]{Retain:cond:>0?与[gold]保留[/gold]|}。"
+  "AYAMOD-KAKURO_POWER.smartDescription": "诅咒牌耗能变为0，获得[gold]消耗[/gold]{Retain:cond:>0?与[gold]保留[/gold]|}。",
+  "AYAMOD-DOLL_POWER.title": "人形",
+  "AYAMOD-DOLL_POWER.description": "回合结束时从抽牌堆随机打出一张耗能为[blue]1[/blue]的攻击牌。受到未被格挡的伤害时，损失等量层数。",
+  "AYAMOD-DOLL_POWER.smartDescription": "回合结束时从抽牌堆随机打出一张耗能为[blue]{AutoPlayCardCost:diff()}[/blue]的攻击牌。受到未被格挡的伤害时，损失等量层数。"
 }
