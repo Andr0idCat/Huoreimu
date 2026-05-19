@@ -60,6 +60,10 @@
         <MakeDir Directories="$(STS2Path)\mods\"/>
         <Copy SourceFiles="$(TargetPath)" DestinationFolder="$(STS2Path)\mods\$(MSBuildProjectName)\"/>
         <Copy SourceFiles="$(MSBuildProjectName).json" DestinationFolder="$(STS2Path)/mods/$(MSBuildProjectName)/"/>
+        <Copy SourceFiles="$(TargetDir)$(TargetName).pdb"
+            DestinationFolder="$(Sts2Dir)/mods/$(MSBuildProjectName)/"
+            Condition="Exists('$(TargetDir)$(TargetName).pdb')" />
+        <Copy SourceFiles="$(MSBuildProjectName).json" DestinationFolder="$(Sts2Dir)/mods/$(MSBuildProjectName)/"/>
     </Target>
 
     <Target Name="ExportPck">
