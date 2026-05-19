@@ -53,5 +53,13 @@ public class Huoreimu : PlaceholderCharacterModel
 	public override string CustomIconTexturePath => "character_icon_char_name.png".CharacterUiPath();
 	public override string CustomCharacterSelectIconPath => "char_select_char_name.png".CharacterUiPath();
 	public override string CustomCharacterSelectLockedIconPath => "char_select_char_name_locked.png".CharacterUiPath();
+	public override string CharacterTransitionSfx => "event:/sfx/ui/wipe_ironclad";
 	public override string CustomMapMarkerPath => "map_marker_char_name.png".CharacterUiPath();
+	    public override List<string> GetArchitectAttackVfx() => [
+        "vfx/vfx_attack_blunt",
+        "vfx/vfx_heavy_blunt",
+        "vfx/vfx_attack_slash",
+        "vfx/vfx_bloody_impact",
+        "vfx/vfx_rock_shatter"
+    ];
 }
