@@ -13,7 +13,7 @@ public static class KakuroCostPatch
         if (__result >= 0) return;
 
         var card = AccessTools.Field(typeof(CardEnergyCost), "_card").GetValue(__instance) as CardModel;
-        if (card?.Type != CardType.Curse) return;
+        if (card?.CombatState is null || card?.Type != CardType.Curse) return;
 
         var power = card.Owner?.Creature?.GetPower<KakuroPower>();
         if (power == null) return;
