@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bvqiqpw461uho"
-path="res://.godot/imported/kibatsu.jpg-c9be339a58e9cf508a08d61093db9055.ctex"
+uid="uid://dxbxsbdxoscio"
+path="res://.godot/imported/kibatsu.png-49783b6f2fbb67c64ce2afe9559cd535.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Huoreimu/Image/Cards/kibatsu.jpg"
-dest_files=["res://.godot/imported/kibatsu.jpg-c9be339a58e9cf508a08d61093db9055.ctex"]
+source_file="res://Huoreimu/Image/Cards/kibatsu.png"
+dest_files=["res://.godot/imported/kibatsu.png-49783b6f2fbb67c64ce2afe9559cd535.ctex"]
 
 [params]
 
