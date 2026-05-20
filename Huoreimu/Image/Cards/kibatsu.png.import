@@ -2,36 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-<<<<<<< HEAD
-uid="uid://c6do5faf4xfwy"
+uid="uid://ener3fqiqk7y"
 path="res://.godot/imported/kibatsu.png-49783b6f2fbb67c64ce2afe9559cd535.ctex"
-=======
-<<<<<<<< HEAD:Huoreimu/Image/Cards/gakido.png.import
-uid="uid://3v8g8sqkgqtn"
-path="res://.godot/imported/gakido.png-eabcffca10a3f67a6f7ee4840596ed2f.ctex"
-========
-uid="uid://dxbxsbdxoscio"
-path="res://.godot/imported/kibatsu.png-49783b6f2fbb67c64ce2afe9559cd535.ctex"
->>>>>>>> c7a31e99bc05385562a3802f8563ccd18a244091:Huoreimu/Image/Cards/kibatsu.png.import
->>>>>>> c7a31e99bc05385562a3802f8563ccd18a244091
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-<<<<<<< HEAD
 source_file="res://Huoreimu/Image/Cards/kibatsu.png"
 dest_files=["res://.godot/imported/kibatsu.png-49783b6f2fbb67c64ce2afe9559cd535.ctex"]
-=======
-<<<<<<<< HEAD:Huoreimu/Image/Cards/gakido.png.import
-source_file="res://Huoreimu/Image/Cards/gakido.png"
-dest_files=["res://.godot/imported/gakido.png-eabcffca10a3f67a6f7ee4840596ed2f.ctex"]
-========
-source_file="res://Huoreimu/Image/Cards/kibatsu.png"
-dest_files=["res://.godot/imported/kibatsu.png-49783b6f2fbb67c64ce2afe9559cd535.ctex"]
->>>>>>>> c7a31e99bc05385562a3802f8563ccd18a244091:Huoreimu/Image/Cards/kibatsu.png.import
->>>>>>> c7a31e99bc05385562a3802f8563ccd18a244091
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cxsjyyf3equ7p"
-path="res://.godot/imported/soukoushukuzan.png-3b7d01b18173d801bfb3014adb9937e9.ctex"
+uid="uid://cdqqbvqdy48ui"
+path="res://.godot/imported/tenryukokyuho.png-ea9cb159db492dbbd8cca3517c05bf22.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Huoreimu/Image/Cards/soukoushukuzan.png"
-dest_files=["res://.godot/imported/soukoushukuzan.png-3b7d01b18173d801bfb3014adb9937e9.ctex"]
+source_file="res://Huoreimu/Image/Cards/tenryukokyuho.png"
+dest_files=["res://.godot/imported/tenryukokyuho.png-ea9cb159db492dbbd8cca3517c05bf22.ctex"]
 
 [params]
 
