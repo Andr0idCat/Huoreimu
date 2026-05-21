@@ -20,7 +20,7 @@ public class SlashDash() : HuoreimuCard(1, CardType.Attack, CardRarity.Common, T
     {
         ArgumentNullException.ThrowIfNull(cardPlay.Target);
         await CommonActions.CardAttack(this, cardPlay.Target).Execute(choiceContext);
-        if (IsInEliteRoom)
+        if (IsInEliteOrBossRoom)
         {
             await CardPileCmd.Draw(choiceContext,
                 DynamicVars.Cards.IntValue + DynamicVars[HuoreimuConstants.ELITE_EXTRA_DRAW].IntValue, Owner);

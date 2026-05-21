@@ -43,7 +43,7 @@ public sealed class Gakido() : HuoreimuCard(1, CardType.Attack, CardRarity.Uncom
 
         await CommonActions.CardAttack(this, cardPlay.Target).Execute(choiceContext);
 
-        if (IsInEliteRoom)
+        if (IsInEliteOrBossRoom)
         {
             await CreatureCmd.Heal(Owner.Creature, DynamicVars.Heal.IntValue);
         }

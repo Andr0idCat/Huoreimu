@@ -22,7 +22,7 @@ public class SkywardKick() : HuoreimuCard(1, CardType.Skill, CardRarity.Basic, T
     {
         await CommonActions.CardBlock(this, DynamicVars.Block, cardPlay);
         var target = cardPlay.Target;
-        if (target is null || !IsInEliteRoom) return;
+        if (target is null || !IsInEliteOrBossRoom) return;
         await CommonActions.Apply<WeakPower>(choiceContext, target, this);
     }
 

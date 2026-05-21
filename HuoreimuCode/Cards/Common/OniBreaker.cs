@@ -52,7 +52,7 @@ public sealed class OniBreaker() : HuoreimuCard(1, CardType.Skill, CardRarity.Co
 
         await CommonActions.Apply<VulnerablePower>(choiceContext, cardPlay.Target, this);
 
-        if (IsInEliteRoom)
+        if (IsInEliteOrBossRoom)
         {
             await CommonActions.Apply<WeakPower>(choiceContext, cardPlay.Target, this);
         }

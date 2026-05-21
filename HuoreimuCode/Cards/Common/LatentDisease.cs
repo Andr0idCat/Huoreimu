@@ -27,7 +27,7 @@ public class LatentDisease() : HuoreimuCard(1, CardType.Attack, CardRarity.Commo
     {
         ArgumentNullException.ThrowIfNull(cardPlay.Target);
         await CommonActions.CardAttack(this, cardPlay.Target).Execute(choiceContext);
-        if (!IsInEliteRoom) return;
+        if (!IsInEliteOrBossRoom) return;
         await CommonActions.Apply<WeakPower>(choiceContext, cardPlay.Target, this);
         await CommonActions.Apply<VulnerablePower>(choiceContext, cardPlay.Target, this);
     }
