@@ -6,6 +6,7 @@ public static class HuoreimuConstants
 	public const string ELITE_EXTRA_DRAW = "EliteExtraDraw";
 	public const string CALCULATED_HITS = "CalculatedHits";
 	public const string INCREASE_VALUE = "Increase";
+	public const string ELITE_OR_BOSS_INCREASE_VALUE = "EliteOrBossIncrease";
 	public const string DECREASE_VALUE = "Decrease";
 	public const string MAX_COMBAT_KEY = "MaxCombat";
 	public const string COMBAT_SEEN_KEY = "CombatSeen";

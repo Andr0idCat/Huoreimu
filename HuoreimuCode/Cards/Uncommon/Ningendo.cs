@@ -34,7 +34,8 @@ public sealed class Ningendo() : HuoreimuCard(1, CardType.Attack, CardRarity.Unc
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new DamageVar(SavedDamage, ValueProp.Move),
-        new IntVar(HuoreimuConstants.INCREASE_VALUE, 2)
+        new IntVar(HuoreimuConstants.INCREASE_VALUE, 2),
+        new IntVar(HuoreimuConstants.ELITE_OR_BOSS_INCREASE_VALUE, 8),
     ];
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips => [HoverTipFactory.Static(StaticHoverTip.Fatal)];
@@ -56,13 +57,15 @@ public sealed class Ningendo() : HuoreimuCard(1, CardType.Attack, CardRarity.Unc
         switch (roomType)
         {
             case RoomType.Monster:
-                SavedDamage += DynamicVars.TryGetValue(HuoreimuConstants.INCREASE_VALUE, out var increaseVar)
-                    ? increaseVar.IntValue
-                    : 0;
-                break;
             case RoomType.Elite:
             case RoomType.Boss:
-                SavedDamage *= 2;
+                SavedDamage +=
+                    DynamicVars.TryGetValue(
+                        IsInEliteOrBossRoom
+                            ? HuoreimuConstants.ELITE_OR_BOSS_INCREASE_VALUE
+                            : HuoreimuConstants.INCREASE_VALUE, out var increaseVar)
+                        ? increaseVar.IntValue
+                        : 0;
                 break;
             default:
                 return;

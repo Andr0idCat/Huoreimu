@@ -108,7 +108,7 @@
   "AYAMOD-KAKURO.title": "祸临",
   "AYAMOD-KAKURO.description": "将所有诅咒耗能变为[blue]0[/blue]并添加[gold]消耗[/gold]{IfUpgraded:show:与[gold]保留[/gold]|}。",
   "AYAMOD-NINGENDO.title": "六道拳·人间道",
-  "AYAMOD-NINGENDO.description": "造成{Damage:diff()}点伤害。[gold]斩杀[/gold]普通敌人时，永久增加[blue]{Increase:diff()}[/blue]点伤害；[gold]斩杀[/gold]精英或Boss敌人时，伤害永久翻倍。",
+  "AYAMOD-NINGENDO.description": "造成{Damage:diff()}点伤害。[gold]斩杀[/gold]普通敌人时，永久增加[blue]{Increase:diff()}[/blue]点伤害；[gold]斩杀[/gold]精英或Boss敌人时，永久增加[blue]{EliteOrBossIncrease:diff()}[/blue]点伤害。",
   "AYAMOD-JIGOKUDO.title": "六道拳·地狱道",
   "AYAMOD-JIGOKUDO.description": "将抽牌堆中{Cards:diff()}张诅咒牌加入到手牌。",
   "AYAMOD-GAKIDO.title": "六道拳·饿鬼道",
