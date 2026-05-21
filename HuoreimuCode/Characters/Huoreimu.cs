@@ -50,8 +50,8 @@ public class Huoreimu : PlaceholderCharacterModel
 		These are just some of the simplest assets, given some placeholders to differentiate your character with.
 		You don't have to, but you're suggested to rename these images. */
 	public override string CustomVisualPath => "res://Huoreimu/Scenes/HuoreimuVisual.tscn";
-	public override string CustomRestSiteAnimPath => "res://Huoreimu/Scenes/Huoreimu_rest_site.tscn";
-	public override string CustomMerchantAnimPath => "res://Huoreimu/Scenes/Huoreimu_merchant.tscn";
+    public override string CustomIconPath => "res://Huoreimu/Scenes/Huoreimu_icon.tscn";
+    public override string CustomMerchantAnimPath => "res://Huoreimu/Scenes/Huoreimu_merchant.tscn";
 	public override string CustomIconTexturePath => "character_icon_char_name.png".CharacterUiPath();
 	public override string CustomCharacterSelectIconPath => "char_select_char_name.png".CharacterUiPath();
 	public override string CustomCharacterSelectLockedIconPath => "char_select_char_name_locked.png".CharacterUiPath();
