@@ -230,16 +230,15 @@ animations = [{
 }]
 
 [node name="Huoreimu" type="Node2D"]
+position = Vector2(-52, 0)
 metadata/_edit_group_ = true
 
 [node name="HuoreimuVisual" type="AnimatedSprite2D" parent="."]
 position = Vector2(7.4999995, -119.5)
 scale = Vector2(1.375, 1.345)
 sprite_frames = SubResource("SpriteFrames_du3ew")
-animation = &"Dead"
+animation = &"Attack"
 autoplay = "Idle"
-frame = 6
-frame_progress = 1.0
 
 [node name="Bounds" type="Control" parent="."]
 unique_name_in_owner = true

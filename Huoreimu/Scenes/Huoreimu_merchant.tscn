@@ -1,0 +1,58 @@
+[gd_scene load_steps=7 format=3 uid="uid://co2te2aykvh7u"]
+
+[ext_resource type="Texture2D" uid="uid://i4xfuu8d5iml" path="res://Huoreimu/Image/Visual/merchant/2_0-472.png" id="1_7huu0"]
+[ext_resource type="Texture2D" uid="uid://m4rpqxbppi6" path="res://Huoreimu/Image/Visual/merchant/2_0-473.png" id="2_h0k2j"]
+
+[sub_resource type="Animation" id="Animation_gp6ix"]
+resource_name = "Idle"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("visual:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("1_7huu0"), ExtResource("2_h0k2j")]
+}
+
+[sub_resource type="Resource" id="Resource_m8ybb"]
+metadata/__load_path__ = "res://HakureiReimu/images/char/HakureiReimu/Win/10.png"
+
+[sub_resource type="Animation" id="Animation_v4x4u"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("visual:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [SubResource("Resource_m8ybb")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_imjbv"]
+_data = {
+&"Idle": SubResource("Animation_gp6ix"),
+&"RESET": SubResource("Animation_v4x4u")
+}
+
+[node name="HuoreimuMerchant" type="Node2D"]
+scale = Vector2(1.5, 1.5)
+
+[node name="visual" type="Sprite2D" parent="."]
+position = Vector2(3.8083334, -40.824997)
+scale = Vector2(1.1247355, 0.99193984)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_imjbv")
+}
+autoplay = "Idle"
