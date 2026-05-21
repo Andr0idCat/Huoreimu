@@ -13,13 +13,12 @@ public class Grudge() : HuoreimuCard(1, CardType.Power, CardRarity.Rare, TargetT
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new PowerVar<GrudgePower>(1)
+        new PowerVar<GrudgePower>(5)
     ];
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
     [
-        HoverTipFactory.FromPower<StrengthPower>(),
-        HoverTipFactory.FromPower<ThornsPower>(),
+        HoverTipFactory.FromPower<VigorPower>(),
     ];
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
@@ -29,6 +28,6 @@ public class Grudge() : HuoreimuCard(1, CardType.Power, CardRarity.Rare, TargetT
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Power<GrudgePower>().UpgradeValueBy(1);
+        DynamicVars.Power<GrudgePower>().UpgradeValueBy(3);
     }
 }
