@@ -53,6 +53,6 @@ public class HakureiHishou() : HuoreimuCard(2, CardType.Attack, CardRarity.Rare,
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Damage.UpgradeValueBy(6);
+        DynamicVars.Damage.UpgradeValueBy(12);
     }
 }

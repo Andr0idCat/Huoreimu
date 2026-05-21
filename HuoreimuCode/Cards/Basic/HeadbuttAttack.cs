@@ -42,6 +42,6 @@ public class HeadbuttAttack() : HuoreimuUltimateSkillCard(1, CardType.Attack, Ca
 
     protected override void OnUpgrade()
     {
-        DynamicVars.CalculationBase.UpgradeValueBy(2);
+        DynamicVars.CalculationBase.UpgradeValueBy(3);
     }
 }

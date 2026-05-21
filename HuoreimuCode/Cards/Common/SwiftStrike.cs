@@ -27,6 +27,6 @@ public class SwiftStrike() : HuoreimuCard(1, CardType.Attack, CardRarity.Common,
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Damage.UpgradeValueBy(2);
+        DynamicVars.Damage.UpgradeValueBy(3);
     }
 }

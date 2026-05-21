@@ -15,7 +15,7 @@ public class PickStar() : HuoreimuCard(1, CardType.Attack, CardRarity.Uncommon, 
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DamageVar(8, ValueProp.Move)
+        new DamageVar(7, ValueProp.Move)
     ];
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
@@ -30,6 +30,6 @@ public class PickStar() : HuoreimuCard(1, CardType.Attack, CardRarity.Uncommon, 
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Damage.UpgradeValueBy(4);
+        DynamicVars.Damage.UpgradeValueBy(3);
     }
 }

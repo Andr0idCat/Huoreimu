@@ -28,6 +28,6 @@ public class Nantoraishinshou() : HuoreimuCard(2, CardType.Attack, CardRarity.Co
 
     protected override void OnUpgrade()
     {
-        DynamicVars.ExtraDamage.UpgradeValueBy(1);
+        DynamicVars.ExtraDamage.UpgradeValueBy(2);
     }
 }
