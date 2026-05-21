@@ -15,6 +15,6 @@ public class SpellToy() : HuoreimuCard(2, CardType.Power, CardRarity.Uncommon, T
     protected override void OnUpgrade()
     {
         base.OnUpgrade();
-        EnergyCost.UpgradeBy(-1);
+        AddKeyword(CardKeyword.Retain);
     }
 }
