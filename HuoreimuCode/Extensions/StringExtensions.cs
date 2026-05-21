@@ -32,7 +32,7 @@ public static class StringExtensions
 
 	public static string RelicImagePath(this string path)
 	{
-		return Path.Join(MainFile.ModId, "Images", "Relics", path);
+		return $"res://{MainFile.ModId}/Image/Relics/{path}";
 	}
 
 	public static string BigRelicImagePath(this string path)
