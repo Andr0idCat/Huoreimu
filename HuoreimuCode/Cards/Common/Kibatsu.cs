@@ -39,7 +39,7 @@ public class Kibatsu() : HuoreimuCard(4, CardType.Attack, CardRarity.Common, Tar
 		var state = Owner.PlayerCombatState;
 		ArgumentNullException.ThrowIfNull(state);
 		var curseCount = state.AllCards.Count(c => c.Type == CardType.Curse);
-		EnergyCost.SetThisTurn(Math.Max(0, MAX_ENERGY_COST - curseCount * DECREASE_COST));
+		EnergyCost.SetThisTurn(Math.Max(0, MAX_ENERGY_COST - curseCount * DECREASE_COST), reduceOnly: true);
 		CardsAction.Refresh(this);
 		return Task.CompletedTask;
 	}
