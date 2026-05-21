@@ -4,17 +4,20 @@
   "AYAMOD-STAR_OF_DEATH.flavor": "看啊，你的死兆星正在天上闪耀！",
   "AYAMOD-THIRSTY_BLOOD_JADE.title": "渴血的阴阳玉",
   "AYAMOD-THIRSTY_BLOOD_JADE.description": "进入和结束精英战斗时，恢复[blue]{Heal:diff()}[/blue]点生命值。",
-  "AYAMOD-THIRSTY_BLOOD_JADE.flavor": "[red]这个遗物的细节将在未来揭晓……[/red]",
+  "AYAMOD-THIRSTY_BLOOD_JADE.flavor": "如果停止战斗，死亡就会紧追而至。",
   "AYAMOD-BLACK_GOHEI.title": "漆黑的御币",
   "AYAMOD-BLACK_GOHEI.description": "每当有一名敌人死亡时，自身获得[blue]1[/blue]层无实体。",
   "AYAMOD-BLACK_GOHEI.flavor": "传播灾祸的武器，并非除秽的礼器，因为使用者也并非巫女。",
   "AYAMOD-BLOODS_BANE.title": "血之祸",
   "AYAMOD-BLOODS_BANE.description": "在回合开始时，获得[blue]{Energy:energyIcons()}[/blue]。拾起时，在牌组中加入[blue]2[/blue]张[gold]祸[/gold]。",
-  "AYAMOD-BLOODS_BANE.flavor": "[red]这个遗物的细节将在未来揭晓……[/red]",
+  "AYAMOD-BLOODS_BANE.flavor": "魔人身上的咒印，散发着不详的气息。",
   "AYAMOD-STAR_OF_DOOM.title": "祸星",
   "AYAMOD-STAR_OF_DOOM.description": "每次攻击给予[blue]{OmenOfDeathPower:diff()}[/blue]层[gold]死兆星[/gold]。进入战斗时，给予所有敌人[blue]{CombatStartPowerCount:diff()}[/blue]层[gold]死兆星[/gold]。敌人死亡时，给予其他敌人相同层数的[gold]死兆星[/gold]。",
   "AYAMOD-STAR_OF_DOOM.flavor": "不能没有理由地死去，所以一直在奋斗，为了活下去而努力，最终成为了超越人类的魔人。",
   "AYAMOD-FOUL_BLOOD.title": "污秽之血",
   "AYAMOD-FOUL_BLOOD.description": "进入精英战斗时获得[blue]{StrengthPower:diff()}[/blue]点力量和[blue]{DexterityPower:diff()}[/blue]点敏捷，每次结束精英战斗时效果降低[blue]{Decrease:inverseDiff()}[/blue]点，最低为[blue]{Minimum:diff()}[/blue]。",
-  "AYAMOD-FOUL_BLOOD.flavor": "[red]这个遗物的细节将在未来揭晓……[/red]"
+  "AYAMOD-FOUL_BLOOD.flavor": "必须将这些野兽一个不剩地驱逐出去。",
+  "AYAMOD-HIDDEN_DOOM.title": "隐藏的灾祸",
+  "AYAMOD-HIDDEN_DOOM.description": "在问号地点遭遇的战斗变为精英战斗，精英战斗获得的卡牌奖励全部为强化过的。",
+  "AYAMOD-HIDDEN_DOOM.flavor": "你觉得自己很幸运吗？"
 }
