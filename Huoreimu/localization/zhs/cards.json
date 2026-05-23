@@ -54,7 +54,7 @@
   "AYAMOD-NANTORAISHINSHOU.title": "南斗雷侵烧",
   "AYAMOD-NANTORAISHINSHOU.description": "造成{CalculatedDamage:diff()}点伤害。目标每有一层[gold]死兆星[/gold]，额外造成{ExtraDamage:diff()}点伤害。",
   "AYAMOD-NECROTIC.title": "黯蚀",
-  "AYAMOD-NECROTIC.description": "所有敌人每有1层[gold]死兆星[/gold]，在本回合失去[blue]4[/blue]点力量。",
+  "AYAMOD-NECROTIC.description": "所有敌人每有1层[gold]死兆星[/gold]，在本回合失去[blue]{NecroticPower:diff()}[/blue]点力量。",
   "AYAMOD-SOUKOUSHUKIZAN.title": "葬攻袭鬼斩",
   "AYAMOD-SOUKOUSHUKIZAN.description": "造成{Damage:diff()}点伤害，手牌中每有1张诅咒牌，额外造成1次伤害。{InCombat:\\n（攻击{CalculatedHits:diff()}次。）|}",
   "AYAMOD-SHURADO.title": "六道拳·修罗道",
