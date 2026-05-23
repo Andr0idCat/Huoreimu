@@ -14,9 +14,9 @@ public class Omaewamoshindeiru() : HuoreimuCard(0, CardType.Skill, CardRarity.Ra
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new PowerVar<OmaewamoshindeiruPower>(15),
+        new PowerVar<OmaewamoshindeiruPower>(10),
         new CalculationBaseVar(0),
-        new CalculationExtraVar(15),
+        new CalculationExtraVar(10),
         new CalculatedVar(HuoreimuConstants.CALCULATED_HITS).WithMultiplier((_, target) =>
             target?.GetPower<OmenOfDeathPower>()?.Amount ?? 0)
     ];
@@ -28,13 +28,12 @@ public class Omaewamoshindeiru() : HuoreimuCard(0, CardType.Skill, CardRarity.Ra
         var target = cardPlay.Target;
         ArgumentNullException.ThrowIfNull(target);
         var hitCount = (int)((CalculatedVar)DynamicVars[HuoreimuConstants.CALCULATED_HITS]).Calculate(cardPlay.Target);
-        var power = await CommonActions.Apply<OmaewamoshindeiruPower>(choiceContext, target, this, hitCount);
-        power?.SetPlayer(Owner);
+        await CommonActions.Apply<OmaewamoshindeiruPower>(choiceContext, target, this, hitCount);
     }
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Power<OmaewamoshindeiruPower>().UpgradeValueBy(10);
-        DynamicVars.CalculationExtra.UpgradeValueBy(10);
+        DynamicVars.Power<OmaewamoshindeiruPower>().UpgradeValueBy(5);
+        DynamicVars.CalculationExtra.UpgradeValueBy(5);
     }
 }

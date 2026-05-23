@@ -15,9 +15,9 @@ namespace AyaMod.Huoreimu.Powers;
 
 public class OmaewamoshindeiruPower() : HuoreimuPowerBase(PowerType.Debuff, PowerStackType.Counter)
 {
-    private Player _player;
-
 #nullable enable
+    private Player? _killer;
+
     public override decimal ModifyDamageMultiplicative(Creature? target, decimal amount, ValueProp props,
         Creature? dealer, CardModel? cardSource)
     {
@@ -28,11 +28,6 @@ public class OmaewamoshindeiruPower() : HuoreimuPowerBase(PowerType.Debuff, Powe
     }
 #nullable disable
 
-    public void SetPlayer(Player player)
-    {
-        _player = player;
-    }
-
     public override Task AfterTurnEnd(PlayerChoiceContext choiceContext, CombatSide side)
     {
         return side is not CombatSide.Enemy
@@ -40,16 +35,23 @@ public class OmaewamoshindeiruPower() : HuoreimuPowerBase(PowerType.Debuff, Powe
             : PowerCmd.Remove<OmaewamoshindeiruPower>(Owner);
     }
 
+    public override Task AfterDamageReceivedLate(PlayerChoiceContext choiceContext, Creature target,
+        DamageResult result, ValueProp props,
+        Creature dealer, CardModel cardSource)
+    {
+        if (target != Owner) return Task.CompletedTask;
+        _killer = result.WasTargetKilled ? dealer?.Player : null;
+        return Task.CompletedTask;
+    }
+
     public override Task AfterDeath(PlayerChoiceContext choiceContext, Creature creature, bool wasRemovalPrevented,
         float deathAnimLength)
     {
         if (creature != Owner) return Task.CompletedTask;
         var currentRoom = CombatState.RunState.CurrentRoom;
-        if (currentRoom is not CombatRoom combatRoom) return Task.CompletedTask;
-        var player = _player;
-        ArgumentNullException.ThrowIfNull(player);
-        combatRoom.AddExtraReward(player,
-            new CardReward(CardCreationOptions.ForRoom(player, combatRoom.RoomType), 3, player));
+        if (currentRoom is not CombatRoom combatRoom || _killer is null) return Task.CompletedTask;
+        combatRoom.AddExtraReward(_killer,
+            new CardReward(CardCreationOptions.ForRoom(_killer, combatRoom.RoomType), 3, _killer));
         return Task.CompletedTask;
     }
 }
