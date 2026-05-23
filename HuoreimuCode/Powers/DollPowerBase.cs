@@ -15,9 +15,11 @@ public abstract class DollPowerBase() : HuoreimuPowerBase(PowerType.Buff, PowerS
 
     protected abstract bool CanAutoPlay(CardModel card);
 
+#nullable enable
     public override async Task BeforeTurnEndEarly(PlayerChoiceContext choiceContext, CombatSide side)
     {
-        if (side != Owner.Side || Owner.Player is null)
+        var playable = CombatState?.HittableEnemies?.Any() ?? false;
+        if (side != Owner.Side || Owner.Player is null || !playable)
         {
             return;
         }
@@ -33,6 +35,7 @@ public abstract class DollPowerBase() : HuoreimuPowerBase(PowerType.Buff, PowerS
         Flash();
         await CardCmd.AutoPlay(choiceContext, cardModel, null);
     }
+#nullable disable
 
     public override async Task AfterDamageReceived(PlayerChoiceContext choiceContext, Creature target,
         DamageResult result, ValueProp props, Creature dealer, CardModel cardSource)
