@@ -11,6 +11,8 @@ namespace AyaMod.Huoreimu.Cards.Common;
 
 public class Shoukajuin() : HuoreimuCard(2, CardType.Skill, CardRarity.Common, TargetType.AnyEnemy)
 {
+    public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Exhaust];
+
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new PowerVar<BufferPower>(1),
