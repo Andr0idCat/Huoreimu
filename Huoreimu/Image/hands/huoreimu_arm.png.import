@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bejdprdhgnohk"
-path="res://.godot/imported/huoreimu_arm.png-83208c82897bafe4d16c967e8fc830fa.ctex"
+uid="uid://chsxyr64cam72"
+path="res://.godot/imported/huoreimu_arm.png-57a795f7a4f584b96a0d9af2db52a59e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Huoreimu/Image/hands/huoreimu_arm.png"
-dest_files=["res://.godot/imported/huoreimu_arm.png-83208c82897bafe4d16c967e8fc830fa.ctex"]
+source_file="res://Huoreimu/Image/Hands/huoreimu_arm.png"
+dest_files=["res://.godot/imported/huoreimu_arm.png-57a795f7a4f584b96a0d9af2db52a59e.ctex"]
 
 [params]
 
