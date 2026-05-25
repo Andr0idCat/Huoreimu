@@ -15,7 +15,7 @@ public class TenjodoPower() : HuoreimuPowerBase(PowerType.Buff, PowerStackType.C
         ValueProp props,
         Creature dealer, CardModel cardSource)
     {
-        if (dealer is null) return Task.CompletedTask;
+        if (dealer is null || target != Owner) return Task.CompletedTask;
         Flash();
         return PowerCmd.Apply<OmenOfDeathPower>(dealer, Amount, Owner, null);
     }
