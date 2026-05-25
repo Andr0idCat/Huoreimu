@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://ciu61n8yc1c12"
-path="res://.godot/imported/huoreimu_arm_paper.png-5857805bee1a06fa6ae0d614cc2deb92.ctex"
+path="res://.godot/imported/huoreimu_arm_paper.png-ae947e381ac6a1707b5e2f27c4d4de2e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Huoreimu/Image/Hands/huoreimu_arm_paper.png"
-dest_files=["res://.godot/imported/huoreimu_arm_paper.png-5857805bee1a06fa6ae0d614cc2deb92.ctex"]
+source_file="res://Huoreimu/Image/hands/huoreimu_arm_paper.png"
+dest_files=["res://.godot/imported/huoreimu_arm_paper.png-ae947e381ac6a1707b5e2f27c4d4de2e.ctex"]
 
 [params]
 
