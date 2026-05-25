@@ -8,6 +8,14 @@
 
 《Huoreimu》是一个针对《杀戮尖塔2》（Slay the Spire 2）的 mod，旨在为游戏添加新的内容、机制或角色（具体功能待定）。本仓库包含该 mod 的完整源代码、资源文件及构建配置。
 
+## 下载
+
+前往 [Releases 页面](https://github.com/Andr0idCat/huoreimu/releases) 下载最新版本。
+
+## 依赖
+
+本 Mod 依赖于 [BaseLib](https://github.com/Alchyr/BaseLib-StS2)，运行前请确保已安装。
+
 ## 配置
 
 考虑到每个人的开发环境不同，拉取仓库后需要在目录下新建LocalConfig.targets文件，在其中填写如下内容：
