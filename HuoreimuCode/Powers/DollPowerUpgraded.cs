@@ -3,8 +3,10 @@ using MegaCrit.Sts2.Core.Models;
 
 namespace AyaMod.Huoreimu.Powers;
 
-public sealed class DollPowerUpgraded : DollPower
+public class DollPowerUpgraded : DollPowerBase
 {
+    protected override string IconAssetName => "doll_power";
+
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new(HuoreimuConstants.AUTO_PLAY_CARD_COST_MIN, 1),

@@ -5,6 +5,8 @@ namespace AyaMod.Huoreimu.Powers;
 
 public class DollPower : DollPowerBase
 {
+    protected override string IconAssetName => "doll_power";
+
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new(HuoreimuConstants.AUTO_PLAY_CARD_COST_MIN, 1)

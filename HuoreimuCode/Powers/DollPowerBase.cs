@@ -1,9 +1,12 @@
-﻿using MegaCrit.Sts2.Core.Combat;
+﻿using AyaMod.Huoreimu.Extensions;
+using Godot;
+using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Powers;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.Logging;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.ValueProps;
 
@@ -11,6 +14,28 @@ namespace AyaMod.Huoreimu.Powers;
 
 public abstract class DollPowerBase() : HuoreimuPowerBase(PowerType.Buff, PowerStackType.Counter)
 {
+    protected abstract string IconAssetName { get; }
+
+    public override string CustomPackedIconPath
+    {
+        get
+        {
+            var path = $"{IconAssetName}.png".PowerIconPath();
+            Log.Info($">>>[HuoreimuMod]PowerIconPath={path}", 2);
+            return ResourceLoader.Exists(path) ? path : "empty_power.png".PowerIconPath();
+        }
+    }
+
+    public override string CustomBigIconPath
+    {
+        get
+        {
+            var path = $"{IconAssetName}_big.png".PowerIconPath();
+            Log.Info($">>>[HuoreimuMod]PowerIconPath={path}", 2);
+            return ResourceLoader.Exists(path) ? path : "empty_power_big.png".PowerIconPath();
+        }
+    }
+
     public override bool IsInstanced => true;
 
     protected abstract bool CanAutoPlay(CardModel card);

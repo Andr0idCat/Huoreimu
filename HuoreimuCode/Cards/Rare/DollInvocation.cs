@@ -17,6 +17,8 @@ public class DollInvocation() : HuoreimuCard(2, CardType.Power, CardRarity.Rare,
     [
         new PowerVar<DollPower>(40),
         new PowerVar<DollPowerUpgraded>(40),
+        new PowerVar<DollPowerVariant>(40),
+        new PowerVar<DollPowerUpgradedVariant>(40),
         new(HuoreimuConstants.DOLL_COUNT, DOLL_COUNT)
     ];
 
@@ -24,12 +26,15 @@ public class DollInvocation() : HuoreimuCard(2, CardType.Power, CardRarity.Rare,
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        for (var i = 0; i < DOLL_COUNT; i++)
+        if (IsUpgraded)
         {
-            var power = IsUpgraded
-                ? await CommonActions.ApplySelf<DollPowerUpgraded>(choiceContext, this)
-                : await CommonActions.ApplySelf<DollPower>(choiceContext, this);
-            if (power is null) return;
+            await CommonActions.ApplySelf<DollPowerUpgraded>(choiceContext, this);
+            await CommonActions.ApplySelf<DollPowerUpgradedVariant>(choiceContext, this);
+        }
+        else
+        {
+            await CommonActions.ApplySelf<DollPower>(choiceContext, this);
+            await CommonActions.ApplySelf<DollPowerVariant>(choiceContext, this);
         }
     }
 }

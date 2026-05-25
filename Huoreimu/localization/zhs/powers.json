@@ -47,7 +47,13 @@
   "AYAMOD-DOLL_POWER.title": "人形",
   "AYAMOD-DOLL_POWER.description": "回合结束时从抽牌堆随机打出一张耗能为[blue]1[/blue]的攻击牌。受到未被格挡的伤害时，损失等量层数。",
   "AYAMOD-DOLL_POWER.smartDescription": "回合结束时从抽牌堆随机打出一张耗能为[blue]{AutoPlayCardCostMin:diff()}[/blue]的攻击牌。受到未被格挡的伤害时，损失等量层数。",
-  "AYAMOD-DOLL_POWER_UPGRADED.title": "人形",
+  "AYAMOD-DOLL_POWER_UPGRADED.title": "人形+",
   "AYAMOD-DOLL_POWER_UPGRADED.description": "回合结束时从抽牌堆随机打出一张耗能为[blue]1[/blue]-[blue]2[/blue]的攻击牌。受到未被格挡的伤害时，损失等量层数。",
-  "AYAMOD-DOLL_POWER_UPGRADED.smartDescription": "回合结束时从抽牌堆随机打出一张耗能为[blue]{AutoPlayCardCostMin:diff()}[/blue]-[blue]{AutoPlayCardCostMax:diff()}[/blue]的攻击牌。受到未被格挡的伤害时，损失等量层数。"
+  "AYAMOD-DOLL_POWER_UPGRADED.smartDescription": "回合结束时从抽牌堆随机打出一张耗能为[blue]{AutoPlayCardCostMin:diff()}[/blue]-[blue]{AutoPlayCardCostMax:diff()}[/blue]的攻击牌。受到未被格挡的伤害时，损失等量层数。",
+  "AYAMOD-DOLL_POWER_VARIANT.title": "人形",
+  "AYAMOD-DOLL_POWER_VARIANT.description": "回合结束时从抽牌堆随机打出一张耗能为[blue]1[/blue]的攻击牌。受到未被格挡的伤害时，损失等量层数。",
+  "AYAMOD-DOLL_POWER_VARIANT.smartDescription": "回合结束时从抽牌堆随机打出一张耗能为[blue]{AutoPlayCardCostMin:diff()}[/blue]的攻击牌。受到未被格挡的伤害时，损失等量层数。",
+  "AYAMOD-DOLL_POWER_UPGRADED_VARIANT.title": "人形+",
+  "AYAMOD-DOLL_POWER_UPGRADED_VARIANT.description": "回合结束时从抽牌堆随机打出一张耗能为[blue]1[/blue]-[blue]2[/blue]的攻击牌。受到未被格挡的伤害时，损失等量层数。",
+  "AYAMOD-DOLL_POWER_UPGRADED_VARIANT.smartDescription": "回合结束时从抽牌堆随机打出一张耗能为[blue]{AutoPlayCardCostMin:diff()}[/blue]-[blue]{AutoPlayCardCostMax:diff()}[/blue]的攻击牌。受到未被格挡的伤害时，损失等量层数。"
 }
