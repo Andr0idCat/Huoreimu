@@ -14,6 +14,8 @@ public class VoidGenesis() : HuoreimuExtraDeckCard<Huo>(1, CardType.Skill, CardR
         HoverTipFactory.FromCard<Huo>()
     ];
 
+    public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Exhaust];
+
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
