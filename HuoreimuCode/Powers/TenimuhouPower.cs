@@ -22,7 +22,8 @@ public class TenimuhouPower() : HuoreimuPowerBase(PowerType.Buff, PowerStackType
     public override async Task AfterDamageReceivedLate(PlayerChoiceContext choiceContext, Creature target,
         DamageResult result, ValueProp props, Creature dealer, CardModel cardSource)
     {
-        if (target != Owner || result.UnblockedDamage <= 0 || (props & ValueProp.Move) == 0) return;
+        if (target != Owner || result.UnblockedDamage <= 0 ||
+            props.HasFlag(ValueProp.Unblockable | ValueProp.Unpowered)) return;
         await PowerCmd.Remove<TenimuhouPower>(Owner);
     }
 }
