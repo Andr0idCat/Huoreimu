@@ -60,7 +60,8 @@ public class StarOfDoom : HuoreimuRelic
         var targets = combatState.HittableEnemies.Where(e => e != creature).ToList();
         if (targets.Count == 0) return;
 
+        var index = Owner.RunState.Rng.Niche.NextInt(0, targets.Count);
         Flash();
-        await PowerCmd.Apply<OmenOfDeathPower>(targets, amount, Owner.Creature, null);
+        await PowerCmd.Apply<OmenOfDeathPower>(targets[index], amount, Owner.Creature, null);
     }
 }
