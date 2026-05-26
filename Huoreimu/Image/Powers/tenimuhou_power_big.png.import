@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cm8o7addbytre"
-path="res://.godot/imported/tenimouhou_power.png-a70218270a12cf6adf10e0bf3aef9e8c.ctex"
+uid="uid://3537khijri0f"
+path="res://.godot/imported/tenimuhou_power_big.png-1c95db864e8018cb1efc01603a1f6f86.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Huoreimu/Image/Powers/tenimouhou_power.png"
-dest_files=["res://.godot/imported/tenimouhou_power.png-a70218270a12cf6adf10e0bf3aef9e8c.ctex"]
+source_file="res://Huoreimu/Image/Powers/tenimuhou_power_big.png"
+dest_files=["res://.godot/imported/tenimuhou_power_big.png-1c95db864e8018cb1efc01603a1f6f86.ctex"]
 
 [params]
 
