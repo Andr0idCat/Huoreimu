@@ -5,16 +5,16 @@ namespace AyaMod.Huoreimu.Powers;
 
 public class DollPowerUpgraded : DollPowerBase
 {
-	protected override string IconAssetName => "doll_power";
+    protected override string IconAssetName => "doll_power";
 
-	protected override IEnumerable<DynamicVar> CanonicalVars =>
-	[
-		new(HuoreimuConstants.AUTO_PLAY_CARD_COST_MIN, 1),
-		new(HuoreimuConstants.AUTO_PLAY_CARD_COST_MAX, 2),
-	];
+    protected override IEnumerable<DynamicVar> CanonicalVars =>
+    [
+        new(HuoreimuConstants.AUTO_PLAY_CARD_COST_MIN, 1),
+        new(HuoreimuConstants.AUTO_PLAY_CARD_COST_MAX, 2),
+    ];
 
-	protected override bool CanAutoPlay(CardModel card)
-	{
-		return card.EnergyCost.Canonical is >= 1 and <= 2;
-	}
+    protected override bool CanAutoPlay(CardModel card)
+    {
+        return card.EnergyCost.Canonical is >= 1 and <= 2;
+    }
 }

@@ -9,35 +9,35 @@ namespace AyaMod.Huoreimu.Relic;
 
 public class HiddenDoom : HuoreimuRelic
 {
-	public override RelicRarity Rarity => RelicRarity.Common;
+    public override RelicRarity Rarity => RelicRarity.Common;
 
-	public override bool IsAllowed(IRunState runState)
-	{
-		return IsBeforeAct3TreasureChest(runState);
-	}
+    public override bool IsAllowed(IRunState runState)
+    {
+        return IsBeforeAct3TreasureChest(runState);
+    }
 
-	public override bool TryModifyCardRewardOptionsLate(Player player, List<CardCreationResult> cardRewards,
-		CardCreationOptions options)
-	{
-		if (player != Owner)
-		{
-			return false;
-		}
+    public override bool TryModifyCardRewardOptionsLate(Player player, List<CardCreationResult> cardRewards,
+        CardCreationOptions options)
+    {
+        if (player != Owner)
+        {
+            return false;
+        }
 
-		if (Owner.RunState.CurrentRoom is not { RoomType: RoomType.Elite })
-		{
-			return false;
-		}
+        if (Owner.RunState.CurrentRoom is not { RoomType: RoomType.Elite })
+        {
+            return false;
+        }
 
-		foreach (var cardReward in cardRewards)
-		{
-			var card = cardReward.Card;
-			if (!card.IsUpgradable) continue;
-			var card2 = Owner.RunState.CloneCard(card);
-			CardCmd.Upgrade(card2);
-			cardReward.ModifyCard(card2, this);
-		}
+        foreach (var cardReward in cardRewards)
+        {
+            var card = cardReward.Card;
+            if (!card.IsUpgradable) continue;
+            var card2 = Owner.RunState.CloneCard(card);
+            CardCmd.Upgrade(card2);
+            cardReward.ModifyCard(card2, this);
+        }
 
-		return true;
-	}
+        return true;
+    }
 }

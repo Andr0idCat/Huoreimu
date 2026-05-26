@@ -11,18 +11,18 @@ namespace AyaMod.Huoreimu.Powers;
 
 public class AbikyokanPower() : HuoreimuPowerBase(PowerType.Buff, PowerStackType.Counter)
 {
-	public override async Task AfterSideTurnStart(CombatSide side, CombatState combatState)
-	{
-		if (side is not CombatSide.Player) return;
-		var player = Owner.Player;
-		if (player is null)
-		{
-			Log.Warn($"[{nameof(AbikyokanPower)}] Owner.Player is null. This should not happen.");
-			return;
-		}
+    public override async Task AfterSideTurnStart(CombatSide side, CombatState combatState)
+    {
+        if (side is not CombatSide.Player) return;
+        var player = Owner.Player;
+        if (player is null)
+        {
+            Log.Warn($"[{nameof(AbikyokanPower)}] Owner.Player is null. This should not happen.");
+            return;
+        }
 
-		Flash();
-		await CardPileCmd.Draw(new BlockingPlayerChoiceContext(), Amount, player);
-		await CardsAction.AddCardToPileWhenCombat<Huo>(player, PileType.Hand, Amount, combatState);
-	}
+        Flash();
+        await CardPileCmd.Draw(new BlockingPlayerChoiceContext(), Amount, player);
+        await CardsAction.AddCardToPileWhenCombat<Huo>(player, PileType.Hand, Amount, combatState);
+    }
 }

@@ -14,16 +14,16 @@ namespace AyaMod.Huoreimu.Relic;
 
 public class BlackGohei : HuoreimuRelic
 {
-	public override RelicRarity Rarity => RelicRarity.Rare;
+    public override RelicRarity Rarity => RelicRarity.Rare;
 
-	protected override IEnumerable<IHoverTip> ExtraHoverTips => [HoverTipFactory.FromPower<IntangiblePower>()];
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => [HoverTipFactory.FromPower<IntangiblePower>()];
 
-	public override async Task AfterDeath(PlayerChoiceContext choiceContext, Creature target, bool wasRemovalPrevented,
-		float deathAnimLength)
-	{
-		if (target.Side == Owner.Creature.Side) return;
+    public override async Task AfterDeath(PlayerChoiceContext choiceContext, Creature target, bool wasRemovalPrevented,
+        float deathAnimLength)
+    {
+        if (target.Side == Owner.Creature.Side) return;
 
-		Flash();
-		await PowerCmd.Apply<IntangiblePower>(Owner.Creature, 1, Owner.Creature, null);
-	}
+        Flash();
+        await PowerCmd.Apply<IntangiblePower>(Owner.Creature, 1, Owner.Creature, null);
+    }
 }

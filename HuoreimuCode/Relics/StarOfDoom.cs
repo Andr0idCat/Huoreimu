@@ -10,57 +10,57 @@ namespace AyaMod.Huoreimu.Relic;
 
 public class StarOfDoom : HuoreimuRelic
 {
-	private const string COMBAT_START_POWER_COUNT = "CombatStartPowerCount";
-	private const decimal ATTACK_OMEN = 1;
-	private const decimal COMBAT_START_OMEN = 2;
+    private const string COMBAT_START_POWER_COUNT = "CombatStartPowerCount";
+    private const decimal ATTACK_OMEN = 1;
+    private const decimal COMBAT_START_OMEN = 2;
 
-	public override RelicRarity Rarity => RelicRarity.Ancient;
+    public override RelicRarity Rarity => RelicRarity.Ancient;
 
-	protected override IEnumerable<DynamicVar> CanonicalVars =>
-	[
-		new PowerVar<OmenOfDeathPower>(ATTACK_OMEN),
-		new(COMBAT_START_POWER_COUNT, COMBAT_START_OMEN)
-	];
+    protected override IEnumerable<DynamicVar> CanonicalVars =>
+    [
+        new PowerVar<OmenOfDeathPower>(ATTACK_OMEN),
+        new(COMBAT_START_POWER_COUNT, COMBAT_START_OMEN)
+    ];
 
-	protected override IEnumerable<IHoverTip> ExtraHoverTips =>
-	[
-		HoverTipFactory.FromPower<OmenOfDeathPower>()
-	];
+    protected override IEnumerable<IHoverTip> ExtraHoverTips =>
+    [
+        HoverTipFactory.FromPower<OmenOfDeathPower>()
+    ];
 
-	public override async Task BeforeCombatStart()
-	{
-		var combatState = Owner.Creature.CombatState;
-		if (combatState == null) return;
+    public override async Task BeforeCombatStart()
+    {
+        var combatState = Owner.Creature.CombatState;
+        if (combatState == null) return;
 
-		Flash();
-		await PowerCmd.Apply<OmenOfDeathPower>(combatState.HittableEnemies, COMBAT_START_OMEN, Owner.Creature, null);
-	}
+        Flash();
+        await PowerCmd.Apply<OmenOfDeathPower>(combatState.HittableEnemies, COMBAT_START_OMEN, Owner.Creature, null);
+    }
 
-	public override async Task AfterAttack(AttackCommand command)
-	{
-		if (command.Attacker != Owner.Creature) return;
+    public override async Task AfterAttack(AttackCommand command)
+    {
+        if (command.Attacker != Owner.Creature) return;
 
-		foreach (var result in command.Results)
-		{
-			Flash();
-			await PowerCmd.Apply<OmenOfDeathPower>(result.Receiver, ATTACK_OMEN, Owner.Creature, null);
-		}
-	}
+        foreach (var result in command.Results)
+        {
+            Flash();
+            await PowerCmd.Apply<OmenOfDeathPower>(result.Receiver, ATTACK_OMEN, Owner.Creature, null);
+        }
+    }
 
-	public override async Task BeforeDeath(Creature creature)
-	{
-		if (creature.Side == Owner.Creature.Side) return;
+    public override async Task BeforeDeath(Creature creature)
+    {
+        if (creature.Side == Owner.Creature.Side) return;
 
-		var omen = creature.GetPower<OmenOfDeathPower>();
-		var amount = omen?.Amount ?? 0;
-		if (amount <= 0) return;
+        var omen = creature.GetPower<OmenOfDeathPower>();
+        var amount = omen?.Amount ?? 0;
+        if (amount <= 0) return;
 
-		var combatState = Owner.Creature.CombatState;
-		ArgumentNullException.ThrowIfNull(combatState);
-		var targets = combatState.HittableEnemies.Where(e => e != creature).ToList();
-		if (targets.Count == 0) return;
+        var combatState = Owner.Creature.CombatState;
+        ArgumentNullException.ThrowIfNull(combatState);
+        var targets = combatState.HittableEnemies.Where(e => e != creature).ToList();
+        if (targets.Count == 0) return;
 
-		Flash();
-		await PowerCmd.Apply<OmenOfDeathPower>(targets, amount, Owner.Creature, null);
-	}
+        Flash();
+        await PowerCmd.Apply<OmenOfDeathPower>(targets, amount, Owner.Creature, null);
+    }
 }

@@ -6,6 +6,6 @@ namespace AyaMod.Huoreimu.Powers;
 
 public class ChikushodoPower() : TemporaryStrengthPower
 {
-	public override AbstractModel OriginModel => ModelDb.Card<Chikushodo>();
-	protected override bool IsPositive => false;
+    public override AbstractModel OriginModel => ModelDb.Card<Chikushodo>();
+    protected override bool IsPositive => false;
 }

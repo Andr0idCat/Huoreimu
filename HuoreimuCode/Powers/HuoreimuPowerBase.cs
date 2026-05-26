@@ -9,35 +9,35 @@ namespace AyaMod.Huoreimu.Powers;
 
 public abstract class HuoreimuPowerBase : CustomPowerModel
 {
-	protected HuoreimuPowerBase(PowerType type, PowerStackType stackType)
-	{
-		Type = type;
-		StackType = stackType;
-		_imageName = $"{Id.Entry.RemovePrefix().ToLowerInvariant()}";
-	}
+    protected HuoreimuPowerBase(PowerType type, PowerStackType stackType)
+    {
+        Type = type;
+        StackType = stackType;
+        _imageName = $"{Id.Entry.RemovePrefix().ToLowerInvariant()}";
+    }
 
-	private readonly string _imageName;
-	public override PowerType Type { get; }
+    private readonly string _imageName;
+    public override PowerType Type { get; }
 
-	public override PowerStackType StackType { get; }
+    public override PowerStackType StackType { get; }
 
-	public override string CustomPackedIconPath
-	{
-		get
-		{
-			var path = $"{_imageName}.png".PowerIconPath();
-			Log.Info($">>>[HuoreimuMod]PowerIconPath={path}", 2);
-			return ResourceLoader.Exists(path) ? path : "empty_power.png".PowerIconPath();
-		}
-	}
+    public override string CustomPackedIconPath
+    {
+        get
+        {
+            var path = $"{_imageName}.png".PowerIconPath();
+            Log.Info($">>>[HuoreimuMod]PowerIconPath={path}", 2);
+            return ResourceLoader.Exists(path) ? path : "empty_power.png".PowerIconPath();
+        }
+    }
 
-	public override string CustomBigIconPath
-	{
-		get
-		{
-			var path = $"{_imageName}_big.png".PowerIconPath();
-			Log.Info($">>>[HuoreimuMod]PowerIconPath={path}", 2);
-			return ResourceLoader.Exists(path) ? path : "empty_power_big.png".PowerIconPath();
-		}
-	}
+    public override string CustomBigIconPath
+    {
+        get
+        {
+            var path = $"{_imageName}_big.png".PowerIconPath();
+            Log.Info($">>>[HuoreimuMod]PowerIconPath={path}", 2);
+            return ResourceLoader.Exists(path) ? path : "empty_power_big.png".PowerIconPath();
+        }
+    }
 }
