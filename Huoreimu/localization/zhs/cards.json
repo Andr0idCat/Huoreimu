@@ -22,7 +22,7 @@
   "AYAMOD-HELLS_GATE.title": "地狱之门",
   "AYAMOD-HELLS_GATE.description": "造成{Damage:diff()}点伤害。[gold]必杀技[/gold]{UltimateSkill:inverseDiff()}：击晕敌人。",
   "AYAMOD-NANTOSENJURYUGEKI.title": "南斗战守流击",
-  "AYAMOD-NANTOSENJURYUGEKI.description": "造成{Damage:diff()}点伤害。如果敌人的意图是攻击，获得{Block:diff()}点格挡。否则，抽{Cards:diff()}张牌。",
+  "AYAMOD-NANTOSENJURYUGEKI.description": "造成{Damage:diff()}点伤害。如果敌人的意图是攻击，获得等量于所造成伤害的[gold]格挡[/gold]。否则，抽{Cards:diff()}张牌。",
   "AYAMOD-SIN_MIRROR.title": "孽镜",
   "AYAMOD-SIN_MIRROR.description": "造成等同于敌人攻击意图的伤害。",
   "AYAMOD-SHICHI.title": "翅薙",
