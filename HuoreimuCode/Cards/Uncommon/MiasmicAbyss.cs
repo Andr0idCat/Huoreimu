@@ -11,7 +11,7 @@ public class MiasmicAbyss() : HuoreimuCard(1, CardType.Skill, CardRarity.Uncommo
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new BlockVar(10, ValueProp.Move)
+        new BlockVar(14, ValueProp.Move)
     ];
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
@@ -23,6 +23,6 @@ public class MiasmicAbyss() : HuoreimuCard(1, CardType.Skill, CardRarity.Uncommo
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Block.UpgradeValueBy(3m);
+        DynamicVars.Block.UpgradeValueBy(4m);
     }
 }
