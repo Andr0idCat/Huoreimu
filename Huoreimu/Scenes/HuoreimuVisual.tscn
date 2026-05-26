@@ -230,12 +230,12 @@ animations = [{
 }]
 
 [node name="Huoreimu" type="Node2D"]
-position = Vector2(-52, 0)
+position = Vector2(-37, 3)
 metadata/_edit_group_ = true
 
 [node name="HuoreimuVisual" type="AnimatedSprite2D" parent="."]
-position = Vector2(7.4999995, -119.5)
-scale = Vector2(1.375, 1.345)
+position = Vector2(-6.4999757, -119.5)
+scale = Vector2(1.2917401, 1.345)
 sprite_frames = SubResource("SpriteFrames_du3ew")
 animation = &"Attack"
 autoplay = "Idle"
@@ -244,14 +244,14 @@ autoplay = "Idle"
 unique_name_in_owner = true
 layout_mode = 3
 anchors_preset = 0
-offset_left = -121.0
-offset_top = -280.0
-offset_right = 121.0
+offset_left = -93.0
+offset_top = -274.0
+offset_right = 174.0
 mouse_filter = 2
 
 [node name="CenterPos" type="Marker2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(0, -165)
+position = Vector2(60, -165)
 
 [node name="IntentPos" type="Marker2D" parent="."]
 unique_name_in_owner = true

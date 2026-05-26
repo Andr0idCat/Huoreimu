@@ -12,28 +12,28 @@ namespace AyaMod.Huoreimu.Relic;
 
 public class ThirstyBloodJade : HuoreimuRelic
 {
-    private const decimal HEAL_AMOUNT = 10;
+	private const decimal HEAL_AMOUNT = 10;
 
-    public override RelicRarity Rarity => RelicRarity.Common;
+	public override RelicRarity Rarity => RelicRarity.Common;
 
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new HealVar(HEAL_AMOUNT)];
+	protected override IEnumerable<DynamicVar> CanonicalVars => [new HealVar(HEAL_AMOUNT)];
 
-    public override async Task BeforeCombatStart()
-    {
-        var room = Owner.RunState.CurrentRoom;
-        if (room?.RoomType == RoomType.Elite)
-        {
-            Flash();
-            await CreatureCmd.Heal(Owner.Creature, DynamicVars.Heal.BaseValue);
-        }
-    }
+	public override async Task BeforeCombatStart()
+	{
+		var room = Owner.RunState.CurrentRoom;
+		if (room?.RoomType == RoomType.Elite)
+		{
+			Flash();
+			await CreatureCmd.Heal(Owner.Creature, DynamicVars.Heal.BaseValue);
+		}
+	}
 
-    public override async Task AfterCombatVictoryEarly(CombatRoom room)
-    {
-        if (room.RoomType == RoomType.Elite)
-        {
-            Flash();
-            await CreatureCmd.Heal(Owner.Creature, DynamicVars.Heal.BaseValue);
-        }
-    }
+	public override async Task AfterCombatVictoryEarly(CombatRoom room)
+	{
+		if (room.RoomType == RoomType.Elite)
+		{
+			Flash();
+			await CreatureCmd.Heal(Owner.Creature, DynamicVars.Heal.BaseValue);
+		}
+	}
 }

@@ -1,0 +1,88 @@
+[gd_scene load_steps=7 format=3 uid="uid://ickqr6vu4w4n"]
+
+[ext_resource type="Texture2D" uid="uid://cvtja4lsco4er" path="res://Huoreimu/Image/Visual/Rest/rest_1.png" id="1_sfvb0"]
+[ext_resource type="Texture2D" uid="uid://cbbf1jebuh6p4" path="res://Huoreimu/Image/Visual/Rest/rest_2.png" id="2_etjcp"]
+[ext_resource type="Texture2D" uid="uid://c2m4kgxb0apd8" path="res://Huoreimu/Image/Visual/Rest/rest_3.png" id="3_4xtyw"]
+[ext_resource type="Texture2D" uid="uid://dkajgrn34ppj0" path="res://Huoreimu/Image/Visual/Rest/rest_4.png" id="4_f06fe"]
+[ext_resource type="Texture2D" uid="uid://yrvsgmwaxa47" path="res://Huoreimu/Image/Visual/Rest/rest_5.png" id="5_fi545"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vkm1j"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_sfvb0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_etjcp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_4xtyw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_f06fe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_fi545")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_fi545")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_f06fe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_4xtyw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_etjcp")
+}],
+"loop": true,
+"name": &"Rest",
+"speed": 5.0
+}]
+
+[node name="HuoreimuRestSite" type="Node2D"]
+
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(5.499978, -184.5)
+scale = Vector2(2.9857142, 3.0157893)
+sprite_frames = SubResource("SpriteFrames_vkm1j")
+animation = &"Rest"
+autoplay = "Rest"
+frame_progress = 0.121960305
+
+[node name="ControlRoot" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="SelectionReticle" type="Control" parent="ControlRoot"]
+unique_name_in_owner = true
+anchors_preset = 0
+offset_left = -153.0
+offset_top = -350.0
+offset_right = 267.0
+offset_bottom = 320.0
+
+[node name="Hitbox" type="Control" parent="ControlRoot"]
+unique_name_in_owner = true
+anchors_preset = 0
+offset_left = -57.0
+offset_top = -230.0
+offset_right = 252.0
+offset_bottom = 101.0
+
+[node name="ThoughtBubbleRight" type="Control" parent="ControlRoot"]
+unique_name_in_owner = true
+anchors_preset = 0
+offset_left = 121.0
+offset_top = -125.0
+offset_right = 121.0
+offset_bottom = -125.0
+
+[node name="ThoughtBubbleLeft" type="Control" parent="ControlRoot"]
+unique_name_in_owner = true
+anchors_preset = 0
+offset_left = -113.0
+offset_top = -95.0
+offset_right = -113.0
+offset_bottom = -95.0
