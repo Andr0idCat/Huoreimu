@@ -28,7 +28,7 @@
   "AYAMOD-SHICHI.title": "翅薙",
   "AYAMOD-SHICHI.description": "造成{Damage:diff()}点伤害{Repeat:diff()}次。[gold]必杀技[/gold]{UltimateSkill:inverseDiff()}：对所有其他敌人造成等量伤害。",
   "AYAMOD-PICK_STAR.title": "取星",
-  "AYAMOD-PICK_STAR.description": "造成{Damage:diff()}点伤害。目标每有一层[gold]死兆星[/gold]抽一张牌。",
+  "AYAMOD-PICK_STAR.description": "造成{Damage:diff()}点伤害。目标每有2层[gold]死兆星[/gold]抽一张牌。",
   "AYAMOD-COLLECT_SPIRIT.title": "凝神",
   "AYAMOD-COLLECT_SPIRIT.description": "每回合开始时，给予所有敌人{CollectSpiritPower:diff()}层[gold]死兆星[/gold]。",
   "AYAMOD-LEAPING_KICK.title": "跃蹴",

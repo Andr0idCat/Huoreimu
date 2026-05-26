@@ -25,7 +25,7 @@ public class PickStar() : HuoreimuCard(1, CardType.Attack, CardRarity.Uncommon, 
         var drawAmount = target.GetPower<OmenOfDeathPower>()?.Amount ?? 0;
         await CommonActions.CardAttack(this, target).Execute(choiceContext);
         var drawAmountAfterAttack = target?.GetPower<OmenOfDeathPower>()?.Amount ?? 0;
-        await CardPileCmd.Draw(choiceContext, Math.Max(drawAmount, drawAmountAfterAttack), Owner);
+        await CardPileCmd.Draw(choiceContext, Math.Max(drawAmount / 2, drawAmountAfterAttack / 2), Owner);
     }
 
     protected override void OnUpgrade()

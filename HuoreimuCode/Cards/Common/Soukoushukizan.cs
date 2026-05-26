@@ -10,7 +10,7 @@ public class Soukoushukizan() : HuoreimuCard(1, CardType.Attack, CardRarity.Comm
 {
 	protected override IEnumerable<DynamicVar> CanonicalVars =>
 	[
-		new DamageVar(4, ValueProp.Move),
+		new DamageVar(6, ValueProp.Move),
 		new CalculationBaseVar(1),
 		new CalculationExtraVar(1),
 		new CalculatedVar(HuoreimuConstants.CALCULATED_HITS).WithMultiplier((card, _) =>
@@ -27,6 +27,6 @@ public class Soukoushukizan() : HuoreimuCard(1, CardType.Attack, CardRarity.Comm
 
 	protected override void OnUpgrade()
 	{
-		DynamicVars.Damage.UpgradeValueBy(1);
+		DynamicVars.Damage.UpgradeValueBy(2);
 	}
 }

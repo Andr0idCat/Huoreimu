@@ -13,7 +13,7 @@ public class Downfall() : HuoreimuCard(2, CardType.Attack, CardRarity.Common, Ta
 
 	protected override IEnumerable<DynamicVar> CanonicalVars =>
 	[
-		new DamageVar(18, ValueProp.Move | ValueProp.Unblockable)
+		new DamageVar(16, ValueProp.Move | ValueProp.Unblockable)
 	];
 
 	protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)

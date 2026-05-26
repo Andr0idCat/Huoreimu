@@ -15,7 +15,7 @@ public class Nantoraishinshou() : HuoreimuCard(2, CardType.Attack, CardRarity.Co
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new CalculationBaseVar(13),
-        new ExtraDamageVar(3),
+        new ExtraDamageVar(2),
         new CalculatedDamageVar(ValueProp.Move)
             .WithMultiplier((_, creature) => creature?.GetPower<OmenOfDeathPower>()?.Amount ?? 0),
     ];

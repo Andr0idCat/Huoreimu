@@ -9,7 +9,7 @@ using MegaCrit.Sts2.Core.Localization.DynamicVars;
 
 namespace AyaMod.Huoreimu.Cards.Rare;
 
-public class Saishuwakiba() : HuoreimuCard(2, CardType.Skill, CardRarity.Rare, TargetType.AllEnemies)
+public class Saishuwakiba() : HuoreimuCard(1, CardType.Skill, CardRarity.Rare, TargetType.AllEnemies)
 {
     public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Exhaust];
 

@@ -22,7 +22,7 @@ public class Jubousuikyousatsu()
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new CalculationBaseVar(13),
-        new ExtraDamageVar(10),
+        new ExtraDamageVar(6),
         new CalculatedDamageVar(ValueProp.Move)
             .WithMultiplier((_, creature) => creature?.GetPower<OmenOfDeathPower>()?.Amount ?? 0),
         new UltimateSkillVar()
@@ -45,7 +45,7 @@ public class Jubousuikyousatsu()
 
     protected override void OnUpgrade()
     {
-        DynamicVars.ExtraDamage.UpgradeValueBy(2);
+        DynamicVars.ExtraDamage.UpgradeValueBy(3);
     }
 
     public CardModel GetTranscendenceTransformedCard() => ModelDb.Card<HeadbuttAttack>();

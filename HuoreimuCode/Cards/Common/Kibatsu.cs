@@ -17,7 +17,7 @@ public class Kibatsu() : HuoreimuCard(4, CardType.Attack, CardRarity.Common, Tar
 
 	protected override IEnumerable<DynamicVar> CanonicalVars =>
 	[
-		new DamageVar(24, ValueProp.Move),
+		new DamageVar(20, ValueProp.Move),
 		new(HuoreimuConstants.DECREASE_VALUE, DECREASE_COST)
 	];
 
