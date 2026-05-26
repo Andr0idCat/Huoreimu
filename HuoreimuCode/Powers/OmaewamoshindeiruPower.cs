@@ -35,9 +35,8 @@ public class OmaewamoshindeiruPower() : HuoreimuPowerBase(PowerType.Debuff, Powe
             : PowerCmd.Remove<OmaewamoshindeiruPower>(Owner);
     }
 
-    public override Task AfterDamageReceivedLate(PlayerChoiceContext choiceContext, Creature target,
-        DamageResult result, ValueProp props,
-        Creature dealer, CardModel cardSource)
+    public override Task AfterDamageGiven(PlayerChoiceContext choiceContext, Creature dealer, DamageResult result, ValueProp props,
+        Creature target, CardModel cardSource)
     {
         if (target != Owner) return Task.CompletedTask;
         _killer = result.WasTargetKilled ? dealer?.Player : null;
