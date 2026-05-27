@@ -1,4 +1,5 @@
-﻿using AyaMod.Huoreimu.Powers;
+﻿using AyaMod.Huoreimu.Keywords;
+using AyaMod.Huoreimu.Powers;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Creatures;
@@ -9,6 +10,8 @@ namespace AyaMod.Huoreimu.Actions;
 
 public static class UltimateSkillAction
 {
+    private static bool IsFree(CardModel card) => card.Keywords.Contains(HuoreimuKeywords.FreeUltimateSkill);
+
     private static (OmenOfDeathPower, int) CheckCondition(CardModel card, Creature creature)
     {
         if (!card.DynamicVars.TryGetValue(HuoreimuConstants.ULTIMATE_SKILL, out var dynamicVar))
@@ -17,6 +20,11 @@ public static class UltimateSkillAction
         }
 
         var omen = creature?.GetPower<OmenOfDeathPower>();
+        if (IsFree(card))
+        {
+            return (omen, dynamicVar.IntValue);
+        }
+
         if (omen is null || omen.Amount < dynamicVar.IntValue)
         {
             return (null, 0);
@@ -28,14 +36,15 @@ public static class UltimateSkillAction
     private static async Task<bool> InternalExecute(CardModel card, CardPlay cardPlay)
     {
         var (omen, value) = CheckCondition(card, cardPlay.Target);
-        var cast = CanCast(omen, value);
+        var cast = CanCast(card, omen, value);
         if (!cast) return false;
-        await PowerCmd.ModifyAmount(omen, -value, card.Owner.Creature, card);
+        if (!IsFree(card)) await PowerCmd.ModifyAmount(omen, -value, card.Owner.Creature, card);
         return true;
     }
 
-    private static bool CanCast(OmenOfDeathPower omen, int value)
+    private static bool CanCast(CardModel card, OmenOfDeathPower omen, int value)
     {
+        if (IsFree(card)) return true;
         return omen != null && omen.Amount >= value;
     }
 
@@ -48,7 +57,7 @@ public static class UltimateSkillAction
     public static bool CanCast(CardModel card, Creature target)
     {
         var (omen, value) = CheckCondition(card, target);
-        return CanCast(omen, value);
+        return CanCast(card, omen, value);
     }
 
     /// <summary>
@@ -100,7 +109,7 @@ public static class UltimateSkillAction
     public static async Task EarlyExecute(CardModel card, CardPlay cardPlay, Func<Task> onCast)
     {
         var (omen, value) = CheckCondition(card, cardPlay.Target);
-        var cast = CanCast(omen, value);
+        var cast = CanCast(card, omen, value);
         if (!cast) return;
         var task = onCast?.Invoke();
         if (task is null)
@@ -112,7 +121,7 @@ public static class UltimateSkillAction
             await task;
         }
 
-        await PowerCmd.ModifyAmount(omen, -value, card.Owner.Creature, card);
+        if (!IsFree(card)) await PowerCmd.ModifyAmount(omen, -value, card.Owner.Creature, card);
     }
 
     /// <summary>
@@ -125,7 +134,7 @@ public static class UltimateSkillAction
     public static async Task EarlyExecute(CardModel card, CardPlay cardPlay, Func<Task> onCast, Func<Task> onFallback)
     {
         var (omen, value) = CheckCondition(card, cardPlay.Target);
-        var cast = CanCast(omen, value);
+        var cast = CanCast(card, omen, value);
         var task = cast ? onCast?.Invoke() : onFallback?.Invoke();
         if (task is null)
         {
@@ -136,7 +145,7 @@ public static class UltimateSkillAction
             await task;
         }
 
-        if (cast) await PowerCmd.ModifyAmount(omen, -value, card.Owner.Creature, card);
+        if (cast && !IsFree(card)) await PowerCmd.ModifyAmount(omen, -value, card.Owner.Creature, card);
     }
 
     /// <summary>
@@ -149,7 +158,7 @@ public static class UltimateSkillAction
     {
         var omen = cardPlay.Target?.GetPower<OmenOfDeathPower>();
         var count = omen?.Amount ?? 0;
-        if (count > 0 && omen is not null) await PowerCmd.ModifyAmount(omen, -count, card.Owner.Creature, card);
+        if (count > 0 && omen is not null && !IsFree(card)) await PowerCmd.ModifyAmount(omen, -count, card.Owner.Creature, card);
         await onCast(count);
     }
 
@@ -164,7 +173,10 @@ public static class UltimateSkillAction
         var omen = cardPlay.Target?.GetPower<OmenOfDeathPower>();
         var count = omen?.Amount ?? 0;
         await onCast(count);
-        omen ??= cardPlay.Target?.GetPower<OmenOfDeathPower>();
-        if (count > 0 && omen is not null) await PowerCmd.ModifyAmount(omen, -count, card.Owner.Creature, card);
+        if (!IsFree(card))
+        {
+            omen ??= cardPlay.Target?.GetPower<OmenOfDeathPower>();
+            if (count > 0 && omen is not null) await PowerCmd.ModifyAmount(omen, -count, card.Owner.Creature, card);
+        }
     }
 }
