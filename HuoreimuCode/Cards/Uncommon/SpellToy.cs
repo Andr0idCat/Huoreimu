@@ -9,7 +9,7 @@ public class SpellToy() : HuoreimuCard(2, CardType.Power, CardRarity.Uncommon, T
 {
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        await CommonActions.ApplySelf<SpellToyPower>(choiceContext, this, 1);
+        await CommonActions.ApplySelf<SpellToyPower>(choiceContext, this, Owner.Relics.Count);
     }
 
     protected override void OnUpgrade()
