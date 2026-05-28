@@ -1,18 +1,18 @@
-﻿using AyaMod.Huoreimu.Keywords;
+﻿using AyaMod.Huoreimu.Cards;
+using AyaMod.Huoreimu.Keywords;
 using AyaMod.Huoreimu.Powers;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Logging;
-using MegaCrit.Sts2.Core.Models;
 
 namespace AyaMod.Huoreimu.Actions;
 
 public static class UltimateSkillAction
 {
-    private static bool IsFree(CardModel card) => card.Keywords.Contains(HuoreimuKeywords.FreeUltimateSkill);
+    private static bool IsFree(HuoreimuCard card) => card.Keywords.Contains(HuoreimuKeywords.FreeUltimateSkill);
 
-    private static (OmenOfDeathPower, int) CheckCondition(CardModel card, Creature creature)
+    private static (OmenOfDeathPower, int) CheckCondition(HuoreimuCard card, Creature creature)
     {
         if (!card.DynamicVars.TryGetValue(HuoreimuConstants.ULTIMATE_SKILL, out var dynamicVar))
         {
@@ -33,16 +33,17 @@ public static class UltimateSkillAction
         return (omen, dynamicVar.IntValue);
     }
 
-    private static async Task<bool> InternalExecute(CardModel card, CardPlay cardPlay)
+    private static async Task<bool> InternalExecute(HuoreimuCard card, CardPlay cardPlay)
     {
         var (omen, value) = CheckCondition(card, cardPlay.Target);
         var cast = CanCast(card, omen, value);
         if (!cast) return false;
+        card.PlayUltimateSkillAudio();
         if (!IsFree(card)) await PowerCmd.ModifyAmount(omen, -value, card.Owner.Creature, card);
         return true;
     }
 
-    private static bool CanCast(CardModel card, OmenOfDeathPower omen, int value)
+    private static bool CanCast(HuoreimuCard card, OmenOfDeathPower omen, int value)
     {
         if (IsFree(card)) return true;
         return omen != null && omen.Amount >= value;
@@ -54,7 +55,7 @@ public static class UltimateSkillAction
     /// <param name="card">必杀技卡牌</param>
     /// <param name="target">目标</param>
     /// <returns></returns>
-    public static bool CanCast(CardModel card, Creature target)
+    public static bool CanCast(HuoreimuCard card, Creature target)
     {
         var (omen, value) = CheckCondition(card, target);
         return CanCast(card, omen, value);
@@ -66,7 +67,7 @@ public static class UltimateSkillAction
     /// <param name="card">必杀技卡牌</param>
     /// <param name="cardPlay">CardPlay</param>
     /// <param name="onCast">如果必杀技可以发动，则执行其返回的Task</param>
-    public static async Task Execute(CardModel card, CardPlay cardPlay, Func<Task> onCast)
+    public static async Task Execute(HuoreimuCard card, CardPlay cardPlay, Func<Task> onCast)
     {
         var cast = await InternalExecute(card, cardPlay);
         if (!cast) return;
@@ -87,7 +88,7 @@ public static class UltimateSkillAction
     /// <param name="cardPlay">CardPlay</param>
     /// <param name="onCast">如果必杀技可以发动，则执行其返回的Task</param>
     /// <param name="onFallback">如果必杀技没有满足发动条件，则执行其返回的Task</param>
-    public static async Task Execute(CardModel card, CardPlay cardPlay, Func<Task> onCast, Func<Task> onFallback)
+    public static async Task Execute(HuoreimuCard card, CardPlay cardPlay, Func<Task> onCast, Func<Task> onFallback)
     {
         var cast = await InternalExecute(card, cardPlay);
         var task = cast ? onCast?.Invoke() : onFallback?.Invoke();
@@ -106,11 +107,12 @@ public static class UltimateSkillAction
     /// <param name="card">必杀技卡牌</param>
     /// <param name="cardPlay">CardPlay</param>
     /// <param name="onCast">如果必杀技可以发动，则执行其返回的Task</param>
-    public static async Task EarlyExecute(CardModel card, CardPlay cardPlay, Func<Task> onCast)
+    public static async Task EarlyExecute(HuoreimuCard card, CardPlay cardPlay, Func<Task> onCast)
     {
         var (omen, value) = CheckCondition(card, cardPlay.Target);
         var cast = CanCast(card, omen, value);
         if (!cast) return;
+        card.PlayUltimateSkillAudio();
         var task = onCast?.Invoke();
         if (task is null)
         {
@@ -131,10 +133,12 @@ public static class UltimateSkillAction
     /// <param name="cardPlay">CardPlay</param>
     /// <param name="onCast">如果必杀技可以发动，则执行其返回的Task</param>
     /// <param name="onFallback">如果必杀技没有满足发动条件，则执行其返回的Task</param>
-    public static async Task EarlyExecute(CardModel card, CardPlay cardPlay, Func<Task> onCast, Func<Task> onFallback)
+    public static async Task EarlyExecute(HuoreimuCard card, CardPlay cardPlay, Func<Task> onCast,
+        Func<Task> onFallback)
     {
         var (omen, value) = CheckCondition(card, cardPlay.Target);
         var cast = CanCast(card, omen, value);
+        if (cast) card.PlayUltimateSkillAudio();
         var task = cast ? onCast?.Invoke() : onFallback?.Invoke();
         if (task is null)
         {
@@ -154,11 +158,13 @@ public static class UltimateSkillAction
     /// <param name="card">必杀技卡牌</param>
     /// <param name="cardPlay">CardPlay</param>
     /// <param name="onCast">接收消耗层数的回调</param>
-    public static async Task ExecuteAll(CardModel card, CardPlay cardPlay, Func<int, Task> onCast)
+    public static async Task ExecuteAll(HuoreimuCard card, CardPlay cardPlay, Func<int, Task> onCast)
     {
         var omen = cardPlay.Target?.GetPower<OmenOfDeathPower>();
         var count = omen?.Amount ?? 0;
-        if (count > 0 && omen is not null && !IsFree(card)) await PowerCmd.ModifyAmount(omen, -count, card.Owner.Creature, card);
+        card.PlayUltimateSkillAudio();
+        if (count > 0 && omen is not null && !IsFree(card))
+            await PowerCmd.ModifyAmount(omen, -count, card.Owner.Creature, card);
         await onCast(count);
     }
 
@@ -168,10 +174,11 @@ public static class UltimateSkillAction
     /// <param name="card">必杀技卡牌</param>
     /// <param name="cardPlay">CardPlay</param>
     /// <param name="onCast">接收消耗层数的回调</param>
-    public static async Task EarlyExecuteAll(CardModel card, CardPlay cardPlay, Func<int, Task> onCast)
+    public static async Task EarlyExecuteAll(HuoreimuCard card, CardPlay cardPlay, Func<int, Task> onCast)
     {
         var omen = cardPlay.Target?.GetPower<OmenOfDeathPower>();
         var count = omen?.Amount ?? 0;
+        card.PlayUltimateSkillAudio();
         await onCast(count);
         if (!IsFree(card))
         {

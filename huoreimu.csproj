@@ -27,6 +27,7 @@
         <Folder Include="Huoreimu\Image\Cards\"/>
     </ItemGroup>
     <ItemGroup>
+        <Content Include="Huoreimu\Config\audio_config.json" />
         <Content Include="Huoreimu\localization\zhs\cards.json"/>
         <Content Include="Huoreimu\localization\zhs\card_keywords.json"/>
         <Content Include="Huoreimu\localization\zhs\characters.json"/>

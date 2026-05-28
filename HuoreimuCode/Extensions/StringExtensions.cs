@@ -6,6 +6,11 @@ namespace AyaMod.Huoreimu.Extensions;
 //Mostly utilities to get asset paths.
 public static class StringExtensions
 {
+    public static string AudioPath(this string path)
+    {
+        return $"res://{MainFile.ModId}/Audio/{path}";
+    }
+    
     public static string ImagePath(this string path)
     {
         return $"res://{MainFile.ModId}/Image/{path}";

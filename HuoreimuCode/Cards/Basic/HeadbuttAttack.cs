@@ -20,7 +20,7 @@ public class HeadbuttAttack() : HuoreimuUltimateSkillCard(1, CardType.Attack, Ca
         new CalculationBaseVar(6),
         new ExtraDamageVar(8),
         new CalculatedDamageVar(ValueProp.Move)
-            .WithMultiplier((card, creature) => UltimateSkillAction.CanCast(card, creature) ? 1 : 0),
+            .WithMultiplier((card, creature) => UltimateSkillAction.CanCast(card as HuoreimuCard, creature) ? 1 : 0),
         new UltimateSkillVar(2)
     ];
 
