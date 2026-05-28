@@ -13,68 +13,75 @@ using static Godot.PackedScene;
 [HarmonyPatch(typeof(NCreature), "SetAnimationTrigger")]
 public static class HuoreimuAnimationPatch
 {
-    public static void Postfix(NCreature __instance, string trigger)
-    {
-        if (__instance.Entity == null || !__instance.Entity.IsPlayer)
-            return;
+	public static void Postfix(NCreature __instance, string trigger)
+	{
+		if (__instance.Entity == null || !__instance.Entity.IsPlayer)
+			return;
 
-        if (__instance.Entity.ModelId.ToString() == "CHARACTER.AYAMOD-HUOREIMU")
-        {
-            Log.Info("[>>>SelphinaMode AnimeTrigger=]"+trigger);
-            switch (trigger)
-            {
-                case "Hit":
-                    PlayAnim(__instance, "Hit", false);
-                    break;
+		if (__instance.Entity.ModelId.ToString() == "CHARACTER.AYAMOD-HUOREIMU")
+		{
+			Log.Info("[>>>SelphinaMode AnimeTrigger=]"+trigger);
+			switch (trigger)
+			{
+				case "Hit":
+					PlayAnim(__instance, "Hit", false);
+					break;
 
-                case "Attack":
-                    PlayAnim(__instance, "Attack", false);
-                    break;
-                
-                case "Cast":
-                    PlayAnim(__instance, "Cast", false);
-                    break;
+				case "Attack":
+					PlayAnim(__instance, GetRandomAttackAnim(), false);
+					break;
+				
+				case "Cast":
+					PlayAnim(__instance, "Cast", false);
+					break;
 
-                case "Dead":
-                    PlayAnim(__instance, "Dead", false);
-                    break;
+				case "Dead":
+					PlayAnim(__instance, "Dead", false);
+					break;
 
-                default:
-                    PlayAnim(__instance, "Idle", false);
-                    break;
-            }
-        }
-    }
+				default:
+					PlayAnim(__instance, "Idle", false);
+					break;
+			}
+		}
+	}
 
-    private static void PlayAnim(NCreature node, string animName,bool fromEnd)
-    {
-        var visual = node.GetNodeOrNull<Node2D>("Huoreimu");
-        if (visual == null) return;
+	private static string GetRandomAttackAnim()
+	{
+		var attacks = new[] { "Attack", "Attack2", "Attack3", "Attack4" };
+		var index = (int)(GD.Randf() * attacks.Length);
+		return attacks[Math.Clamp(index, 0, attacks.Length - 1)];
+	}
 
-        var anim = visual.GetNodeOrNull<AnimatedSprite2D>("HuoreimuVisual");
-        if (anim == null) return;
+	private static void PlayAnim(NCreature node, string animName,bool fromEnd)
+	{
+		var visual = node.GetNodeOrNull<Node2D>("Huoreimu");
+		if (visual == null) return;
 
-        // 切换动画
-        anim.Frame = 0;
-        anim.Play(animName, 1f, fromEnd);
+		var anim = visual.GetNodeOrNull<AnimatedSprite2D>("HuoreimuVisual");
+		if (anim == null) return;
 
-        // 动画结束后回到 Idle
-        anim.Connect("animation_finished", Callable.From(() =>
-        {
-            anim.Play("Idle");
-        }), 4u);
-    }
+		// 切换动画
+		anim.Frame = 0;
+		anim.Play(animName, 1f, fromEnd);
+
+		// 动画结束后回到 Idle
+		anim.Connect("animation_finished", Callable.From(() =>
+		{
+			anim.Play("Idle");
+		}), 4u);
+	}
 }
 
 [HarmonyPatch(typeof(NGameOverScreen), "MoveCreaturesToDifferentLayerAndDisableUi")]
 public static class HuoreimuGameOverPatch
 {
-    public static void Postfix(NGameOverScreen __instance)
-    {
-        var _creatureContainer = __instance.GetNodeOrNull<Control>("%CreatureContainer");
-        foreach(Node2D visual in _creatureContainer.GetChildren())
-        {
-            if (visual.Name.ToString().StartsWith("Huoreimu")) visual.GetNodeOrNull<AnimatedSprite2D>("HuoreimuVisual").Play("Dead");
-        }
-    }
+	public static void Postfix(NGameOverScreen __instance)
+	{
+		var _creatureContainer = __instance.GetNodeOrNull<Control>("%CreatureContainer");
+		foreach(Node2D visual in _creatureContainer.GetChildren())
+		{
+			if (visual.Name.ToString().StartsWith("Huoreimu")) visual.GetNodeOrNull<AnimatedSprite2D>("HuoreimuVisual").Play("Dead");
+		}
+	}
 }
