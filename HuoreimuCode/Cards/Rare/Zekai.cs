@@ -25,6 +25,7 @@ public class Zekai() : HuoreimuCard(3, CardType.Power, CardRarity.Rare, TargetTy
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
+        await base.OnPlay(choiceContext, cardPlay);
         await CommonActions.ApplySelf<IntangiblePower>(choiceContext, this);
         await CommonActions.ApplySelf<ArtifactPower>(choiceContext, this);
 

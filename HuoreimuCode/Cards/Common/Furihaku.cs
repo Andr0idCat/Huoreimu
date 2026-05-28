@@ -18,6 +18,7 @@ public class Furihaku() : HuoreimuCard(0, CardType.Skill, CardRarity.Common, Tar
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
+        await base.OnPlay(choiceContext, cardPlay);
         var selectedCard = await CommonActions.SelectSingleCard(this, SelectionScreenPrompt, choiceContext, PileType.Draw);
         if (selectedCard is null) return;
         await CardCmd.Exhaust(choiceContext, selectedCard);

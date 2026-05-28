@@ -34,6 +34,7 @@ public class Mugenzanei() : HuoreimuUltimateSkillCard(2, CardType.Attack, CardRa
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
+        await base.OnPlay(choiceContext, cardPlay);
         ArgumentNullException.ThrowIfNull(cardPlay.Target);
 
         if (cardPlay.Target.GetPower<MugenzaneiPower>() != null)

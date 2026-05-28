@@ -16,6 +16,7 @@ public class Karyu() : HuoreimuCard(1, CardType.Skill, CardRarity.Common, Target
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
+        await base.OnPlay(choiceContext, cardPlay);
         await CommonActions.CardBlock(this, cardPlay);
         var card = await CommonActions.SelectSingleCard(this, SelectionScreenPrompt, choiceContext, PileType.Discard);
         if (card is null) return;

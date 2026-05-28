@@ -1,4 +1,4 @@
-﻿using AyaMod.Huoreimu.Actions;
+using AyaMod.Huoreimu.Actions;
 using AyaMod.Huoreimu.DynamicVars;
 using AyaMod.Huoreimu.Keywords;
 using AyaMod.Huoreimu.Powers;
@@ -35,6 +35,7 @@ public class Jubousuikyousatsu()
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
+        await base.OnPlay(choiceContext, cardPlay);
         await UltimateSkillAction.EarlyExecuteAll(this, cardPlay, _ => Attack(choiceContext, cardPlay));
     }
 

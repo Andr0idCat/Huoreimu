@@ -20,6 +20,7 @@ public class Tenjodo() : HuoreimuCard(2, CardType.Skill, CardRarity.Uncommon, Ta
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
+        await base.OnPlay(choiceContext, cardPlay);
         await CommonActions.CardBlock(this, DynamicVars.Block, cardPlay);
         await CommonActions.ApplySelf<TenjodoPower>(choiceContext, this);
     }

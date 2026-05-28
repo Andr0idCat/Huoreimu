@@ -34,6 +34,7 @@ public class Nantoshoushutojo() : HuoreimuUltimateSkillCard(3, CardType.Attack, 
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
+        await base.OnPlay(choiceContext, cardPlay);
         ArgumentNullException.ThrowIfNull(cardPlay.Target);
         await UltimateSkillAction.EarlyExecuteAll(this, cardPlay, async count =>
         {

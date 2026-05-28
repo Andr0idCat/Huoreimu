@@ -15,6 +15,7 @@ public class HuoreimuAttack() : HuoreimuCard(1,
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
+        await base.OnPlay(choiceContext, cardPlay);
         await CommonActions.CardAttack(this, cardPlay.Target).Execute(choiceContext);
     }
 

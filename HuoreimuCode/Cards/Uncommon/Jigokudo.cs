@@ -11,6 +11,7 @@ public class Jigokudo() : HuoreimuCard(0, CardType.Skill, CardRarity.Uncommon, T
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
+        await base.OnPlay(choiceContext, cardPlay);
         var drawPile = PileType.Draw.GetPile(Owner);
         var curses = drawPile.Cards.Where(c => c.Type == CardType.Curse).Take(DynamicVars.Cards.IntValue).ToList();
         foreach (var curse in curses)

@@ -1,4 +1,4 @@
-﻿using AyaMod.Huoreimu.Powers;
+using AyaMod.Huoreimu.Powers;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
@@ -22,6 +22,7 @@ public class Majinka() : HuoreimuExtraDeckCard<Huo>(1, CardType.Power, CardRarit
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
+        await base.OnPlay(choiceContext, cardPlay);
         await CommonActions.ApplySelf<MajinkaPower>(choiceContext, this);
     }
 

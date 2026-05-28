@@ -18,6 +18,7 @@ public class Downfall() : HuoreimuCard(2, CardType.Attack, CardRarity.Common, Ta
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
+        await base.OnPlay(choiceContext, cardPlay);
         ArgumentNullException.ThrowIfNull(cardPlay.Target);
         await CommonActions.CardAttack(this, cardPlay.Target)
             .WithProp(DynamicVars.Damage.Props)

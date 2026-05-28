@@ -42,6 +42,7 @@ public sealed class Chikushodo() : HuoreimuCard(INITIAL_COST, CardType.Attack, C
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
+        await base.OnPlay(choiceContext, cardPlay);
         ArgumentNullException.ThrowIfNull(cardPlay.Target);
         await CommonActions.CardAttack(this, cardPlay.Target).Execute(choiceContext);
         await CommonActions.Apply<ChikushodoPower>(choiceContext, cardPlay.Target, this);

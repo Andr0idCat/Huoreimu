@@ -1,4 +1,4 @@
-﻿using AyaMod.Huoreimu.Actions;
+using AyaMod.Huoreimu.Actions;
 using AyaMod.Huoreimu.DynamicVars;
 using AyaMod.Huoreimu.Tags;
 using BaseLib.Utils;
@@ -24,6 +24,7 @@ public class Shichi() : HuoreimuUltimateSkillCard(2, CardType.Attack, CardRarity
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
+        await base.OnPlay(choiceContext, cardPlay);
         await UltimateSkillAction.EarlyExecute(this, cardPlay, () => OnCast(choiceContext, cardPlay),
             () => OnFail(choiceContext, cardPlay));
     }

@@ -27,6 +27,7 @@ public class Shoukajuin() : HuoreimuCard(2, CardType.Skill, CardRarity.Common, T
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
+        await base.OnPlay(choiceContext, cardPlay);
         ArgumentNullException.ThrowIfNull(cardPlay.Target);
         await CommonActions.ApplySelf<BufferPower>(choiceContext, this);
         await CommonActions.Apply<OmenOfDeathPower>(choiceContext, cardPlay.Target, this);

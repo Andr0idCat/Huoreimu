@@ -1,4 +1,4 @@
-﻿using AyaMod.Huoreimu.Actions;
+using AyaMod.Huoreimu.Actions;
 using AyaMod.Huoreimu.DynamicVars;
 using AyaMod.Huoreimu.Keywords;
 using AyaMod.Huoreimu.Tags;
@@ -27,6 +27,7 @@ public class Kaiki() : HuoreimuUltimateSkillCard(0, CardType.Skill, CardRarity.U
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
+        await base.OnPlay(choiceContext, cardPlay);
         ArgumentNullException.ThrowIfNull(cardPlay.Target);
         await UltimateSkillAction.Execute(this, cardPlay,
             () => PlayerCmd.GainEnergy(DynamicVars.Energy.IntValue, Owner));

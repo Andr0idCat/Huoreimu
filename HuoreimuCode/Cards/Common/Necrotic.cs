@@ -23,6 +23,7 @@ public class Necrotic() : HuoreimuCard(2, CardType.Skill, CardRarity.Common, Tar
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
+        await base.OnPlay(choiceContext, cardPlay);
         ArgumentNullException.ThrowIfNull(CombatState);
         await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.AttackAnimDelay);
         foreach (var enemy in CombatState.HittableEnemies)

@@ -22,6 +22,7 @@ public class MindEyes() : HuoreimuCard(1, CardType.Power, CardRarity.Uncommon, T
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
+        await base.OnPlay(choiceContext, cardPlay);
         await CommonActions.ApplySelf<MindEyesPower>(choiceContext, this);
     }
 

@@ -17,6 +17,7 @@ public class Meikyoushisui() : HuoreimuCard(1, CardType.Skill, CardRarity.Uncomm
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
+        await base.OnPlay(choiceContext, cardPlay);
         var cards = PileType.Hand.GetPile(Owner).Cards
             .Where(c => c.Type is CardType.Curse)
             .ToList();

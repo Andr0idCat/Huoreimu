@@ -26,6 +26,7 @@ public class DollInvocation() : HuoreimuCard(2, CardType.Power, CardRarity.Rare,
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
+        await base.OnPlay(choiceContext, cardPlay);
         if (IsUpgraded)
         {
             await CommonActions.ApplySelf<DollPowerUpgraded>(choiceContext, this);

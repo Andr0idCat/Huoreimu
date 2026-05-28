@@ -12,6 +12,7 @@ public class Shurado() : HuoreimuCard(1, CardType.Power, CardRarity.Uncommon, Ta
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
+        await base.OnPlay(choiceContext, cardPlay);
         var curseCount = PileType.Hand.GetPile(Owner).Cards.Count(c => c.Type is CardType.Curse);
         if (curseCount > 0) await CommonActions.ApplySelf<StrengthPower>(choiceContext, this, curseCount);
     }

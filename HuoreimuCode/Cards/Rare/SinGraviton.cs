@@ -28,6 +28,7 @@ public class SinGraviton() : HuoreimuExtraDeckCard<Huo>(2, CardType.Power, CardR
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
+        await base.OnPlay(choiceContext, cardPlay);
         foreach (var enemy in CombatState.HittableEnemies)
         {
             await CommonActions.Apply<WeakPower>(choiceContext, enemy, this);

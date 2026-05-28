@@ -15,6 +15,7 @@ public class Tenimuhou() : HuoreimuCard(1, CardType.Power, CardRarity.Uncommon, 
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
+        await base.OnPlay(choiceContext, cardPlay);
         await CommonActions.ApplySelf<TenimuhouPower>(choiceContext, this);
     }
 

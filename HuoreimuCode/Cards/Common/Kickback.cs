@@ -1,4 +1,4 @@
-﻿using AyaMod.Huoreimu.Powers;
+using AyaMod.Huoreimu.Powers;
 using BaseLib.Extensions;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Entities.Cards;
@@ -20,6 +20,7 @@ public class Kickback() : HuoreimuCard(0, CardType.Skill, CardRarity.Common, Tar
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
+        await base.OnPlay(choiceContext, cardPlay);
         ArgumentNullException.ThrowIfNull(cardPlay.Target);
         await CommonActions.Apply<OmenOfDeathPower>(choiceContext, cardPlay.Target, this);
         await CommonActions.Draw(this, choiceContext);

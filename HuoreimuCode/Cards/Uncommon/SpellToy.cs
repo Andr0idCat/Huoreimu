@@ -1,4 +1,4 @@
-﻿using AyaMod.Huoreimu.Powers;
+using AyaMod.Huoreimu.Powers;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
@@ -9,6 +9,7 @@ public class SpellToy() : HuoreimuCard(2, CardType.Power, CardRarity.Uncommon, T
 {
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
+        await base.OnPlay(choiceContext, cardPlay);
         await CommonActions.ApplySelf<SpellToyPower>(choiceContext, this, Owner.Relics.Count);
     }
 

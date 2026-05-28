@@ -29,6 +29,7 @@ public class Kakuro() : HuoreimuCard(1, CardType.Power, CardRarity.Uncommon, Tar
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
+        await base.OnPlay(choiceContext, cardPlay);
         var power = await CommonActions.ApplySelf<KakuroPower>(choiceContext, this, IsUpgraded ? 2 : 1);
         power?.SetRetain(IsUpgraded);
     }

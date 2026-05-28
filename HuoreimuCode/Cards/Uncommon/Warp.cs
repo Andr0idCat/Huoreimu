@@ -30,6 +30,7 @@ public class Warp() : HuoreimuCard(1, CardType.Skill, CardRarity.Uncommon, Targe
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
+        await base.OnPlay(choiceContext, cardPlay);
         var exhausted = (await CardSelectCmd.FromHand(choiceContext, Owner,
             new CardSelectorPrefs(SelectionScreenPrompt, 0, MAX_EXHAUST_COUNT), _ => true, this)).ToList();
         var selectedCount = exhausted.Count;

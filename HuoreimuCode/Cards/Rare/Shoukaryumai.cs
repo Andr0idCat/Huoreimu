@@ -30,6 +30,7 @@ public class Shoukaryumai() : HuoreimuUltimateSkillCard(0, CardType.Attack, Card
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
+        await base.OnPlay(choiceContext, cardPlay);
         ArgumentNullException.ThrowIfNull(cardPlay.Target);
         await UltimateSkillAction.EarlyExecute(this, cardPlay, async () =>
         {

@@ -19,6 +19,7 @@ public class SunFall() : HuoreimuCard(1, CardType.Attack, CardRarity.Rare, Targe
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
+        await base.OnPlay(choiceContext, cardPlay);
         var hitCount = (int)((CalculatedVar)DynamicVars[HuoreimuConstants.CALCULATED_HITS]).Calculate(cardPlay.Target);
         await CommonActions.CardAttack(this, null, DynamicVars.Damage.IntValue, hitCount)
             .Execute(choiceContext);

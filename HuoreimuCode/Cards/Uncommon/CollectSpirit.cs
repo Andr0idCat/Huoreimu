@@ -1,4 +1,4 @@
-﻿using AyaMod.Huoreimu.Powers;
+using AyaMod.Huoreimu.Powers;
 using BaseLib.Extensions;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Entities.Cards;
@@ -19,6 +19,7 @@ public class CollectSpirit() : HuoreimuCard(1, CardType.Power, CardRarity.Uncomm
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
+        await base.OnPlay(choiceContext, cardPlay);
         await CommonActions.ApplySelf<CollectSpiritPower>(choiceContext, this,
             DynamicVars.Power<CollectSpiritPower>().BaseValue);
     }

@@ -1,4 +1,4 @@
-﻿using AyaMod.Huoreimu.Actions;
+using AyaMod.Huoreimu.Actions;
 using AyaMod.Huoreimu.DynamicVars;
 using AyaMod.Huoreimu.Keywords;
 using AyaMod.Huoreimu.Tags;
@@ -32,6 +32,7 @@ public class Keshoushi() : HuoreimuUltimateSkillCard(1, CardType.Skill, CardRari
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
+        await base.OnPlay(choiceContext, cardPlay);
         ArgumentNullException.ThrowIfNull(cardPlay.Target);
         await UltimateSkillAction.Execute(this, cardPlay, async () =>
         {

@@ -19,6 +19,7 @@ public class Soukoushukizan() : HuoreimuCard(1, CardType.Attack, CardRarity.Comm
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
+        await base.OnPlay(choiceContext, cardPlay);
         ArgumentNullException.ThrowIfNull(cardPlay.Target);
         var hitCount = (int)((CalculatedVar)DynamicVars[HuoreimuConstants.CALCULATED_HITS]).Calculate(cardPlay.Target);
         await CommonActions.CardAttack(this, cardPlay.Target, DynamicVars.Damage.IntValue, hitCount)

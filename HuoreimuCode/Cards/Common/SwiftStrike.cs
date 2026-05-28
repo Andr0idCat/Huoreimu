@@ -1,4 +1,4 @@
-﻿using AyaMod.Huoreimu.Powers;
+using AyaMod.Huoreimu.Powers;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
@@ -20,6 +20,7 @@ public class SwiftStrike() : HuoreimuCard(1, CardType.Attack, CardRarity.Common,
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
+        await base.OnPlay(choiceContext, cardPlay);
         ArgumentNullException.ThrowIfNull(cardPlay.Target);
         await CommonActions.CardAttack(this, cardPlay).Execute(choiceContext);
         await CommonActions.Apply<OmenOfDeathPower>(choiceContext, cardPlay.Target, this);

@@ -1,4 +1,4 @@
-﻿using AyaMod.Huoreimu.Powers;
+using AyaMod.Huoreimu.Powers;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
@@ -20,6 +20,7 @@ public class PickStar() : HuoreimuCard(1, CardType.Attack, CardRarity.Uncommon, 
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
+        await base.OnPlay(choiceContext, cardPlay);
         var target = cardPlay.Target;
         ArgumentNullException.ThrowIfNull(target);
         var drawAmount = target.GetPower<OmenOfDeathPower>()?.Amount ?? 0;

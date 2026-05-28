@@ -48,6 +48,7 @@ public sealed class OniBreaker() : HuoreimuCard(1, CardType.Skill, CardRarity.Co
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
+        await base.OnPlay(choiceContext, cardPlay);
         ArgumentNullException.ThrowIfNull(cardPlay.Target);
 
         await CommonActions.Apply<VulnerablePower>(choiceContext, cardPlay.Target, this);

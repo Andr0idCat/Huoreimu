@@ -1,4 +1,4 @@
-﻿using BaseLib.Utils;
+using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.MonsterMoves.Intents;
@@ -9,6 +9,7 @@ public class SinMirror() : HuoreimuCard(2, CardType.Attack, CardRarity.Uncommon,
 {
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
+        await base.OnPlay(choiceContext, cardPlay);
         var monster = cardPlay.Target?.Monster;
         ArgumentNullException.ThrowIfNull(monster);
         if (!monster.IntendsToAttack) return;

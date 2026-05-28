@@ -16,6 +16,7 @@ public class MiasmicAbyss() : HuoreimuCard(1, CardType.Skill, CardRarity.Uncommo
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
+        await base.OnPlay(choiceContext, cardPlay);
         await CommonActions.CardBlock(this, DynamicVars.Block, cardPlay);
         await CardsAction.AddCardToPileWhenCombat<Huo>(Owner, PileType.Hand, 1, CombatState);
         await CardsAction.AddCardToPileWhenCombat<Huo>(Owner, PileType.Draw, 1, CombatState, CardPilePosition.Random);

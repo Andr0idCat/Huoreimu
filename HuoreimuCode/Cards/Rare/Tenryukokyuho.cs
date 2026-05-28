@@ -23,9 +23,10 @@ public class Tenryukokyuho() : HuoreimuCard(1, CardType.Power, CardRarity.Rare, 
         new PowerVar<TenryukokyuhoPower>(1)
     ];
 
-    protected override Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
+    protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
-        return CommonActions.ApplySelf<TenryukokyuhoPower>(choiceContext, this);
+        await base.OnPlay(choiceContext, cardPlay);
+        await CommonActions.ApplySelf<TenryukokyuhoPower>(choiceContext, this);
     }
 
     protected override void OnUpgrade()

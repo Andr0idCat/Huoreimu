@@ -25,6 +25,7 @@ public class Omaewamoshindeiru() : HuoreimuCard(0, CardType.Skill, CardRarity.Ra
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
+        await base.OnPlay(choiceContext, cardPlay);
         var target = cardPlay.Target;
         ArgumentNullException.ThrowIfNull(target);
         var hitCount = (int)((CalculatedVar)DynamicVars[HuoreimuConstants.CALCULATED_HITS]).Calculate(cardPlay.Target);
