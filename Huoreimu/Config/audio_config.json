@@ -1,4 +1,20 @@
 {
-  "headbutt_attack": {"sfx": true, "ultimate": true},
-  "huoreimu_attack": {"sfx": true}
+  "headbutt_attack": {"ultimate": true},
+  "shichi": {"ultimate": true},
+  "tenjodo": {"sfx": true},
+  "necrotic": {"sfx": true},
+  "jubousuikyousatsu": {"ultimate": true},
+  "majinka": {"sfx": true},
+  "sin_graviton": {"sfx": true},
+  "zekai": {"sfx": true},
+  "abikyokan": {"sfx": true},
+  "hikoushinketsusho": {"sfx": true},
+  "pick_star": {"sfx": true},
+  "kaiki": {"ultimate": true},
+  "hells_gate": {"ultimate": true},
+  "mugenzanei": {"ultimate": true},
+  "nantoshoushutojo": {"ultimate": true},
+  "keshoushi": {"sfx": true},
+  "omaewamoshindeiru": {"sfx": true},
+  "doll_invocation": {"sfx": true}
 }
