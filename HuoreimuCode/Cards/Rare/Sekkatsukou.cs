@@ -12,16 +12,12 @@ namespace AyaMod.Huoreimu.Cards.Rare;
 
 public class Sekkatsukou() : HuoreimuCard(0, CardType.Power, CardRarity.Rare, TargetType.Self)
 {
-    private const int ENERGY_GAIN = 3;
-    private const int DRAW_COUNT = 3;
-    private const int STRENGTH = 3;
-    private const int VULNERABLE = 99;
-
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new EnergyVar(ENERGY_GAIN),
-        new CardsVar(DRAW_COUNT),
-        new PowerVar<StrengthPower>(STRENGTH)
+        new EnergyVar(3),
+        new CardsVar(3),
+        new PowerVar<StrengthPower>(3),
+        new PowerVar<VulnerablePower>(99)
     ];
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
@@ -34,10 +30,10 @@ public class Sekkatsukou() : HuoreimuCard(0, CardType.Power, CardRarity.Rare, Ta
     {
         await base.OnPlay(choiceContext, cardPlay);
 
-        await PlayerCmd.GainEnergy(ENERGY_GAIN, Owner);
-        await CardPileCmd.Draw(choiceContext, DRAW_COUNT, Owner);
-        await CommonActions.ApplySelf<StrengthPower>(choiceContext, this, STRENGTH);
-        await CommonActions.ApplySelf<VulnerablePower>(choiceContext, this, VULNERABLE);
+        await PlayerCmd.GainEnergy(DynamicVars.Energy.BaseValue, Owner);
+        await CardPileCmd.Draw(choiceContext, DynamicVars.Cards.BaseValue, Owner);
+        await CommonActions.ApplySelf<StrengthPower>(choiceContext, this, DynamicVars.Power<StrengthPower>().BaseValue);
+        await CommonActions.ApplySelf<VulnerablePower>(choiceContext, this, DynamicVars.Power<VulnerablePower>().BaseValue);
     }
 
     protected override void OnUpgrade()
