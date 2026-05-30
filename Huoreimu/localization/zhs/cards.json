@@ -129,5 +129,8 @@
   "AYAMOD-SFAIRA_OSIA.title": "次元射击·乌西亚",
   "AYAMOD-SFAIRA_OSIA.description": "获得[blue]{Block:diff()}[/blue]点格挡。选择弃牌堆中的[blue]1[/blue]张牌放入手牌，再选择弃牌堆中的[blue]1[/blue]张牌放到抽牌堆顶部。",
   "AYAMOD-SFAIRA_OSIA.selectionScreenPrompt1": "选择弃牌堆的1张牌加入手牌",
-  "AYAMOD-SFAIRA_OSIA.selectionScreenPrompt2": "选择弃牌堆的1张牌放到抽牌堆顶部"
+  "AYAMOD-SFAIRA_OSIA.selectionScreenPrompt2": "选择弃牌堆的1张牌放到抽牌堆顶部",
+  "AYAMOD-SFAIRA_KHRONOS.title": "次元射击·克洛诺斯",
+  "AYAMOD-SFAIRA_KHRONOS.description": "抽{Cards:diff()}张牌，选择至多[blue]2[/blue]张手牌在本回合保留。",
+  "AYAMOD-SFAIRA_KHRONOS.selectionScreenPrompt": "选择至多2张本回合保留的手牌"
 }
