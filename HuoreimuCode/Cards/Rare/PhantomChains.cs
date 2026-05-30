@@ -12,13 +12,11 @@ namespace AyaMod.Huoreimu.Cards.Rare;
 
 public class PhantomChains() : HuoreimuCard(1, CardType.Skill, CardRarity.Rare, TargetType.AnyEnemy)
 {
-    private const int BASE_STRENGTH_LOSS = 2;
-
     public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Exhaust];
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new PowerVar<StrengthPower>(BASE_STRENGTH_LOSS)
+        new PowerVar<StrengthPower>(2)
     ];
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
@@ -31,7 +29,7 @@ public class PhantomChains() : HuoreimuCard(1, CardType.Skill, CardRarity.Rare, 
         await base.OnPlay(choiceContext, cardPlay);
         ArgumentNullException.ThrowIfNull(cardPlay.Target);
 
-        var amount = IsUpgraded ? 3 : 2;
+        var amount = DynamicVars.Power<StrengthPower>().IntValue;
         if (IsInEliteOrBossRoom) amount++;
 
         await PowerCmd.Apply<StrengthPower>(cardPlay.Target, -amount, Owner.Creature, this);
