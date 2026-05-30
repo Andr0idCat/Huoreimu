@@ -1,7 +1,7 @@
-using System.Linq;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
+using MegaCrit.Sts2.Core.Extensions;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.ValueProps;
@@ -25,14 +25,15 @@ public class Fracture() : HuoreimuCard(0, CardType.Attack, CardRarity.Common, Ta
         await CommonActions.CardAttack(this, cardPlay.Target).Execute(choiceContext);
 
         var hand = PileType.Hand.GetPile(Owner).Cards
-            .Where(c => c != this && !c.Keywords.Contains(CardKeyword.Exhaust))
+            .Where(c => c != this && !c.Keywords.Contains(CardKeyword.Exhaust) &&
+                        !c.Keywords.Contains(CardKeyword.Unplayable))
             .ToList();
         var rng = Owner.RunState.Rng.Niche;
-        for (var i = 0; i < 2 && hand.Count > 0; i++)
+        hand.StableShuffle(rng);
+        foreach (var card in hand.Take(2))
         {
-            var card = rng.NextItem(hand);
             CardCmd.ApplyKeyword(card, CardKeyword.Exhaust);
-            hand.Remove(card);
+            CardCmd.Preview(card);
         }
     }
 
