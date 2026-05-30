@@ -1,4 +1,3 @@
-using System.Linq;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Creatures;
@@ -12,17 +11,34 @@ namespace AyaMod.Huoreimu.Powers;
 
 public sealed class MusouinsatsuPower() : HuoreimuPowerBase(PowerType.Buff, PowerStackType.Counter)
 {
+    private bool _attacked;
+
+    private bool Attacked
+    {
+        get => _attacked;
+        set
+        {
+            if (value == _attacked) return;
+            _attacked = value;
+            InvokeDisplayAmountChanged();
+        }
+    }
+
+    public override bool IsInstanced => true;
+
+    public override int DisplayAmount => Attacked ? 0 : 1;
+
     public override Task AfterPlayerTurnStart(PlayerChoiceContext choiceContext, Player player)
     {
         if (player != Owner.Player) return Task.CompletedTask;
-        SetAmount(1);
+        Attacked = false;
         return Task.CompletedTask;
     }
 
     public override async Task AfterDamageReceivedLate(PlayerChoiceContext choiceContext, Creature target,
         DamageResult result, ValueProp props, Creature dealer, CardModel cardSource)
     {
-        if (target != Owner || dealer == null || Amount <= 0) return;
+        if (target != Owner || dealer == null || Attacked) return;
 
         var player = Owner.Player;
         if (player == null) return;
@@ -32,8 +48,8 @@ public sealed class MusouinsatsuPower() : HuoreimuPowerBase(PowerType.Buff, Powe
         if (attacks.Count == 0) return;
 
         var card = player.RunState.Rng.CombatTargets.NextItem(attacks);
+        Attacked = true;
         Flash();
-        SetAmount(0);
         await CardCmd.AutoPlay(choiceContext, card, dealer);
     }
 }

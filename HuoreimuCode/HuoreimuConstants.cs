@@ -16,4 +16,5 @@ public static class HuoreimuConstants
     public const string AUTO_PLAY_CARD_COST_MAX = "AutoPlayCardCostMax";
     public const string MAX_EXHAUST_COUNT = "MaxExhaustCount";
     public const string MIN_CURSE_COUNT = "MinCurseCount";
+    public const string SELECTION_COUNT = "SelectionCount";
 }

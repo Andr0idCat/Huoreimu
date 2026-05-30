@@ -162,8 +162,8 @@
   "AYAMOD-VITALPOINT_STRIKE.selectionScreenPrompt": "选择一张加入手牌",
   "AYAMOD-VITALPOINT_STRIKE.description": "造成{Damage:diff()}点伤害。[gold]必杀技[/gold]{UltimateSkill:inverseDiff()}：从[blue]{Cards:diff()}[/blue]张随机具有必杀技的牌中选择[blue]1[/blue]张加入手牌，那张牌获得[gold]消耗[/gold]且免费。",
   "AYAMOD-MUSOUINSATSU.title": "梦想阴杀",
-  "AYAMOD-MUSOUINSATSU.selectionScreenPrompt": "选择要获得保留的攻击牌",
-  "AYAMOD-MUSOUINSATSU.description": "选择[blue]1[/blue]张手牌中的攻击牌获得回合结束保留。每回合第[blue]1[/blue]次受到伤害时，对手牌中的随机[blue]1[/blue]张攻击牌打向攻击者。",
+  "AYAMOD-MUSOUINSATSU.selectionScreenPrompt": "选择要保留的攻击牌",
+  "AYAMOD-MUSOUINSATSU.description": "选择[blue]{SelectionCount:diff()}[/blue]张手牌中的攻击牌获得回合结束保留。每回合第[blue]1[/blue]次受到伤害时，对手牌中的随机[blue]1[/blue]张攻击牌打向攻击者。",
   "AYAMOD-SUIEISHIN.title": "水影心",
   "AYAMOD-SUIEISHIN.selectionScreenPrompt": "选择要消耗的牌",
   "AYAMOD-SUIEISHIN.description": "选择[blue]1[/blue]张手牌消耗。下回合开始时，将这些牌从消耗牌堆中打出。"

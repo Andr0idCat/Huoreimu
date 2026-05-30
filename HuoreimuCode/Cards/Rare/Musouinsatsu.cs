@@ -1,4 +1,5 @@
 using System.Linq;
+using AyaMod.Huoreimu.DynamicVars;
 using AyaMod.Huoreimu.Powers;
 using BaseLib.Extensions;
 using BaseLib.Utils;
@@ -13,24 +14,25 @@ namespace AyaMod.Huoreimu.Cards.Rare;
 
 public class Musouinsatsu() : HuoreimuCard(2, CardType.Power, CardRarity.Rare, TargetType.Self)
 {
-    private static readonly LocString SelectAttackPrompt = new LocString("cards", "AYAMOD-MUSOUINSATSU.selectionScreenPrompt");
-
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new PowerVar<MusouinsatsuPower>(1)
+        new PowerVar<MusouinsatsuPower>(1),
+        new SelectionVar(1)
     ];
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         await base.OnPlay(choiceContext, cardPlay);
 
-        var maxSelect = IsUpgraded ? 2 : 1;
-        var prefs = new CardSelectorPrefs(SelectAttackPrompt, maxSelect);
+        var maxSelect = DynamicVars.TryGetValue(HuoreimuConstants.SELECTION_COUNT, out var selection)
+            ? selection.IntValue
+            : 0;
+        var prefs = new CardSelectorPrefs(SelectionScreenPrompt, maxSelect);
         var selected = await CardSelectCmd.FromHand(choiceContext, Owner, prefs,
             c => c.Type == CardType.Attack, this);
         foreach (var card in selected)
         {
-            card.GiveSingleTurnRetain();
+            card.AddKeyword(CardKeyword.Retain);
         }
 
         await CommonActions.ApplySelf<MusouinsatsuPower>(choiceContext, this);
@@ -38,6 +40,7 @@ public class Musouinsatsu() : HuoreimuCard(2, CardType.Power, CardRarity.Rare, T
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Power<MusouinsatsuPower>().UpgradeValueBy(1);
+        if(!DynamicVars.TryGetValue(HuoreimuConstants.SELECTION_COUNT, out var selection))return;
+        selection.UpgradeValueBy(1);
     }
 }
