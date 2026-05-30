@@ -8,7 +8,7 @@ using MegaCrit.Sts2.Core.Localization.DynamicVars;
 
 namespace AyaMod.Huoreimu.Cards.Rare;
 
-public class AkaiYume() : HuoreimuExtraDeckCard<Cards.Huo>(1, CardType.Power, CardRarity.Rare, TargetType.Self)
+public class AkaiYume() : HuoreimuExtraDeckCard<Huo>(1, CardType.Power, CardRarity.Rare, TargetType.Self)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
@@ -17,7 +17,7 @@ public class AkaiYume() : HuoreimuExtraDeckCard<Cards.Huo>(1, CardType.Power, Ca
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
     [
-        HoverTipFactory.FromCard<Cards.Huo>()
+        HoverTipFactory.FromCard<Huo>()
     ];
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
