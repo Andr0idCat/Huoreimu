@@ -70,5 +70,11 @@
   "AYAMOD-BOUNDARY_SEVER_POWER.smartDescription": "下回合开始时受到[blue]{Amount}[/blue]点伤害。",
   "AYAMOD-DANKISOUSATSUKEN_POWER.title": "断己相杀",
   "AYAMOD-DANKISOUSATSUKEN_POWER.description": "累计增加[blue]{Amount}[/blue]点伤害。",
-  "AYAMOD-DANKISOUSATSUKEN_POWER.smartDescription": "累计增加[blue]{Amount}[/blue]点伤害。"
+  "AYAMOD-DANKISOUSATSUKEN_POWER.smartDescription": "累计增加[blue]{Amount}[/blue]点伤害。",
+  "AYAMOD-MUSOUINSATSU_POWER.title": "梦想阴杀",
+  "AYAMOD-MUSOUINSATSU_POWER.description": "每回合第1次受到伤害时反击。",
+  "AYAMOD-MUSOUINSATSU_POWER.smartDescription": "每回合第1次受到伤害时反击。",
+  "AYAMOD-SUIEISHIN_POWER.title": "水影心",
+  "AYAMOD-SUIEISHIN_POWER.description": "下回合开始时从消耗牌堆中打出。",
+  "AYAMOD-SUIEISHIN_POWER.smartDescription": "下回合开始时从消耗牌堆中打出。"
 }

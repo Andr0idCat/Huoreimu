@@ -157,5 +157,13 @@
   "AYAMOD-DANKISOUSATSUKEN.title": "断己相杀拳",
   "AYAMOD-DANKISOUSATSUKEN.description": "造成{Damage:diff()}点伤害。回合结束时如果仍在手牌中，受到[blue]4[/blue]点伤害并使这张牌造成的伤害增加[blue]8[/blue]点。",
   "AYAMOD-TENSHOUJUJIHOU.title": "天升十字凤",
-  "AYAMOD-TENSHOUJUJIHOU.description": "造成{Damage:diff()}点伤害。[gold]必杀技[/gold]{UltimateSkill:inverseDiff()}：获得[blue]1[/blue]层[gold]缓冲[/gold]。"
+  "AYAMOD-TENSHOUJUJIHOU.description": "造成{Damage:diff()}点伤害。[gold]必杀技[/gold]{UltimateSkill:inverseDiff()}：获得[blue]1[/blue]层[gold]缓冲[/gold]。",
+  "AYAMOD-VITALPOINT_STRIKE.title": "密孔打击",
+  "AYAMOD-VITALPOINT_STRIKE.description": "造成{Damage:diff()}点伤害。[gold]必杀技[/gold]{UltimateSkill:inverseDiff()}：从[blue]3[/blue]张随机具有必杀技的牌中选择[blue]1[/blue]张加入手牌，那张牌获得[gold]消耗[/gold]且耗能为[blue]0[/blue]。",
+  "AYAMOD-MUSOUINSATSU.title": "梦想阴杀",
+  "AYAMOD-MUSOUINSATSU.selectionScreenPrompt": "选择要获得保留的攻击牌",
+  "AYAMOD-MUSOUINSATSU.description": "选择[blue]1[/blue]张手牌中的攻击牌获得回合结束保留。每回合第[blue]1[/blue]次受到伤害时，对手牌中的随机[blue]1[/blue]张攻击牌打向攻击者。",
+  "AYAMOD-SUIEISHIN.title": "水影心",
+  "AYAMOD-SUIEISHIN.selectionScreenPrompt": "选择要消耗的牌",
+  "AYAMOD-SUIEISHIN.description": "选择[blue]1[/blue]张手牌消耗。下回合开始时，将这些牌从消耗牌堆中打出。"
 }
