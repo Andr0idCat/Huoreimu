@@ -23,7 +23,6 @@ public sealed class MusouinsatsuPower() : HuoreimuPowerBase(PowerType.Buff, Powe
         DamageResult result, ValueProp props, Creature dealer, CardModel cardSource)
     {
         if (target != Owner || dealer == null || Amount <= 0) return;
-        if (!result.WasBlockBroken && result.UnblockedDamage <= 0) return;
 
         var player = Owner.Player;
         if (player == null) return;
