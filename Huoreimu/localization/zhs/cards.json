@@ -134,7 +134,7 @@
   "AYAMOD-SFAIRA_KHRONOS.description": "抽{Cards:diff()}张牌，选择至多[blue]2[/blue]张手牌在本回合保留。",
   "AYAMOD-SFAIRA_KHRONOS.selectionScreenPrompt": "选择至多2张本回合保留的手牌",
   "AYAMOD-VIOLATE_SHOT.title": "怨恨射击",
-  "AYAMOD-VIOLATE_SHOT.description": "造成{Damage:diff()}点伤害。本场战斗中每抽到过[blue]1[/blue]张诅咒牌，额外造成[blue]3[/blue]点伤害。",
+  "AYAMOD-VIOLATE_SHOT.description": "造成{Damage:diff()}点伤害。本场战斗中每抽到过[blue]1[/blue]张诅咒牌，额外造成[blue]{ExtraDamage:diff()}[/blue]点伤害。",
   "AYAMOD-SEKKATSUKOU.title": "刹活孔",
   "AYAMOD-SEKKATSUKOU.description": "获得[blue]{Energy:energyIcons()}[/blue]，抽[blue]{Cards:diff()}[/blue]张牌，获得[blue]{StrengthPower:diff()}[/blue]点[gold]力量[/gold]，[blue]{VulnerablePower}[/blue]层[gold]易伤[/gold]{IfUpgraded:show:|和[blue]{FrailPower}[/blue]层[gold]脆弱[/gold]}。",
   "AYAMOD-KYOUSHINKON.title": "狂神魂",

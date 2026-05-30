@@ -10,26 +10,24 @@ namespace AyaMod.Huoreimu.Cards.Uncommon;
 
 public class ViolateShot() : HuoreimuCard(2, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy)
 {
-    private int CurseDrawnCount { get; set; }
     public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Exhaust];
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new CalculationBaseVar(10),
-        new ExtraDamageVar(3),
-        new CalculatedDamageVar(ValueProp.Move).WithMultiplier((_, _) => CurseDrawnCount)
+        new DamageVar(10, ValueProp.Move),
+        new ExtraDamageVar(3)
     ];
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         await base.OnPlay(choiceContext, cardPlay);
         ArgumentNullException.ThrowIfNull(cardPlay.Target);
-        await CommonActions.CardAttack(this, cardPlay.Target, DynamicVars.CalculatedDamage).Execute(choiceContext);
+        await CommonActions.CardAttack(this, cardPlay.Target).Execute(choiceContext);
     }
 
     public override Task AfterCardDrawn(PlayerChoiceContext choiceContext, CardModel card, bool fromHandDraw)
     {
-        if (card.Type is CardType.Curse) CurseDrawnCount++;
+        if (card.Type is CardType.Curse) DynamicVars.Damage.UpgradeValueBy(DynamicVars.ExtraDamage.IntValue);
         return base.AfterCardDrawn(choiceContext, card, fromHandDraw);
     }
 
