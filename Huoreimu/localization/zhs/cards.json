@@ -144,5 +144,14 @@
   "AYAMOD-HYAKI.title": "百鬼",
   "AYAMOD-HYAKI.description": "获得{Block:diff()}点格挡。如果生命值低于或等于[blue]25%[/blue]，失去[blue]1[/blue]点最大生命值并再获得{Block:diff()}点格挡。",
   "AYAMOD-PHANTOM_CHAINS.title": "虚数锁链",
-  "AYAMOD-PHANTOM_CHAINS.description": "使目标失去{StrengthPower:diff()}点[gold]力量[/gold]，如果目标是精英或Boss敌人，再失去[blue]1[/blue]点[gold]力量[/gold]。"
+  "AYAMOD-PHANTOM_CHAINS.description": "使目标失去{StrengthPower:diff()}点[gold]力量[/gold]，如果目标是精英或Boss敌人，再失去[blue]1[/blue]点[gold]力量[/gold]。",
+  "AYAMOD-DIMENSIONAL_DISRUPTION.title": "次元崩塌",
+  "AYAMOD-DIMENSIONAL_DISRUPTION.description": "丢弃任意张手牌。每丢弃[blue]1[/blue]张，下个回合抽[blue]1[/blue]张牌。每丢弃[blue]2[/blue]张，下个回合获得[blue]1[/blue]点能量。",
+  "AYAMOD-DIMENSIONAL_DISRUPTION.selectionScreenPrompt": "选择要丢弃的手牌",
+  "AYAMOD-AKAI_YUME.title": "朱色染之梦",
+  "AYAMOD-AKAI_YUME.description": "每当你抽到[blue]1[/blue]张诅咒牌时，获得{AkaiYumePower:diff()}点格挡。",
+  "AYAMOD-MUSOUTENSEI.title": "梦想转生",
+  "AYAMOD-MUSOUTENSEI.description": "随机将[blue]1[/blue]张凡庸或{IfUpgraded:show:升级过的|}神化加入手牌。",
+  "AYAMOD-BOUNDARY_SEVER.title": "分界斩断",
+  "AYAMOD-BOUNDARY_SEVER.description": "造成{Damage:diff()}点伤害，去除目标[gold]无实体[/gold]。下回合开始时再造成等量伤害。"
 }

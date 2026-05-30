@@ -58,5 +58,14 @@
   "AYAMOD-DOLL_POWER_UPGRADED_VARIANT.smartDescription": "回合结束时从抽牌堆随机打出一张耗能为[blue]{AutoPlayCardCostMin:diff()}[/blue]-[blue]{AutoPlayCardCostMax:diff()}[/blue]的攻击牌。受到未被格挡的伤害时，损失等量层数。",
   "AYAMOD-VIOLATE_SHOT_POWER.title": "怨恨",
   "AYAMOD-VIOLATE_SHOT_POWER.description": "本场战斗中已经抽到[blue]{Amount}[/blue]张诅咒牌。",
-  "AYAMOD-VIOLATE_SHOT_POWER.smartDescription": "本场战斗中已经抽到[blue]{Amount}[/blue]张诅咒牌。"
+  "AYAMOD-VIOLATE_SHOT_POWER.smartDescription": "本场战斗中已经抽到[blue]{Amount}[/blue]张诅咒牌。",
+  "AYAMOD-AKAI_YUME_POWER.title": "朱色染之梦",
+  "AYAMOD-AKAI_YUME_POWER.description": "每抽到[blue]1[/blue]张诅咒牌时，获得[blue]{Amount}[/blue]点格挡。",
+  "AYAMOD-AKAI_YUME_POWER.smartDescription": "每抽到[blue]1[/blue]张诅咒牌时，获得[blue]{Amount}[/blue]点格挡。",
+  "AYAMOD-DIMENSIONAL_DISRUPTION_POWER.title": "次元崩塌",
+  "AYAMOD-DIMENSIONAL_DISRUPTION_POWER.description": "下个回合开始时效果生效。",
+  "AYAMOD-DIMENSIONAL_DISRUPTION_POWER.smartDescription": "下个回合开始时效果生效。",
+  "AYAMOD-BOUNDARY_SEVER_POWER.title": "分界斩断",
+  "AYAMOD-BOUNDARY_SEVER_POWER.description": "下回合开始时受到[blue]{Amount}[/blue]点伤害。",
+  "AYAMOD-BOUNDARY_SEVER_POWER.smartDescription": "下回合开始时受到[blue]{Amount}[/blue]点伤害。"
 }
