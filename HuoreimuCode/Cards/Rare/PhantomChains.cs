@@ -1,8 +1,6 @@
 using BaseLib.Extensions;
-using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
-using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
@@ -16,7 +14,8 @@ public class PhantomChains() : HuoreimuCard(1, CardType.Skill, CardRarity.Rare, 
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new PowerVar<StrengthPower>(2)
+        new PowerVar<StrengthPower>(2),
+        new(HuoreimuConstants.ELITE_OR_BOSS_INCREASE_VALUE, 1)
     ];
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
@@ -30,7 +29,13 @@ public class PhantomChains() : HuoreimuCard(1, CardType.Skill, CardRarity.Rare, 
         ArgumentNullException.ThrowIfNull(cardPlay.Target);
 
         var amount = DynamicVars.Power<StrengthPower>().IntValue;
-        if (IsInEliteOrBossRoom) amount++;
+        if (IsInEliteOrBossRoom)
+        {
+            var increase = DynamicVars.TryGetValue(HuoreimuConstants.ELITE_OR_BOSS_INCREASE_VALUE, out var dynamicVar)
+                ? dynamicVar.IntValue
+                : 0;
+            amount += increase;
+        }
 
         await PowerCmd.Apply<StrengthPower>(cardPlay.Target, -amount, Owner.Creature, this);
     }
