@@ -67,5 +67,8 @@
   "AYAMOD-DIMENSIONAL_DISRUPTION_POWER.smartDescription": "下个回合开始时效果生效。",
   "AYAMOD-BOUNDARY_SEVER_POWER.title": "分界斩断",
   "AYAMOD-BOUNDARY_SEVER_POWER.description": "下回合开始时受到[blue]{Amount}[/blue]点伤害。",
-  "AYAMOD-BOUNDARY_SEVER_POWER.smartDescription": "下回合开始时受到[blue]{Amount}[/blue]点伤害。"
+  "AYAMOD-BOUNDARY_SEVER_POWER.smartDescription": "下回合开始时受到[blue]{Amount}[/blue]点伤害。",
+  "AYAMOD-DANKISOUSATSUKEN_POWER.title": "断己相杀",
+  "AYAMOD-DANKISOUSATSUKEN_POWER.description": "累计增加[blue]{Amount}[/blue]点伤害。",
+  "AYAMOD-DANKISOUSATSUKEN_POWER.smartDescription": "累计增加[blue]{Amount}[/blue]点伤害。"
 }

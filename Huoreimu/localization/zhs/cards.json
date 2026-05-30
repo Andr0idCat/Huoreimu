@@ -153,5 +153,9 @@
   "AYAMOD-MUSOUTENSEI.title": "梦想转生",
   "AYAMOD-MUSOUTENSEI.description": "随机将[blue]1[/blue]张凡庸或{IfUpgraded:show:升级过的|}神化加入手牌。",
   "AYAMOD-BOUNDARY_SEVER.title": "分界斩断",
-  "AYAMOD-BOUNDARY_SEVER.description": "造成{Damage:diff()}点伤害，去除目标[gold]无实体[/gold]。下回合开始时再造成等量伤害。"
+  "AYAMOD-BOUNDARY_SEVER.description": "造成{Damage:diff()}点伤害，去除目标[gold]无实体[/gold]。下回合开始时再造成等量伤害。",
+  "AYAMOD-DANKISOUSATSUKEN.title": "断己相杀拳",
+  "AYAMOD-DANKISOUSATSUKEN.description": "造成{Damage:diff()}点伤害。回合结束时如果仍在手牌中，受到[blue]4[/blue]点伤害并使这张牌造成的伤害增加[blue]8[/blue]点。",
+  "AYAMOD-TENSHOUJUJIHOU.title": "天升十字凤",
+  "AYAMOD-TENSHOUJUJIHOU.description": "造成{Damage:diff()}点伤害。[gold]必杀技[/gold]{UltimateSkill:inverseDiff()}：获得[blue]1[/blue]层[gold]缓冲[/gold]。"
 }
