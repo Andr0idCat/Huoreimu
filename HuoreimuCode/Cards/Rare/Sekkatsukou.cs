@@ -12,19 +12,29 @@ namespace AyaMod.Huoreimu.Cards.Rare;
 
 public class Sekkatsukou() : HuoreimuCard(0, CardType.Power, CardRarity.Rare, TargetType.Self)
 {
+    private static IHoverTip[] NormalTips =>
+    [
+        HoverTipFactory.FromPower<StrengthPower>(),
+        HoverTipFactory.FromPower<VulnerablePower>(),
+        HoverTipFactory.FromPower<FrailPower>(),
+    ];
+
+    private static IHoverTip[] UpgradedTips =>
+    [
+        HoverTipFactory.FromPower<StrengthPower>(),
+        HoverTipFactory.FromPower<VulnerablePower>(),
+    ];
+
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new EnergyVar(3),
         new CardsVar(3),
         new PowerVar<StrengthPower>(3),
-        new PowerVar<VulnerablePower>(99)
+        new PowerVar<VulnerablePower>(99),
+        new PowerVar<FrailPower>(99)
     ];
 
-    protected override IEnumerable<IHoverTip> ExtraHoverTips =>
-    [
-        HoverTipFactory.FromPower<StrengthPower>(),
-        HoverTipFactory.FromPower<VulnerablePower>()
-    ];
+    protected override IEnumerable<IHoverTip> ExtraHoverTips => IsUpgraded ? UpgradedTips : NormalTips;
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
@@ -33,10 +43,9 @@ public class Sekkatsukou() : HuoreimuCard(0, CardType.Power, CardRarity.Rare, Ta
         await PlayerCmd.GainEnergy(DynamicVars.Energy.BaseValue, Owner);
         await CardPileCmd.Draw(choiceContext, DynamicVars.Cards.BaseValue, Owner);
         await CommonActions.ApplySelf<StrengthPower>(choiceContext, this, DynamicVars.Power<StrengthPower>().BaseValue);
-        await CommonActions.ApplySelf<VulnerablePower>(choiceContext, this, DynamicVars.Power<VulnerablePower>().BaseValue);
-    }
-
-    protected override void OnUpgrade()
-    {
+        await CommonActions.ApplySelf<VulnerablePower>(choiceContext, this,
+            DynamicVars.Power<VulnerablePower>().BaseValue);
+        if (IsUpgraded) return;
+        await CommonActions.ApplySelf<FrailPower>(choiceContext, this, DynamicVars.Power<VulnerablePower>().BaseValue);
     }
 }
