@@ -125,7 +125,7 @@
   "AYAMOD-DOLL_INVOCATION.title": "人形召唤",
   "AYAMOD-DOLL_INVOCATION.description": "召唤{DollCount:diff()}个[blue]{DollPower:diff()}[/blue]点生命值的人形{IfUpgraded:show:+|}。",
   "AYAMOD-SFAIRA_PNEUMA.title": "次元射击·普纽玛",
-  "AYAMOD-SFAIRA_PNEUMA.description": "造成相当于弃牌堆卡牌数的伤害。",
+  "AYAMOD-SFAIRA_PNEUMA.description": "造成{CalculatedDamage:diff()}点伤害。",
   "AYAMOD-SFAIRA_OSIA.title": "次元射击·乌西亚",
   "AYAMOD-SFAIRA_OSIA.description": "获得[blue]{Block:diff()}[/blue]点格挡。选择弃牌堆中的[blue]1[/blue]张牌放入手牌，再选择弃牌堆中的[blue]1[/blue]张牌放到抽牌堆顶部。",
   "AYAMOD-SFAIRA_OSIA.selectionScreenPrompt1": "选择弃牌堆的1张牌加入手牌",
