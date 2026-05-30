@@ -55,5 +55,8 @@
   "AYAMOD-DOLL_POWER_VARIANT.smartDescription": "回合结束时从抽牌堆随机打出一张耗能为[blue]{AutoPlayCardCostMin:diff()}[/blue]的攻击牌。受到未被格挡的伤害时，损失等量层数。",
   "AYAMOD-DOLL_POWER_UPGRADED_VARIANT.title": "人形+",
   "AYAMOD-DOLL_POWER_UPGRADED_VARIANT.description": "回合结束时从抽牌堆随机打出一张耗能为[blue]1[/blue]-[blue]2[/blue]的攻击牌。受到未被格挡的伤害时，损失等量层数。",
-  "AYAMOD-DOLL_POWER_UPGRADED_VARIANT.smartDescription": "回合结束时从抽牌堆随机打出一张耗能为[blue]{AutoPlayCardCostMin:diff()}[/blue]-[blue]{AutoPlayCardCostMax:diff()}[/blue]的攻击牌。受到未被格挡的伤害时，损失等量层数。"
+  "AYAMOD-DOLL_POWER_UPGRADED_VARIANT.smartDescription": "回合结束时从抽牌堆随机打出一张耗能为[blue]{AutoPlayCardCostMin:diff()}[/blue]-[blue]{AutoPlayCardCostMax:diff()}[/blue]的攻击牌。受到未被格挡的伤害时，损失等量层数。",
+  "AYAMOD-VIOLATE_SHOT_POWER.title": "怨恨",
+  "AYAMOD-VIOLATE_SHOT_POWER.description": "本场战斗中已经抽到[blue]{Amount}[/blue]张诅咒牌。",
+  "AYAMOD-VIOLATE_SHOT_POWER.smartDescription": "本场战斗中已经抽到[blue]{Amount}[/blue]张诅咒牌。"
 }
