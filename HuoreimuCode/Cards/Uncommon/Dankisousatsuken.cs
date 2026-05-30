@@ -12,14 +12,13 @@ namespace AyaMod.Huoreimu.Cards.Uncommon;
 
 public class Dankisousatsuken() : HuoreimuCard(1, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy)
 {
-    private const int BASE_DAMAGE = 12;
-    private const int BONUS_INCREMENT = 8;
-
     public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Retain];
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DamageVar(BASE_DAMAGE, ValueProp.Move)
+        new DamageVar(12, ValueProp.Move),
+        new ExtraDamageVar(4),
+        new(HuoreimuConstants.INCREASE_VALUE, 8)
     ];
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
@@ -29,18 +28,21 @@ public class Dankisousatsuken() : HuoreimuCard(1, CardType.Attack, CardRarity.Un
         await CommonActions.CardAttack(this, cardPlay.Target).Execute(choiceContext);
     }
 
-    public override Task AfterTurnEnd(PlayerChoiceContext choiceContext, CombatSide side)
+    public override async Task AfterTurnEnd(PlayerChoiceContext choiceContext, CombatSide side)
     {
-        if (side != CombatSide.Player) return Task.CompletedTask;
-        if (Pile?.Type != PileType.Hand) return Task.CompletedTask;
+        if (side != CombatSide.Player || Pile?.Type != PileType.Hand) return;
 
-        var increment = IsUpgraded ? 12 : BONUS_INCREMENT;
+        var increment = DynamicVars.TryGetValue(HuoreimuConstants.INCREASE_VALUE, out var increase)
+            ? increase.IntValue
+            : 0;
         DynamicVars.Damage.BaseValue += increment;
-        _ = CreatureCmd.Damage(choiceContext, Owner.Creature, 4, ValueProp.Unblockable | ValueProp.Unpowered, null, null);
-        return Task.CompletedTask;
+        await CreatureCmd.Damage(choiceContext, Owner.Creature, DynamicVars.ExtraDamage.IntValue, ValueProp.Unpowered,
+            null, this);
     }
 
     protected override void OnUpgrade()
     {
+        if (!DynamicVars.TryGetValue(HuoreimuConstants.INCREASE_VALUE, out var increase)) return;
+        increase.UpgradeValueBy(4);
     }
 }
