@@ -138,7 +138,7 @@
   "AYAMOD-SEKKATSUKOU.title": "刹活孔",
   "AYAMOD-SEKKATSUKOU.description": "获得[blue]{Energy:energyIcons()}[/blue]，抽[blue]{Cards:diff()}[/blue]张牌，获得[blue]{StrengthPower:diff()}[/blue]点[gold]力量[/gold]和[blue]99[/blue]层[gold]易伤[/gold]。",
   "AYAMOD-KYOUSHINKON.title": "狂神魂",
-  "AYAMOD-KYOUSHINKON.description": "获得[blue]1[/blue]点能量。手牌中每有[blue]1[/blue]张诅咒牌，再获得[blue]1[/blue]点能量。",
+  "AYAMOD-KYOUSHINKON.description": "获得{energyPrefix:energyIcons(1)}。手牌中每有[blue]1[/blue]张诅咒牌，再获得{energyPrefix:energyIcons(1)}。",
   "AYAMOD-FRACTURE.title": "震碎",
   "AYAMOD-FRACTURE.description": "造成{Damage:diff()}点伤害，随机给予手牌中[blue]2[/blue]张牌[gold]消耗[/gold]。",
   "AYAMOD-HYAKI.title": "百鬼",
