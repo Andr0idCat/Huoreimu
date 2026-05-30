@@ -166,5 +166,7 @@
   "AYAMOD-MUSOUINSATSU.description": "选择{SelectionCount:diff()}张手牌中的攻击牌获得回合结束保留。每回合第[blue]1[/blue]次受到伤害时，对手牌中的随机[blue]1[/blue]张攻击牌打向攻击者。",
   "AYAMOD-SUIEISHIN.title": "水影心",
   "AYAMOD-SUIEISHIN.selectionScreenPrompt": "选择要消耗的牌",
-  "AYAMOD-SUIEISHIN.description": "选择[blue]1[/blue]张手牌消耗。下回合开始时，将这些牌从消耗牌堆中打出。"
+  "AYAMOD-SUIEISHIN.description": "选择[blue]1[/blue]张手牌消耗。下回合开始时，将这些牌从消耗牌堆中打出。",
+  "AYAMOD-DIMENSIONAL_RIFT.title": "次元狭缝",
+  "AYAMOD-DIMENSIONAL_RIFT.description": "给予另一名玩家[blue]{IntangiblePower:diff()}[/blue]层[gold]无实体[/gold]，并使其在本回合中失去{DimensionalRiftPower:inverseDiff()}点[gold]力量[/gold]。"
 }
