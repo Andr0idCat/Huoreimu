@@ -123,5 +123,7 @@
   "AYAMOD-ONI_BREAKER.title": "破魔碎",
   "AYAMOD-ONI_BREAKER.description": "给予{VulnerablePower:diff()}层[gold]易伤[/gold]，每击败过1名精英敌人或Boss额外给予1层。如果目标是精英敌人或Boss，给予等量的[gold]虚弱[/gold]。",
   "AYAMOD-DOLL_INVOCATION.title": "人形召唤",
-  "AYAMOD-DOLL_INVOCATION.description": "召唤{DollCount:diff()}个[blue]{DollPower:diff()}[/blue]点生命值的人形{IfUpgraded:show:+|}。"
+  "AYAMOD-DOLL_INVOCATION.description": "召唤{DollCount:diff()}个[blue]{DollPower:diff()}[/blue]点生命值的人形{IfUpgraded:show:+|}。",
+  "AYAMOD-SFAIRA_PNEUMA.title": "次元射击·普纽玛",
+  "AYAMOD-SFAIRA_PNEUMA.description": "造成相当于弃牌堆卡牌数的伤害。"
 }
