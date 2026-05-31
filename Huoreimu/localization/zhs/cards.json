@@ -16,7 +16,7 @@
   "AYAMOD-HUO.title": "祸",
   "AYAMOD-HUO.description": "",
   "AYAMOD-SPELL_TOY.title": "咒玩",
-  "AYAMOD-SPELL_TOY.description": "回合结束时，获得遗物数量的格挡。",
+  "AYAMOD-SPELL_TOY.description": "回合结束时，获得{SpellToyPower:diff()}点格挡。每获得{Interval:inverseDiff()}个遗物，永久提升1点格挡。",
   "AYAMOD-VOID_GENESIS.title": "虚空创世",
   "AYAMOD-VOID_GENESIS.description": "消耗手牌中所有诅咒，每消耗1张，将一张{IfUpgraded:show:升级过的随机牌|随机牌}加入手牌。它们在本场战斗中耗能-1。\n拾取这张牌时，向牌组中加入一张[gold]祸[/gold]。",
   "AYAMOD-HELLS_GATE.title": "地狱之门",

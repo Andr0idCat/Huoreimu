@@ -18,4 +18,5 @@ public static class HuoreimuConstants
     public const string MIN_CURSE_COUNT = "MinCurseCount";
     public const string SELECTION_COUNT = "SelectionCount";
     public const string PERCENT_VALUE = "Percent";
+    public const string INTERVAL = "Interval";
 }
