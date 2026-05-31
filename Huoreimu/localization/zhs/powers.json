@@ -76,5 +76,8 @@
   "AYAMOD-MUSOUINSATSU_POWER.smartDescription": "每回合第1次受到伤害时反击。",
   "AYAMOD-SUIEISHIN_POWER.title": "水影心",
   "AYAMOD-SUIEISHIN_POWER.description": "下回合开始时从消耗牌堆中打出。",
-  "AYAMOD-SUIEISHIN_POWER.smartDescription": "下回合开始时从消耗牌堆中打出。"
+  "AYAMOD-SUIEISHIN_POWER.smartDescription": "下回合开始时从消耗牌堆中打出。",
+  "AYAMOD-CALAMITY_AWAKE_POWER.title": "灾祸觉醒",
+  "AYAMOD-CALAMITY_AWAKE_POWER.description": "每当你打出攻击牌时，将随机一张攻击牌加入你的手牌。",
+  "AYAMOD-CALAMITY_AWAKE_POWER.smartDescription": "每当你打出攻击牌时，将随机一张攻击牌加入你的手牌。"
 }

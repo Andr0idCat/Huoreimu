@@ -172,5 +172,7 @@
   "AYAMOD-MUGEN_BOND_PUNCH.title": "天上天下友情拳",
   "AYAMOD-MUGEN_BOND_PUNCH.description": "所有其他玩家抽牌堆中随机1张单体攻击牌获得[gold]必杀技[/gold]3：额外打出1次。",
   "AYAMOD-BREAK_BONES.title": "骨断",
-  "AYAMOD-BREAK_BONES.description": "造成{Damage:diff()}点伤害。[gold]必杀技[/gold]{UltimateSkill:inverseDiff()}：给予{WeakPower:diff()}层[gold]虚弱[/gold]。"
+  "AYAMOD-BREAK_BONES.description": "造成{Damage:diff()}点伤害。[gold]必杀技[/gold]{UltimateSkill:inverseDiff()}：给予{WeakPower:diff()}层[gold]虚弱[/gold]。",
+  "AYAMOD-CALAMITY_AWAKE.title": "灾祸觉醒",
+  "AYAMOD-CALAMITY_AWAKE.description": "每当你打出攻击牌时，将随机一张攻击牌加入你的手牌。牌组中每有1张诅咒牌，这张牌的耗能减少{Decrease:diff()}。"
 }
