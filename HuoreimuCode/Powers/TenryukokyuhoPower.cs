@@ -21,7 +21,8 @@ public class TenryukokyuhoPower() : HuoreimuPowerBase(PowerType.Buff, PowerStack
     public override Task BeforeCardPlayed(CardPlay cardPlay)
     {
         var card = cardPlay.Card;
-        if (!card.Tags.Contains(HuoreimuTags.UltimateSkill) ||
+        if (card.Owner.Creature != Owner ||
+            !card.Tags.Contains(HuoreimuTags.UltimateSkill) ||
             !UltimateSkillAction.CanCast(card as HuoreimuCard, cardPlay.Target)) return Task.CompletedTask;
         return PowerCmd.Apply<StrengthPower>(Owner, Amount, Owner, null);
     }
