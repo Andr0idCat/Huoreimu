@@ -31,6 +31,7 @@ public class DimensionalRift() : HuoreimuCard(1, CardType.Skill, CardRarity.Unco
         await base.OnPlay(choiceContext, cardPlay);
         var target = cardPlay.Target;
         ArgumentNullException.ThrowIfNull(target);
+        await CommonActions.Apply<IntangiblePower>(choiceContext, target, this);
         await CommonActions.Apply<DimensionalRiftPower>(choiceContext, target, this);
     }
 
