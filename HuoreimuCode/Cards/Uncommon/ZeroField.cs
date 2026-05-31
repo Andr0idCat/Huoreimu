@@ -32,6 +32,7 @@ public class ZeroField() : HuoreimuCard(1, CardType.Skill, CardRarity.Uncommon, 
         ValueProp props,
         Creature dealer, CardModel cardSource)
     {
+        if (Pile?.Type is PileType.Deck or PileType.None || target != Owner.Creature) return;
         if (!props.HasFlag(ValueProp.Unblockable) && target.CurrentHp - (amount - target.Block) > 0) return;
         if (props.HasFlag(ValueProp.Unblockable) && target.CurrentHp - amount > 0) return;
 
