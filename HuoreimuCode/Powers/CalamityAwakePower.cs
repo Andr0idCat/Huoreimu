@@ -13,7 +13,7 @@ public sealed class CalamityAwakePower() : HuoreimuPowerBase(PowerType.Buff, Pow
     public override async Task AfterCardPlayed(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         if (cardPlay.Card.Type != CardType.Attack) return;
-        if (Owner.Player == null) return;
+        if (cardPlay.Card.Owner != Owner.Player) return;
 
         Flash();
         var pool = Owner.Player.Character.CardPool.GetUnlockedCards(
