@@ -11,6 +11,8 @@ public class MugenBondPunch() : HuoreimuCard(0, CardType.Skill, CardRarity.Rare,
 {
     public override CardMultiplayerConstraint MultiplayerConstraint => CardMultiplayerConstraint.MultiplayerOnly;
 
+    public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Exhaust];
+
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
     [
         HoverTipFactory.FromKeyword(HuoreimuKeywords.UltimateSkill)
