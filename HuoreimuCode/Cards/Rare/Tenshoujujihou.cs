@@ -1,5 +1,6 @@
 using AyaMod.Huoreimu.Actions;
 using AyaMod.Huoreimu.DynamicVars;
+using AyaMod.Huoreimu.Extensions;
 using AyaMod.Huoreimu.Keywords;
 using AyaMod.Huoreimu.Tags;
 using BaseLib.Utils;
@@ -41,7 +42,7 @@ public class Tenshoujujihou() : HuoreimuUltimateSkillCard(2, CardType.Attack, Ca
 
     protected override void OnUpgrade()
     {
-        if (DynamicVars.TryGetValue(HuoreimuConstants.ULTIMATE_SKILL, out var dynamicVar))
-            dynamicVar.UpgradeValueBy(-1);
+        var ultimateSkill = DynamicVars.GetUltimateSkill();
+        if (ultimateSkill != null) ultimateSkill.UpgradeValueBy(-1);
     }
 }

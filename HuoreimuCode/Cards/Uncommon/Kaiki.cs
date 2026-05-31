@@ -1,5 +1,6 @@
 using AyaMod.Huoreimu.Actions;
 using AyaMod.Huoreimu.DynamicVars;
+using AyaMod.Huoreimu.Extensions;
 using AyaMod.Huoreimu.Keywords;
 using AyaMod.Huoreimu.Tags;
 using MegaCrit.Sts2.Core.Commands;
@@ -35,7 +36,7 @@ public class Kaiki() : HuoreimuUltimateSkillCard(0, CardType.Skill, CardRarity.U
 
     protected override void OnUpgrade()
     {
-        if (!DynamicVars.TryGetValue(HuoreimuConstants.ULTIMATE_SKILL, out var dynamicVar)) return;
-        dynamicVar.UpgradeValueBy(-1);
+        var ultimateSkill = DynamicVars.GetUltimateSkill();
+        if (ultimateSkill != null) ultimateSkill.UpgradeValueBy(-1);
     }
 }

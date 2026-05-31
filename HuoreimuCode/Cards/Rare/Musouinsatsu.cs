@@ -1,5 +1,6 @@
 using System.Linq;
 using AyaMod.Huoreimu.DynamicVars;
+using AyaMod.Huoreimu.Extensions;
 using AyaMod.Huoreimu.Powers;
 using BaseLib.Extensions;
 using BaseLib.Utils;
@@ -24,12 +25,8 @@ public class Musouinsatsu() : HuoreimuCard(2, CardType.Power, CardRarity.Rare, T
     {
         await base.OnPlay(choiceContext, cardPlay);
 
-        var maxSelect = DynamicVars.TryGetValue(HuoreimuConstants.SELECTION_COUNT, out var selection)
-            ? selection.IntValue
-            : 0;
-        var prefs = new CardSelectorPrefs(SelectionScreenPrompt, maxSelect);
-        var selected = await CardSelectCmd.FromHand(choiceContext, Owner, prefs,
-            c => c.Type == CardType.Attack, this);
+        var prefs = new CardSelectorPrefs(SelectionScreenPrompt, DynamicVars.GetSelection().IntValue);
+        var selected = await CardSelectCmd.FromHand(choiceContext, Owner, prefs, c => c.Type == CardType.Attack, this);
         foreach (var card in selected)
         {
             card.AddKeyword(CardKeyword.Retain);
@@ -40,7 +37,6 @@ public class Musouinsatsu() : HuoreimuCard(2, CardType.Power, CardRarity.Rare, T
 
     protected override void OnUpgrade()
     {
-        if(!DynamicVars.TryGetValue(HuoreimuConstants.SELECTION_COUNT, out var selection))return;
-        selection.UpgradeValueBy(1);
+        DynamicVars.GetSelection().UpgradeValueBy(1);
     }
 }

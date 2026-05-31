@@ -1,5 +1,5 @@
 ﻿using AyaMod.Huoreimu.Cards;
-using AyaMod.Huoreimu.DynamicVars;
+using AyaMod.Huoreimu.Extensions;
 using AyaMod.Huoreimu.Keywords;
 using AyaMod.Huoreimu.Powers;
 using MegaCrit.Sts2.Core.Commands;
@@ -16,7 +16,8 @@ public static class UltimateSkillAction
 
     private static (OmenOfDeathPower, int) CheckCondition(CardModel card, Creature creature)
     {
-        if (!card.DynamicVars.TryGetValue(HuoreimuConstants.ULTIMATE_SKILL, out var dynamicVar))
+        var dynamicVar = card.DynamicVars.GetUltimateSkill();
+        if (dynamicVar is null)
         {
             dynamicVar = card.Enchantment?.DynamicVars?.GetUltimateSkill();
             if (dynamicVar is null) return (null, 0);
