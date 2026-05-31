@@ -54,4 +54,9 @@ public static class StringExtensions
     {
         return $"res://{MainFile.ModId}/Image/Powers/{path}";
     }
+
+    public static string EnchantmentIconPath(this string path)
+    {
+        return $"res://{MainFile.ModId}/Image/Enchantments/{path}";
+    }
 }

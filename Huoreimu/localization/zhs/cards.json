@@ -168,5 +168,7 @@
   "AYAMOD-SUIEISHIN.selectionScreenPrompt": "选择要消耗的牌",
   "AYAMOD-SUIEISHIN.description": "选择[blue]1[/blue]张手牌消耗。下回合开始时，将这些牌从消耗牌堆中打出。",
   "AYAMOD-DIMENSIONAL_RIFT.title": "次元狭缝",
-  "AYAMOD-DIMENSIONAL_RIFT.description": "给予另一名玩家[blue]{IntangiblePower:diff()}[/blue]层[gold]无实体[/gold]，并使其在本回合中失去{DimensionalRiftPower:inverseDiff()}点[gold]力量[/gold]。"
+  "AYAMOD-DIMENSIONAL_RIFT.description": "给予另一名玩家[blue]{IntangiblePower:diff()}[/blue]层[gold]无实体[/gold]，并使其在本回合中失去{DimensionalRiftPower:inverseDiff()}点[gold]力量[/gold]。",
+  "AYAMOD-MUGEN_BOND_PUNCH.title": "天上天下友情拳",
+  "AYAMOD-MUGEN_BOND_PUNCH.description": "所有其他玩家抽牌堆中随机1张单体攻击牌获得[gold]必杀技[/gold]3：额外打出1次。"
 }
