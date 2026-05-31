@@ -42,7 +42,8 @@ public sealed class KakuroPower() : HuoreimuPowerBase(PowerType.Buff, PowerStack
 
     public override Task AfterCardChangedPiles(CardModel card, PileType oldPileType, AbstractModel source)
     {
-        if (card is { Type: CardType.Curse, Pile: { Type: PileType.Hand } }) SetCard(card, RetainVar.BoolVal);
+        if (card is { Type: CardType.Curse, Pile: { Type: PileType.Hand } } && card.Owner == Owner.Player)
+            SetCard(card, RetainVar.BoolVal);
         return Task.CompletedTask;
     }
 
