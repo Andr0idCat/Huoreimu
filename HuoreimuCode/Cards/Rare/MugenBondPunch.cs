@@ -24,7 +24,9 @@ public class MugenBondPunch() : HuoreimuCard(0, CardType.Skill, CardRarity.Rare,
         foreach (var player in CombatState.Players)
         {
             var cards = PileType.Draw.GetPile(player).Cards
-                .Where(c => c.Type is CardType.Attack && c.TargetType is TargetType.AnyEnemy && c.Enchantment is null);
+                .Where(c => c.Type is CardType.Attack && c.TargetType is TargetType.AnyEnemy && c.Enchantment is null)
+                .ToArray();
+            if (cards.Length == 0) continue;
             var result = rng.NextItem(cards);
             CardCmd.Enchant<MugenBondPunchEnchantment>(result, 1);
             CardCmd.Preview(result);
