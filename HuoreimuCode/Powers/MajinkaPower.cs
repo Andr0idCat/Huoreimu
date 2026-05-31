@@ -10,7 +10,7 @@ public class MajinkaPower() : HuoreimuPowerBase(PowerType.Buff, PowerStackType.C
 {
     public override async Task AfterCardDrawn(PlayerChoiceContext choiceContext, CardModel card, bool fromHandDraw)
     {
-        if (card.Type is not CardType.Curse) return;
+        if (card.Type is not CardType.Curse || card.Owner != Owner.Player) return;
         ArgumentNullException.ThrowIfNull(Owner.Player);
         Flash();
         await CardPileCmd.Draw(choiceContext, Amount, Owner.Player);
