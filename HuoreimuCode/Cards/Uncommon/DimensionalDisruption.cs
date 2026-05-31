@@ -1,9 +1,9 @@
-using AyaMod.Huoreimu.Powers;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.CardSelection;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.Models.Powers;
 
 namespace AyaMod.Huoreimu.Cards.Uncommon;
 
@@ -18,14 +18,17 @@ public class DimensionalDisruption() : HuoreimuCard(1, CardType.Skill, CardRarit
         var hand = PileType.Hand.GetPile(Owner).Cards;
         var toDiscard = (await CardSelectCmd.FromHand(choiceContext, Owner,
             new CardSelectorPrefs(SelectionScreenPrompt, 0, hand.Count), _ => true, this)).ToList();
-        if (toDiscard.Count == 0) return;
+        var discardAmount = toDiscard.Count;
+        if (discardAmount == 0) return;
 
         foreach (var card in toDiscard)
         {
             await CardCmd.Discard(choiceContext, card);
         }
 
-        await CommonActions.ApplySelf<DimensionalDisruptionPower>(choiceContext, this, toDiscard.Count);
+        await CommonActions.ApplySelf<DrawCardsNextTurnPower>(choiceContext, this, discardAmount);
+        // ReSharper disable once PossibleLossOfFraction
+        await CommonActions.ApplySelf<EnergyNextTurnPower>(choiceContext, this, discardAmount / 2);
     }
 
     protected override void OnUpgrade()
