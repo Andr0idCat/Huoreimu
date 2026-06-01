@@ -15,7 +15,10 @@ public static class StringExtensions
     {
         return $"res://{MainFile.ModId}/Image/{path}";
     }
-
+	public static string HandsImagePath(this string path)
+    {
+        return Path.Join(MainFile.ModId, "Images", "Hands", path);
+    }
     public static string CardImagePath(this string path)
     {
         return Path.Join(MainFile.ModId, "Images", "Cards", path);
