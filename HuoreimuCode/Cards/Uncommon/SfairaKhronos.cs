@@ -11,23 +11,26 @@ namespace AyaMod.Huoreimu.Cards.Uncommon;
 
 public class SfairaKhronos() : HuoreimuCard(1, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
 {
-    private static readonly LocString RetainPrompt = new LocString("cards", "AYAMOD-SFAIRA_KHRONOS.selectionScreenPrompt");
-
+    private const int MIN_SELECTION = 0;
+    private const int MAX_SELECTION = 2;
     public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Exhaust];
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new CardsVar(2)
+        new CardsVar(2),
+        new (HuoreimuConstants.MINIMUM_VALUE, MIN_SELECTION),
+        new (HuoreimuConstants.MAXIMUM_VALUE, MAX_SELECTION)
     ];
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         await base.OnPlay(choiceContext, cardPlay);
 
-        await CardPileCmd.Draw(choiceContext, 2, Owner);
+        await CommonActions.Draw(this, choiceContext);
 
-        var prefs = new CardSelectorPrefs(RetainPrompt, 0, 2);
-        var selected = await CardSelectCmd.FromHand(choiceContext, Owner, prefs, _ => true, this);
+        var prefs = new CardSelectorPrefs(SelectionScreenPrompt, MIN_SELECTION, MAX_SELECTION);
+        var selected = await CardSelectCmd.FromHand(choiceContext, Owner, prefs,
+            c => !c.ShouldRetainThisTurn, this);
         foreach (var card in selected)
         {
             card.GiveSingleTurnRetain();

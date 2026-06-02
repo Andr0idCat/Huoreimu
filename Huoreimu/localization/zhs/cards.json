@@ -131,7 +131,7 @@
   "AYAMOD-SFAIRA_OSIA.selectionScreenPrompt1": "选择弃牌堆的1张牌加入手牌",
   "AYAMOD-SFAIRA_OSIA.selectionScreenPrompt2": "选择弃牌堆的1张牌放到抽牌堆顶部",
   "AYAMOD-SFAIRA_KHRONOS.title": "次元射击·克洛诺斯",
-  "AYAMOD-SFAIRA_KHRONOS.description": "抽{Cards:diff()}张牌，选择至多[blue]2[/blue]张手牌在本回合保留。",
+  "AYAMOD-SFAIRA_KHRONOS.description": "抽{Cards:diff()}张牌，选择至多[blue]{Maximum:diff()}[/blue]张手牌在本回合保留。",
   "AYAMOD-SFAIRA_KHRONOS.selectionScreenPrompt": "选择至多2张本回合保留的手牌",
   "AYAMOD-VIOLATE_SHOT.title": "怨恨射击",
   "AYAMOD-VIOLATE_SHOT.description": "造成{Damage:diff()}点伤害。本场战斗中每抽到过一张诅咒牌，额外造成{ExtraDamage:diff()}点伤害。",
