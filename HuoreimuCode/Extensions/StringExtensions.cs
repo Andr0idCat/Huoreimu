@@ -62,4 +62,9 @@ public static class StringExtensions
     {
         return $"res://{MainFile.ModId}/Image/Enchantments/{path}";
     }
+
+    public static string PotionPath(this string path)
+    {
+        return $"res://{MainFile.ModId}/Image/Potions/{path}";
+    }
 }

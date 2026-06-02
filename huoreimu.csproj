@@ -32,6 +32,7 @@
         <Content Include="Huoreimu\localization\zhs\card_keywords.json"/>
         <Content Include="Huoreimu\localization\zhs\characters.json"/>
         <Content Include="Huoreimu\localization\zhs\enchantments.json" />
+        <Content Include="Huoreimu\localization\zhs\potions.json" />
         <Content Include="Huoreimu\localization\zhs\powers.json"/>
         <Content Include="Huoreimu\localization\zhs\relics.json"/>
         <Content Include="Huoreimu\localization\zhs\static_hover_tips.json"/>

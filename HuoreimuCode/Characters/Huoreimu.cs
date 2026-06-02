@@ -43,7 +43,7 @@ public class Huoreimu : PlaceholderCharacterModel
 
     public override CardPoolModel CardPool => ModelDb.CardPool<HuoreimuCardPool>();
     public override RelicPoolModel RelicPool => ModelDb.RelicPool<HuoreimuRelicPool>();
-    public override PotionPoolModel PotionPool => ModelDb.PotionPool<SharedPotionPool>();
+    public override PotionPoolModel PotionPool => ModelDb.PotionPool<HuoreimuPotionPool>();
 
     /*  PlaceholderCharacterModel will utilize placeholder basegame assets for most of your character assets until you
         override all the other methods that define those assets.

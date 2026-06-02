@@ -19,5 +19,14 @@
   "AYAMOD-FOUL_BLOOD.flavor": "必须将这些野兽一个不剩地驱逐出去。",
   "AYAMOD-HIDDEN_DOOM.title": "隐藏的灾祸",
   "AYAMOD-HIDDEN_DOOM.description": "在问号地点遭遇的战斗变为精英战斗，精英战斗获得的卡牌奖励全部为强化过的。",
-  "AYAMOD-HIDDEN_DOOM.flavor": "你觉得自己很幸运吗？"
+  "AYAMOD-HIDDEN_DOOM.flavor": "你觉得自己很幸运吗？",
+  "AYAMOD-DIRTCHEAP_TEA.title": "超便宜茶叶",
+  "AYAMOD-DIRTCHEAP_TEA.description": "每场战斗开始时，获得一瓶[gold]超便宜茶水[/gold]。",
+  "AYAMOD-DIRTCHEAP_TEA.flavor": "在这一点上倒是和那位巫女一模一样。",
+  "AYAMOD-DIRTCHEAP_CIGARETTE.title": "超便宜香烟",
+  "AYAMOD-DIRTCHEAP_CIGARETTE.description": "每给予{Interval:inverseDiff()}层[gold]死兆星[/gold]，获得{StrengthPower:diff()}点[gold]力量[/gold]。",
+  "AYAMOD-DIRTCHEAP_CIGARETTE.flavor": "因为是坏孩子，所以可以抽烟，没有问题。",
+  "AYAMOD-BREAST_BIND.title": "裹胸布",
+  "AYAMOD-BREAST_BIND.description": "进入精英战斗时，获得{BufferPower:diff()}层[gold]缓冲[/gold]。",
+  "AYAMOD-BREAST_BIND.flavor": "哦哦，实际丰满……"
 }
