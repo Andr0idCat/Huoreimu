@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://24ibl5gvinpr"
-path="res://.godot/imported/sfaira-pneuma.png-cefa0ccf9e726dc14e0e5da73c4170a7.ctex"
+uid="uid://dsivd78amxo8o"
+path="res://.godot/imported/sfaira_osia.png-d0eaac5b3b3eb314c0e2c653d0fb2dce.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Huoreimu/Image/Cards/sfaira-pneuma.png"
-dest_files=["res://.godot/imported/sfaira-pneuma.png-cefa0ccf9e726dc14e0e5da73c4170a7.ctex"]
+source_file="res://Huoreimu/Image/Cards/sfaira_osia.png"
+dest_files=["res://.godot/imported/sfaira_osia.png-d0eaac5b3b3eb314c0e2c653d0fb2dce.ctex"]
 
 [params]
 

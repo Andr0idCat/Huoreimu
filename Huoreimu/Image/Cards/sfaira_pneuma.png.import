@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bcf5qvsrjv5a0"
-path="res://.godot/imported/sfaira-khronos.png-ab9d1290b8f7c6aa3e69fe5b9258a474.ctex"
+uid="uid://y0kiycnenrbn"
+path="res://.godot/imported/sfaira_pneuma.png-6456a8293428196a9bf57a1e249a7623.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Huoreimu/Image/Cards/sfaira-khronos.png"
-dest_files=["res://.godot/imported/sfaira-khronos.png-ab9d1290b8f7c6aa3e69fe5b9258a474.ctex"]
+source_file="res://Huoreimu/Image/Cards/sfaira_pneuma.png"
+dest_files=["res://.godot/imported/sfaira_pneuma.png-6456a8293428196a9bf57a1e249a7623.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cjbcwoa6ksu87"
-path="res://.godot/imported/sfaira-osia.png-33d6dbc528956221bf7824aa855f9840.ctex"
+uid="uid://lygbco6dfuj3"
+path="res://.godot/imported/sfaira_khronos.png-14cbe5da7e4523c4f1b24c050966227e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Huoreimu/Image/Cards/sfaira-osia.png"
-dest_files=["res://.godot/imported/sfaira-osia.png-33d6dbc528956221bf7824aa855f9840.ctex"]
+source_file="res://Huoreimu/Image/Cards/sfaira_khronos.png"
+dest_files=["res://.godot/imported/sfaira_khronos.png-14cbe5da7e4523c4f1b24c050966227e.ctex"]
 
 [params]
 
