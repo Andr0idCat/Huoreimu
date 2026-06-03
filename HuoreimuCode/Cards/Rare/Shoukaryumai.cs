@@ -35,7 +35,7 @@ public class Shoukaryumai() : HuoreimuUltimateSkillCard(0, CardType.Attack, Card
         await UltimateSkillAction.EarlyExecute(this, cardPlay, async () =>
         {
             await CommonActions.CardAttack(this, cardPlay.Target).Execute(choiceContext);
-            await CardPileCmd.Add(this, PileType.Hand);
+            if (GetResultPileType() is not PileType.Exhaust) await CardPileCmd.Add(this, PileType.Hand);
         }, () => CommonActions.CardAttack(this, cardPlay.Target).Execute(choiceContext));
     }
 
