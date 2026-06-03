@@ -180,5 +180,7 @@
   "AYAMOD-GOD_TIER_FORM.title": "论外形态",
   "AYAMOD-GOD_TIER_FORM.description": "回合开始时，从已[gold]消耗[/gold]的牌中选择至多{GodTierFormPower:diff()}张牌加入手牌。",
   "AYAMOD-CONSTANT.title": "恒常",
-  "AYAMOD-CONSTANT.description": "在本回合保留你的手牌。"
+  "AYAMOD-CONSTANT.description": "在本回合保留你的手牌。",
+  "AYAMOD-SHOUKAJUSHU.title": "障祸咒取",
+  "AYAMOD-SHOUKAJUSHU.description": "[gold]必杀技[/gold]{UltimateSkill:inverseDiff()}：本回合内获得{ShoukajushuPower:diff()}点[gold]力量[/gold]。"
 }
