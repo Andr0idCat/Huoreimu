@@ -1,7 +1,6 @@
 using AyaMod.Huoreimu.Actions;
 using AyaMod.Huoreimu.DynamicVars;
 using AyaMod.Huoreimu.Keywords;
-using AyaMod.Huoreimu.Powers;
 using AyaMod.Huoreimu.Tags;
 using BaseLib.Abstracts;
 using BaseLib.Utils;
@@ -23,8 +22,8 @@ public class Jubousuikyousatsu()
     [
         new CalculationBaseVar(13),
         new ExtraDamageVar(6),
-        new CalculatedDamageVar(ValueProp.Move)
-            .WithMultiplier((_, creature) => creature?.GetPower<OmenOfDeathPower>()?.Amount ?? 0),
+        new CalculatedDamageVar(ValueProp.Move).WithMultiplier((card, creature) =>
+            CalculateXUltimateValue(card, creature)),
         new UltimateSkillVar()
     ];
 
