@@ -184,5 +184,7 @@
   "AYAMOD-SHOUKAJUSHU.title": "障祸咒取",
   "AYAMOD-SHOUKAJUSHU.description": "[gold]必杀技[/gold]{UltimateSkill:inverseDiff()}：本回合内获得{ShoukajushuPower:diff()}点[gold]力量[/gold]。",
   "AYAMOD-ENERGY_BURST.title": "爆气",
-  "AYAMOD-ENERGY_BURST.description": "获得{Block:diff()}点格挡和{VigorPower:diff()}点[gold]活力[/gold]X次。"
+  "AYAMOD-ENERGY_BURST.description": "获得{Block:diff()}点格挡和{VigorPower:diff()}点[gold]活力[/gold]X次。",
+  "AYAMOD-GENOCIDE_KICK.title": "灭族切割",
+  "AYAMOD-GENOCIDE_KICK.description": "造成{CalculatedDamage:diff()}点伤害{Repeat:diff()}次，移除你当前所有格挡值，每移除1点格挡就多造成{ExtraDamage:diff()}点伤害。"
 }
