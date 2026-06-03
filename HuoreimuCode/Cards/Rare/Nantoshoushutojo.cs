@@ -1,7 +1,6 @@
 using AyaMod.Huoreimu.Actions;
 using AyaMod.Huoreimu.DynamicVars;
 using AyaMod.Huoreimu.Keywords;
-using AyaMod.Huoreimu.Powers;
 using AyaMod.Huoreimu.Tags;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Entities.Cards;
@@ -14,21 +13,21 @@ namespace AyaMod.Huoreimu.Cards.Rare;
 
 public class Nantoshoushutojo() : HuoreimuUltimateSkillCard(3, CardType.Attack, CardRarity.Rare, TargetType.AnyEnemy)
 {
+    private const int HIT_COUNT = 7;
     protected override HashSet<CardTag> CanonicalTags => [HuoreimuTags.UltimateSkill];
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new CalculationBaseVar(2),
         new ExtraDamageVar(1),
-        new CalculatedDamageVar(ValueProp.Move)
-            .WithMultiplier((_, creature) => creature?.GetPower<OmenOfDeathPower>()?.Amount ?? 0),
-        new RepeatVar(7),
+        new CalculatedDamageVar(ValueProp.Move).WithMultiplier((card, creature) =>
+            CalculateXUltimateValue(card, creature)),
+        new RepeatVar(HIT_COUNT),
         new UltimateSkillVar()
     ];
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
     [
-        HoverTipFactory.FromPower<OmenOfDeathPower>(),
         HoverTipFactory.FromKeyword(HuoreimuKeywords.UltimateSkill)
     ];
 
@@ -36,11 +35,9 @@ public class Nantoshoushutojo() : HuoreimuUltimateSkillCard(3, CardType.Attack, 
     {
         await base.OnPlay(choiceContext, cardPlay);
         ArgumentNullException.ThrowIfNull(cardPlay.Target);
-        await UltimateSkillAction.EarlyExecuteAll(this, cardPlay, async count =>
-        {
-            var perHitDmg = DynamicVars.CalculationBase.IntValue + count;
-            await CommonActions.CardAttack(this, cardPlay.Target, perHitDmg, 7).Execute(choiceContext);
-        });
+        await UltimateSkillAction.EarlyExecuteAll(this, cardPlay,
+            async _ => await CommonActions.CardAttack(this, cardPlay.Target, HIT_COUNT)
+                .Execute(choiceContext));
     }
 
     protected override void OnUpgrade()
