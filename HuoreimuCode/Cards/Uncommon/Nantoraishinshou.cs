@@ -8,7 +8,7 @@ using MegaCrit.Sts2.Core.ValueProps;
 
 namespace AyaMod.Huoreimu.Cards.Common;
 
-public class Nantoraishinshou() : HuoreimuCard(2, CardType.Attack, CardRarity.Common, TargetType.AnyEnemy)
+public class Nantoraishinshou() : HuoreimuCard(2, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy)
 {
     protected override IEnumerable<IHoverTip> ExtraHoverTips => [HoverTipFactory.FromPower<OmenOfDeathPower>()];
 

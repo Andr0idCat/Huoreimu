@@ -19,7 +19,7 @@ public class Shoukaryumai() : HuoreimuUltimateSkillCard(0, CardType.Attack, Card
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DamageVar(4, ValueProp.Move),
+        new DamageVar(6, ValueProp.Move),
         new UltimateSkillVar(3)
     ];
 

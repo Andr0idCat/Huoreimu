@@ -19,7 +19,7 @@ public class Meikyoushisui() : HuoreimuCard(1, CardType.Skill, CardRarity.Uncomm
     {
         await base.OnPlay(choiceContext, cardPlay);
         var cards = PileType.Hand.GetPile(Owner).Cards
-            .Where(c => c.Type is CardType.Curse)
+            .Where(c => c.Type is CardType.Curse or CardType.Status)
             .ToList();
 
         var count = cards.Count;

@@ -9,7 +9,7 @@ using MegaCrit.Sts2.Core.Models.Powers;
 
 namespace AyaMod.Huoreimu.Cards.Rare;
 
-public class Grudge() : HuoreimuCard(1, CardType.Power, CardRarity.Rare, TargetType.Self)
+public class Grudge() : HuoreimuCard(0, CardType.Power, CardRarity.Rare, TargetType.Self)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [

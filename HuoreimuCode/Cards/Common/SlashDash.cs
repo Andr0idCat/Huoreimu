@@ -11,7 +11,7 @@ public class SlashDash() : HuoreimuCard(1, CardType.Attack, CardRarity.Common, T
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DamageVar(6, ValueProp.Move),
+        new DamageVar(9, ValueProp.Move),
         new CardsVar(1),
         new(HuoreimuConstants.ELITE_EXTRA_DRAW, 2)
     ];

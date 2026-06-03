@@ -14,7 +14,7 @@ namespace AyaMod.Huoreimu.Cards.Uncommon;
 
 public sealed class Ningendo() : HuoreimuCard(1, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy)
 {
-    private const int INITIAL_DAMAGE = 5;
+    private const int INITIAL_DAMAGE = 6;
     private int _damage = INITIAL_DAMAGE;
 
     [SavedProperty]

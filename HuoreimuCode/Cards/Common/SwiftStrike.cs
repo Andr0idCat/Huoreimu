@@ -1,4 +1,5 @@
-using AyaMod.Huoreimu.Powers;
+﻿using AyaMod.Huoreimu.Powers;
+using BaseLib.Extensions;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
@@ -12,7 +13,7 @@ public class SwiftStrike() : HuoreimuCard(1, CardType.Attack, CardRarity.Common,
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DamageVar(8, ValueProp.Move),
+        new DamageVar(9, ValueProp.Move),
         new PowerVar<OmenOfDeathPower>(1)
     ];
 
@@ -28,6 +29,7 @@ public class SwiftStrike() : HuoreimuCard(1, CardType.Attack, CardRarity.Common,
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Damage.UpgradeValueBy(3);
+        DynamicVars.Damage.UpgradeValueBy(2);
+        DynamicVars.Power<OmenOfDeathPower>().UpgradeValueBy(1);
     }
 }

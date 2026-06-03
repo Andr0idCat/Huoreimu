@@ -21,7 +21,7 @@ public class VoidGenesis() : HuoreimuExtraDeckCard<Huo>(1, CardType.Skill, CardR
         await base.OnPlay(choiceContext, cardPlay);
         await CreatureCmd.TriggerAnim(Owner.Creature, "Cast", Owner.Character.CastAnimDelay);
         var list = PileType.Hand.GetPile(Owner).Cards
-            .Where(c => c.Type is CardType.Curse)
+            .Where(c => c.Type is CardType.Curse or CardType.Status)
             .ToList();
         var exhaustCount = list.Count;
         foreach (var item in list)
