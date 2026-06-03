@@ -76,5 +76,9 @@
   "AYAMOD-SUIEISHIN_POWER.smartDescription": "下回合开始时从消耗牌堆中打出。",
   "AYAMOD-CALAMITY_AWAKE_POWER.title": "灾祸觉醒",
   "AYAMOD-CALAMITY_AWAKE_POWER.description": "每当你打出攻击牌时，将随机一张攻击牌加入你的手牌。",
-  "AYAMOD-CALAMITY_AWAKE_POWER.smartDescription": "每当你打出攻击牌时，将随机一张攻击牌加入你的手牌。"
+  "AYAMOD-CALAMITY_AWAKE_POWER.smartDescription": "每当你打出攻击牌时，将随机一张攻击牌加入你的手牌。",
+  "AYAMOD-GOD_TIER_FORM_POWER.title": "论外形态",
+  "AYAMOD-GOD_TIER_FORM_POWER.selectionScreenPrompt": "选择至多{Maximum}张牌加入手牌",
+  "AYAMOD-GOD_TIER_FORM_POWER.description": "回合开始时，从已[gold]消耗[/gold]的牌中选择一定数量的牌加入手牌。",
+  "AYAMOD-GOD_TIER_FORM_POWER.smartDescription": "回合开始时，从已[gold]消耗[/gold]的牌中选择至多{Amount}张牌加入手牌。"
 }
