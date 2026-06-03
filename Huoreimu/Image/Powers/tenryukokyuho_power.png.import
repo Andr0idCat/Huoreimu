@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://gp8fkqwuekp3"
-path="res://.godot/imported/tenryukokyoho_power_big.png-553e68ad167d2d1bcc9e5310b17c5b6e.ctex"
+uid="uid://d24oa7br5aft4"
+path="res://.godot/imported/tenryukokyuho_power.png-a110ba48b1ba4d0114008749c1070cba.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Huoreimu/Image/Powers/tenryukokyoho_power_big.png"
-dest_files=["res://.godot/imported/tenryukokyoho_power_big.png-553e68ad167d2d1bcc9e5310b17c5b6e.ctex"]
+source_file="res://Huoreimu/Image/Powers/tenryukokyuho_power.png"
+dest_files=["res://.godot/imported/tenryukokyuho_power.png-a110ba48b1ba4d0114008749c1070cba.ctex"]
 
 [params]
 
