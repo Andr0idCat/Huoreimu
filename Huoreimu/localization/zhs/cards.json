@@ -178,5 +178,7 @@
   "AYAMOD-ZERO_FIELD.title": "零之结界",
   "AYAMOD-ZERO_FIELD.description": "获得{Block:diff()}点格挡。当你的生命值将要降低至[blue]0[/blue]或以下时，不论何处，将这张牌打出，之后这张牌永久变化为[gold]祸[/gold]。",
   "AYAMOD-GOD_TIER_FORM.title": "论外形态",
-  "AYAMOD-GOD_TIER_FORM.description": "回合开始时，从已[gold]消耗[/gold]的牌中选择至多{GodTierFormPower:diff()}张牌加入手牌。"
+  "AYAMOD-GOD_TIER_FORM.description": "回合开始时，从已[gold]消耗[/gold]的牌中选择至多{GodTierFormPower:diff()}张牌加入手牌。",
+  "AYAMOD-CONSTANT.title": "恒常",
+  "AYAMOD-CONSTANT.description": "在本回合保留你的手牌。"
 }
