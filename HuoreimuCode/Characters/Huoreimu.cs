@@ -2,12 +2,8 @@ using BaseLib.Abstracts;
 using Godot;
 using MegaCrit.Sts2.Core.Entities.Characters;
 using MegaCrit.Sts2.Core.Models;
-using MegaCrit.Sts2.Core.Models.Cards;
-using MegaCrit.Sts2.Core.Models.PotionPools;
-using MegaCrit.Sts2.Core.Models.RelicPools;
-using AyaMod.Huoreimu.Cards;
+using AyaMod.Huoreimu.Cards.Basic;
 using AyaMod.Huoreimu.Extensions;
-using System;
 using AyaMod.Huoreimu.Relic;
 
 namespace AyaMod.Huoreimu.Character;

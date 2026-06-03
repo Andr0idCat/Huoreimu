@@ -13,7 +13,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 
 
-namespace AyaMod.Huoreimu.Cards;
+namespace AyaMod.Huoreimu.Cards.Basic;
 
 public class HuoreimuBlock() : HuoreimuCard(1,
     CardType.Skill, CardRarity.Basic,
@@ -34,3 +34,4 @@ public class HuoreimuBlock() : HuoreimuCard(1,
         DynamicVars.Block.UpgradeValueBy(3m);
     }
 }
+

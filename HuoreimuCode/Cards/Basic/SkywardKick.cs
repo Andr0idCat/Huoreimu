@@ -6,7 +6,7 @@ using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.ValueProps;
 
-namespace AyaMod.Huoreimu.Cards;
+namespace AyaMod.Huoreimu.Cards.Basic;
 
 public class SkywardKick() : HuoreimuCard(1, CardType.Skill, CardRarity.Basic, TargetType.AnyEnemy)
 {

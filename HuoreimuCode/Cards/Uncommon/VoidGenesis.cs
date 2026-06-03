@@ -5,7 +5,7 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Nodes.CommonUi;
 
-namespace AyaMod.Huoreimu.Cards;
+namespace AyaMod.Huoreimu.Cards.Uncommon;
 
 public class VoidGenesis() : HuoreimuExtraDeckCard<Huo>(1, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
 {

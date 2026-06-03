@@ -9,7 +9,7 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.ValueProps;
 
-namespace AyaMod.Huoreimu.Cards;
+namespace AyaMod.Huoreimu.Cards.Uncommon;
 
 public class Shichi() : HuoreimuUltimateSkillCard(2, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy)
 {

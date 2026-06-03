@@ -5,7 +5,7 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.ValueProps;
 
-namespace AyaMod.Huoreimu.Cards;
+namespace AyaMod.Huoreimu.Cards.Common;
 
 public class Downfall() : HuoreimuCard(2, CardType.Attack, CardRarity.Common, TargetType.AnyEnemy)
 {

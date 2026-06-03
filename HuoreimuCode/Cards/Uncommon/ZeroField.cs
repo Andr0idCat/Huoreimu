@@ -9,7 +9,7 @@ using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.ValueProps;
 
-namespace AyaMod.Huoreimu.Cards.UnCommon;
+namespace AyaMod.Huoreimu.Cards.Uncommon;
 
 public class ZeroField() : HuoreimuCard(1, CardType.Skill, CardRarity.Uncommon, TargetType.Self), IDamageReceiveListener
 {

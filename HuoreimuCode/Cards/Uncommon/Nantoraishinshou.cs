@@ -6,7 +6,7 @@ using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.ValueProps;
 
-namespace AyaMod.Huoreimu.Cards.Common;
+namespace AyaMod.Huoreimu.Cards.Uncommon;
 
 public class Nantoraishinshou() : HuoreimuCard(2, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy)
 {

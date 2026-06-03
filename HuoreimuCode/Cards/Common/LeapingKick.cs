@@ -6,7 +6,7 @@ using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.ValueProps;
 
-namespace AyaMod.Huoreimu.Cards;
+namespace AyaMod.Huoreimu.Cards.Common;
 
 public class LeapingKick() : HuoreimuCard(0, CardType.Attack, CardRarity.Common, TargetType.AnyEnemy)
 {
