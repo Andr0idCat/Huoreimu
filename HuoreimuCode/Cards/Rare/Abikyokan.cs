@@ -11,7 +11,9 @@ public class Abikyokan() : HuoreimuCard(1, CardType.Power, CardRarity.Rare, Targ
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new PowerVar<AbikyokanPower>(1)
+        new PowerVar<AbikyokanPower>(1),
+        new PowerVar<AbikyokanPowerUpgraded>(1),
+        new CardsVar(1)
     ];
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
@@ -30,5 +32,10 @@ public class Abikyokan() : HuoreimuCard(1, CardType.Power, CardRarity.Rare, Targ
         {
             await CommonActions.ApplySelf<AbikyokanPower>(choiceContext, this);
         }
+    }
+
+    protected override void OnUpgrade()
+    {
+        DynamicVars.Cards.UpgradeValueBy(1);
     }
 }
