@@ -22,11 +22,13 @@ public class Abikyokan() : HuoreimuCard(1, CardType.Power, CardRarity.Rare, Targ
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         await base.OnPlay(choiceContext, cardPlay);
-        await CommonActions.ApplySelf<AbikyokanPower>(choiceContext, this);
-    }
-
-    protected override void OnUpgrade()
-    {
-        AddKeyword(CardKeyword.Innate);
+        if (IsUpgraded)
+        {
+            await CommonActions.ApplySelf<AbikyokanPowerUpgraded>(choiceContext, this);
+        }
+        else
+        {
+            await CommonActions.ApplySelf<AbikyokanPower>(choiceContext, this);
+        }
     }
 }

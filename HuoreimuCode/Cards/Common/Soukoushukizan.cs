@@ -28,6 +28,6 @@ public class Soukoushukizan() : HuoreimuCard(1, CardType.Attack, CardRarity.Comm
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Damage.UpgradeValueBy(11);
+        DynamicVars.Damage.UpgradeValueBy(3);
     }
 }

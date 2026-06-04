@@ -19,7 +19,7 @@ using MegaCrit.Sts2.Core.ValueProps;
 namespace AyaMod.Huoreimu.Cards.Uncommon;
 
 public class VitalpointStrike()
-    : HuoreimuUltimateSkillCard(1, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy)
+    : HuoreimuUltimateSkillCard(0, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy)
 {
     protected override HashSet<CardTag> CanonicalTags => [HuoreimuTags.UltimateSkill];
 
@@ -53,7 +53,7 @@ public class VitalpointStrike()
             Owner.RunState.Rng.CombatCardGeneration).ToList();
         foreach (var card in cards)
         {
-            card.SetToFreeThisCombat();
+            card.AddKeyword(HuoreimuKeywords.FreeUltimateSkill);
             card.AddKeyword(CardKeyword.Exhaust);
         }
 
