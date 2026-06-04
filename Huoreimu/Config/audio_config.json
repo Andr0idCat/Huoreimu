@@ -16,5 +16,18 @@
   "nantoshoushutojo": {"ultimate": true},
   "keshoushi": {"sfx": true},
   "omaewamoshindeiru": {"sfx": true},
-  "doll_invocation": {"sfx": true}
+  "doll_invocation": {"sfx": true},
+  "vitalpoint_strike": {"ultimate": true},
+  "sekkatsukou": {"sfx": true},
+  "mugen_bond_punch": {"sfx": true},
+  "god_tier_form": {"sfx": true},
+  "meikyoushisui": {"sfx": true},
+  "tenimuhou": {"sfx": true},
+  "constant": {"sfx": true},
+  "calamity_awake": {"sfx": true},
+  "kasen": {"sfx": true},
+  "genocide_kick": {"sfx": true},
+  "tenshoujujihou": {"ultimate": true},
+  "akai_yume": {"sfx": true},
+  "hakurei_hishou": {"sfx": true}
 }
