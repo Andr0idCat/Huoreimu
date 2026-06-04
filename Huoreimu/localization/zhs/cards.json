@@ -93,7 +93,7 @@
   "AYAMOD-MIASMIC_ABYSS.title": "无间瘴狱",
   "AYAMOD-MIASMIC_ABYSS.description": "获得{Block:diff()}点格挡，将1张[gold]祸[/gold]分别加入你的手牌和抽牌堆中。",
   "AYAMOD-SUN_FALL.title": "堕日",
-  "AYAMOD-SUN_FALL.description": "你的手牌中每有1张诅咒牌，则此牌就对所有敌人造成{Damage:diff()}点伤害。{InCombat:\\n（攻击{CalculatedHits:diff()}次。）|}",
+  "AYAMOD-SUN_FALL.description": "只有手牌中有诅咒牌时可以打出，对所有敌人造成{Damage:diff()}点伤害，抽2张牌。",
   "AYAMOD-WARP.title": "空间歪曲",
   "AYAMOD-WARP.selectionScreenPrompt": "选择要消耗的牌",
   "AYAMOD-WARP.description": "消耗至多{MaxExhaustCount:diff()}张手牌，抽等量的牌。如果消耗的诅咒牌数量大于等于{MinCurseCount:diff()}，获得[blue]{IntangiblePower:diff()}[/blue]层[gold]无实体[/gold]。",
