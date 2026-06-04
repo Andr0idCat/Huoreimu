@@ -8,25 +8,7 @@ public class HuoreimuAudio
     private static readonly Dictionary<string, AudioStream> Cache = new();
     private static readonly Dictionary<string, List<AudioStreamPlayer>> ActivePlayers = new();
 
-    // 基础播放（音量）
-    public static void Play(string path, float volume = 0.5f)
-    {
-        PlayInternal(path, volume, 1f, false);
-    }
-
-    // 可调音调播放
-    public static void Play(string path, float volume, float pitch)
-    {
-        PlayInternal(path, volume, pitch, false);
-    }
-
-    // 循环播放（可调音量、音调）
-    public static void PlayLooped(string path, float volume = 0.5f, float pitch = 1f)
-    {
-        PlayInternal(path, volume, pitch, true);
-    }
-
-    private static void PlayInternal(string path, float volume, float pitch, bool loop)
+    public static void Play(string path, float volume, float pitch, bool loop, bool unique)
     {
         volume *= SaveManager.Instance.SettingsSave.VolumeSfx;
         if (!Cache.TryGetValue(path, out var stream))
@@ -42,21 +24,37 @@ public class HuoreimuAudio
             return;
         }
 
-        var player = new AudioStreamPlayer
+        AudioStreamPlayer player;
+        if (unique && ActivePlayers.TryGetValue(path, out var activePlayer) && activePlayer.Count > 0)
         {
-            Stream = stream,
-            VolumeDb = ToDb(volume),
-            PitchScale = pitch,
-            Autoplay = true,
-        };
+            player = activePlayer[0];
+            player.Play();
+            for (var i = 1; i < activePlayer.Count; i++)
+            {
+                var otherPlayer = activePlayer[i];
+                activePlayer.Remove(otherPlayer);
+                otherPlayer.Stop();
+                otherPlayer.QueueFree();
+            }
+        }
+        else
+        {
+            player = new AudioStreamPlayer
+            {
+                Stream = stream,
+                VolumeDb = ToDb(volume),
+                PitchScale = pitch,
+                Autoplay = true,
+            };
 
-        var tree = Engine.GetMainLoop() as SceneTree;
-        tree?.Root.AddChild(player);
+            var tree = Engine.GetMainLoop() as SceneTree;
+            tree?.Root.AddChild(player);
 
-        // 登记播放器以便停止
-        if (!ActivePlayers.ContainsKey(path))
-            ActivePlayers[path] = [];
-        ActivePlayers[path].Add(player);
+            // 登记播放器以便停止
+            if (!ActivePlayers.ContainsKey(path))
+                ActivePlayers[path] = [];
+            ActivePlayers[path].Add(player);
+        }
 
         if (loop)
         {

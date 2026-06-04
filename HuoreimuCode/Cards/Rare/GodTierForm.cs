@@ -14,6 +14,8 @@ public class GodTierForm() : HuoreimuCard(3, CardType.Power, CardRarity.Rare, Ta
 
     protected override IEnumerable<DynamicVar> CanonicalVars => [new PowerVar<GodTierFormPower>(1)];
 
+    protected override bool UniqueSound => true;
+
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         await base.OnPlay(choiceContext, cardPlay);

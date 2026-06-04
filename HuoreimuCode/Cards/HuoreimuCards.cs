@@ -29,19 +29,21 @@ public abstract class HuoreimuCard :
 
     protected virtual string AudioName => $"{CardUid}_sfx";
     protected virtual string UltimateSkillAudioName => $"{CardUid}_ultimate";
+    protected virtual bool UniqueSound => false;
 
     protected override Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         if (!ModelDb.Singleton<AudioConfig>().ShouldPlayAudio(this)) return Task.CompletedTask;
-        PlayCardAudio(AudioName);
+        PlayCardAudio(AudioName, unique: UniqueSound);
         return Task.CompletedTask;
     }
 
-    private static void PlayCardAudio(string audioName)
+    private static void PlayCardAudio(string audioName, float volume = 0.5f, float pitch = 1f, bool loop = false,
+        bool unique = false)
     {
         var path = $"{audioName}.wav".AudioPath();
         Log.Info($">>>[HuoreimuMod]AudioPath={path}");
-        if (ResourceLoader.Exists(path)) HuoreimuAudio.Play(path);
+        if (ResourceLoader.Exists(path)) HuoreimuAudio.Play(path, volume, pitch, loop, unique);
         else Log.Warn($">>>[HuoreimuMod]Audio {path} not exist.");
     }
 
