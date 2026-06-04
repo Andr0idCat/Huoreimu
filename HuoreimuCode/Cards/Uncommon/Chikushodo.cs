@@ -50,7 +50,7 @@ public sealed class Chikushodo() : HuoreimuCard(INITIAL_COST, CardType.Attack, C
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Damage.UpgradeValueBy(6);
+        DynamicVars.Damage.UpgradeValueBy(4);
     }
 
     protected override void AfterDeserialized()

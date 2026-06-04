@@ -27,6 +27,6 @@ public class Tenjodo() : HuoreimuCard(2, CardType.Skill, CardRarity.Uncommon, Ta
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Block.UpgradeValueBy(6m);
+        DynamicVars.Block.UpgradeValueBy(4m);
     }
 }

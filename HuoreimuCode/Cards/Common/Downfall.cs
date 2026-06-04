@@ -27,6 +27,6 @@ public class Downfall() : HuoreimuCard(2, CardType.Attack, CardRarity.Common, Ta
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Damage.UpgradeValueBy(6);
+        DynamicVars.Damage.UpgradeValueBy(4);
     }
 }
