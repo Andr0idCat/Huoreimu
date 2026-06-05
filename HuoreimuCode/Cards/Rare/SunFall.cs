@@ -11,9 +11,9 @@ namespace AyaMod.Huoreimu.Cards.Rare;
 
 public class SunFall() : HuoreimuCard(1, CardType.Attack, CardRarity.Rare, TargetType.AllEnemies)
 {
-    // Default to unplayable; toggle this keyword when hand changes so the card
-    // is playable only when the player has at least one Curse in hand.
-    public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Unplayable];
+    protected override bool IsPlayable =>
+        Pile?.Type == PileType.Hand &&
+        PileType.Hand.GetPile(Owner).Cards.Any(c => c.Type == CardType.Curse);
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
@@ -37,12 +37,6 @@ public class SunFall() : HuoreimuCard(1, CardType.Attack, CardRarity.Rare, Targe
     public override Task AfterCardChangedPiles(CardModel card, PileType oldPileType, AbstractModel source)
     {
         if (CombatState == null || Pile?.Type != PileType.Hand) return Task.CompletedTask;
-
-        var hasCurse = PileType.Hand.GetPile(Owner).Cards.Any(c => c.Type == CardType.Curse);
-        if (hasCurse)
-            CardCmd.RemoveKeyword(this, [CardKeyword.Unplayable]);
-        else
-            CardCmd.ApplyKeyword(this, [CardKeyword.Unplayable]);
 
         CardsAction.Refresh(this);
         return Task.CompletedTask;
