@@ -1,6 +1,8 @@
 ﻿using AyaMod.Huoreimu.DynamicVars;
 using AyaMod.Huoreimu.Extensions;
 using AyaMod.Huoreimu.Keywords;
+using AyaMod.Huoreimu.Actions;
+using AyaMod.Huoreimu.Tags;
 using AyaMod.Huoreimu.Powers;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Entities.Cards;
@@ -13,6 +15,7 @@ namespace AyaMod.Huoreimu.Cards.Common;
 
 public class Shoukajushu() : HuoreimuUltimateSkillCard(0, CardType.Skill, CardRarity.Common, TargetType.AnyEnemy)
 {
+    protected override HashSet<CardTag> CanonicalTags => [HuoreimuTags.UltimateSkill];
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
     [
         HoverTipFactory.FromKeyword(HuoreimuKeywords.UltimateSkill),
@@ -28,7 +31,10 @@ public class Shoukajushu() : HuoreimuUltimateSkillCard(0, CardType.Skill, CardRa
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         await base.OnPlay(choiceContext, cardPlay);
-        await CommonActions.ApplySelf<ShoukajushuPower>(choiceContext, this);
+        await UltimateSkillAction.Execute(this, cardPlay, async () =>
+        {
+            await CommonActions.ApplySelf<ShoukajushuPower>(choiceContext, this);
+        });
     }
 
     protected override void OnUpgrade()
