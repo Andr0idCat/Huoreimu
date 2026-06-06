@@ -1,0 +1,7 @@
+{
+  "AYAMOD.mod_title": "Huoreimu",
+  "AYAMOD-UPLOAD_ERROR_LOGS.title": "Auto-upload Error Logs",
+  "AYAMOD-UPLOAD_ERROR_LOGS.description": "When enabled, uncaught exceptions in mod code will be automatically uploaded to a remote server to help improve the mod.",
+  "AYAMOD-CONSENT_UPLOAD_LOGS.header": "Upload Error Logs",
+  "AYAMOD-CONSENT_UPLOAD_LOGS.body": "[left]Enabling this option will upload error logs to the author's server.\nThe uploaded data includes only:\n• Mod name and version\n• Game version\n• Operating system\n• Error type and stack trace\n\nNo personal identifiable information or save data will be uploaded.\n\nYou can disable this option at any time in the settings.[/left]"
+}

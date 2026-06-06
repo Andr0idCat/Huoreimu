@@ -1,5 +1,6 @@
 using System.Text;
 using System.Text.Json;
+using AyaMod.Huoreimu.Config;
 using Huoreimu.Huoreimu;
 using MegaCrit.Sts2.Core.Debug;
 
@@ -49,6 +50,7 @@ public static class ExceptionReporter
     public static async Task UploadAsync(Exception ex)
     {
         if (string.IsNullOrEmpty(_serverUrl) || !ContainsAyaMod(ex)) return;
+        if (!HuoreimuConfig.UploadErrorLogs) return;
 
         var logPayload = new
         {

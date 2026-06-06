@@ -28,6 +28,7 @@
     </ItemGroup>
     <ItemGroup>
         <Content Include="Huoreimu\Config\audio_config.json" />
+        <Content Include="Huoreimu\localization\eng\settings_ui.json" />
         <Content Include="Huoreimu\localization\zhs\cards.json"/>
         <Content Include="Huoreimu\localization\zhs\card_keywords.json"/>
         <Content Include="Huoreimu\localization\zhs\characters.json"/>
@@ -35,6 +36,7 @@
         <Content Include="Huoreimu\localization\zhs\potions.json" />
         <Content Include="Huoreimu\localization\zhs\powers.json"/>
         <Content Include="Huoreimu\localization\zhs\relics.json"/>
+        <Content Include="Huoreimu\localization\zhs\settings_ui.json" />
         <Content Include="Huoreimu\localization\zhs\static_hover_tips.json"/>
     </ItemGroup>
 

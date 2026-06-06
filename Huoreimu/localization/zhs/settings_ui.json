@@ -1,0 +1,7 @@
+{
+  "AYAMOD.mod_title": "祸灵梦",
+  "AYAMOD-UPLOAD_ERROR_LOGS.title": "自动上传错误日志",
+  "AYAMOD-UPLOAD_ERROR_LOGS.description": "启用后，当模组代码抛出未捕获的异常时，会自动将错误信息上传至服务器以帮助改进模组。",
+  "AYAMOD-CONSENT_UPLOAD_LOGS.header": "上传错误日志",
+  "AYAMOD-CONSENT_UPLOAD_LOGS.body": "[left]启用此选项将会上传错误日志至作者的服务器。\n上传内容仅包含以下信息：\n• 模组名称与版本\n• 游戏版本\n• 操作系统\n• 错误类型与堆栈追踪\n\n不会上传任何个人身份信息或游戏存档数据。\n\n您可以随时在设置中关闭此选项。[/left]"
+}
