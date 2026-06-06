@@ -1,11 +1,7 @@
-using BaseLib.Utils;
+using AyaMod.Huoreimu.Utils;
 using HarmonyLib;
 using MegaCrit.Sts2.Core.Logging;
 using MegaCrit.Sts2.Core.Modding;
-using MegaCrit.Sts2.Core.Nodes.Screens.Timeline;
-using MegaCrit.Sts2.Core.Saves;
-using MegaCrit.Sts2.Core.Saves.Managers;
-using MegaCrit.Sts2.Core.Timeline;
 
 namespace Huoreimu.Huoreimu;
 
@@ -31,8 +27,8 @@ public class MainFile
 
     public static void Initialize()
     {
+        ExceptionReporter.Initialize("https://sts2-log-receiver.rubikzero0.workers.dev/");
         Harmony harmony = new(ModId);
-
         harmony.PatchAll();
     }
 }
