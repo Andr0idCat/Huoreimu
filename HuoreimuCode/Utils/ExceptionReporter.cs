@@ -1,3 +1,4 @@
+using System.Security.Cryptography;
 using System.Text;
 using System.Text.Json;
 using AyaMod.Huoreimu.Config;
@@ -10,12 +11,14 @@ public static class ExceptionReporter
 {
     private static readonly HttpClient Client = new();
     private static string _serverUrl;
+    private static byte[] _hmacSecretKey;
     private static string _modVersion = "unknown";
     private static string _gameVersion = "unknown";
 
-    public static void Initialize(string serverUrl)
+    public static void Initialize(string serverUrl, string hmacSecretKey)
     {
         _serverUrl = serverUrl;
+        _hmacSecretKey = Encoding.ASCII.GetBytes(hmacSecretKey);
         _modVersion = ReadModVersion();
         _gameVersion = ReadGameVersion();
 
@@ -54,6 +57,7 @@ public static class ExceptionReporter
 
         var logPayload = new
         {
+            uuid = Guid.NewGuid().ToString(),
             mod_id = MainFile.ModId,
             mod_version = _modVersion,
             game_version = _gameVersion,
@@ -66,8 +70,14 @@ public static class ExceptionReporter
         try
         {
             var json = JsonSerializer.Serialize(logPayload);
-            using var content = new StringContent(json, Encoding.UTF8, "application/json");
-            await Client.PostAsync(_serverUrl, content).ConfigureAwait(false);
+            var messageBytes = Encoding.UTF8.GetBytes(json);
+            using var hmac = new HMACSHA256(_hmacSecretKey);
+            var hash = hmac.ComputeHash(messageBytes);
+            var hashString = Convert.ToBase64String(hash);
+            var request = new HttpRequestMessage(HttpMethod.Post, _serverUrl);
+            request.Headers.Add("X-Mod-Signature", hashString);
+            request.Content = new StringContent(json, Encoding.ASCII, "application/json");
+            await Client.SendAsync(request).ConfigureAwait(false);
         }
         catch
         {

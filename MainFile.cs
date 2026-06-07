@@ -29,7 +29,8 @@ public class MainFile
     public static void Initialize()
     {
         ModConfigRegistry.Register(ModId, new HuoreimuConfig());
-        ExceptionReporter.Initialize("https://sts2-log-receiver.rubikzero0.workers.dev/");
+        ExceptionReporter.Initialize("https://sts2-log-receiver.rubikzero0.workers.dev/",
+            "55b6feff04ba8d7b94d89dace842089b80cc0e36049188045e04700bd6acf342");
         Harmony harmony = new(ModId);
         harmony.PatchAll();
     }
