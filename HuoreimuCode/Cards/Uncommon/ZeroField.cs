@@ -4,6 +4,7 @@ using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.Hooks;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
@@ -29,12 +30,21 @@ public class ZeroField() : HuoreimuCard(1, CardType.Skill, CardRarity.Uncommon, 
     }
 
     public override async Task BeforeDamageReceived(PlayerChoiceContext choiceContext, Creature target, decimal amount,
-        ValueProp props,
-        Creature dealer, CardModel cardSource)
+        ValueProp props, Creature dealer, CardModel cardSource)
     {
         if (Pile?.Type is PileType.Deck or PileType.None || target != Owner.Creature) return;
         if (props.HasFlag(ValueProp.Unblockable)) return;
-        if (target.CurrentHp - (amount - target.Block) > 0) return;
+        var combatState = target.CombatState;
+        if (combatState is null) return;
+
+        var runState = Owner.RunState;
+        var finalDamage = Math.Max(amount - target.Block, 0);
+        finalDamage = Hook.ModifyHpLostBeforeOsty(runState, combatState, target, finalDamage, props, dealer,
+            cardSource, out _);
+        finalDamage = Hook.ModifyHpLostAfterOsty(runState, combatState, target, finalDamage, props, dealer, cardSource,
+            out _);
+
+        if (finalDamage < target.CurrentHp) return;
 
         await CardCmd.AutoPlay(choiceContext, this, Owner.Creature);
 
