@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dxo0r4wxxwxcq"
-path="res://.godot/imported/musouinstsu_power.png-c5cdf331ef78ab164f279af1f46075f1.ctex"
+uid="uid://dm5fxswxs2ani"
+path="res://.godot/imported/musouinsatsu_power.png-cdd3753061ac7c5ad61adf336fed148e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Huoreimu/Image/Powers/musouinstsu_power.png"
-dest_files=["res://.godot/imported/musouinstsu_power.png-c5cdf331ef78ab164f279af1f46075f1.ctex"]
+source_file="res://Huoreimu/Image/Powers/musouinsatsu_power.png"
+dest_files=["res://.godot/imported/musouinsatsu_power.png-cdd3753061ac7c5ad61adf336fed148e.ctex"]
 
 [params]
 
