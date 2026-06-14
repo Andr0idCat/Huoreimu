@@ -10,7 +10,7 @@
   "AYAMOD-MAJINKA.title": "魔神化",
   "AYAMOD-MAJINKA.description": "每当你抽到1张诅咒牌时，抽1张牌并获得{energyPrefix:energyIcons(1)}。\n拾取这张牌时，在牌组中额外加入1张[gold]祸[/gold]。",
   "AYAMOD-SKYWARD_KICK.title": "升天脚",
-  "AYAMOD-SKYWARD_KICK.description": "获得{Block:diff()}点格挡。给予{WeakPower:diff()}层[gold]虚弱[/gold]。如果目标是精英敌人或BOSS，再获得4点格挡。",
+  "AYAMOD-SKYWARD_KICK.description": "获得{CalculationBase:diff()}点格挡。给予{WeakPower:diff()}层[gold]虚弱[/gold]。如果目标是精英敌人或BOSS，再获得{CalculationExtra:diff()}点格挡。{InCombat:\\n获得{CalculatedBlock:diff()}点格挡。|}",
   "AYAMOD-DOWNFALL.title": "凶落",
   "AYAMOD-DOWNFALL.description": "造成{Damage:diff()}点不可格挡的伤害。",
   "AYAMOD-HUO.title": "祸",
