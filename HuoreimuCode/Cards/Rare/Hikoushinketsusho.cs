@@ -12,7 +12,8 @@ public class Hikoushinketsusho() : HuoreimuExtraDeckCard<Huo>(1, CardType.Power,
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new PowerVar<HikoushinketsushoPower>(6)
+        new PowerVar<HikoushinketsushoPower>(3),
+        new (HuoreimuConstants.INCREASE_VALUE, 3)
     ];
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
@@ -28,6 +29,10 @@ public class Hikoushinketsusho() : HuoreimuExtraDeckCard<Huo>(1, CardType.Power,
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Power<HikoushinketsushoPower>().UpgradeValueBy(2);
+        DynamicVars.Power<HikoushinketsushoPower>().UpgradeValueBy(1);
+        if (DynamicVars.TryGetValue(HuoreimuConstants.INCREASE_VALUE, out var increaseValue))
+        {
+            increaseValue.UpgradeValueBy(1);
+        }
     }
 }
