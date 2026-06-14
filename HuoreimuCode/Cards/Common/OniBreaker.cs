@@ -12,7 +12,7 @@ namespace AyaMod.Huoreimu.Cards.Common;
 
 public sealed class OniBreaker() : HuoreimuCard(1, CardType.Skill, CardRarity.Common, TargetType.AnyEnemy)
 {
-    private int BaseVulnerable => IsUpgraded ? 2 : 1;
+    private int BaseVulnerable => 1;
     private const int INCREASE_AMOUNT = 1;
 
     private int _eliteDefeated;
@@ -67,7 +67,7 @@ public sealed class OniBreaker() : HuoreimuCard(1, CardType.Skill, CardRarity.Co
 
     protected override void OnUpgrade()
     {
-        RefreshPowerAmount();
+        EnergyCost.UpgradeBy(-1);
     }
 
     private void RefreshPowerAmount()

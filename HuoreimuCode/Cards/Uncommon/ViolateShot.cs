@@ -15,7 +15,7 @@ public class ViolateShot() : HuoreimuCard(2, CardType.Attack, CardRarity.Uncommo
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new DamageVar(10, ValueProp.Move),
-        new ExtraDamageVar(3)
+        new ExtraDamageVar(6)
     ];
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
@@ -33,6 +33,6 @@ public class ViolateShot() : HuoreimuCard(2, CardType.Attack, CardRarity.Uncommo
 
     protected override void OnUpgrade()
     {
-        DynamicVars.ExtraDamage.UpgradeValueBy(2);
+        DynamicVars.ExtraDamage.UpgradeValueBy(3);
     }
 }

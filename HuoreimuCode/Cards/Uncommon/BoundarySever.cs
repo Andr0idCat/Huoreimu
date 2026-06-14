@@ -12,7 +12,7 @@ namespace AyaMod.Huoreimu.Cards.Uncommon;
 
 public class BoundarySever() : HuoreimuCard(1, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy)
 {
-    private const int BASE_DAMAGE = 5;
+    private const int BASE_DAMAGE = 6;
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [

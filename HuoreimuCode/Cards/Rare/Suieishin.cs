@@ -18,7 +18,7 @@ public class Suieishin() : HuoreimuCard(1, CardType.Skill, CardRarity.Rare, Targ
     {
         await base.OnPlay(choiceContext, cardPlay);
 
-        var maxSelect = IsUpgraded ? 2 : 1;
+        var maxSelect = 2;
         var prefs = new CardSelectorPrefs(SelectPrompt, maxSelect);
         var selected = (await CardSelectCmd.FromHand(choiceContext, Owner, prefs, _ => true, this)).ToList();
         if (selected.Count == 0) return;

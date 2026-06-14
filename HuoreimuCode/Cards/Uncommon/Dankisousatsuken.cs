@@ -17,7 +17,7 @@ public class Dankisousatsuken() : HuoreimuCard(1, CardType.Attack, CardRarity.Un
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new DamageVar(12, ValueProp.Move),
-        new ExtraDamageVar(4),
+        new ExtraDamageVar(3),
         new(HuoreimuConstants.INCREASE_VALUE, 8)
     ];
 

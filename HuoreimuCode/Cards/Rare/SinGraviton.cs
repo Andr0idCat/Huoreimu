@@ -13,9 +13,9 @@ public class SinGraviton() : HuoreimuExtraDeckCard<Huo>(2, CardType.Power, CardR
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new PowerVar<WeakPower>(2),
-        new PowerVar<VulnerablePower>(2),
-        new PowerVar<OmenOfDeathPower>(2)
+        new PowerVar<WeakPower>(3),
+        new PowerVar<VulnerablePower>(3),
+        new PowerVar<OmenOfDeathPower>(3)
     ];
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
@@ -39,8 +39,8 @@ public class SinGraviton() : HuoreimuExtraDeckCard<Huo>(2, CardType.Power, CardR
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Power<WeakPower>().UpgradeValueBy(1);
-        DynamicVars.Power<VulnerablePower>().UpgradeValueBy(1);
-        DynamicVars.Power<OmenOfDeathPower>().UpgradeValueBy(1);
+        DynamicVars.Power<WeakPower>().UpgradeValueBy(2);
+        DynamicVars.Power<VulnerablePower>().UpgradeValueBy(2);
+        DynamicVars.Power<OmenOfDeathPower>().UpgradeValueBy(2);
     }
 }

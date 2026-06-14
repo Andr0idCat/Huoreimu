@@ -13,7 +13,7 @@ using MegaCrit.Sts2.Core.Localization.DynamicVars;
 
 namespace AyaMod.Huoreimu.Cards.Rare;
 
-public class Musouinsatsu() : HuoreimuCard(2, CardType.Power, CardRarity.Rare, TargetType.Self)
+public class Musouinsatsu() : HuoreimuCard(1, CardType.Power, CardRarity.Rare, TargetType.Self)
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
