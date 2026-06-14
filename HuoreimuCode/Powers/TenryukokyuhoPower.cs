@@ -6,6 +6,7 @@ using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Powers;
 using MegaCrit.Sts2.Core.HoverTips;
+using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Models.Powers;
 
 namespace AyaMod.Huoreimu.Powers;
@@ -24,6 +25,6 @@ public class TenryukokyuhoPower() : HuoreimuPowerBase(PowerType.Buff, PowerStack
         if (card.Owner.Creature != Owner ||
             !card.Tags.Contains(HuoreimuTags.UltimateSkill) ||
             !UltimateSkillAction.CanCast(card as HuoreimuCard, cardPlay.Target)) return Task.CompletedTask;
-        return PowerCmd.Apply<StrengthPower>(Owner, Amount, Owner, null);
+        return PowerCmd.Apply<StrengthPower>(new ThrowingPlayerChoiceContext(), Owner, Amount, Owner, null, false);
     }
 }

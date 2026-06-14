@@ -21,7 +21,7 @@ public class AbikyokanPowerUpgraded() : AbikyokanPower
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips => [HoverTipFactory.FromCard<Huo>()];
 
-    public override Task AfterPowerAmountChanged(PowerModel power, decimal amount, Creature applier,
+    public override Task AfterPowerAmountChanged(PlayerChoiceContext choiceContext, PowerModel power, decimal amount, Creature applier,
         CardModel cardSource)
     {
         if (power == this)
@@ -32,7 +32,7 @@ public class AbikyokanPowerUpgraded() : AbikyokanPower
         return Task.CompletedTask;
     }
 
-    public override async Task AfterSideTurnStart(CombatSide side, CombatState combatState)
+    public override async Task AfterSideTurnStart(CombatSide side, IReadOnlyList<Creature> participants, ICombatState combatState)
     {
         if (side is not CombatSide.Player) return;
         var player = Owner.Player;
@@ -43,7 +43,7 @@ public class AbikyokanPowerUpgraded() : AbikyokanPower
         }
 
         Flash();
-        await CardPileCmd.Draw(new BlockingPlayerChoiceContext(), Amount * 2, player);
+        await CardPileCmd.Draw(new ThrowingPlayerChoiceContext(), Amount * 2, player);
         await CardsAction.AddCardToPileWhenCombat<Huo>(player, PileType.Hand, Amount, combatState);
     }
 }

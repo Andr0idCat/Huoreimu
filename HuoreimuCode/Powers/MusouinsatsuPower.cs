@@ -24,7 +24,7 @@ public sealed class MusouinsatsuPower() : HuoreimuPowerBase(PowerType.Buff, Powe
         }
     }
 
-    public override bool IsInstanced => true;
+    public override PowerInstanceType InstanceType => PowerInstanceType.Instanced;
 
     public override int DisplayAmount => Attacked ? 0 : 1;
 

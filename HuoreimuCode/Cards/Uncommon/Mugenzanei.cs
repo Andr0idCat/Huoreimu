@@ -43,7 +43,7 @@ public class Mugenzanei() : HuoreimuUltimateSkillCard(2, CardType.Attack, CardRa
             return;
         }
 
-        await UltimateSkillAction.EarlyExecute(this, cardPlay,
+        await UltimateSkillAction.EarlyExecute(choiceContext, this, cardPlay,
             async () =>
             {
                 await CommonActions.CardAttack(this, cardPlay.Target).Execute(choiceContext);

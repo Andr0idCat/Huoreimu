@@ -39,10 +39,8 @@ public class ZeroField() : HuoreimuCard(1, CardType.Skill, CardRarity.Uncommon, 
 
         var runState = Owner.RunState;
         var finalDamage = Math.Max(amount - target.Block, 0);
-        finalDamage = Hook.ModifyHpLostBeforeOsty(runState, combatState, target, finalDamage, props, dealer,
-            cardSource, out _);
-        finalDamage = Hook.ModifyHpLostAfterOsty(runState, combatState, target, finalDamage, props, dealer, cardSource,
-            out _);
+        finalDamage = Hook.ModifyHpLost(runState, combatState, target, finalDamage, props, dealer, cardSource,
+            HpLossHookPhase.All, out _);
 
         if (finalDamage < target.CurrentHp) return;
 

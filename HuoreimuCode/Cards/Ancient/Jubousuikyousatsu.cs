@@ -36,7 +36,7 @@ public class Jubousuikyousatsu()
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         await base.OnPlay(choiceContext, cardPlay);
-        await UltimateSkillAction.EarlyExecuteAll(this, cardPlay, _ => Attack(choiceContext, cardPlay));
+        await UltimateSkillAction.EarlyExecuteAll(choiceContext, this, cardPlay, _ => Attack(choiceContext, cardPlay));
     }
 
     private Task Attack(PlayerChoiceContext choiceContext, CardPlay cardPlay)

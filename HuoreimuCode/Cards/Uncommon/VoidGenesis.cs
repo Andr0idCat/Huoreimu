@@ -43,6 +43,6 @@ public class VoidGenesis() : HuoreimuExtraDeckCard<Huo>(1, CardType.Skill, CardR
             CardCmd.Upgrade(cards, CardPreviewStyle.None);
         }
 
-        await CardPileCmd.AddGeneratedCardsToCombat(cards, PileType.Hand, addedByPlayer: true);
+        await CardPileCmd.AddGeneratedCardsToCombat(cards, PileType.Hand, Owner);
     }
 }

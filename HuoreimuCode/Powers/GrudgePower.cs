@@ -17,6 +17,6 @@ public class GrudgePower() : HuoreimuPowerBase(PowerType.Buff, PowerStackType.Co
     {
         if (target != Owner || result.UnblockedDamage <= 0) return;
         Flash();
-        await PowerCmd.Apply<VigorPower>(Owner, Amount, Owner, null);
+        await PowerCmd.Apply<VigorPower>(choiceContext, Owner, Amount, Owner, null, false);
     }
 }

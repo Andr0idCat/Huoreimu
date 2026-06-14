@@ -14,7 +14,7 @@ public sealed class MugenzaneiPower() : HuoreimuPowerBase(PowerType.Debuff, Powe
 {
     private CardModel _cardRef;
 
-    public override bool IsInstanced => true;
+    public override PowerInstanceType InstanceType => PowerInstanceType.Instanced;
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
         _cardRef != null ? [HoverTipFactory.FromCard(_cardRef)] : base.ExtraHoverTips;

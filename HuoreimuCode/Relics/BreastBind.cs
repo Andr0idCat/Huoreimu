@@ -1,5 +1,6 @@
 ﻿using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Relics;
+using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models.Powers;
@@ -19,6 +20,6 @@ public class BreastBind : HuoreimuRelic
     {
         if (room.RoomType is not RoomType.Elite) return;
         var owner = Owner.Creature;
-        await PowerCmd.Apply<BufferPower>(owner, BUFFER_AMOUNT, owner, null);
+        await PowerCmd.Apply<BufferPower>(new ThrowingPlayerChoiceContext(), owner, BUFFER_AMOUNT, owner, null, false);
     }
 }

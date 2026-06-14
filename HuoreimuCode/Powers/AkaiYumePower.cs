@@ -13,7 +13,7 @@ public sealed class AkaiYumePower() : HuoreimuPowerBase(PowerType.Buff, PowerSta
 {
     protected override IEnumerable<DynamicVar> CanonicalVars => [new BlockVar(0, ValueProp.Unpowered)];
 
-    public override Task AfterPowerAmountChanged(PowerModel power, decimal amount, Creature applier,
+    public override Task AfterPowerAmountChanged(PlayerChoiceContext choiceContext, PowerModel power, decimal amount, Creature applier,
         CardModel cardSource)
     {
         if (power == this)
@@ -21,7 +21,7 @@ public sealed class AkaiYumePower() : HuoreimuPowerBase(PowerType.Buff, PowerSta
             DynamicVars.Block.BaseValue = Amount * 2;
         }
 
-        return base.AfterPowerAmountChanged(power, amount, applier, cardSource);
+        return base.AfterPowerAmountChanged(choiceContext, power, amount, applier, cardSource);
     }
 
     public override async Task AfterCardDrawn(PlayerChoiceContext choiceContext, CardModel card, bool fromHandDraw)

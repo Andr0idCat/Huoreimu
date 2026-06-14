@@ -6,6 +6,7 @@ using BaseLib.Extensions;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Relics;
+using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.Rooms;
@@ -57,8 +58,8 @@ public class FoulBlood : HuoreimuRelic
         if (Bonus <= 0) return;
 
         Flash();
-        await PowerCmd.Apply<StrengthPower>(Owner.Creature, Bonus, Owner.Creature, null);
-        await PowerCmd.Apply<DexterityPower>(Owner.Creature, Bonus, Owner.Creature, null);
+        await PowerCmd.Apply<StrengthPower>(new ThrowingPlayerChoiceContext(), Owner.Creature, Bonus, Owner.Creature, null, false);
+        await PowerCmd.Apply<DexterityPower>(new ThrowingPlayerChoiceContext(), Owner.Creature, Bonus, Owner.Creature, null, false);
     }
 
     public override Task AfterCombatVictoryEarly(CombatRoom room)

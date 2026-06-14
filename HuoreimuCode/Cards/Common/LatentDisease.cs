@@ -34,7 +34,7 @@ public class LatentDisease() : HuoreimuCard(1, CardType.Attack, CardRarity.Commo
         var amount = DynamicVars.Power<VulnerablePower>().IntValue + (IsInEliteOrBossRoom
             ? ADDITIONAL_VULNERABLE_POWER
             : 0);
-        await PowerCmd.Apply<VulnerablePower>(cardPlay.Target, amount, Owner.Creature, this);
+        await PowerCmd.Apply<VulnerablePower>(choiceContext, cardPlay.Target, amount, Owner.Creature, this, false);
     }
 
     protected override void OnUpgrade()

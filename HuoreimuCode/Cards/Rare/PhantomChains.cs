@@ -37,7 +37,7 @@ public class PhantomChains() : HuoreimuCard(1, CardType.Skill, CardRarity.Rare, 
             amount += increase;
         }
 
-        await PowerCmd.Apply<StrengthPower>(cardPlay.Target, -amount, Owner.Creature, this);
+        await PowerCmd.Apply<StrengthPower>(choiceContext, cardPlay.Target, -amount, Owner.Creature, this, false);
     }
 
     protected override void OnUpgrade()

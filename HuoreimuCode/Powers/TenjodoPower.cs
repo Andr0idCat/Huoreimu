@@ -17,13 +17,13 @@ public class TenjodoPower() : HuoreimuPowerBase(PowerType.Buff, PowerStackType.C
     {
         if (dealer is null || target != Owner) return Task.CompletedTask;
         Flash();
-        return PowerCmd.Apply<OmenOfDeathPower>(dealer, Amount, Owner, null);
+        return PowerCmd.Apply<OmenOfDeathPower>(choiceContext, dealer, Amount, Owner, null, false);
     }
 
-    public override Task AfterTurnEnd(PlayerChoiceContext choiceContext, CombatSide side)
+    public override Task AfterSideTurnEnd(PlayerChoiceContext choiceContext, CombatSide side, IEnumerable<Creature> participants)
     {
         return side is not CombatSide.Enemy
-            ? base.AfterTurnEnd(choiceContext, side)
+            ? base.AfterSideTurnEnd(choiceContext, side, participants)
             : PowerCmd.Remove<TenjodoPower>(Owner);
     }
 }

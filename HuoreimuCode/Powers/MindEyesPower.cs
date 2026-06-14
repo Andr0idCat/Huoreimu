@@ -2,6 +2,7 @@ using AyaMod.Huoreimu.Powers;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Powers;
+using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.ValueProps;
@@ -15,7 +16,7 @@ public class MindEyesPower() : HuoreimuPowerBase(PowerType.Buff, PowerStackType.
         HoverTipFactory.FromPower<OmenOfDeathPower>(),
     ];
 
-    public override async Task AfterPowerAmountChanged(PowerModel power, decimal amount, Creature applier,
+    public override async Task AfterPowerAmountChanged(PlayerChoiceContext choiceContext, PowerModel power, decimal amount, Creature applier,
         CardModel cardSource)
     {
         if (amount <= 0 || applier != Owner || power is not OmenOfDeathPower) return;

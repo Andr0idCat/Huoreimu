@@ -33,10 +33,10 @@ public class BoundarySever() : HuoreimuCard(1, CardType.Attack, CardRarity.Uncom
             await PowerCmd.Remove<IntangiblePower>(cardPlay.Target);
 
         var attack = await CommonActions.CardAttack(this, cardPlay.Target).Execute(choiceContext);
-        var dealt = attack.Results.Sum(r => r.UnblockedDamage + r.BlockedDamage);
+        var dealt = attack.Results.SelectMany(r => r).Sum(r => r.UnblockedDamage + r.BlockedDamage);
         if (dealt > 0)
         {
-            await PowerCmd.Apply<BoundarySeverPower>(cardPlay.Target, dealt, Owner.Creature, this);
+            await PowerCmd.Apply<BoundarySeverPower>(choiceContext, cardPlay.Target, dealt, Owner.Creature, this, false);
         }
     }
 

@@ -35,7 +35,7 @@ public class Nantoshoushutojo() : HuoreimuUltimateSkillCard(3, CardType.Attack, 
     {
         await base.OnPlay(choiceContext, cardPlay);
         ArgumentNullException.ThrowIfNull(cardPlay.Target);
-        await UltimateSkillAction.EarlyExecuteAll(this, cardPlay,
+        await UltimateSkillAction.EarlyExecuteAll(choiceContext, this, cardPlay,
             async _ => await CommonActions.CardAttack(this, cardPlay.Target, HIT_COUNT)
                 .Execute(choiceContext));
     }

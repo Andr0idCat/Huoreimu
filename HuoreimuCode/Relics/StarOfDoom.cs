@@ -3,6 +3,7 @@ using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Commands.Builders;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Relics;
+using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 
@@ -33,17 +34,17 @@ public class StarOfDoom : HuoreimuRelic
         if (combatState == null) return;
 
         Flash();
-        await PowerCmd.Apply<OmenOfDeathPower>(combatState.HittableEnemies, COMBAT_START_OMEN, Owner.Creature, null);
+        await PowerCmd.Apply<OmenOfDeathPower>(new ThrowingPlayerChoiceContext(), combatState.HittableEnemies, COMBAT_START_OMEN, Owner.Creature, null, false);
     }
 
-    public override async Task AfterAttack(AttackCommand command)
+    public override async Task AfterAttack(PlayerChoiceContext choiceContext, AttackCommand command)
     {
         if (command.Attacker != Owner.Creature) return;
 
-        foreach (var result in command.Results)
+        foreach (var result in command.Results.SelectMany(r => r))
         {
             Flash();
-            await PowerCmd.Apply<OmenOfDeathPower>(result.Receiver, ATTACK_OMEN, Owner.Creature, null);
+            await PowerCmd.Apply<OmenOfDeathPower>(choiceContext, result.Receiver, ATTACK_OMEN, Owner.Creature, null, false);
         }
     }
 
@@ -62,6 +63,6 @@ public class StarOfDoom : HuoreimuRelic
 
         var index = Owner.RunState.Rng.Niche.NextInt(0, targets.Count);
         Flash();
-        await PowerCmd.Apply<OmenOfDeathPower>(targets[index], amount, Owner.Creature, null);
+        await PowerCmd.Apply<OmenOfDeathPower>(new ThrowingPlayerChoiceContext(), targets[index], amount, Owner.Creature, null, false);
     }
 }

@@ -4,7 +4,9 @@ using BaseLib.Abstracts;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Commands.Builders;
+using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Relics;
+using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
@@ -19,17 +21,17 @@ public class StarOfDeath : HuoreimuRelic
     protected override IEnumerable<IHoverTip> ExtraHoverTips => [HoverTipFactory.FromPower<OmenOfDeathPower>()];
     public override RelicModel GetUpgradeReplacement() => ModelDb.Relic<StarOfDoom>();
 
-    public override async Task AfterAttack(AttackCommand command)
+    public override async Task AfterAttack(PlayerChoiceContext choiceContext, AttackCommand command)
     {
         if (command.Attacker != Owner.Creature)
         {
             return;
         }
 
-        foreach (var result in command.Results)
+        foreach (var result in command.Results.SelectMany(r => r))
         {
             Flash();
-            await PowerCmd.Apply<OmenOfDeathPower>(result.Receiver, OMEN_OF_DEATH_VALUE, Owner.Creature, null);
+            await PowerCmd.Apply<OmenOfDeathPower>(choiceContext, result.Receiver, OMEN_OF_DEATH_VALUE, Owner.Creature, null, false);
         }
     }
 }

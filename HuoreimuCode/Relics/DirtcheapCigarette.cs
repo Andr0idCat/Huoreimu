@@ -2,6 +2,7 @@
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Relics;
+using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
@@ -44,7 +45,7 @@ public class DirtcheapCigarette : HuoreimuRelic
         HoverTipFactory.FromPower<StrengthPower>()
     ];
 
-    public override async Task AfterPowerAmountChanged(PowerModel power, decimal amount, Creature applier, CardModel _)
+    public override async Task AfterPowerAmountChanged(PlayerChoiceContext choiceContext, PowerModel power, decimal amount, Creature applier, CardModel _)
     {
         var owner = Owner.Creature;
         if (applier != owner || power is not OmenOfDeathPower || amount < 0) return;
@@ -52,6 +53,6 @@ public class DirtcheapCigarette : HuoreimuRelic
         var (quotient, remainder) = int.DivRem(total, INTERVAL);
         OmenOfDeathGiven = remainder;
         if (quotient <= 0) return;
-        await PowerCmd.Apply<StrengthPower>(owner, quotient * STRENGTH_AMOUNT, owner, null);
+        await PowerCmd.Apply<StrengthPower>(choiceContext, owner, quotient * STRENGTH_AMOUNT, owner, null, false);
     }
 }

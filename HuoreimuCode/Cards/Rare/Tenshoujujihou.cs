@@ -36,7 +36,7 @@ public class Tenshoujujihou() : HuoreimuUltimateSkillCard(2, CardType.Attack, Ca
 
         await CommonActions.CardAttack(this, cardPlay.Target).Execute(choiceContext);
 
-        await UltimateSkillAction.Execute(this, cardPlay,
+        await UltimateSkillAction.Execute(choiceContext, this, cardPlay,
             () => CommonActions.ApplySelf<BufferPower>(choiceContext, this, 1));
     }
 

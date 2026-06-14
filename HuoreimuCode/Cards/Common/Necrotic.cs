@@ -30,8 +30,8 @@ public class Necrotic() : HuoreimuCard(2, CardType.Skill, CardRarity.Common, Tar
         {
             var omen = enemy.GetPower<OmenOfDeathPower>();
             if (omen is null || omen.Amount <= 0) continue;
-            await PowerCmd.Apply<NecroticPower>(enemy, omen.Amount * DynamicVars.Power<NecroticPower>().BaseValue,
-                Owner.Creature, this);
+            await PowerCmd.Apply<NecroticPower>(choiceContext, enemy, omen.Amount * DynamicVars.Power<NecroticPower>().BaseValue,
+                Owner.Creature, this, false);
         }
     }
 

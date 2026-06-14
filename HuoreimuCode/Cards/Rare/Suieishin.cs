@@ -27,7 +27,7 @@ public class Suieishin() : HuoreimuCard(1, CardType.Skill, CardRarity.Rare, Targ
         var power = Owner.Creature.GetPower<SuieishinPower>();
         if (power == null)
         {
-            power = await PowerCmd.Apply<SuieishinPower>(Owner.Creature, 1, Owner.Creature, this);
+            power = await PowerCmd.Apply<SuieishinPower>(choiceContext, Owner.Creature, 1, Owner.Creature, this, false);
         }
         if (power == null) return;
 
