@@ -11,8 +11,19 @@ public sealed class AkaiYumePower() : HuoreimuPowerBase(PowerType.Buff, PowerSta
 {
     public override async Task AfterCardDrawn(PlayerChoiceContext choiceContext, CardModel card, bool fromHandDraw)
     {
-        if (card.Type is not CardType.Curse) return;
-        Flash();
-        await CreatureCmd.GainBlock(Owner, Amount, ValueProp.Move, null);
+        if (card.Owner != Owner.Player) return;
+
+        if (card.Type is CardType.Curse)
+        {
+            Flash();
+            await CreatureCmd.GainBlock(Owner, Amount, ValueProp.Move, null);
+            return;
+        }
+
+        if (card.Type is CardType.Status)
+        {
+            Flash();
+            await CreatureCmd.GainBlock(Owner, Amount / 2, ValueProp.Move, null);
+        }
     }
 }

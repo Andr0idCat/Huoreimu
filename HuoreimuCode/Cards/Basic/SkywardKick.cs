@@ -1,4 +1,6 @@
+using BaseLib.Extensions;
 using BaseLib.Utils;
+using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
@@ -23,12 +25,15 @@ public class SkywardKick() : HuoreimuCard(1, CardType.Skill, CardRarity.Basic, T
         await base.OnPlay(choiceContext, cardPlay);
         await CommonActions.CardBlock(this, DynamicVars.Block, cardPlay);
         var target = cardPlay.Target;
-        if (target is null || !IsInEliteOrBossRoom) return;
+        if (target is null) return;
         await CommonActions.Apply<WeakPower>(choiceContext, target, this);
+        if (!IsInEliteOrBossRoom) return;
+        await CreatureCmd.GainBlock(Owner.Creature, 4, ValueProp.Move, null);
     }
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Block.UpgradeValueBy(3m);
+        DynamicVars.Block.UpgradeValueBy(2m);
+        DynamicVars.Power<WeakPower>().UpgradeValueBy(1);
     }
 }

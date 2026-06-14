@@ -12,7 +12,7 @@ public class Meikyoushisui() : HuoreimuCard(1, CardType.Skill, CardRarity.Uncomm
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new BlockVar(4, ValueProp.Move),
-        new CardsVar(1)
+        new CardsVar(2)
     ];
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)

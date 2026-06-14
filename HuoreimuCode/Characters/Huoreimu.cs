@@ -20,7 +20,7 @@ public class Huoreimu : PlaceholderCharacterModel
 
     public override Color NameColor => Color;
     public override CharacterGender Gender => CharacterGender.Feminine;
-    public override int StartingHp => 66;
+    public override int StartingHp => 77;
 
     public override IEnumerable<CardModel> StartingDeck => [
         ModelDb.Card<HuoreimuAttack>(),

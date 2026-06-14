@@ -12,14 +12,12 @@ public class LatentDisease() : HuoreimuCard(1, CardType.Attack, CardRarity.Commo
 {
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
     [
-        HoverTipFactory.FromPower<WeakPower>(),
         HoverTipFactory.FromPower<VulnerablePower>(),
     ];
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DamageVar(10, ValueProp.Move),
-        new PowerVar<WeakPower>(1),
+        new DamageVar(7, ValueProp.Move),
         new PowerVar<VulnerablePower>(1)
     ];
 
@@ -28,8 +26,9 @@ public class LatentDisease() : HuoreimuCard(1, CardType.Attack, CardRarity.Commo
         await base.OnPlay(choiceContext, cardPlay);
         ArgumentNullException.ThrowIfNull(cardPlay.Target);
         await CommonActions.CardAttack(this, cardPlay.Target).Execute(choiceContext);
+        await CommonActions.Apply<VulnerablePower>(choiceContext, cardPlay.Target, this);
         if (!IsInEliteOrBossRoom) return;
-        await CommonActions.Apply<WeakPower>(choiceContext, cardPlay.Target, this);
+        await CommonActions.Apply<VulnerablePower>(choiceContext, cardPlay.Target, this);
         await CommonActions.Apply<VulnerablePower>(choiceContext, cardPlay.Target, this);
     }
 

@@ -12,8 +12,19 @@ public class HikoushinketsushoPower() : HuoreimuPowerBase(PowerType.Buff, PowerS
 {
     public override async Task AfterCardDrawn(PlayerChoiceContext choiceContext, CardModel drawnCard, bool fromHandDraw)
     {
-        if (drawnCard.Type is not CardType.Curse || drawnCard.Owner != Owner.Player) return;
-        Flash();
-        await CreatureCmd.Damage(choiceContext, CombatState.HittableEnemies, Amount, ValueProp.Unpowered, Owner, null);
+        if (drawnCard.Owner != Owner.Player) return;
+
+        if (drawnCard.Type is CardType.Curse)
+        {
+            Flash();
+            await CreatureCmd.Damage(choiceContext, CombatState.HittableEnemies, Amount, ValueProp.Unpowered, Owner, null);
+            return;
+        }
+
+        if (drawnCard.Type is CardType.Status)
+        {
+            Flash();
+            await CreatureCmd.Damage(choiceContext, CombatState.HittableEnemies, Amount / 2, ValueProp.Unpowered, Owner, null);
+        }
     }
 }

@@ -12,7 +12,7 @@ public class Hikoushinketsusho() : HuoreimuExtraDeckCard<Huo>(1, CardType.Power,
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new PowerVar<HikoushinketsushoPower>(5)
+        new PowerVar<HikoushinketsushoPower>(6)
     ];
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>

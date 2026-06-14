@@ -14,7 +14,7 @@ namespace AyaMod.Huoreimu.Cards.Uncommon;
 
 public class SpellToy() : HuoreimuCard(2, CardType.Power, CardRarity.Uncommon, TargetType.Self), IRelicObtainedListener
 {
-    private const int INITIAL_BLOCK = 6;
+    private const int INITIAL_BLOCK = 4;
     private const int INCREASE_INTERVAL = 2;
     private int _relicObtainedAmount;
 
