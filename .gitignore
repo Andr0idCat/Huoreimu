@@ -7,3 +7,4 @@ LocalConfig.targets
 *.DotSettings.user
 .vscode/
 bin/
+uploader_config.json

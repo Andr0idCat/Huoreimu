@@ -20,13 +20,9 @@ public static class ModelDbInitPatch
         const string path = $"res://{MainFile.ModId}/Config/uploader_config.json";
         if (!ResourceLoader.Exists(path)) return;
         using var file = FileAccess.Open(path, FileAccess.ModeFlags.Read);
-        var text = file.GetAsText();
-        var dict = Json.ParseString(text).AsGodotDictionary();
-        var ariyaConfig = dict["Ariya"].AsGodotDictionary();
-        var endPoint = ariyaConfig["EndPoint"].AsString();
-        var key = ariyaConfig["Key"].AsString();
+        var json = file.GetAsText();
         var modVersion = ReadModVersion();
-        LogUploaderInterop.RegisterAriyaUploader("AyaMod", "Huoreimu", modVersion, new Uri(endPoint), key);
+        LogUploaderInterop.RegisterUploaderByJson(nameof(AyaMod), MainFile.ModId, modVersion, json);
     }
 
     private static string ReadModVersion()
