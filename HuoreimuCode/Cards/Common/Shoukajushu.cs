@@ -31,7 +31,7 @@ public class Shoukajushu() : HuoreimuUltimateSkillCard(0, CardType.Skill, CardRa
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         await base.OnPlay(choiceContext, cardPlay);
-        await UltimateSkillAction.Execute(this, cardPlay, async () =>
+        await UltimateSkillAction.Execute(choiceContext, this, cardPlay, async () =>
         {
             await CommonActions.ApplySelf<ShoukajushuPower>(choiceContext, this);
         });

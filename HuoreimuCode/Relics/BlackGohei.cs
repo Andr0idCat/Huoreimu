@@ -24,6 +24,6 @@ public class BlackGohei : HuoreimuRelic
         if (target.Side == Owner.Creature.Side) return;
 
         Flash();
-        await PowerCmd.Apply<IntangiblePower>(Owner.Creature, 1, Owner.Creature, null);
+        await PowerCmd.Apply<IntangiblePower>(choiceContext, Owner.Creature, 1, Owner.Creature, null, false);
     }
 }

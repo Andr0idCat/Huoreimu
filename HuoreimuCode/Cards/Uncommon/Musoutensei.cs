@@ -22,7 +22,7 @@ public class Musoutensei() : HuoreimuCard(0, CardType.Skill, CardRarity.Uncommon
         var template = rng.NextItem(options);
         var card = CombatState.CreateCard(template, Owner);
         if (IsUpgraded && card.IsUpgradable) CardCmd.Upgrade(card, CardPreviewStyle.None);
-        await CardPileCmd.AddGeneratedCardToCombat(card, PileType.Hand, true);
+        await CardPileCmd.AddGeneratedCardToCombat(card, PileType.Hand, Owner);
     }
 
     protected override void OnUpgrade()

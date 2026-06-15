@@ -34,7 +34,7 @@ public class Keshoushi() : HuoreimuUltimateSkillCard(1, CardType.Skill, CardRari
     {
         await base.OnPlay(choiceContext, cardPlay);
         ArgumentNullException.ThrowIfNull(cardPlay.Target);
-        await UltimateSkillAction.Execute(this, cardPlay, async () =>
+        await UltimateSkillAction.Execute(choiceContext, this, cardPlay, async () =>
         {
             await CommonActions.Apply<VulnerablePower>(choiceContext, cardPlay.Target, this);
             await CommonActions.Apply<WeakPower>(choiceContext, cardPlay.Target, this);

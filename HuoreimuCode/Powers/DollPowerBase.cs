@@ -36,12 +36,10 @@ public abstract class DollPowerBase() : HuoreimuPowerBase(PowerType.Buff, PowerS
         }
     }
 
-    public override bool IsInstanced => true;
-
     protected abstract bool CanAutoPlay(CardModel card);
 
 #nullable enable
-    public override async Task BeforeTurnEndEarly(PlayerChoiceContext choiceContext, CombatSide side)
+    public override async Task BeforeSideTurnEndEarly(PlayerChoiceContext choiceContext, CombatSide side, IEnumerable<Creature> participants)
     {
         var playable = CombatState?.HittableEnemies?.Any() ?? false;
         if (side != Owner.Side || Owner.Player is null || !playable)
@@ -68,6 +66,6 @@ public abstract class DollPowerBase() : HuoreimuPowerBase(PowerType.Buff, PowerS
         if (target != Owner || result.UnblockedDamage <= 0) return;
 
         Flash();
-        await PowerCmd.ModifyAmount(this, -result.UnblockedDamage, target, cardSource);
+        await PowerCmd.ModifyAmount(choiceContext, this, -result.UnblockedDamage, target, cardSource, false);
     }
 }

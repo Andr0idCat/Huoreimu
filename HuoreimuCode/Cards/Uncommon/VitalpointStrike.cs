@@ -40,7 +40,7 @@ public class VitalpointStrike()
     {
         await base.OnPlay(choiceContext, cardPlay);
         ArgumentNullException.ThrowIfNull(cardPlay.Target);
-        await UltimateSkillAction.Execute(this, cardPlay, () => OnCast(choiceContext, cardPlay),
+        await UltimateSkillAction.Execute(choiceContext, this, cardPlay, () => OnCast(choiceContext, cardPlay),
             () => OnFallback(choiceContext, cardPlay));
     }
 
@@ -62,7 +62,7 @@ public class VitalpointStrike()
         var prefs = new CardSelectorPrefs(SelectionScreenPrompt, 1);
         var selection = (await CardSelectCmd.FromSimpleGrid(choiceContext, cards, Owner, prefs)).ToArray();
         if (selection.Length <= 0) return;
-        await CardPileCmd.AddGeneratedCardsToCombat(selection, PileType.Hand, addedByPlayer: true);
+        await CardPileCmd.AddGeneratedCardsToCombat(selection, PileType.Hand, Owner);
     }
 
     private async Task OnFallback(PlayerChoiceContext choiceContext, CardPlay cardPlay)

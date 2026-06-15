@@ -33,7 +33,7 @@ public class HellsGate() : HuoreimuUltimateSkillCard(3, CardType.Attack, CardRar
     {
         await base.OnPlay(choiceContext, cardPlay);
         ArgumentNullException.ThrowIfNull(cardPlay.Target);
-        await UltimateSkillAction.Execute(this, cardPlay, () => CreatureCmd.Stun(cardPlay.Target));
+        await UltimateSkillAction.Execute(choiceContext, this, cardPlay, () => CreatureCmd.Stun(cardPlay.Target));
         await CommonActions.CardAttack(this, cardPlay.Target).Execute(choiceContext);
     }
 

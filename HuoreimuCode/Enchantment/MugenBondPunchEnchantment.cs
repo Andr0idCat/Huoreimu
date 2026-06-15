@@ -51,7 +51,7 @@ public class MugenBondPunchEnchantment() : HuoreimuEnchantment(false, true)
         if (cardPlay.Card != Card || !CastUltimateSkill) return;
         CastUltimateSkill = false;
         Status = EnchantmentStatus.Disabled;
-        await UltimateSkillAction.Execute(Card, cardPlay, () => OnCast(choiceContext, cardPlay));
+        await UltimateSkillAction.Execute(choiceContext, Card, cardPlay, () => OnCast(choiceContext, cardPlay));
     }
 
     private async Task OnCast(PlayerChoiceContext choiceContext, CardPlay cardPlay)

@@ -25,7 +25,7 @@ public class Shichi() : HuoreimuUltimateSkillCard(2, CardType.Attack, CardRarity
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         await base.OnPlay(choiceContext, cardPlay);
-        await UltimateSkillAction.EarlyExecute(this, cardPlay, () => OnCast(choiceContext, cardPlay),
+        await UltimateSkillAction.EarlyExecute(choiceContext, this, cardPlay, () => OnCast(choiceContext, cardPlay),
             () => OnFail(choiceContext, cardPlay));
     }
 
@@ -34,18 +34,16 @@ public class Shichi() : HuoreimuUltimateSkillCard(2, CardType.Attack, CardRarity
         ArgumentNullException.ThrowIfNull(CombatState);
         var target = cardPlay.Target;
         ArgumentNullException.ThrowIfNull(target);
-        await using var context = await AttackCommand.CreateContextAsync(CombatState, this);
+        await using var context = await AttackCommand.CreateContextAsync(CombatState, choiceContext, this);
         var results =
             (await CommonActions.CardAttack(this, target, DynamicVars.Damage.IntValue, DynamicVars.Repeat.IntValue)
-                .Execute(choiceContext)).Results.ToList();
+                .Execute(choiceContext)).Results.SelectMany(r => r).ToList();
         context.AddHit(results);
         var enemies = CombatState.GetTeammatesOf(target).Where(c => c.IsHittable && c != target).ToList();
         if (enemies.Count == 0) return;
-        foreach (var result in results)
-        {
-            context.AddHit(await CreatureCmd.Damage(choiceContext, enemies, result.TotalDamage + result.OverkillDamage,
-                ValueProp.Unpowered | ValueProp.Move, Owner.Creature, this));
-        }
+        var totalDamage = results.Sum(r => r.TotalDamage + r.OverkillDamage);
+        context.AddHit(await CreatureCmd.Damage(choiceContext, enemies, totalDamage,
+            ValueProp.Unpowered | ValueProp.Move, Owner.Creature, this));
     }
 
     private Task OnFail(PlayerChoiceContext choiceContext, CardPlay cardPlay)

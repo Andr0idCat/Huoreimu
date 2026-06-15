@@ -35,7 +35,7 @@ public class BreakBones() : HuoreimuUltimateSkillCard(1, CardType.Attack, CardRa
         await base.OnPlay(choiceContext, cardPlay);
         ArgumentNullException.ThrowIfNull(cardPlay.Target);
 
-        await UltimateSkillAction.EarlyExecute(this, cardPlay,
+        await UltimateSkillAction.EarlyExecute(choiceContext, this, cardPlay,
             async () =>
             {
                 await CommonActions.CardAttack(this, cardPlay.Target).Execute(choiceContext);

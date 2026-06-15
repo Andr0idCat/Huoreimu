@@ -50,7 +50,7 @@ public sealed class Ningendo() : HuoreimuCard(1, CardType.Attack, CardRarity.Unc
         var attack = await CommonActions.CardAttack(this, cardPlay.Target).Execute(choiceContext);
 
         if (!shouldTriggerFatal) return;
-        if (attack.Results.All(r => !r.WasTargetKilled)) return;
+        if (attack.Results.SelectMany(r => r).All(r => !r.WasTargetKilled)) return;
 
         var room = CombatState?.RunState.CurrentRoom;
         ArgumentNullException.ThrowIfNull(room);

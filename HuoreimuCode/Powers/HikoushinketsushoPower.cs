@@ -14,7 +14,7 @@ public class HikoushinketsushoPower() : HuoreimuPowerBase(PowerType.Buff, PowerS
 {
     protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(0, ValueProp.Unpowered)];
 
-    public override Task AfterPowerAmountChanged(PowerModel power, decimal amount, Creature applier,
+    public override Task AfterPowerAmountChanged(PlayerChoiceContext choiceContext, PowerModel power, decimal amount, Creature applier,
         CardModel cardSource)
     {
         if (power == this)
@@ -22,7 +22,7 @@ public class HikoushinketsushoPower() : HuoreimuPowerBase(PowerType.Buff, PowerS
             DynamicVars.Damage.BaseValue = Amount * 2;
         }
 
-        return base.AfterPowerAmountChanged(power, amount, applier, cardSource);
+        return base.AfterPowerAmountChanged(choiceContext, power, amount, applier, cardSource);
     }
 
     public override async Task AfterCardDrawn(PlayerChoiceContext choiceContext, CardModel drawnCard, bool fromHandDraw)

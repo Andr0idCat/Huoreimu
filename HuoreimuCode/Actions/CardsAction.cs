@@ -40,7 +40,7 @@ public static class CardsAction
     /// <typeparam name="T">需要加入的卡牌类型</typeparam>
     /// <returns></returns>
     public static async Task<IEnumerable<CardModel>> AddCardToPileWhenCombat<T>(Player owner, PileType pileType,
-        int amount, CombatState combatState, CardPilePosition position = CardPilePosition.Bottom) where T : CardModel
+        int amount, ICombatState combatState, CardPilePosition position = CardPilePosition.Bottom) where T : CardModel
     {
         if (amount == 0 || CombatManager.Instance.IsOverOrEnding)
         {
@@ -53,7 +53,7 @@ public static class CardsAction
             cards.Add(combatState.CreateCard<T>(owner));
         }
 
-        await CardPileCmd.AddGeneratedCardsToCombat(cards, pileType, true, position);
+        await CardPileCmd.AddGeneratedCardsToCombat(cards, pileType, owner, position);
         return cards;
     }
 

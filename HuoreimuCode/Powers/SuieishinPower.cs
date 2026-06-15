@@ -19,7 +19,7 @@ public sealed class SuieishinPower() : HuoreimuPowerBase(PowerType.Buff, PowerSt
             _cardIds.Add(card.Id.Entry);
     }
 
-    public override bool IsInstanced => true;
+    public override PowerInstanceType InstanceType => PowerInstanceType.Instanced;
 
     public override async Task AfterPlayerTurnStart(PlayerChoiceContext choiceContext, Player player)
     {

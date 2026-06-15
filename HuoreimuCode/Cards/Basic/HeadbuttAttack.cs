@@ -32,7 +32,7 @@ public class HeadbuttAttack() : HuoreimuUltimateSkillCard(1, CardType.Attack, Ca
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         await base.OnPlay(choiceContext, cardPlay);
-        await UltimateSkillAction.EarlyExecute(this, cardPlay, () => Attack(choiceContext, cardPlay),
+        await UltimateSkillAction.EarlyExecute(choiceContext, this, cardPlay, () => Attack(choiceContext, cardPlay),
             () => Attack(choiceContext, cardPlay));
     }
 

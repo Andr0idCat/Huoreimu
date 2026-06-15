@@ -25,7 +25,7 @@ public class Nantosenjuryugeki() : HuoreimuCard(1, CardType.Attack, CardRarity.C
         if (cardPlay.Target.Monster.IntendsToAttack)
         {
             await CreatureCmd.GainBlock(Owner.Creature,
-                attackCommand.Results.Sum(r => r.TotalDamage + r.OverkillDamage), ValueProp.Move, cardPlay);
+                attackCommand.Results.SelectMany(r => r).Sum(r => r.TotalDamage + r.OverkillDamage), ValueProp.Move, cardPlay);
         }
         else
         {

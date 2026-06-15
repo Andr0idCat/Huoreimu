@@ -27,6 +27,6 @@ public sealed class CalamityAwakePower() : HuoreimuPowerBase(PowerType.Buff, Pow
             Owner.Player.RunState.Rng.CombatCardGeneration).FirstOrDefault();
         if (card == null) return;
 
-        await CardPileCmd.AddGeneratedCardToCombat(card, PileType.Hand, true);
+        await CardPileCmd.AddGeneratedCardToCombat(card, PileType.Hand, Owner.Player);
     }
 }

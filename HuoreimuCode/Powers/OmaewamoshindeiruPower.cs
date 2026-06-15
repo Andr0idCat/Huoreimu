@@ -28,10 +28,10 @@ public class OmaewamoshindeiruPower() : HuoreimuPowerBase(PowerType.Debuff, Powe
     }
 #nullable disable
 
-    public override Task AfterTurnEnd(PlayerChoiceContext choiceContext, CombatSide side)
+    public override Task AfterSideTurnEnd(PlayerChoiceContext choiceContext, CombatSide side, IEnumerable<Creature> participants)
     {
         return side is not CombatSide.Enemy
-            ? base.AfterTurnEnd(choiceContext, side)
+            ? base.AfterSideTurnEnd(choiceContext, side, participants)
             : PowerCmd.Remove<OmaewamoshindeiruPower>(Owner);
     }
 
