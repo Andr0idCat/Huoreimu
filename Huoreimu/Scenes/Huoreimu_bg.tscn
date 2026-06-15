@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://jw4wg7tolnmb"]
 
-[ext_resource type="Texture2D" uid="uid://d2wniqueauk1u" path="res://Huoreimu/Image/CharSelect/HuoreimuCharacterPortrait.png" id="1"]
+[ext_resource type="Texture2D" uid="uid://bf5tiay5kvvp2" path="res://Huoreimu/Image/CharSelect/HuoreimuCharacterPortrait.png" id="1"]
 
 [node name="HuoreimuBg" type="Control"]
 layout_mode = 3
