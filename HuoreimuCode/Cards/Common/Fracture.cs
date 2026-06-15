@@ -10,7 +10,7 @@ namespace AyaMod.Huoreimu.Cards.Common;
 
 public class Fracture() : HuoreimuCard(0, CardType.Attack, CardRarity.Common, TargetType.AnyEnemy)
 {
-    private const int BASE_DAMAGE = 10;
+    private const int BASE_DAMAGE = 9;
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [

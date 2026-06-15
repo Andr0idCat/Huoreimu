@@ -15,8 +15,8 @@ public class EnergyBurst() : HuoreimuCard(0, CardType.Skill, CardRarity.Uncommon
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new BlockVar(7, ValueProp.Move),
-        new PowerVar<VigorPower>(3)
+        new BlockVar(3, ValueProp.Move),
+        new PowerVar<VigorPower>(4)
     ];
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>

@@ -35,6 +35,6 @@ public class Nantosenjuryugeki() : HuoreimuCard(1, CardType.Attack, CardRarity.C
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Damage.UpgradeValueBy(3);
+        DynamicVars.Damage.UpgradeValueBy(2);
     }
 }

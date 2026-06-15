@@ -12,7 +12,7 @@ namespace AyaMod.Huoreimu.Cards.Common;
 
 public class LatentDisease() : HuoreimuCard(1, CardType.Attack, CardRarity.Common, TargetType.AnyEnemy)
 {
-    private const int ADDITIONAL_VULNERABLE_POWER = 2;
+    private const int ADDITIONAL_VULNERABLE_POWER = 1;
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
     [

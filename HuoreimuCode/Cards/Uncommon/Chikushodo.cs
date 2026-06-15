@@ -35,7 +35,7 @@ public sealed class Chikushodo() : HuoreimuCard(INITIAL_COST, CardType.Attack, C
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new DamageVar(12, ValueProp.Move),
-        new PowerVar<ChikushodoPower>(4),
+        new PowerVar<ChikushodoPower>(3),
     ];
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips => [HoverTipFactory.FromPower<StrengthPower>()];

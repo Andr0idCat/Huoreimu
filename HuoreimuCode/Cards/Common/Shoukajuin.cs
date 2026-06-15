@@ -16,7 +16,7 @@ public class Shoukajuin() : HuoreimuCard(2, CardType.Skill, CardRarity.Common, T
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new PowerVar<BufferPower>(1),
-        new PowerVar<OmenOfDeathPower>(2)
+        new PowerVar<OmenOfDeathPower>(1)
     ];
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
@@ -35,6 +35,6 @@ public class Shoukajuin() : HuoreimuCard(2, CardType.Skill, CardRarity.Common, T
 
     protected override void OnUpgrade()
     {
-        DynamicVars.Power<OmenOfDeathPower>().UpgradeValueBy(1);
+        DynamicVars.Power<OmenOfDeathPower>().UpgradeValueBy(2);
     }
 }
