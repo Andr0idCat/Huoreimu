@@ -127,9 +127,9 @@
   "AYAMOD-SFAIRA_PNEUMA.title": "次元射击·普纽玛",
   "AYAMOD-SFAIRA_PNEUMA.description": "造成相当于弃牌堆卡牌数的伤害。{InCombat:\\n造成{CalculatedDamage:diff()}点伤害。|}",
   "AYAMOD-SFAIRA_OSIA.title": "次元射击·乌西亚",
-  "AYAMOD-SFAIRA_OSIA.description": "获得[blue]{Block:diff()}[/blue]点格挡。选择弃牌堆中的[blue]1[/blue]张牌放入手牌，再选择弃牌堆中的[blue]1[/blue]张牌放到抽牌堆顶部。",
-  "AYAMOD-SFAIRA_OSIA.selectionScreenPrompt1": "选择弃牌堆的1张牌加入手牌",
-  "AYAMOD-SFAIRA_OSIA.selectionScreenPrompt2": "选择弃牌堆的1张牌放到抽牌堆顶部",
+  "AYAMOD-SFAIRA_OSIA.description": "选择弃牌堆中的[blue]2[/blue]张牌放入手牌，再选择弃牌堆中的[blue]2[/blue]张牌放到抽牌堆顶部。",
+  "AYAMOD-SFAIRA_OSIA.selectionScreenPrompt1": "选择弃牌堆的2张牌加入手牌",
+  "AYAMOD-SFAIRA_OSIA.selectionScreenPrompt2": "选择弃牌堆的2张牌放到抽牌堆顶部",
   "AYAMOD-SFAIRA_KHRONOS.title": "次元射击·克洛诺斯",
   "AYAMOD-SFAIRA_KHRONOS.description": "抽{Cards:diff()}张牌，选择至多[blue]{Maximum:diff()}[/blue]张手牌在本回合保留。",
   "AYAMOD-SFAIRA_KHRONOS.selectionScreenPrompt": "选择至多2张本回合保留的手牌",
@@ -188,6 +188,6 @@
   "AYAMOD-GENOCIDE_KICK.title": "灭族切割",
   "AYAMOD-GENOCIDE_KICK.description": "造成{CalculatedDamage:diff()}点伤害{Repeat:diff()}次，移除你当前所有格挡值，每移除1点格挡就多造成{ExtraDamage:diff()}点伤害。",
   "AYAMOD-YIN_YANG_CONFLICT.title": "极剑·阴阳相杀",
-  "AYAMOD-YIN_YANG_CONFLICT.selectionScreenPrompt": "选择至多{Maximum}张手牌消耗",
+  "AYAMOD-YIN_YANG_CONFLICT.selectionScreenPrompt": "选择{Maximum}张手牌消耗",
   "AYAMOD-YIN_YANG_CONFLICT.description": "[gold]消耗[/gold]至多{Maximum:diff()}张手牌，如果[gold]消耗[/gold]的是一张[gold]打击[/gold]和[gold]防御[/gold]，抽{Cards:diff()}张牌，获得{Energy:energyIcons()}。"
 }

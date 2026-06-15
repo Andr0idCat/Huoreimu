@@ -36,7 +36,7 @@ public class SkywardKick() : HuoreimuCard(1, CardType.Skill, CardRarity.Basic, T
 
     protected override void OnUpgrade()
     {
-        DynamicVars.CalculationBase.UpgradeValueBy(2m);
+        DynamicVars.CalculationBase.UpgradeValueBy(1m);
         DynamicVars.Power<WeakPower>().UpgradeValueBy(1);
     }
 }
