@@ -15,7 +15,7 @@ using MegaCrit.Sts2.Core.ValueProps;
 namespace AyaMod.Huoreimu.Cards.Ancient;
 
 public class Jubousuikyousatsu()
-    : HuoreimuUltimateSkillCard(1, CardType.Attack, CardRarity.Ancient, TargetType.AnyEnemy), ITranscendenceCard
+    : HuoreimuUltimateSkillCard(1, CardType.Attack, CardRarity.Ancient, TargetType.AnyEnemy)
 {
     protected override HashSet<CardTag> CanonicalTags => [HuoreimuTags.UltimateSkill];
 
@@ -49,5 +49,4 @@ public class Jubousuikyousatsu()
         DynamicVars.ExtraDamage.UpgradeValueBy(3);
     }
 
-    public CardModel GetTranscendenceTransformedCard() => ModelDb.Card<HeadbuttAttack>();
 }

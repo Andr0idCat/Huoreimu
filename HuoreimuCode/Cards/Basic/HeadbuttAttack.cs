@@ -1,17 +1,20 @@
 using AyaMod.Huoreimu.Actions;
+using AyaMod.Huoreimu.Cards.Ancient;
 using AyaMod.Huoreimu.DynamicVars;
 using AyaMod.Huoreimu.Keywords;
 using AyaMod.Huoreimu.Tags;
+using BaseLib.Abstracts;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
+using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.ValueProps;
 
 namespace AyaMod.Huoreimu.Cards.Basic;
 
-public class HeadbuttAttack() : HuoreimuUltimateSkillCard(1, CardType.Attack, CardRarity.Basic, TargetType.AnyEnemy)
+public class HeadbuttAttack() : HuoreimuUltimateSkillCard(1, CardType.Attack, CardRarity.Basic, TargetType.AnyEnemy), ITranscendenceCard
 {
     protected override HashSet<CardTag> CanonicalTags => [HuoreimuTags.UltimateSkill];
 
@@ -45,4 +48,7 @@ public class HeadbuttAttack() : HuoreimuUltimateSkillCard(1, CardType.Attack, Ca
     {
         DynamicVars.CalculationBase.UpgradeValueBy(3);
     }
+
+    public CardModel GetTranscendenceTransformedCard() => ModelDb.Card<Jubousuikyousatsu>();
+
 }
