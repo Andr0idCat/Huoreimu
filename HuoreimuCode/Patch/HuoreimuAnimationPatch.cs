@@ -65,11 +65,17 @@ public static class HuoreimuAnimationPatch
 		anim.Frame = 0;
 		anim.Play(animName, 1f, fromEnd);
 
-		// 动画结束后回到 Idle
-		anim.Connect("animation_finished", Callable.From(() =>
+		// 非 Dead 动画结束后回到 Idle
+		if (animName != "Dead")
 		{
-			anim.Play("Idle");
-		}), 4u);
+			anim.Connect("animation_finished", Callable.From(() =>
+			{
+				if (anim.Animation != "Dead")
+				{
+					anim.Play("Idle");
+				}
+			}), 4u);
+		}
 	}
 }
 
