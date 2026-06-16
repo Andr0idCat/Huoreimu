@@ -1,0 +1,91 @@
+[gd_scene load_steps=18 format=3 uid="uid://ocq824pbsj3i"]
+
+[ext_resource type="Texture2D" uid="uid://cmnuk7b3x14wy" path="res://Huoreimu/Image/vfx/test/2_6-0.png" id="1_g48q2"]
+[ext_resource type="Texture2D" uid="uid://jsdqxd675f71" path="res://Huoreimu/Image/vfx/test/2_6-1.png" id="2_ntik5"]
+[ext_resource type="Texture2D" uid="uid://0wjagvfh0dkb" path="res://Huoreimu/Image/vfx/test/2_6-2.png" id="3_rntd2"]
+[ext_resource type="Texture2D" uid="uid://1a026uuwgapg" path="res://Huoreimu/Image/vfx/test/2_6-3.png" id="4_ch45q"]
+[ext_resource type="Texture2D" uid="uid://3nuquu8if7a4" path="res://Huoreimu/Image/vfx/test/2_6-4.png" id="5_t3psg"]
+[ext_resource type="Texture2D" uid="uid://ec860qdknly" path="res://Huoreimu/Image/vfx/test/2_6-5.png" id="6_dff5l"]
+[ext_resource type="Texture2D" uid="uid://d2jlkrhdn0v2n" path="res://Huoreimu/Image/vfx/test/2_6-6.png" id="7_xctxx"]
+[ext_resource type="Texture2D" uid="uid://dj1gnttdwcdnl" path="res://Huoreimu/Image/vfx/test/2_6-7.png" id="8_epkxs"]
+[ext_resource type="Texture2D" uid="uid://cxdmoneab4ai3" path="res://Huoreimu/Image/vfx/test/2_6-8.png" id="9_d537h"]
+[ext_resource type="Texture2D" uid="uid://d3x6xrsmyr51k" path="res://Huoreimu/Image/vfx/test/2_6-9.png" id="10_aba05"]
+[ext_resource type="Texture2D" uid="uid://nb2e4m8ap6tq" path="res://Huoreimu/Image/vfx/test/2_6-10.png" id="11_f0pa0"]
+[ext_resource type="Texture2D" uid="uid://ddnejopdjkuj8" path="res://Huoreimu/Image/vfx/test/2_6-11.png" id="12_hr7at"]
+[ext_resource type="Texture2D" uid="uid://bgae7sfsrs4bt" path="res://Huoreimu/Image/vfx/test/2_6-12.png" id="13_qtegk"]
+[ext_resource type="Texture2D" uid="uid://bfyq0bn4r68s3" path="res://Huoreimu/Image/vfx/test/2_6-13.png" id="14_guqns"]
+
+[sub_resource type="Animation" id="Animation_gp6ix"]
+resource_name = "Idle"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("visual:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.08, 0.16, 0.24, 0.32, 0.4, 0.48, 0.56, 0.64, 0.72, 0.8, 0.88, 0.96, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [ExtResource("1_g48q2"), ExtResource("2_ntik5"), ExtResource("3_rntd2"), ExtResource("4_ch45q"), ExtResource("5_t3psg"), ExtResource("6_dff5l"), ExtResource("7_xctxx"), ExtResource("8_epkxs"), ExtResource("9_d537h"), ExtResource("10_aba05"), ExtResource("11_f0pa0"), ExtResource("12_hr7at"), ExtResource("13_qtegk"), ExtResource("14_guqns")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("visual:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.54, 0.64, 0.8, 0.88, 0.96),
+"transitions": PackedFloat32Array(1e-05, 1e-05, 1e-05, 1e-05, 1e-05, 1e-05),
+"update": 1,
+"values": [Vector2(8, -40.825), Vector2(8, -40.825), Vector2(20, -40.825), Vector2(29, -32), Vector2(32, -34), Vector2(32, -38)]
+}
+
+[sub_resource type="Animation" id="Animation_v4x4u"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("visual:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(8, -40.825)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("visual:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_g48q2")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_imjbv"]
+_data = {
+&"Hit": SubResource("Animation_gp6ix"),
+&"RESET": SubResource("Animation_v4x4u")
+}
+
+[node name="vfx_test" type="Sprite2D"]
+scale = Vector2(1.5, 1.5)
+
+[node name="visual" type="Sprite2D" parent="."]
+position = Vector2(8, -40.825)
+scale = Vector2(1.1247356, 0.9919399)
+texture = ExtResource("1_g48q2")
+region_rect = Rect2(50, 0, 0, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_imjbv")
+}
+autoplay = "Hit"
