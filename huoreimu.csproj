@@ -5,6 +5,7 @@
         <EnableDynamicLoading>true</EnableDynamicLoading>
         <AnalysisLevel>none</AnalysisLevel>
         <ImplicitUsings>enable</ImplicitUsings>
+        <DefaultItemExcludes>$(DefaultItemExcludes);tools/**/*</DefaultItemExcludes>
     </PropertyGroup>
     <Import Project="LocalConfig.targets" Condition="Exists('LocalConfig.targets')"/>
     <ItemGroup>
@@ -62,6 +63,12 @@
             DestinationFolder="$(Sts2Dir)/mods/$(MSBuildProjectName)/"
             Condition="Exists('$(TargetDir)$(TargetName).pdb')" />
         <Copy SourceFiles="$(MSBuildProjectName).json" DestinationFolder="$(Sts2Dir)/mods/$(MSBuildProjectName)/"/>
+    </Target>
+
+    <Target Name="GenerateVfxManifest" BeforeTargets="ExportPck">
+        <Message Text="Generating VFX manifest..." Importance="high"/>
+        <Exec Command="dotnet run --project &quot;$(MSBuildProjectDirectory)/tools/VfxManifestGenerator&quot; -- &quot;$(MSBuildProjectDirectory)/$(MSBuildProjectName)/Scenes/vfx&quot; &quot;$(MSBuildProjectDirectory)/$(MSBuildProjectName)/Scenes/vfx/vfx_manifest.json&quot;"
+              ContinueOnError="WarnAndContinue"/>
     </Target>
 
     <Target Name="ExportPck" AfterTargets="Publish">
