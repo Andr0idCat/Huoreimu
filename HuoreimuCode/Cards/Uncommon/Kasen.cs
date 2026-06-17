@@ -17,7 +17,7 @@ public class Kasen() : HuoreimuCard(1, CardType.Skill, CardRarity.Uncommon, Targ
         await base.OnPlay(choiceContext, cardPlay);
         var selection = await CardSelectCmd.FromHand(choiceContext, Owner,
             new CardSelectorPrefs(SelectionScreenPrompt, 1, 1),
-            c => c is not Huo, this);
+            c => c is not Huo && !c.Keywords.Contains(CardKeyword.Eternal), this);
         var card = selection.FirstOrDefault();
         if (card is null) return;
         await CardCmd.TransformTo<Huo>(card);
