@@ -8,3 +8,5 @@ LocalConfig.targets
 .vscode/
 bin/
 uploader_config.json
+tools/VfxManifestGenerator/bin/
+tools/VfxManifestGenerator/obj/

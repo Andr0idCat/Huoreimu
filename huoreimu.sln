@@ -2,18 +2,26 @@
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "huoreimu", "huoreimu.csproj", "{46594CAA-D51C-4D21-9385-E88A9F7DAD7E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VfxManifestGenerator", "tools\VfxManifestGenerator\VfxManifestGenerator.csproj", "{F8840C17-B20C-466B-94E0-B1A8332BAF9F}"
+EndProject
 Global
-    GlobalSection(SolutionConfigurationPlatforms) = preSolution
-    Debug|Any CPU = Debug|Any CPU
-    ExportDebug|Any CPU = ExportDebug|Any CPU
-    ExportRelease|Any CPU = ExportRelease|Any CPU
-    EndGlobalSection
-    GlobalSection(ProjectConfigurationPlatforms) = postSolution
-        {46594CAA-D51C-4D21-9385-E88A9F7DAD7E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-        {46594CAA-D51C-4D21-9385-E88A9F7DAD7E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-        {46594CAA-D51C-4D21-9385-E88A9F7DAD7E}.ExportDebug|Any CPU.ActiveCfg = ExportDebug|Any CPU
-        {46594CAA-D51C-4D21-9385-E88A9F7DAD7E}.ExportDebug|Any CPU.Build.0 = ExportDebug|Any CPU
-        {46594CAA-D51C-4D21-9385-E88A9F7DAD7E}.ExportRelease|Any CPU.ActiveCfg = ExportRelease|Any CPU
-        {46594CAA-D51C-4D21-9385-E88A9F7DAD7E}.ExportRelease|Any CPU.Build.0 = ExportRelease|Any CPU
-    EndGlobalSection
+				GlobalSection(SolutionConfigurationPlatforms) = preSolution
+				Debug|Any CPU = Debug|Any CPU
+				ExportDebug|Any CPU = ExportDebug|Any CPU
+				ExportRelease|Any CPU = ExportRelease|Any CPU
+				EndGlobalSection
+				GlobalSection(ProjectConfigurationPlatforms) = postSolution
+								{46594CAA-D51C-4D21-9385-E88A9F7DAD7E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+								{46594CAA-D51C-4D21-9385-E88A9F7DAD7E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+								{46594CAA-D51C-4D21-9385-E88A9F7DAD7E}.ExportDebug|Any CPU.ActiveCfg = ExportDebug|Any CPU
+								{46594CAA-D51C-4D21-9385-E88A9F7DAD7E}.ExportDebug|Any CPU.Build.0 = ExportDebug|Any CPU
+								{46594CAA-D51C-4D21-9385-E88A9F7DAD7E}.ExportRelease|Any CPU.ActiveCfg = ExportRelease|Any CPU
+								{46594CAA-D51C-4D21-9385-E88A9F7DAD7E}.ExportRelease|Any CPU.Build.0 = ExportRelease|Any CPU
+					{F8840C17-B20C-466B-94E0-B1A8332BAF9F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+					{F8840C17-B20C-466B-94E0-B1A8332BAF9F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+					{F8840C17-B20C-466B-94E0-B1A8332BAF9F}.ExportDebug|Any CPU.ActiveCfg = Debug|Any CPU
+					{F8840C17-B20C-466B-94E0-B1A8332BAF9F}.ExportDebug|Any CPU.Build.0 = Debug|Any CPU
+					{F8840C17-B20C-466B-94E0-B1A8332BAF9F}.ExportRelease|Any CPU.ActiveCfg = Debug|Any CPU
+					{F8840C17-B20C-466B-94E0-B1A8332BAF9F}.ExportRelease|Any CPU.Build.0 = Debug|Any CPU
+				EndGlobalSection
 EndGlobal
