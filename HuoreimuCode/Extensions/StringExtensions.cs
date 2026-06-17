@@ -67,4 +67,9 @@ public static class StringExtensions
     {
         return $"res://{MainFile.ModId}/Image/Potions/{path}";
     }
+
+    public static string VFXPath(this string path)
+    {
+        return $"res://{MainFile.ModId}/Scenes/vfx/{path}";
+    }
 }

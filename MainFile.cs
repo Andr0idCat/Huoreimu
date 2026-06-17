@@ -1,3 +1,4 @@
+using AyaMod.Huoreimu.Utils;
 using BaseLib.Config;
 using HarmonyLib;
 using MegaCrit.Sts2.Core.Logging;
@@ -28,5 +29,6 @@ public class MainFile
     {
         Harmony harmony = new(ModId);
         harmony.PatchAll();
+        VfxUtil.LoadVfx();
     }
 }
