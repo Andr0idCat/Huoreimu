@@ -44,7 +44,7 @@ dotnet build -t:ExportPck
 
 本仓库包含一个构建工具 `tools/VfxManifestGenerator/`，会在 `ExportPck` 之前自动扫描 `Huoreimu/Scenes/vfx/` 目录下的所有 `.tscn` 文件，生成 `vfx_manifest.json` 清单。
 
-运行时 `VFXUtil.LoadVFX()` 读取该清单并预加载所有特效场景。添加新 `.tscn` 文件后重新构建即可自动更新，无需手动维护。
+运行时 `VfxUtil.LoadVfx()` 读取该清单并预加载所有特效场景。添加新 `.tscn` 文件后重新构建即可自动更新，无需手动维护。
 
 
 ## 贡献
