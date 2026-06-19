@@ -189,5 +189,5 @@
   "AYAMOD-GENOCIDE_KICK.description": "造成{CalculatedDamage:diff()}点伤害{Repeat:diff()}次，移除你当前所有格挡值，每移除1点格挡就多造成{ExtraDamage:diff()}点伤害。",
   "AYAMOD-YIN_YANG_CONFLICT.title": "极剑·阴阳相杀",
   "AYAMOD-YIN_YANG_CONFLICT.selectionScreenPrompt": "选择{Maximum}张手牌消耗",
-  "AYAMOD-YIN_YANG_CONFLICT.description": "[gold]消耗[/gold]至多{Maximum:diff()}张手牌，如果[gold]消耗[/gold]的是一张[gold]打击[/gold]和[gold]防御[/gold]，抽{Cards:diff()}张牌，获得{Energy:energyIcons()}。"
+  "AYAMOD-YIN_YANG_CONFLICT.description": "[gold]消耗[/gold]{Maximum:diff()}张手牌，如果[gold]消耗[/gold]的是一张[gold]打击[/gold]和[gold]防御[/gold]，抽{Cards:diff()}张牌，获得{Energy:energyIcons()}。"
 }
