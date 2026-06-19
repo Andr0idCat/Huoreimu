@@ -18,7 +18,7 @@ public class BreastBind : HuoreimuRelic
 
     public override async Task AfterRoomEntered(AbstractRoom room)
     {
-        if (room.RoomType is not RoomType.Elite) return;
+        if (room.RoomType is not (RoomType.Elite or RoomType.Boss)) return;
         var owner = Owner.Creature;
         await PowerCmd.Apply<BufferPower>(new ThrowingPlayerChoiceContext(), owner, BUFFER_AMOUNT, owner, null, false);
     }
