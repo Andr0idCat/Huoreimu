@@ -5,6 +5,7 @@ using MegaCrit.Sts2.Core.Models;
 using AyaMod.Huoreimu.Cards.Basic;
 using AyaMod.Huoreimu.Extensions;
 using AyaMod.Huoreimu.Relic;
+using BaseLib.Patches.UI;
 
 namespace AyaMod.Huoreimu.Character;
 
@@ -57,6 +58,12 @@ public class Huoreimu : PlaceholderCharacterModel
     public override string CustomCharacterSelectIconPath => "char_select_char_name.png".CharacterUiPath();
     public override string CustomCharacterSelectLockedIconPath => "char_select_char_name_locked.png".CharacterUiPath();
     public override string CharacterTransitionSfx => "event:/sfx/ui/wipe_ironclad";
+    public override RelicIconData CustomYummyCookie => 
+    new(
+        BigIconPath: "YummyCookie.png".RelicImagePath(),
+        PackedIconPath: "YummyCookie.png".RelicImagePath(),
+        PackedIconOutlinePath: "YummyCookie.png".RelicImagePath());
+
     public override string CustomMapMarkerPath => "map_marker_char_name.png".CharacterUiPath();
         public override List<string> GetArchitectAttackVfx() => [
         "vfx/vfx_attack_blunt",
