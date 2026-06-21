@@ -1,5 +1,5 @@
 {
-  "AYAMOD.mod_title": "Huoreimu",
+  "AYAMOD.mod_title": "M-Reimu",
   "AYAMOD-UPLOAD_ERROR_LOGS.title": "Auto-upload Error Logs",
   "AYAMOD-UPLOAD_ERROR_LOGS.description": "When enabled, uncaught exceptions in mod code will be automatically uploaded to a remote server to help improve the mod.",
   "AYAMOD-CONSENT_UPLOAD_LOGS.header": "Upload Error Logs",

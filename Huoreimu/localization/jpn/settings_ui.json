@@ -1,0 +1,7 @@
+{
+  "AYAMOD.mod_title": "禍霊夢",
+  "AYAMOD-UPLOAD_ERROR_LOGS.title": "エラーログの自動アップロード",
+  "AYAMOD-UPLOAD_ERROR_LOGS.description": "有効にすると、MODコードで捕捉されなかった例外が発生した際に、エラー情報をサーバーに自動的にアップロードし、MODの改善に役立てます。",
+  "AYAMOD-CONSENT_UPLOAD_LOGS.header": "エラーログのアップロード",
+  "AYAMOD-CONSENT_UPLOAD_LOGS.body": "[left]このオプションを有効にすると、エラーログを作者のサーバーにアップロードします。\nアップロードされる内容には以下の情報のみが含まれます：\n• MODの名前とバージョン\n• ゲームのバージョン\n• オペレーティングシステム\n• エラーの種類とスタックトレース\n\n個人情報やセーブデータはアップロードされません。\n\nこのオプションは設定からいつでも無効にできます。[/left]"
+}
