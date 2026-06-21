@@ -39,7 +39,7 @@
   "AYAMOD-OMAEWAMOSHINDEIRU_POWER.description": "このターン中に受けるダメージが[blue]15%[/blue]増加する。このターン中にリーサルした場合、リーサルしたプレイヤーは追加のカード報酬を得る。",
   "AYAMOD-OMAEWAMOSHINDEIRU_POWER.smartDescription": "このターン中に受けるダメージが[blue]{Amount}%[/blue]増加する。このターン中にリーサルした場合、リーサルしたプレイヤーは追加のカード報酬を得る。",
   "AYAMOD-CHIKUSHODO_POWER.title": "畜生道",
-  "AYAMOD-CHIKUSHODO_POWER.description": "このターン中、[blue]4[/blue] 筋力を失う。",
+  "AYAMOD-CHIKUSHODO_POWER.description": "このターン中、[blue]3[/blue] 筋力を失う。",
   "AYAMOD-CHIKUSHODO_POWER.smartDescription": "このターン中、[blue]{Amount}[/blue] 筋力を失う。",
   "AYAMOD-MUGENZANEI_POWER.title": "無元斬影",
   "AYAMOD-MUGENZANEI_POWER.description": "自分のターン開始時、極剣・無元斬影の攻撃を受ける。",

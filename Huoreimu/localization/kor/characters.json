@@ -1,0 +1,16 @@
+{
+  "AYAMOD-HUOREIMU.title": "화령몽",
+  "AYAMOD-HUOREIMU.titleObject": "화령몽",
+  "AYAMOD-HUOREIMU.description": "재앙에 휩싸인 마인.\n살아남기 위해 끊임없이 싸운다.\n표지 이미지 출처 pixivID: 20031497",
+  "AYAMOD-HUOREIMU.possessiveAdjective": "그녀의",
+  "AYAMOD-HUOREIMU.pronounObject": "그녀를",
+  "AYAMOD-HUOREIMU.pronounPossessive": "그녀의 것",
+  "AYAMOD-HUOREIMU.pronounSubject": "그녀",
+  "AYAMOD-HUOREIMU.cardsModifierTitle": "M-Reimu Cards",
+  "AYAMOD-HUOREIMU.cardsModifierDescription": "이제 화령몽의 카드가 보상과 상점에 등장합니다.",
+  "AYAMOD-HUOREIMU.aromaPrinciple": "[sine][white]누구든 간에... 나의 적은 반드시 소멸시킨다...[/white][/sine]",
+  "AYAMOD-HUOREIMU.eventDeathPrevention": "용서해라... 나도 죽고 싶지는 않단 말이다...",
+  "AYAMOD-HUOREIMU.banter.alive.endTurnPing": "싸우는 법을 잊었느냐?",
+  "AYAMOD-HUOREIMU.banter.dead.endTurnPing": "...",
+  "AYAMOD-HUOREIMU.goldMonologue": "[sine]영몽 그 녀석, 이걸 보면 분명 샘나서 난리일 거야.[/sine]"
+}

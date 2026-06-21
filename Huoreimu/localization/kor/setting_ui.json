@@ -1,0 +1,7 @@
+{
+  "AYAMOD.mod_title": "화령몽",
+  "AYAMOD-UPLOAD_ERROR_LOGS.title": "오류 로그 자동 업로드",
+  "AYAMOD-UPLOAD_ERROR_LOGS.description": "활성화하면 모드 코드에서 포착되지 않은 예외가 발생할 때 오류 정보를 서버에 자동으로 업로드하여 모드 개선을 돕습니다.",
+  "AYAMOD-CONSENT_UPLOAD_LOGS.header": "오류 로그 업로드",
+  "AYAMOD-CONSENT_UPLOAD_LOGS.body": "[left]이 옵션을 활성화하면 오류 로그가 제작자의 서버로 업로드됩니다.\n업로드되는 내용에는 다음 정보만 포함됩니다:\n• 모드 이름과 버전\n• 게임 버전\n• 운영 체제\n• 오류 유형 및 스택 추적\n\n개인 식별 정보나 게임 저장 데이터는 업로드되지 않습니다.\n\n언제든지 설정에서 이 옵션을 비활성화할 수 있습니다.[/left]"
+}
