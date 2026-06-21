@@ -39,7 +39,7 @@
   "AYAMOD-OMAEWAMOSHINDEIRU_POWER.description": "本回合受到的伤害提高[blue]15%[/blue]。如果本回合被斩杀，斩杀的玩家额外获得一组卡牌奖励。",
   "AYAMOD-OMAEWAMOSHINDEIRU_POWER.smartDescription": "本回合受到的伤害提高[blue]{Amount}%[/blue]。如果本回合被斩杀，斩杀的玩家额外获得一组卡牌奖励。",
   "AYAMOD-CHIKUSHODO_POWER.title": "畜生道",
-  "AYAMOD-CHIKUSHODO_POWER.description": "在本回合失去[blue]4[/blue]点力量。",
+  "AYAMOD-CHIKUSHODO_POWER.description": "在本回合失去[blue]3[/blue]点力量。",
   "AYAMOD-CHIKUSHODO_POWER.smartDescription": "在本回合失去[blue]{Amount}[/blue]点力量。",
   "AYAMOD-MUGENZANEI_POWER.title": "无元斩影",
   "AYAMOD-MUGENZANEI_POWER.description": "你的回合开始时，受到极剑·无元斩影的攻击。",
