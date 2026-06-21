@@ -1,0 +1,16 @@
+{
+  "AYAMOD-HUOREIMU.title": "M-Reimu",
+  "AYAMOD-HUOREIMU.titleObject": "M-Reimu",
+  "AYAMOD-HUOREIMU.description": "A demon consumed by calamity.\nFights endlessly to survive.\nCover art borrowed from pixiv ID: 20031497",
+  "AYAMOD-HUOREIMU.possessiveAdjective": "her",
+  "AYAMOD-HUOREIMU.pronounObject": "her",
+  "AYAMOD-HUOREIMU.pronounPossessive": "hers",
+  "AYAMOD-HUOREIMU.pronounSubject": "she",
+  "AYAMOD-HUOREIMU.cardsModifierTitle": "M-Reimu Cards",
+  "AYAMOD-HUOREIMU.cardsModifierDescription": "M-Reimu cards will now appear in rewards and shops.",
+  "AYAMOD-HUOREIMU.aromaPrinciple": "[sine][white]No matter who it is... my enemies must be eliminated...[/white][/sine]",
+  "AYAMOD-HUOREIMU.eventDeathPrevention": "Forgive me, I don't want to die either...",
+  "AYAMOD-HUOREIMU.banter.alive.endTurnPing": "Have you forgotten how to fight?",
+  "AYAMOD-HUOREIMU.banter.dead.endTurnPing": "...",
+  "AYAMOD-HUOREIMU.goldMonologue": "[sine]Reimu would definitely turn green with envy if she saw this.[/sine]"
+}

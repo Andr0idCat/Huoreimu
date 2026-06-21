@@ -1,0 +1,5 @@
+﻿{
+  "AYAMOD-MUGEN_BOND_PUNCH_ENCHANTMENT.title": "Mugen Bond Punch",
+  "AYAMOD-MUGEN_BOND_PUNCH_ENCHANTMENT.extraCardText": "[gold]Ultimate Skill[/gold] {UltimateSkill:inverseDiff()}: Play {Repeat:diff()} additional time(s).",
+  "AYAMOD-MUGEN_BOND_PUNCH_ENCHANTMENT.description": "This card gains [gold]Ultimate Skill[/gold] {UltimateSkill:inverseDiff()}: Play {Repeat:diff()} additional time(s)."
+}
