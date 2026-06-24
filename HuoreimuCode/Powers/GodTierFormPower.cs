@@ -14,12 +14,14 @@ public class GodTierFormPower() : HuoreimuPowerBase(PowerType.Buff, PowerStackTy
 
     public override async Task AfterPlayerTurnStart(PlayerChoiceContext choiceContext, Player player)
     {
-        ArgumentNullException.ThrowIfNull(Owner.Player);
+        if (player != Owner.Player) return;
+
+        ArgumentNullException.ThrowIfNull(player);
         var prompt = SelectionScreenPrompt;
         prompt.Add(HuoreimuConstants.MAXIMUM_VALUE, Amount);
         var prefs = new CardSelectorPrefs(prompt, 0, Amount);
-        var cards = PileType.Exhaust.GetPile(Owner.Player).Cards;
-        var selections = await CardSelectCmd.FromSimpleGrid(choiceContext, cards, Owner.Player, prefs);
+        var cards = PileType.Exhaust.GetPile(player).Cards;
+        var selections = await CardSelectCmd.FromSimpleGrid(choiceContext, cards, player, prefs);
         await CardPileCmd.Add(selections, PileType.Hand);
     }
 }
