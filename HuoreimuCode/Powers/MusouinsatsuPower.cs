@@ -38,7 +38,7 @@ public sealed class MusouinsatsuPower() : HuoreimuPowerBase(PowerType.Buff, Powe
     public override async Task AfterDamageReceivedLate(PlayerChoiceContext choiceContext, Creature target,
         DamageResult result, ValueProp props, Creature dealer, CardModel cardSource)
     {
-        if (target != Owner || dealer == null || dealer == Owner || Attacked) return;
+        if (target != Owner || dealer == null || Attacked) return;
 
         var player = Owner.Player;
         if (player == null) return;
@@ -48,8 +48,14 @@ public sealed class MusouinsatsuPower() : HuoreimuPowerBase(PowerType.Buff, Powe
         if (attacks.Count == 0) return;
 
         var card = player.RunState.Rng.CombatTargets.NextItem(attacks);
+        var targetCreature = dealer == Owner
+            ? player.RunState.Rng.CombatTargets.NextItem(Owner.CombatState?.HittableEnemies?.ToList() ?? new List<Creature>())
+            : dealer;
+
+        if (targetCreature == null) return;
+
         Attacked = true;
         Flash();
-        await CardCmd.AutoPlay(choiceContext, card, dealer);
+        await CardCmd.AutoPlay(choiceContext, card, targetCreature);
     }
 }
