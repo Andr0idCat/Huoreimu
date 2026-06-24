@@ -48,8 +48,14 @@ public sealed class MusouinsatsuPower() : HuoreimuPowerBase(PowerType.Buff, Powe
         if (attacks.Count == 0) return;
 
         var card = player.RunState.Rng.CombatTargets.NextItem(attacks);
+        var targetCreature = dealer == Owner
+            ? player.RunState.Rng.CombatTargets.NextItem(Owner.CombatState?.HittableEnemies?.ToList() ?? new List<Creature>())
+            : dealer;
+
+        if (targetCreature == null) return;
+
         Attacked = true;
         Flash();
-        await CardCmd.AutoPlay(choiceContext, card, dealer);
+        await CardCmd.AutoPlay(choiceContext, card, targetCreature);
     }
 }
