@@ -20,13 +20,13 @@
   "AYAMOD-HIDDEN_DOOM.title": "Hidden Doom",
   "AYAMOD-HIDDEN_DOOM.description": "Combats encountered in ? rooms become Elite combats. All card rewards from Elite combats are Upgraded.",
   "AYAMOD-HIDDEN_DOOM.flavor": "Do you feel lucky?",
-  "AYAMOD-DIRTCHEAP_TEA.title": "Dirt-Cheap Tea",
-  "AYAMOD-DIRTCHEAP_TEA.description": "At the start of each combat, obtain a [gold]Dirt-Cheap Tea[/gold] potion.",
+  "AYAMOD-DIRTCHEAP_TEA.title": "Actually Cheap Tea",
+  "AYAMOD-DIRTCHEAP_TEA.description": "At the start of each combat, obtain a [gold]Actually Cheap Tea[/gold] potion.",
   "AYAMOD-DIRTCHEAP_TEA.flavor": "In this regard, she is exactly like that shrine maiden.",
-  "AYAMOD-DIRTCHEAP_CIGARETTE.title": "Dirt-Cheap Cigarette",
+  "AYAMOD-DIRTCHEAP_CIGARETTE.title": "Actually Cheap Cigarette",
   "AYAMOD-DIRTCHEAP_CIGARETTE.description": "Every time you apply {Interval:inverseDiff()} [gold]Death Star[/gold], gain {StrengthPower:diff()} [gold]Strength[/gold].",
   "AYAMOD-DIRTCHEAP_CIGARETTE.flavor": "It's okay to smoke because she's a bad kid. No problem at all.",
   "AYAMOD-BREAST_BIND.title": "Chest Binding",
   "AYAMOD-BREAST_BIND.description": "At the start of Elite or Boss combats, gain {BufferPower:diff()} [gold]Buffer[/gold].",
-  "AYAMOD-BREAST_BIND.flavor": "Oh my, how plump indeed..."
+  "AYAMOD-BREAST_BIND.flavor": "Oh my, actually plump..."
 }

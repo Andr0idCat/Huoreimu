@@ -10,8 +10,8 @@
   "AYAMOD-BLACK_GOHEI.flavor": "재앙을 퍼뜨리는 무기는 정화의 예기가 아니며, 그 사용자 또한 무녀가 아니다.",
   "AYAMOD-BLOODS_BANE.title": "피의 화",
   "AYAMOD-BLOODS_BANE.description": "턴 시작 시, [blue]{Energy:energyIcons()}[/blue]를 얻습니다. 획득 시, 덱에 [gold]화[/gold]를 [blue]2[/blue]장 추가합니다.",
-  "AYAMOD-BLOODS_BANE.flavor": "마인의 몸에 새겨진 주인, 불길한 기운을 내뿜는다.",
-  "AYAMOD-STAR_OF_DOOM.title": "화성",
+  "AYAMOD-BLOODS_BANE.flavor": "마인의 몸에 새겨진 저주 문양, 불길한 기운을 내뿜는다.",
+  "AYAMOD-STAR_OF_DOOM.title": "재앙의 별",
   "AYAMOD-STAR_OF_DOOM.description": "공격할 때마다 [blue]{OmenOfDeathPower:diff()}[/blue] [gold]사조성[/gold]을 부여합니다. 전투 시작 시, 모든 적에게 [blue]{CombatStartPowerCount:diff()}[/blue] [gold]사조성[/gold]을 부여합니다. 적이 죽으면, 그 적의 사조성 중첩을 무작위 적에게 이전합니다.",
   "AYAMOD-STAR_OF_DOOM.flavor": "이유 없이 죽을 수는 없다. 그렇기에 계속 싸우고, 살기 위해 노력하여 마침내 인간을 초월한 마인이 되었다.",
   "AYAMOD-FOUL_BLOOD.title": "오예의 피",
@@ -20,13 +20,13 @@
   "AYAMOD-HIDDEN_DOOM.title": "숨겨진 재앙",
   "AYAMOD-HIDDEN_DOOM.description": "? 방에서의 전투가 엘리트 전투로 변화하며, 엘리트 전투에서 얻는 카드 보상은 모두 강화된 상태입니다.",
   "AYAMOD-HIDDEN_DOOM.flavor": "스스로 운이 좋다고 생각하는가?",
-  "AYAMOD-DIRTCHEAP_TEA.title": "초염가 찻잎",
-  "AYAMOD-DIRTCHEAP_TEA.description": "매 전투 시작 시, [gold]초염가 차[/gold]를 1개 얻습니다.",
+  "AYAMOD-DIRTCHEAP_TEA.title": "실제 저렴 찻잎",
+  "AYAMOD-DIRTCHEAP_TEA.description": "매 전투 시작 시, [gold]실제 저렴 차[/gold]를 1개 얻습니다.",
   "AYAMOD-DIRTCHEAP_TEA.flavor": "이 점만은 저 무녀와 완전히 똑같다.",
-  "AYAMOD-DIRTCHEAP_CIGARETTE.title": "초염가 담배",
+  "AYAMOD-DIRTCHEAP_CIGARETTE.title": "실제 저렴 담배",
   "AYAMOD-DIRTCHEAP_CIGARETTE.description": "[gold]사조성[/gold]을 {Interval:inverseDiff()}중첩 부여할 때마다, [gold]힘[/gold] {StrengthPower:diff()}을 얻습니다.",
   "AYAMOD-DIRTCHEAP_CIGARETTE.flavor": "나쁜 아이니까 담배를 피워도 괜찮다. 문제없다.",
   "AYAMOD-BREAST_BIND.title": "가슴 붕대",
   "AYAMOD-BREAST_BIND.description": "엘리트 또는 보스 전투 시작 시, [gold]버퍼[/gold]를 {BufferPower:diff()} 얻습니다.",
-  "AYAMOD-BREAST_BIND.flavor": "오오, 실로 풍만하군……"
+  "AYAMOD-BREAST_BIND.flavor": "오오, 실제 풍만……"
 }

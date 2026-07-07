@@ -25,7 +25,7 @@
   "AYAMOD-NANTOSENJURYUGEKI.description": "Deal {Damage:diff()} damage. If the enemy intends to attack, gain [gold]Block[/gold] equal to the damage dealt. Otherwise, draw {Cards:diff()} cards.",
   "AYAMOD-SIN_MIRROR.title": "Sin Mirror",
   "AYAMOD-SIN_MIRROR.description": "Deal damage equal to the enemy's attack intent.",
-  "AYAMOD-SHICHI.title": "Shichi",
+  "AYAMOD-SHICHI.title": "Wing Sweep",
   "AYAMOD-SHICHI.description": "Deal {Damage:diff()} damage {Repeat:diff()} times. [gold]Ultimate Skill[/gold] {UltimateSkill:inverseDiff()}: Deal an equal amount of damage to all other enemies.",
   "AYAMOD-PICK_STAR.title": "Pick Star",
   "AYAMOD-PICK_STAR.description": "Deal {Damage:diff()} damage. Draw 1 card for every 2 [gold]Death Star[/gold] stacks on the target.",

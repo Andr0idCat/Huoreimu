@@ -20,13 +20,13 @@
   "AYAMOD-HIDDEN_DOOM.title": "隠された災禍",
   "AYAMOD-HIDDEN_DOOM.description": "？の部屋での戦闘がエリート戦に変化し、エリート戦で得るカード報酬はすべてアップグレードされたものになる。",
   "AYAMOD-HIDDEN_DOOM.flavor": "自分は運がいいと思うか？",
-  "AYAMOD-DIRTCHEAP_TEA.title": "激安のお茶",
-  "AYAMOD-DIRTCHEAP_TEA.description": "戦闘開始時、[gold]激安のお茶[/gold] を1つ得る。",
+  "AYAMOD-DIRTCHEAP_TEA.title": "実際安いお茶",
+  "AYAMOD-DIRTCHEAP_TEA.description": "戦闘開始時、[gold]実際安いお茶[/gold] を1つ得る。",
   "AYAMOD-DIRTCHEAP_TEA.flavor": "その点だけは、あの巫女とまったく同じだ。",
-  "AYAMOD-DIRTCHEAP_CIGARETTE.title": "激安の煙草",
+  "AYAMOD-DIRTCHEAP_CIGARETTE.title": "実際安い煙草",
   "AYAMOD-DIRTCHEAP_CIGARETTE.description": "[gold]死兆星[/gold]を{Interval:inverseDiff()} 層付与するたび、[gold]筋力[/gold]{StrengthPower:diff()} を得る。",
   "AYAMOD-DIRTCHEAP_CIGARETTE.flavor": "悪い子だから、煙草を吸ってもいい。問題ない。",
   "AYAMOD-BREAST_BIND.title": "胸布",
   "AYAMOD-BREAST_BIND.description": "エリートかボスとの戦闘開始時、{BufferPower:diff()} 層の[gold]バッファー[/gold]を得る。",
-  "AYAMOD-BREAST_BIND.flavor": "おや、実に豊かだねぇ……"
+  "AYAMOD-BREAST_BIND.flavor": "おや、実際豊満……"
 }
