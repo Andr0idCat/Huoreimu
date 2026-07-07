@@ -5,25 +5,85 @@
         <EnableDynamicLoading>true</EnableDynamicLoading>
         <AnalysisLevel>none</AnalysisLevel>
         <ImplicitUsings>enable</ImplicitUsings>
-        <DefaultItemExcludes>$(DefaultItemExcludes);tools/**/*</DefaultItemExcludes>
+        <DefaultItemExcludes>$(DefaultItemExcludes);tools/**/*;packages/**</DefaultItemExcludes>
+        <AppOutputBase>$(MSBuildProjectDirectory)\</AppOutputBase>
+        <NoWarn>$(NoWarn);MSB3270</NoWarn>
     </PropertyGroup>
+
+    <!-- OS Detection -->
+    <PropertyGroup>
+        <IsWindows>false</IsWindows>
+        <IsLinux>false</IsLinux>
+        <IsOSX>false</IsOSX>
+        <IsWindows Condition="$([MSBuild]::IsOSPlatform('Windows'))">true</IsWindows>
+        <IsLinux Condition="$([MSBuild]::IsOSPlatform('Linux'))">true</IsLinux>
+        <IsOSX Condition="$([MSBuild]::IsOSPlatform('OSX'))">true</IsOSX>
+    </PropertyGroup>
+
+    <!-- Windows paths -->
+    <PropertyGroup Condition="'$(IsWindows)' == 'true'">
+        <AutoSteamPath>$(registry:HKEY_CURRENT_USER\Software\Valve\Steam@SteamPath)\steamapps</AutoSteamPath>
+        <SteamLibraryPath Condition="'$(SteamLibraryPath)' == '' and Exists('$(AutoSteamPath)/common/Slay the Spire 2')">$(AutoSteamPath)</SteamLibraryPath>
+        <SteamLibraryPath Condition="'$(SteamLibraryPath)' == ''">C:/Program Files (x86)/Steam/steamapps</SteamLibraryPath>
+        <Sts2Path Condition="'$(Sts2Path)' == ''">$(SteamLibraryPath)/common/Slay the Spire 2</Sts2Path>
+        <Sts2DataDir Condition="'$(Sts2DataDir)' == ''">$(Sts2Path)/data_sts2_windows_x86_64</Sts2DataDir>
+    </PropertyGroup>
+
+    <!-- Linux paths -->
+    <PropertyGroup Condition="'$(IsLinux)' == 'true'">
+        <SteamLibraryPath Condition="'$(SteamLibraryPath)' == ''">$(HOME)/.local/share/Steam/steamapps</SteamLibraryPath>
+        <Sts2Path Condition="'$(Sts2Path)' == ''">$(SteamLibraryPath)/common/Slay the Spire 2</Sts2Path>
+        <Sts2DataDir Condition="'$(Sts2DataDir)' == ''">$(Sts2Path)/data_sts2_linuxbsd_x86_64</Sts2DataDir>
+    </PropertyGroup>
+
+    <!-- macOS paths -->
+    <PropertyGroup Condition="'$(IsOSX)' == 'true'">
+        <SteamLibraryPath Condition="'$(SteamLibraryPath)' == ''">$(HOME)/Library/Application Support/Steam/steamapps</SteamLibraryPath>
+        <Sts2Path Condition="'$(Sts2Path)' == ''">$(SteamLibraryPath)/common/Slay the Spire 2/SlayTheSpire2.app/Contents/MacOS</Sts2Path>
+        <Sts2DataDir Condition="'$(Sts2DataDir)' == ''">$(Sts2Path)/SlayTheSpire2.app/Contents/Resources/data_sts2_macos_x86_64</Sts2DataDir>
+    </PropertyGroup>
+
+    <!-- Version from Huoreimu.json (overridable by CI via ModVersion/NumericVersion properties) -->
+    <PropertyGroup>
+        <_ModJsonContent>$([System.IO.File]::ReadAllText('$(MSBuildProjectDirectory)/Huoreimu.json'))</_ModJsonContent>
+        <_VersionPrefix>"version": "</_VersionPrefix>
+        <_VersionStart>$([System.String]::new($(_ModJsonContent)).IndexOf($(_VersionPrefix)))</_VersionStart>
+        <_VersionAfter>$([System.String]::new($(_ModJsonContent)).Substring($([MSBuild]::Add($(_VersionStart), $([System.String]::new($(_VersionPrefix)).Length)))))</_VersionAfter>
+        <_JsonVersionProperty>$([System.String]::new($(_VersionAfter)).Substring(0, $([System.String]::new($(_VersionAfter)).IndexOf('"'))))</_JsonVersionProperty>
+        <ModVersionProperty Condition="'$(ModVersion)' != ''">$(ModVersion)</ModVersionProperty>
+        <ModVersionProperty Condition="'$(ModVersion)' == ''">$(_JsonVersionProperty)</ModVersionProperty>
+        <NumericVersionProperty Condition="'$(NumericVersion)' != ''">$(NumericVersion)</NumericVersionProperty>
+        <NumericVersionProperty Condition="'$(NumericVersion)' == ''">$([System.Text.RegularExpressions.Regex]::Replace($(ModVersionProperty), '[^0-9.]', ''))</NumericVersionProperty>
+        <Version>$(ModVersionProperty)</Version>
+        <AssemblyVersion>$(NumericVersionProperty).0</AssemblyVersion>
+        <FileVersion>$(NumericVersionProperty).0</FileVersion>
+    </PropertyGroup>
+
     <Import Project="LocalConfig.targets" Condition="Exists('LocalConfig.targets')"/>
+
     <ItemGroup>
-        <Reference Include="0Harmony">
-            <HintPath>$(STS2Path)\data_sts2_windows_x86_64\0Harmony.dll</HintPath>
-        </Reference>
-        <Reference Include="BaseLib">
-            <HintPath>$(STS2Path)\mods\BaseLib\BaseLib.dll</HintPath>
-        </Reference>
-        <Reference Include="GodotSharp">
-            <HintPath>$(STS2Path)\data_sts2_windows_x86_64\GodotSharp.dll</HintPath>
-        </Reference>
+        <PackageReference Include="Alchyr.Sts2.BaseLib" Version="3.*" PrivateAssets="All" />
+    </ItemGroup>
+
+    <ItemGroup Condition="Exists('$(Sts2DataDir)/sts2.dll')">
         <Reference Include="sts2">
-            <HintPath>$(STS2Path)\data_sts2_windows_x86_64\sts2.dll</HintPath>
             <HintPath>$(Sts2DataDir)/sts2.dll</HintPath>
             <Private>false</Private>
         </Reference>
+        <Reference Include="0Harmony">
+            <HintPath>$(Sts2DataDir)/0Harmony.dll</HintPath>
+            <Private>false</Private>
+        </Reference>
+        <Reference Include="GodotSharp">
+            <HintPath>$(Sts2DataDir)/GodotSharp.dll</HintPath>
+            <Private>false</Private>
+        </Reference>
     </ItemGroup>
+
+    <ItemGroup Condition="!Exists('$(Sts2DataDir)/sts2.dll')">
+        <PackageReference Include="Book.Sts2.RefLib" Version="0.106.*" PrivateAssets="All" />
+    </ItemGroup>
+
     <ItemGroup>
         <Folder Include="Huoreimu\Image\Cards\"/>
     </ItemGroup>
@@ -49,32 +109,58 @@
         <Optimize>true</Optimize>
         <DebugType>none</DebugType>
         <PathMap>$(AppOutputBase)=.\</PathMap>
+        <IncludeSourceRevisionInInformationalVersion>false</IncludeSourceRevisionInInformationalVersion>
     </PropertyGroup>
 
-    <Target Name="Copy Mod" AfterTargets="PostBuildEvent">
+    <Target Name="Copy Mod" AfterTargets="PostBuildEvent" Condition="Exists('$(Sts2DataDir)/sts2.dll')">
         <Message Text="Copying mod to Slay the Spire 2 mods folder..." Importance="high"/>
         <MakeDir Directories="$(STS2Path)\mods\"/>
         <Copy SourceFiles="$(TargetPath)" DestinationFolder="$(STS2Path)\mods\$(MSBuildProjectName)\"/>
         <Copy SourceFiles="$(TargetDir)$(TargetName).pdb"
               DestinationFolder="$(STS2Path)/mods/$(MSBuildProjectName)/"
               Condition="Exists('$(TargetDir)$(TargetName).pdb')"/>
-        <Copy SourceFiles="$(MSBuildProjectName).json" DestinationFolder="$(STS2Path)/mods/$(MSBuildProjectName)/"/>
-        <Copy SourceFiles="$(TargetDir)$(TargetName).pdb"
-            DestinationFolder="$(Sts2Dir)/mods/$(MSBuildProjectName)/"
-            Condition="Exists('$(TargetDir)$(TargetName).pdb')" />
-        <Copy SourceFiles="$(MSBuildProjectName).json" DestinationFolder="$(Sts2Dir)/mods/$(MSBuildProjectName)/"/>
+        <Copy SourceFiles="Huoreimu.json" DestinationFolder="$(STS2Path)/mods/$(MSBuildProjectName)/"/>
     </Target>
 
-    <Target Name="GenerateVfxManifest" BeforeTargets="ExportPck">
+    <Target Name="GenerateVfxManifest" BeforeTargets="ExportPck;GodotPublish">
         <Message Text="Generating VFX manifest..." Importance="high"/>
-        <Exec Command="dotnet run --project &quot;$(MSBuildProjectDirectory)/tools/VfxManifestGenerator&quot; -- &quot;$(MSBuildProjectDirectory)/$(MSBuildProjectName)/Scenes/vfx&quot; &quot;$(MSBuildProjectDirectory)/$(MSBuildProjectName)/Scenes/vfx/vfx_manifest.json&quot;"
+        <Exec Command="dotnet run --project &quot;$(MSBuildProjectDirectory)/tools/VfxManifestGenerator&quot; -- &quot;$(MSBuildProjectDirectory)/Huoreimu/Scenes/vfx&quot; &quot;$(MSBuildProjectDirectory)/Huoreimu/Scenes/vfx/vfx_manifest.json&quot;"
               ContinueOnError="WarnAndContinue"/>
     </Target>
 
-    <Target Name="ExportPck" AfterTargets="Publish">
-        <Message Text="Copying PCK to Slay the Spire 2 mods folder..." Importance="high"/>
+    <Target Name="ExportPck" Condition="Exists('$(Sts2DataDir)/sts2.dll') and '$(GodotPath)' == ''">
+        <Message Text="Exporting PCK to Slay the Spire 2 mods folder..." Importance="high"/>
         <Exec Command="&quot;$(GodotExe)&quot; --headless --export-pack &quot;Windows Desktop&quot; &quot;$(STS2Path)/mods/$(MSBuildProjectName)/$(MSBuildProjectName).pck&quot;"
               EnvironmentVariables="IsInnerGodotExport=true;MSBUILDDISABLENODEREUSE=1"
               ContinueOnError="WarnAndContinue"/>
+    </Target>
+
+    <Target Name="GodotPublish" AfterTargets="Publish"
+        Condition="'$(GodotPath)' != '' and Exists('$(GodotPath)') and '$(IsInnerGodotExport)' != 'true'">
+        <Message Text="Exporting Godot .pck to $(ModsPath)" Importance="high" />
+        <MakeDir Directories="$(ModsPath)$(MSBuildProjectName)/" />
+        <Exec Command="&quot;$(GodotPath)&quot; --headless --no-csharp-build --export-pack &quot;Windows Desktop&quot; &quot;$(ModsPath)$(MSBuildProjectName)/$(MSBuildProjectName).pck&quot;"
+              EnvironmentVariables="IsInnerGodotExport=true;MSBUILDDISABLENODEREUSE=1"
+              ContinueOnError="WarnAndContinue" />
+    </Target>
+
+    <Target Name="GodotPublishSkipped" AfterTargets="Publish"
+        Condition="'$(GodotPath)' == '' or !Exists('$(GodotPath)') or '$(IsInnerGodotExport)' == 'true'">
+        <Message Text="Skipping Godot .pck export (GodotPath not configured or inner export)." Importance="high" />
+    </Target>
+
+    <Target Name="CopyModToPublish" AfterTargets="Publish" Condition="'$(ModsPath)' != '' and '$(IsInnerGodotExport)' != 'true'">
+        <Message Text="Copying mod files to $(ModsPath)$(MSBuildProjectName)/" Importance="high" />
+        <MakeDir Directories="$(ModsPath)$(MSBuildProjectName)/" />
+        <Copy SourceFiles="$(TargetPath)" DestinationFolder="$(ModsPath)$(MSBuildProjectName)/" />
+        <Copy SourceFiles="Huoreimu.json" DestinationFolder="$(ModsPath)$(MSBuildProjectName)/" />
+        <Copy SourceFiles="$(TargetDir)$(TargetName).pdb"
+              DestinationFolder="$(ModsPath)$(MSBuildProjectName)/"
+              Condition="Exists('$(TargetDir)$(TargetName).pdb')" />
+        <ItemGroup>
+            <_PublishDlls Include="$(OutputPath)publish/*.dll"
+                          Exclude="$(OutputPath)publish/GodotSharp*;$(OutputPath)publish/sts2*;$(OutputPath)publish/0Harmony*;$(OutputPath)publish/BaseLib*" />
+        </ItemGroup>
+        <Copy SourceFiles="@(_PublishDlls)" DestinationFolder="$(ModsPath)$(MSBuildProjectName)/" />
     </Target>
 </Project>

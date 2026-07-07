@@ -1,0 +1,8 @@
+{
+  "title": "[CN/EN/JP/KR]祸灵梦（M-Reimu）",
+  "description": "A brand-new playable character for Slay the Spire 2: M-Reimu. Light up the Doomstar by attacking enemies and unleash her finishing move. Includes 1 character, 86 new cards, and 10 exclusive relics.",
+  "visibility": "public",
+  "changeNote": "",
+  "tags": ["Characters"],
+  "dependencies": [3737335127, 3749279136]
+}

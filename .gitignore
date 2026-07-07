@@ -10,3 +10,10 @@ bin/
 uploader_config.json
 tools/VfxManifestGenerator/bin/
 tools/VfxManifestGenerator/obj/
+
+# NuGet
+packages/
+
+# Build output
+obj/
+mods_output/

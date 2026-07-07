@@ -1,0 +1,239 @@
+name: Publish
+on:
+  push:
+    tags: ["v*"]
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 9.0.x
+
+      - name: Restore dependencies
+        run: dotnet restore huoreimu.csproj
+
+      - name: Setup Godot
+        uses: chickensoft-games/setup-godot@v2.4.1
+        with:
+          version: 4.5.1
+          use-dotnet: true
+          include-templates: true
+
+      - name: Get Godot executable path
+        id: godot-path
+        run: echo "GODOT_EXE=$(which godot)" >> "$GITHUB_OUTPUT"
+        shell: bash
+
+      - name: Import Godot project
+        run: godot --headless --editor --quit --path . --import
+        shell: bash
+
+      - name: Extract version from tag
+        id: version
+        run: echo "version=${GITHUB_REF_NAME#v}" >> "$GITHUB_OUTPUT"
+        shell: bash
+
+      - name: Compute numeric version
+        id: numver
+        run: echo "numeric=$(echo '${{ steps.version.outputs.version }}' | grep -oE '^[0-9]+(\.[0-9]+)*')" >> "$GITHUB_OUTPUT"
+        shell: bash
+
+      - name: Determine target branch
+        id: branch
+        run: |
+          if [[ "${{ github.ref_name }}" == *b ]]; then
+            echo "branch=beta_version" >> "$GITHUB_OUTPUT"
+          else
+            echo "branch=master" >> "$GITHUB_OUTPUT"
+          fi
+        shell: bash
+
+      - name: Update mod version in Huoreimu.json
+        run: jq --arg v "${{ steps.version.outputs.version }}" '.version = $v' Huoreimu.json > Huoreimu.json.tmp && mv Huoreimu.json.tmp Huoreimu.json
+        shell: bash
+
+      - name: Check workshop version
+        id: check-workshop
+        run: |
+          VERSION_MARKER="workshop_v:${{ steps.version.outputs.version }}"
+          RESPONSE=$(curl -sS -X POST "https://api.steampowered.com/ISteamRemoteStorage/GetPublishedFileDetails/v1/" \
+            -d "itemcount=1" -d "publishedfileids%5B0%5D=3747596598" 2>/dev/null) || true
+          DESCRIPTION=$(echo "$RESPONSE" | jq -r '.response.publishedfiledetails[0].description // empty')
+          if echo "$DESCRIPTION" | grep -qF "$VERSION_MARKER"; then
+            echo "Workshop already has version ${{ steps.version.outputs.version }}, skipping upload."
+            echo "skip-workshop=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "skip-workshop=false" >> "$GITHUB_OUTPUT"
+          fi
+        shell: bash
+
+      - name: Build and export .pck
+        run: dotnet publish huoreimu.csproj -c Release -p:ModVersion=${{ steps.version.outputs.version }} -p:NumericVersion=${{ steps.numver.outputs.numeric }}
+        env:
+          GodotPath: ${{ steps.godot-path.outputs.GODOT_EXE }}
+          ModsPath: ${{ github.workspace }}/mods_output/
+        shell: bash
+
+      - name: Install steamcmd
+        run: |
+          sudo dpkg --add-architecture i386
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq libc6:i386 libstdc++6:i386
+          mkdir -p "$HOME/steamcmd"
+          curl -sSL https://steamcdn-a.akamaihd.net/client/installer/steamcmd_linux.tar.gz \
+            | tar -xz -C "$HOME/steamcmd/"
+          chmod +x "$HOME/steamcmd/steamcmd.sh"
+          find "$HOME/steamcmd/linux32" -type f -exec chmod +x {} +
+        shell: bash
+
+      - name: Setup Steam config
+        run: |
+          mkdir -p "$HOME/.steam/steam/config"
+          echo "$STEAM_CONFIG_VDF" > "$HOME/.steam/steam/config/config.vdf"
+        env:
+          STEAM_CONFIG_VDF: ${{ secrets.STEAM_CONFIG_VDF }}
+        shell: bash
+
+      - name: Generate Steam manifest
+        if: steps.check-workshop.outputs.skip-workshop != 'true'
+        run: |
+          case "$(jq -r '.visibility' workshop.json)" in
+            private) VISIBILITY=0 ;;
+            friends) VISIBILITY=1 ;;
+            public)  VISIBILITY=2 ;;
+            unlisted) VISIBILITY=3 ;;
+            *)       VISIBILITY=2 ;;
+          esac
+          TAGS=$(jq -r '.tags | join(",")' workshop.json)
+          TITLE=$(jq -r '.title' workshop.json)
+          CHANGENOTE="Release v${{ steps.version.outputs.version }} - See full changelog: ${{ github.server_url }}/${{ github.repository }}/releases/tag/${{ github.ref_name }}"
+          CONTENTDIR="${{ github.workspace }}/mods_output/huoreimu"
+          PREVIEWFILE="${{ github.workspace }}/Huoreimu/mod_image.png"
+          {
+            echo '"workshopitem"'
+            echo '{'
+            echo '    "appid" "2868840"'
+            echo '    "publishedfileid" "3747596598"'
+            echo '    "title" "'"$TITLE"'"'
+            echo '    "description" ""'
+            echo '    "contentfolder" "'"$CONTENTDIR"'"'
+            echo '    "previewfile" "'"$PREVIEWFILE"'"'
+            echo '    "visibility" "'"$VISIBILITY"'"'
+            echo '    "changenote" "'"$CHANGENOTE"'"'
+            echo '    "tags" "'"$TAGS"'"'
+            echo '}'
+          } > manifest.vdf
+        shell: bash
+
+      - name: Upload to Steam Workshop
+        if: steps.check-workshop.outputs.skip-workshop != 'true'
+        run: |
+          if ! "$HOME/steamcmd/steamcmd.sh" +login "$STEAM_USERNAME" +workshop_build_item "$(pwd)/manifest.vdf" +quit; then
+            echo "::error::Steam upload failed"
+            ls -Ralph "$HOME/.steam/steam/logs/" 2>/dev/null || true
+            cat "$HOME/.steam/steam/logs/stderr.txt" 2>/dev/null || true
+            exit 1
+          fi
+        env:
+          STEAM_USERNAME: ${{ secrets.STEAM_USERNAME }}
+        shell: bash
+
+      - name: Update English description via Steam Web API
+        if: steps.check-workshop.outputs.skip-workshop != 'true'
+        run: |
+          {
+            cat descriptions/english.bbcode
+            echo ""
+            echo "workshop_v:${{ steps.version.outputs.version }}"
+          } > /tmp/desc_english.txt
+          curl -sS -X POST "https://api.steampowered.com/ISteamRemoteStorage/SetItemDescription/v1/" \
+            -d "key=${{ secrets.STEAM_WEB_API_KEY }}" \
+            -d "appid=2868840" \
+            -d "publishedfileid=3747596598" \
+            -d "language=english" \
+            --data-urlencode "description@/tmp/desc_english.txt" || \
+          echo "::warning::English description update failed (non-fatal)"
+        shell: bash
+
+      - name: Update Chinese description via Steam Web API
+        if: steps.check-workshop.outputs.skip-workshop != 'true'
+        run: |
+          {
+            cat descriptions/schinese.bbcode
+            echo ""
+            echo "workshop_v:${{ steps.version.outputs.version }}"
+          } > /tmp/desc_chinese.txt
+          curl -sS -X POST "https://api.steampowered.com/ISteamRemoteStorage/SetItemDescription/v1/" \
+            -d "key=${{ secrets.STEAM_WEB_API_KEY }}" \
+            -d "appid=2868840" \
+            -d "publishedfileid=3747596598" \
+            -d "language=schinese" \
+            --data-urlencode "description@/tmp/desc_chinese.txt" || \
+          echo "::warning::Chinese description update failed (non-fatal)"
+        shell: bash
+
+      - name: Update Japanese description via Steam Web API
+        if: steps.check-workshop.outputs.skip-workshop != 'true'
+        run: |
+          {
+            cat descriptions/japanese.bbcode
+            echo ""
+            echo "workshop_v:${{ steps.version.outputs.version }}"
+          } > /tmp/desc_japanese.txt
+          curl -sS -X POST "https://api.steampowered.com/ISteamRemoteStorage/SetItemDescription/v1/" \
+            -d "key=${{ secrets.STEAM_WEB_API_KEY }}" \
+            -d "appid=2868840" \
+            -d "publishedfileid=3747596598" \
+            -d "language=japanese" \
+            --data-urlencode "description@/tmp/desc_japanese.txt" || \
+          echo "::warning::Japanese description update failed (non-fatal)"
+        shell: bash
+
+      - name: Update Korean description via Steam Web API
+        if: steps.check-workshop.outputs.skip-workshop != 'true'
+        run: |
+          {
+            cat descriptions/korean.bbcode
+            echo ""
+            echo "workshop_v:${{ steps.version.outputs.version }}"
+          } > /tmp/desc_korean.txt
+          curl -sS -X POST "https://api.steampowered.com/ISteamRemoteStorage/SetItemDescription/v1/" \
+            -d "key=${{ secrets.STEAM_WEB_API_KEY }}" \
+            -d "appid=2868840" \
+            -d "publishedfileid=3747596598" \
+            -d "language=korean" \
+            --data-urlencode "description@/tmp/desc_korean.txt" || \
+          echo "::warning::Korean description update failed (non-fatal)"
+        shell: bash
+
+      - name: Package Release Artifacts
+        run: |
+          cd mods_output/huoreimu
+          zip -r "$GITHUB_WORKSPACE/huoreimu-v${{ steps.version.outputs.version }}.zip" .
+        shell: bash
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            huoreimu-v${{ steps.version.outputs.version }}.zip
+          generate_release_notes: true
+
+      - name: Commit version update to ${{ steps.branch.outputs.branch }}
+        continue-on-error: true
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git fetch origin "${{ steps.branch.outputs.branch }}"
+          git checkout -B "${{ steps.branch.outputs.branch }}" "origin/${{ steps.branch.outputs.branch }}"
+          jq --arg v "${{ steps.version.outputs.version }}" '.version = $v' Huoreimu.json > Huoreimu.json.tmp && mv Huoreimu.json.tmp Huoreimu.json
+          git add Huoreimu.json
+          git commit -m "chore: update version to ${{ steps.version.outputs.version }}"
+          git push origin "${{ steps.branch.outputs.branch }}"
+        shell: bash

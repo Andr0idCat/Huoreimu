@@ -1,0 +1,32 @@
+name: Build
+on:
+  push:
+    branches: [master, beta_version]
+  pull_request:
+    branches: [master, beta_version]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 9.0.x
+      - name: Check for merge conflicts
+        if: github.event_name == 'pull_request'
+        run: |
+          BASE_BRANCH="${{ github.base_ref }}"
+          git fetch origin "$BASE_BRANCH"
+          if ! git merge --no-ff --no-commit "origin/$BASE_BRANCH"; then
+            echo "::error::This PR has merge conflicts with $BASE_BRANCH. Please resolve them before merging."
+            git merge --abort 2>/dev/null || true
+            exit 1
+          fi
+          git commit --no-edit -m "Merge $BASE_BRANCH for CI" 2>/dev/null || echo "Already up to date, nothing to merge."
+      - name: Restore
+        run: dotnet restore
+      - name: Build
+        run: dotnet build -c Release --no-restore huoreimu.csproj
