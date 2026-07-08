@@ -104,30 +104,38 @@ jobs:
             unlisted) VISIBILITY=3 ;;
             *)       VISIBILITY=2 ;;
           esac
+          VERSION="${{ steps.version.outputs.version }}"
           TAGS=$(jq -r '.tags | join(",")' workshop.json)
           TITLE=$(jq -r '.title' workshop.json)
-          TAG_MESSAGE=$(git tag -l --format='%(contents)' "${{ github.ref_name }}")
-          if [ -n "$TAG_MESSAGE" ]; then
-            CHANGENOTE="$TAG_MESSAGE"
-          else
-            CHANGENOTE="Release v${{ steps.version.outputs.version }} - See full changelog: ${{ github.server_url }}/${{ github.repository }}/releases/tag/${{ github.ref_name }}"
-          fi
           CONTENTDIR="${{ github.workspace }}/mods_output/huoreimu"
           PREVIEWFILE="${{ github.workspace }}/Huoreimu/mod_image.png"
+          TAG_TYPE=$(git for-each-ref "refs/tags/${{ github.ref_name }}" --format='%(objecttype)')
+          CHANGENOTE="Release v${VERSION}"
+          if [ "$TAG_TYPE" = "tag" ]; then
+            TAG_MSG=$(git tag -l --format='%(contents)' "${{ github.ref_name }}" | head -c -1)
+            if [ -n "$TAG_MSG" ]; then
+              CHANGENOTE="$TAG_MSG"
+            fi
+          fi
           {
-            echo '"workshopitem"'
-            echo '{'
-            echo '    "appid" "2868840"'
-            echo '    "publishedfileid" "3747596598"'
-            echo '    "title" "'"$TITLE"'"'
-            echo '    "description" ""'
-            echo '    "contentfolder" "'"$CONTENTDIR"'"'
-            echo '    "previewfile" "'"$PREVIEWFILE"'"'
-            echo '    "visibility" "'"$VISIBILITY"'"'
-            echo '    "changenote" "'"$CHANGENOTE"'"'
-            echo '    "tags" "'"$TAGS"'"'
-            echo '}'
-          } > manifest.vdf
+            cat descriptions/english.bbcode
+            echo ""
+            echo "workshop_v:${VERSION}"
+          } > /tmp/manifest_desc.txt
+          echo '"workshopitem"' > manifest.vdf
+          echo '{' >> manifest.vdf
+          echo '    "appid" "2868840"' >> manifest.vdf
+          echo '    "publishedfileid" "3747596598"' >> manifest.vdf
+          echo '    "title" "'"$TITLE"'"' >> manifest.vdf
+          printf '    "description" "' >> manifest.vdf
+          cat /tmp/manifest_desc.txt >> manifest.vdf
+          printf '"\n' >> manifest.vdf
+          echo '    "contentfolder" "'"$CONTENTDIR"'"' >> manifest.vdf
+          echo '    "previewfile" "'"$PREVIEWFILE"'"' >> manifest.vdf
+          echo '    "visibility" "'"$VISIBILITY"'"' >> manifest.vdf
+          echo '    "changenote" "'"$CHANGENOTE"'"' >> manifest.vdf
+          echo '    "tags" "'"$TAGS"'"' >> manifest.vdf
+          echo '}' >> manifest.vdf
         shell: bash
 
       - name: Upload to Steam Workshop
@@ -141,74 +149,6 @@ jobs:
           fi
         env:
           STEAM_USERNAME: ${{ secrets.STEAM_USERNAME }}
-        shell: bash
-
-      - name: Update English description via Steam Web API
-        if: steps.check-workshop.outputs.skip-workshop != 'true'
-        run: |
-          {
-            cat descriptions/english.bbcode
-            echo ""
-            echo "workshop_v:${{ steps.version.outputs.version }}"
-          } > /tmp/desc_english.txt
-          curl -sS -X POST "https://api.steampowered.com/ISteamRemoteStorage/SetItemDescription/v1/" \
-            -d "key=${{ secrets.STEAM_WEB_API_KEY }}" \
-            -d "appid=2868840" \
-            -d "publishedfileid=3747596598" \
-            -d "language=english" \
-            --data-urlencode "description@/tmp/desc_english.txt" || \
-          echo "::warning::English description update failed (non-fatal)"
-        shell: bash
-
-      - name: Update Chinese description via Steam Web API
-        if: steps.check-workshop.outputs.skip-workshop != 'true'
-        run: |
-          {
-            cat descriptions/schinese.bbcode
-            echo ""
-            echo "workshop_v:${{ steps.version.outputs.version }}"
-          } > /tmp/desc_chinese.txt
-          curl -sS -X POST "https://api.steampowered.com/ISteamRemoteStorage/SetItemDescription/v1/" \
-            -d "key=${{ secrets.STEAM_WEB_API_KEY }}" \
-            -d "appid=2868840" \
-            -d "publishedfileid=3747596598" \
-            -d "language=schinese" \
-            --data-urlencode "description@/tmp/desc_chinese.txt" || \
-          echo "::warning::Chinese description update failed (non-fatal)"
-        shell: bash
-
-      - name: Update Japanese description via Steam Web API
-        if: steps.check-workshop.outputs.skip-workshop != 'true'
-        run: |
-          {
-            cat descriptions/japanese.bbcode
-            echo ""
-            echo "workshop_v:${{ steps.version.outputs.version }}"
-          } > /tmp/desc_japanese.txt
-          curl -sS -X POST "https://api.steampowered.com/ISteamRemoteStorage/SetItemDescription/v1/" \
-            -d "key=${{ secrets.STEAM_WEB_API_KEY }}" \
-            -d "appid=2868840" \
-            -d "publishedfileid=3747596598" \
-            -d "language=japanese" \
-            --data-urlencode "description@/tmp/desc_japanese.txt" || \
-          echo "::warning::Japanese description update failed (non-fatal)"
-        shell: bash
-
-      - name: Update Korean description via Steam Web API
-        if: steps.check-workshop.outputs.skip-workshop != 'true'
-        run: |
-          {
-            cat descriptions/korean.bbcode
-            echo ""
-            echo "workshop_v:${{ steps.version.outputs.version }}"
-          } > /tmp/desc_korean.txt
-          curl -sS -X POST "https://api.steampowered.com/ISteamRemoteStorage/SetItemDescription/v1/" \
-            -d "key=${{ secrets.STEAM_WEB_API_KEY }}" \
-            -d "appid=2868840" \
-            -d "publishedfileid=3747596598" \
-            -d "language=korean" \
-            --data-urlencode "description@/tmp/desc_korean.txt" || \
-          echo "::warning::Korean description update failed (non-fatal)"
         shell: bash
 
       - name: Package Release Artifacts
