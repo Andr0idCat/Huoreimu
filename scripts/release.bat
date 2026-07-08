@@ -2,18 +2,36 @@
 setlocal enabledelayedexpansion
 
 REM release.bat - Create a release tag with automatic version update in Huoreimu.json
-REM Usage: release.bat <version> [--force]
-REM   version: e.g. 1.0.0 or 1.0.0b (without leading 'v')
-REM   --force: skip dirty workspace check
+REM Usage: release.bat <version> [description] [--force]
+REM   version:     e.g. 1.0.0 or 1.0.0b (without leading 'v')
+REM   description: optional tag message, used as Steam changelog and GitHub Release body
+REM   --force:     skip dirty workspace check
 REM
 REM Example:
-REM   release.bat 1.0.0
-REM   release.bat 1.0.0b --force
+REM   release.bat 1.0.0                       REM lightweight tag
+REM   release.bat 1.0.0 "新卡牌、平衡调整"    REM annotated tag with message
 
-set VERSION=%~1
+set VERSION=
+set DESCRIPTION=
+set FORCE=false
+
+:parse_args_loop
+if "%~1"=="" goto :parse_args_done
+if /I "%~1"=="--force" (
+  set FORCE=true
+) else if "!VERSION!"=="" (
+  set VERSION=%~1
+) else (
+  set DESCRIPTION=%~1
+)
+shift
+goto :parse_args_loop
+:parse_args_done
+
 if "%VERSION%"=="" (
-  echo Usage: %~nx0 ^<version^> [--force]
-  echo   version: e.g. 1.0.0 or 1.0.0b
+  echo Usage: %~nx0 ^<version^> [description] [--force]
+  echo   version:     e.g. 1.0.0 or 1.0.0b
+  echo   description: tag message (Steam changelog + GitHub Release body)
   exit /b 1
 )
 
@@ -34,7 +52,7 @@ if errorlevel 1 (
 REM Check workspace
 git diff --quiet HEAD 2>nul
 if errorlevel 1 (
-  if /I "%~2"=="--force" (
+  if "!FORCE!"=="true" (
     echo Warning: Workspace is dirty. Proceeding due to --force.
   ) else (
     set /p "CONFIRM=Warning: Workspace has uncommitted changes. Continue? [y/N] "
@@ -88,13 +106,23 @@ if errorlevel 1 (
 for /f %%i in ('git rev-parse HEAD') do set COMMIT_SHA=%%i
 echo   Committed: %COMMIT_SHA:~0,8% - chore: update version to %VERSION%
 
-REM Tag
-git tag "%TAG%"
-if errorlevel 1 (
-  echo Error: git tag failed.
-  exit /b 1
+REM Tag (annotated with description if provided)
+if not "%DESCRIPTION%"=="" (
+  git tag -a "%TAG%" -m "%DESCRIPTION%"
+  if errorlevel 1 (
+    echo Error: git tag failed.
+    exit /b 1
+  )
+  echo   Created annotated tag: %TAG%
+  echo   Tag message: %DESCRIPTION%
+) else (
+  git tag "%TAG%"
+  if errorlevel 1 (
+    echo Error: git tag failed.
+    exit /b 1
+  )
+  echo   Created lightweight tag: %TAG%
 )
-echo   Created tag: %TAG%
 
 REM Push
 echo   Pushing tag %TAG%...

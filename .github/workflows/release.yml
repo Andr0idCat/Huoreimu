@@ -9,6 +9,8 @@ jobs:
       contents: write
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Setup .NET
         uses: actions/setup-dotnet@v4
@@ -104,7 +106,12 @@ jobs:
           esac
           TAGS=$(jq -r '.tags | join(",")' workshop.json)
           TITLE=$(jq -r '.title' workshop.json)
-          CHANGENOTE="Release v${{ steps.version.outputs.version }} - See full changelog: ${{ github.server_url }}/${{ github.repository }}/releases/tag/${{ github.ref_name }}"
+          TAG_MESSAGE=$(git tag -l --format='%(contents)' "${{ github.ref_name }}")
+          if [ -n "$TAG_MESSAGE" ]; then
+            CHANGENOTE="$TAG_MESSAGE"
+          else
+            CHANGENOTE="Release v${{ steps.version.outputs.version }} - See full changelog: ${{ github.server_url }}/${{ github.repository }}/releases/tag/${{ github.ref_name }}"
+          fi
           CONTENTDIR="${{ github.workspace }}/mods_output/huoreimu"
           PREVIEWFILE="${{ github.workspace }}/Huoreimu/mod_image.png"
           {

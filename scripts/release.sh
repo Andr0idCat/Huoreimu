@@ -1,30 +1,34 @@
 #!/bin/bash
 # release.sh - Create a release tag with automatic version update in Huoreimu.json
-# Usage: ./release.sh <version> [--force]
-#   version: e.g. 1.0.0 or 1.0.0b (without leading 'v')
-#   --force: skip dirty workspace check
+# Usage: ./release.sh <version> [description] [--force]
+#   version:     e.g. 1.0.0 or 1.0.0b (without leading 'v')
+#   description: optional tag message, used as Steam changelog and GitHub Release body
+#   --force:     skip dirty workspace check
 #
 # Example:
-#   ./release.sh 1.0.0        # creates tag v1.0.0 on master
-#   ./release.sh 1.0.0b       # creates tag v1.0.0b on beta_version
+#   ./release.sh 1.0.0                           # lightweight tag
+#   ./release.sh 1.0.0 "新卡牌、平衡调整"        # annotated tag with message
 
 set -euo pipefail
 
 FORCE=false
 VERSION=""
+DESCRIPTION=""
 
 for arg in "$@"; do
   case "$arg" in
     --force) FORCE=true ;;
     --help|-h)
-      echo "Usage: $0 <version> [--force]"
-      echo "  version: e.g. 1.0.0 or 1.0.0b"
-      echo "  --force: skip dirty workspace check"
+      echo "Usage: $0 <version> [description] [--force]"
+      echo "  version:     e.g. 1.0.0 or 1.0.0b"
+      echo "  description: tag message (Steam changelog + GitHub Release body)"
       exit 0
       ;;
     *)
       if [ -z "$VERSION" ]; then
         VERSION="$arg"
+      elif [ -z "$DESCRIPTION" ]; then
+        DESCRIPTION="$arg"
       else
         echo "Error: Unexpected argument: $arg"
         exit 1
@@ -34,7 +38,7 @@ for arg in "$@"; do
 done
 
 if [ -z "$VERSION" ]; then
-  echo "Error: Version is required. Usage: $0 <version> [--force]"
+  echo "Error: Version is required. Usage: $0 <version> [description] [--force]"
   exit 1
 fi
 
@@ -88,9 +92,15 @@ git commit -m "chore: update version to $VERSION"
 COMMIT_SHA=$(git rev-parse HEAD)
 echo "  Committed: ${COMMIT_SHA:0:8} - chore: update version to $VERSION"
 
-# Tag
-git tag "$TAG"
-echo "  Created tag: $TAG"
+# Tag (annotated with description if provided)
+if [ -n "$DESCRIPTION" ]; then
+  git tag -a "$TAG" -m "$DESCRIPTION"
+  echo "  Created annotated tag: $TAG"
+  echo "  Tag message: $DESCRIPTION"
+else
+  git tag "$TAG"
+  echo "  Created lightweight tag: $TAG"
+fi
 
 # Push
 echo "  Pushing tag $TAG..."

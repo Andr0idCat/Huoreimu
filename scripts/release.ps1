@@ -6,6 +6,8 @@
     Supports -Force to skip dirty workspace check and -WhatIf for dry run.
 .PARAMETER Version
     Version number without leading 'v', e.g. 1.0.0 or 1.0.0b.
+.PARAMETER Description
+    Optional tag message, used as Steam changelog and GitHub Release body.
 .PARAMETER Force
     Skip dirty workspace check (include uncommitted changes in version commit).
 .PARAMETER WhatIf
@@ -13,12 +15,16 @@
 .EXAMPLE
     .\release.ps1 1.0.0
     .\release.ps1 1.0.0b -Force
-    .\release.ps1 1.0.0 -WhatIf
+    .\release.ps1 1.0.0 "新卡牌、平衡调整"
+    .\release.ps1 1.0.0 "新卡牌、平衡調整" -WhatIf
 #>
 
 param(
     [Parameter(Mandatory=$true, Position=0)]
     [string]$Version,
+
+    [Parameter(Position=1)]
+    [string]$Description,
 
     [switch]$Force,
     [switch]$WhatIf
@@ -69,7 +75,11 @@ Write-Host "  Original HEAD: $($originalHead.Substring(0,8))"
 if ($WhatIf) {
     Write-Host "  [WhatIf] Would update Huoreimu.json version to $Version"
     Write-Host "  [WhatIf] Would commit 'chore: update version to $Version'"
-    Write-Host "  [WhatIf] Would tag $Tag"
+    if ($Description) {
+        Write-Host "  [WhatIf] Would create annotated tag $Tag with message: $Description"
+    } else {
+        Write-Host "  [WhatIf] Would create lightweight tag $Tag"
+    }
     Write-Host "  [WhatIf] Would push tag $Tag"
     Write-Host ""
     Write-Host "=== WhatIf: No changes made ==="
@@ -95,9 +105,15 @@ git commit -m "chore: update version to $Version"
 $commitSha = git rev-parse HEAD
 Write-Host "  Committed: $($commitSha.Substring(0,8)) - chore: update version to $Version"
 
-# Tag
-git tag $Tag
-Write-Host "  Created tag: $Tag"
+# Tag (annotated with description if provided)
+if ($Description) {
+    git tag -a $Tag -m $Description
+    Write-Host "  Created annotated tag: $Tag"
+    Write-Host "  Tag message: $Description"
+} else {
+    git tag $Tag
+    Write-Host "  Created lightweight tag: $Tag"
+}
 
 # Push
 Write-Host "  Pushing tag $Tag..."
