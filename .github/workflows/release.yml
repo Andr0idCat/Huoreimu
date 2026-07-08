@@ -98,11 +98,11 @@ jobs:
         if: steps.check-workshop.outputs.skip-workshop != 'true'
         run: |
           case "$(jq -r '.visibility' workshop.json)" in
-            private) VISIBILITY=0 ;;
+            public)  VISIBILITY=0 ;;
             friends) VISIBILITY=1 ;;
-            public)  VISIBILITY=2 ;;
+            private) VISIBILITY=2 ;;
             unlisted) VISIBILITY=3 ;;
-            *)       VISIBILITY=2 ;;
+            *)       VISIBILITY=0 ;;
           esac
           VERSION="${{ steps.version.outputs.version }}"
           TAGS=$(jq -r '.tags | join(",")' workshop.json)
