@@ -1,6 +1,14 @@
 @echo off
 setlocal enabledelayedexpansion
 
+REM Auto-cd to repo root
+for /f %%i in ('git rev-parse --show-toplevel 2^>nul') do set ROOT=%%i
+if "%ROOT%"=="" (
+  echo Error: Not inside a git repository.
+  exit /b 1
+)
+cd /d "%ROOT%"
+
 REM release.bat - Create a release tag with automatic version update in Huoreimu.json
 REM Usage: release.bat <version> [description] [--force]
 REM   version:     e.g. 1.0.0 or 1.0.0b (without leading 'v')

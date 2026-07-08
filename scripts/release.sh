@@ -11,6 +11,12 @@
 
 set -euo pipefail
 
+ROOT=$(git rev-parse --show-toplevel 2>/dev/null) || {
+  echo "Error: Not inside a git repository."
+  exit 1
+}
+cd "$ROOT"
+
 FORCE=false
 VERSION=""
 DESCRIPTION=""

@@ -32,6 +32,14 @@ param(
 
 $ErrorActionPreference = "Stop"
 
+# Auto-cd to repo root
+$root = git rev-parse --show-toplevel 2>$null
+if (-not $root) {
+    Write-Host "Error: Not inside a git repository."
+    exit 1
+}
+Set-Location $root
+
 # Strip leading 'v'
 $Version = $Version.TrimStart('v')
 
