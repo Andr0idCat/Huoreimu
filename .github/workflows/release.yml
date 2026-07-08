@@ -39,23 +39,15 @@ jobs:
         run: echo "version=${GITHUB_REF_NAME#v}" >> "$GITHUB_OUTPUT"
         shell: bash
 
-      - name: Compute numeric version
-        id: numver
-        run: echo "numeric=$(echo '${{ steps.version.outputs.version }}' | grep -oE '^[0-9]+(\.[0-9]+)*')" >> "$GITHUB_OUTPUT"
-        shell: bash
-
-      - name: Determine target branch
-        id: branch
+      - name: Verify Huoreimu.json version matches tag
         run: |
-          if [[ "${{ github.ref_name }}" == *b ]]; then
-            echo "branch=beta_version" >> "$GITHUB_OUTPUT"
-          else
-            echo "branch=master" >> "$GITHUB_OUTPUT"
+          JSON_VERSION=$(jq -r '.version' Huoreimu.json)
+          if [ "$JSON_VERSION" != "${{ steps.version.outputs.version }}" ]; then
+            echo "::error::Huoreimu.json version ($JSON_VERSION) does not match tag version (${{ steps.version.outputs.version }})."
+            echo "::error::Use scripts/release.sh (or .bat/.ps1) to create the tag - it will update Huoreimu.json automatically."
+            exit 1
           fi
-        shell: bash
-
-      - name: Update mod version in Huoreimu.json
-        run: jq --arg v "${{ steps.version.outputs.version }}" '.version = $v' Huoreimu.json > Huoreimu.json.tmp && mv Huoreimu.json.tmp Huoreimu.json
+          echo "Huoreimu.json version ($JSON_VERSION) matches tag."
         shell: bash
 
       - name: Check workshop version
@@ -74,7 +66,7 @@ jobs:
         shell: bash
 
       - name: Build and export .pck
-        run: dotnet publish huoreimu.csproj -c Release -p:ModVersion=${{ steps.version.outputs.version }} -p:NumericVersion=${{ steps.numver.outputs.numeric }}
+        run: dotnet publish huoreimu.csproj -c Release
         env:
           GodotPath: ${{ steps.godot-path.outputs.GODOT_EXE }}
           ModsPath: ${{ github.workspace }}/mods_output/
@@ -224,16 +216,3 @@ jobs:
           files: |
             huoreimu-v${{ steps.version.outputs.version }}.zip
           generate_release_notes: true
-
-      - name: Commit version update to ${{ steps.branch.outputs.branch }}
-        continue-on-error: true
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git fetch origin "${{ steps.branch.outputs.branch }}"
-          git checkout -B "${{ steps.branch.outputs.branch }}" "origin/${{ steps.branch.outputs.branch }}"
-          jq --arg v "${{ steps.version.outputs.version }}" '.version = $v' Huoreimu.json > Huoreimu.json.tmp && mv Huoreimu.json.tmp Huoreimu.json
-          git add Huoreimu.json
-          git commit -m "chore: update version to ${{ steps.version.outputs.version }}"
-          git push origin "${{ steps.branch.outputs.branch }}"
-        shell: bash
