@@ -133,9 +133,10 @@ if not "%DESCRIPTION%"=="" (
   echo   Created lightweight tag: %TAG%
 )
 
-REM Push
-echo   Pushing tag %TAG%...
-git push origin "%TAG%"
+REM Push commit first, then tag
+for /f %%i in ('git rev-parse --abbrev-ref HEAD') do set BRANCH=%%i
+echo   Pushing commit to %BRANCH%...
+git push origin "%BRANCH%"
 if errorlevel 1 (
   echo   Push failed. Rolling back...
   git tag -d "%TAG%" 2>nul
@@ -146,7 +147,18 @@ if errorlevel 1 (
   exit /b 1
 )
 
-for /f %%i in ('git rev-parse --abbrev-ref HEAD') do set BRANCH=%%i
+echo   Pushing tag %TAG%...
+git push origin "%TAG%"
+if errorlevel 1 (
+  echo   Tag push failed. Deleting local tag...
+  git tag -d "%TAG%" 2>nul
+  echo   Deleted local tag %TAG%.
+  echo   Note: version commit was already pushed to %BRANCH%.
+  echo   Fix the issue and retry: git tag -a %TAG% -m "<message>" <sha> ^&^& git push origin %TAG%
+  echo.
+  echo === Tag push failed. Commit is on remote. ===
+  exit /b 1
+)
+
 echo.
-echo === Success: tag %TAG% pushed ===
-echo Don't forget to also push the version commit: git push origin %BRANCH%
+echo === Success: commit pushed to %BRANCH%, tag %TAG% pushed ===

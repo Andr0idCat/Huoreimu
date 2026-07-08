@@ -108,19 +108,30 @@ else
   echo "  Created lightweight tag: $TAG"
 fi
 
-# Push
-echo "  Pushing tag $TAG..."
-if git push origin "$TAG"; then
-  echo ""
-  echo "=== Success: tag $TAG pushed ==="
-  echo "Don't forget to also push the version commit: git push origin $(git rev-parse --abbrev-ref HEAD)"
-else
-  PUSH_EXIT=$?
+# Push commit first, then tag
+CURRENT_BRANCH=$(git rev-parse --abbrev-ref HEAD)
+echo "  Pushing commit to $CURRENT_BRANCH..."
+if ! git push origin "$CURRENT_BRANCH"; then
   echo "  Push failed. Rolling back..."
   git tag -d "$TAG" 2>/dev/null || true
   git reset --hard "$ORIGINAL_HEAD" 2>/dev/null
   echo "  Deleted tag $TAG, reset to ${ORIGINAL_HEAD:0:8}"
   echo ""
   echo "=== Push failed. Local changes reverted. ==="
-  exit $PUSH_EXIT
+  exit 1
 fi
+
+echo "  Pushing tag $TAG..."
+if ! git push origin "$TAG"; then
+  echo "  Tag push failed. Deleting local tag..."
+  git tag -d "$TAG" 2>/dev/null || true
+  echo "  Deleted local tag $TAG."
+  echo "  Note: version commit was already pushed to $CURRENT_BRANCH."
+  echo "  Fix the issue and retry: git tag -a $TAG -m '<message>' <sha> && git push origin $TAG"
+  echo ""
+  echo "=== Tag push failed. Commit is on remote. ==="
+  exit 1
+fi
+
+echo ""
+echo "=== Success: commit pushed to $CURRENT_BRANCH, tag $TAG pushed ==="

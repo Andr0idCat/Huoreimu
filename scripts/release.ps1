@@ -125,10 +125,11 @@ if ($Description) {
     Write-Host "  Created lightweight tag: $Tag"
 }
 
-# Push
-Write-Host "  Pushing tag $Tag..."
+# Push commit first, then tag
+$branch = git rev-parse --abbrev-ref HEAD
+Write-Host "  Pushing commit to $branch..."
 try {
-    git push origin $Tag
+    git push origin $branch
 } catch {
     Write-Host "  Push failed. Rolling back..."
     git tag -d $Tag 2>$null
@@ -139,7 +140,19 @@ try {
     exit 1
 }
 
-$branch = git rev-parse --abbrev-ref HEAD
+Write-Host "  Pushing tag $Tag..."
+try {
+    git push origin $Tag
+} catch {
+    Write-Host "  Tag push failed. Deleting local tag..."
+    git tag -d $Tag 2>$null
+    Write-Host "  Deleted local tag $Tag."
+    Write-Host "  Note: version commit was already pushed to $branch."
+    Write-Host "  Fix the issue and retry: git tag -a $Tag -m '<message>' <sha> && git push origin $Tag"
+    Write-Host ""
+    Write-Host "=== Tag push failed. Commit is on remote. ==="
+    exit 1
+}
+
 Write-Host ""
-Write-Host "=== Success: tag $Tag pushed ==="
-Write-Host "Don't forget to also push the version commit: git push origin $branch"
+Write-Host "=== Success: commit pushed to $branch, tag $Tag pushed ==="
