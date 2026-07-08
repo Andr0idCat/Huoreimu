@@ -78,9 +78,10 @@ echo   Original HEAD: %ORIGINAL_HEAD:~0,8%
 REM --- Update Huoreimu.json via PowerShell (no jq dependency) ---
 > "%TEMP%\huoreimu_release.ps1" (
 echo param([string]$ver^)
-echo $c = Get-Content 'Huoreimu.json' -Raw
+echo $c = [System.IO.File]::ReadAllText('Huoreimu.json', [System.Text.Encoding]::UTF8^)
 echo $c = $c -replace '"version":\s*"[^"]*"', ('"version": "' + $ver + '"')
-echo Set-Content 'Huoreimu.json' -Value $c -NoNewline -Encoding utf8
+echo $enc = New-Object System.Text.UTF8Encoding `$false
+echo [System.IO.File]::WriteAllText('Huoreimu.json', $c, $enc^)
 )
 powershell -NoProfile -ExecutionPolicy Bypass -File "%TEMP%\huoreimu_release.ps1" -ver "%VERSION%"
 if errorlevel 1 (

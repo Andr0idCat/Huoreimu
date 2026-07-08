@@ -94,9 +94,10 @@ if ($WhatIf) {
     return
 }
 
-$content = Get-Content 'Huoreimu.json' -Raw
+$content = [System.IO.File]::ReadAllText('Huoreimu.json', [System.Text.Encoding]::UTF8)
 $content = $content -replace '"version":\s*"[^"]*"', ('"version": "' + $Version + '"')
-Set-Content 'Huoreimu.json' -Value $content -NoNewline -Encoding utf8
+$utf8NoBom = New-Object System.Text.UTF8Encoding $false
+[System.IO.File]::WriteAllText('Huoreimu.json', $content, $utf8NoBom)
 
 # Check if actually changed
 $null = git diff --quiet HEAD 2>$null
