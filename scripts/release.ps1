@@ -39,6 +39,7 @@ if (-not $root) {
     exit 1
 }
 Set-Location $root
+$jsonPath = Join-Path $root 'Huoreimu.json'
 
 # Strip leading 'v'
 $Version = $Version.TrimStart('v')
@@ -94,10 +95,10 @@ if ($WhatIf) {
     return
 }
 
-$content = [System.IO.File]::ReadAllText('Huoreimu.json', [System.Text.Encoding]::UTF8)
+$content = [System.IO.File]::ReadAllText($jsonPath, [System.Text.Encoding]::UTF8)
 $content = $content -replace '"version":\s*"[^"]*"', ('"version": "' + $Version + '"')
 $utf8NoBom = New-Object System.Text.UTF8Encoding $false
-[System.IO.File]::WriteAllText('Huoreimu.json', $content, $utf8NoBom)
+[System.IO.File]::WriteAllText($jsonPath, $content, $utf8NoBom)
 
 # Check if actually changed
 $null = git diff --quiet HEAD 2>$null
