@@ -1,4 +1,4 @@
-﻿<Project Sdk="Godot.NET.Sdk/4.5.1">
+﻿<Project Sdk="Godot.NET.Sdk/4.5.1" InitialTargets="DetectBranchForRefLib">
     <PropertyGroup>
         <TargetFramework>net9.0</TargetFramework>
         <TargetFramework Condition=" '$(GodotTargetPlatform)' == 'android' ">net9.0</TargetFramework>
@@ -81,7 +81,10 @@
     </ItemGroup>
 
     <ItemGroup Condition="!Exists('$(Sts2DataDir)/sts2.dll')">
-        <PackageReference Include="Book.Sts2.RefLib" Version="0.106.*" PrivateAssets="All" />
+        <PackageReference Include="Book.Sts2.RefLib" Version="*" PrivateAssets="All"
+                          Condition="'$(CurrentBranch)' != 'beta_version'" />
+        <PackageReference Include="Book.Sts2.RefLib" Version="*-beta" PrivateAssets="All"
+                          Condition="'$(CurrentBranch)' == 'beta_version'" />
     </ItemGroup>
 
     <ItemGroup>
@@ -111,6 +114,13 @@
         <PathMap>$(AppOutputBase)=.\</PathMap>
         <IncludeSourceRevisionInInformationalVersion>false</IncludeSourceRevisionInInformationalVersion>
     </PropertyGroup>
+
+    <Target Name="DetectBranchForRefLib">
+        <Exec Command="git rev-parse --abbrev-ref HEAD" ConsoleToMSBuild="true"
+              StandardOutputImportance="Low" IgnoreExitCode="true">
+            <Output TaskParameter="ConsoleOutput" PropertyName="CurrentBranch" />
+        </Exec>
+    </Target>
 
     <Target Name="Copy Mod" AfterTargets="PostBuildEvent" Condition="Exists('$(Sts2DataDir)/sts2.dll')">
         <Message Text="Copying mod to Slay the Spire 2 mods folder..." Importance="high"/>
