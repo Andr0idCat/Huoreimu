@@ -84,7 +84,7 @@
     <ItemGroup Condition="!Exists('$(Sts2DataDir)/sts2.dll')">
         <PackageReference Include="Book.Sts2.RefLib" Version="*" PrivateAssets="All"
                           Condition="'$(CurrentBranch)' != 'beta_version'" />
-        <PackageReference Include="Book.Sts2.RefLib" Version="*-beta" PrivateAssets="All"
+        <PackageReference Include="Book.Sts2.RefLib" Version="*-*" PrivateAssets="All"
                           Condition="'$(CurrentBranch)' == 'beta_version'" />
     </ItemGroup>
 
