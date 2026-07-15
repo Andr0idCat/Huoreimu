@@ -68,7 +68,13 @@ jobs:
         shell: bash
 
       - name: Build and export .pck
-        run: dotnet publish huoreimu.csproj -c Release
+        run: |
+          if [[ "${{ github.ref_name }}" == *b ]]; then
+            BRANCH="beta_version"
+          else
+            BRANCH="master"
+          fi
+          dotnet publish huoreimu.csproj -c Release -p:CurrentBranch="$BRANCH"
         env:
           GodotPath: ${{ steps.godot-path.outputs.GODOT_EXE }}
           ModsPath: ${{ github.workspace }}/mods_output/
