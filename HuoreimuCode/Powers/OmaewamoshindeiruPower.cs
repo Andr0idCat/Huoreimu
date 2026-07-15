@@ -19,7 +19,7 @@ public class OmaewamoshindeiruPower() : HuoreimuPowerBase(PowerType.Debuff, Powe
     private Player? _killer;
 
     public override decimal ModifyDamageMultiplicative(Creature? target, decimal amount, ValueProp props,
-        Creature? dealer, CardModel? cardSource)
+        Creature? dealer, CardModel? cardSource, CardPlay? cardPlay)
     {
         if (!props.IsPoweredAttack()) return 1m;
         if (cardSource is null) return 1m;

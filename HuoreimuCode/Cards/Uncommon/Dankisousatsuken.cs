@@ -38,7 +38,7 @@ public class Dankisousatsuken() : HuoreimuCard(1, CardType.Attack, CardRarity.Un
             : 0;
         DynamicVars.Damage.BaseValue += increment;
         await CreatureCmd.Damage(choiceContext, Owner.Creature, DynamicVars.ExtraDamage.IntValue, ValueProp.Unpowered,
-            null, this);
+            this, null);
     }
 
     protected override void OnUpgrade()

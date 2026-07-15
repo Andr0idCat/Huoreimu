@@ -33,6 +33,6 @@ public class HikoushinketsushoPower() : HuoreimuPowerBase(PowerType.Buff, PowerS
         Flash();
         await CreatureCmd.Damage(choiceContext, CombatState.HittableEnemies,
             drawnCard.Type is CardType.Status ? Amount : DynamicVars.Damage.IntValue, ValueProp.Unpowered, Owner,
-            null);
+            null, null);
     }
 }
