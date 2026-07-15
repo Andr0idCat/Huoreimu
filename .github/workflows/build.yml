@@ -27,6 +27,6 @@ jobs:
           fi
           git commit --no-edit -m "Merge $BASE_BRANCH for CI" 2>/dev/null || echo "Already up to date, nothing to merge."
       - name: Restore
-        run: dotnet restore
+        run: dotnet restore -p:CurrentBranch=${{ github.head_ref || github.ref_name }}
       - name: Build
         run: dotnet build -c Release --no-restore huoreimu.csproj -p:CurrentBranch=${{ github.head_ref || github.ref_name }}

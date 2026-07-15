@@ -18,7 +18,13 @@ jobs:
           dotnet-version: 9.0.x
 
       - name: Restore dependencies
-        run: dotnet restore huoreimu.csproj
+        run: |
+          if [[ "${{ github.ref_name }}" == *b ]]; then
+            BRANCH="beta_version"
+          else
+            BRANCH="master"
+          fi
+          dotnet restore huoreimu.csproj -p:CurrentBranch="$BRANCH"
 
       - name: Setup Godot
         uses: chickensoft-games/setup-godot@v2.4.1
