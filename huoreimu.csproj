@@ -54,7 +54,8 @@
         <ModVersionProperty Condition="'$(ModVersion)' == ''">$(_JsonVersionProperty)</ModVersionProperty>
         <NumericVersionProperty Condition="'$(NumericVersion)' != ''">$(NumericVersion)</NumericVersionProperty>
         <NumericVersionProperty Condition="'$(NumericVersion)' == ''">$([System.Text.RegularExpressions.Regex]::Replace($(ModVersionProperty), '[^0-9.]', ''))</NumericVersionProperty>
-        <Version>$(ModVersionProperty)</Version>
+        <Version>$(NumericVersionProperty)</Version>
+        <InformationalVersion>$(ModVersionProperty)</InformationalVersion>
         <AssemblyVersion>$(NumericVersionProperty).0</AssemblyVersion>
         <FileVersion>$(NumericVersionProperty).0</FileVersion>
     </PropertyGroup>
