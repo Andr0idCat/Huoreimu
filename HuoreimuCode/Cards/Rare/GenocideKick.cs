@@ -1,5 +1,4 @@
-﻿using AyaMod.Huoreimu.Powers;
-using BaseLib.Utils;
+﻿using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
@@ -26,7 +25,7 @@ public class GenocideKick() : HuoreimuCard(1, CardType.Attack, CardRarity.Rare, 
     {
         await base.OnPlay(choiceContext, cardPlay);
         await CommonActions.CardAttack(this, cardPlay, DynamicVars.Repeat.IntValue).Execute(choiceContext);
-        await CreatureCmd.LoseBlock(Owner.Creature, Owner.Creature.Block);
+        await CreatureCmd.LoseBlock(choiceContext,Owner.Creature, Owner.Creature.Block, Owner.Creature);
     }
 
     protected override void OnUpgrade()
