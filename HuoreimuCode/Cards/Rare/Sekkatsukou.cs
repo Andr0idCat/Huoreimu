@@ -46,6 +46,6 @@ public class Sekkatsukou() : HuoreimuCard(0, CardType.Power, CardRarity.Rare, Ta
         await CommonActions.ApplySelf<VulnerablePower>(choiceContext, this,
             DynamicVars.Power<VulnerablePower>().BaseValue);
         if (IsUpgraded) return;
-        await CommonActions.ApplySelf<FrailPower>(choiceContext, this, DynamicVars.Power<VulnerablePower>().BaseValue);
+        await CommonActions.ApplySelf<FrailPower>(choiceContext, this, DynamicVars.Power<FrailPower>().BaseValue);
     }
 }

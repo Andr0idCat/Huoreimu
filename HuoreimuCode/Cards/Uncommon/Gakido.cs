@@ -52,7 +52,7 @@ public sealed class Gakido() : HuoreimuCard(1, CardType.Attack, CardRarity.Uncom
 
     public override async Task AfterCombatEnd(CombatRoom room)
     {
-        if (room.RoomType != RoomType.Elite) return;
+        if (room.RoomType is not (RoomType.Elite or RoomType.Boss)) return;
 
         var pile = Pile;
         if (pile is not { Type: PileType.Deck }) return;

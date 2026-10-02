@@ -61,7 +61,7 @@ public sealed class OniBreaker() : HuoreimuCard(1, CardType.Skill, CardRarity.Co
 
     public override Task AfterCombatVictory(CombatRoom room)
     {
-        if (room.RoomType == RoomType.Elite && Pile?.Type == PileType.Deck) EliteDefeated += INCREASE_AMOUNT;
+        if ((room.RoomType is RoomType.Elite or RoomType.Boss) && Pile?.Type == PileType.Deck) EliteDefeated += INCREASE_AMOUNT;
         return base.AfterCombatVictory(room);
     }
 

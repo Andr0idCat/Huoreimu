@@ -17,11 +17,11 @@ public static class StringExtensions
     }
 	public static string HandsImagePath(this string path)
     {
-        return Path.Join(MainFile.ModId, "Images", "Hands", path);
+        return $"res://{MainFile.ModId}/Image/Hands/{path}";
     }
     public static string CardImagePath(this string path)
     {
-        return Path.Join(MainFile.ModId, "Images", "Cards", path);
+        return $"res://{MainFile.ModId}/Image/Cards/{path}";
     }
 
     public static string BigCardImagePath(this string path)
@@ -31,11 +31,11 @@ public static class StringExtensions
 
     public static string PowerImagePath(this string path)
     {
-        return Path.Join(MainFile.ModId, "Images", "Powers", path);
+        return $"res://{MainFile.ModId}/Image/Powers/{path}";
     }
     public static string BigPowerImagePath(this string path)
     {
-        return Path.Join(MainFile.ModId, "Images", "Powers", "Big", path);
+        return $"res://{MainFile.ModId}/Image/Powers/Big/{path}";
     }
 
     public static string RelicImagePath(this string path)
@@ -45,7 +45,7 @@ public static class StringExtensions
 
     public static string BigRelicImagePath(this string path)
     {
-        return Path.Join(MainFile.ModId, "Images", "Relics", "Big", path);
+        return $"res://{MainFile.ModId}/Image/Relics/Big/{path}";
     }
 
     public static string CharacterUiPath(this string path)

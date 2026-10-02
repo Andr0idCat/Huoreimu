@@ -1,4 +1,4 @@
-﻿using AyaMod.Huoreimu.DynamicVars;
+using AyaMod.Huoreimu.DynamicVars;
 using AyaMod.Huoreimu.Extensions;
 using AyaMod.Huoreimu.Keywords;
 using AyaMod.Huoreimu.Actions;
@@ -39,6 +39,7 @@ public class Shoukajushu() : HuoreimuUltimateSkillCard(0, CardType.Skill, CardRa
 
     protected override void OnUpgrade()
     {
-        DynamicVars.GetUltimateSkill().UpgradeValueBy(-1);
+        var ultimateSkill = DynamicVars.GetUltimateSkill();
+        if (ultimateSkill != null) ultimateSkill.UpgradeValueBy(-1);
     }
 }

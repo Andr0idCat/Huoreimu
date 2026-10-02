@@ -30,6 +30,9 @@ public class StarOfDeath : HuoreimuRelic
 
         foreach (var result in command.Results.SelectMany(r => r))
         {
+            // 只给敌方叠死兆星，避免自伤或友方伤害也生效
+            if (result.Receiver.Side == Owner.Creature.Side) continue;
+
             Flash();
             await PowerCmd.Apply<OmenOfDeathPower>(choiceContext, result.Receiver, OMEN_OF_DEATH_VALUE, Owner.Creature, null, false);
         }

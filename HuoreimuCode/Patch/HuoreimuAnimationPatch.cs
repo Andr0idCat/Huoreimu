@@ -13,14 +13,20 @@ using static Godot.PackedScene;
 [HarmonyPatch(typeof(NCreature), "SetAnimationTrigger")]
 public static class HuoreimuAnimationPatch
 {
+	// 角色模型的 ModelId，由 Mod 前缀(AYAMOD) + 角色 Id(Huoreimu) 组成
+	private const string CharacterModelId = "CHARACTER.AYAMOD-HUOREIMU";
+
+	// 标记已经挂过"动画结束回到 Idle"回调的节点，避免重复连接
+	private const string IdleReturnConnectedMeta = "huoreimu_idle_return_connected";
+
 	public static void Postfix(NCreature __instance, string trigger)
 	{
 		if (__instance.Entity == null || !__instance.Entity.IsPlayer)
 			return;
 
-		if (__instance.Entity.ModelId.ToString() == "CHARACTER.AYAMOD-HUOREIMU")
+		if (__instance.Entity.ModelId.ToString() == CharacterModelId)
 		{
-			Log.Info("[>>>SelphinaMode AnimeTrigger=]"+trigger);
+			Log.Info($"[Huoreimu] AnimeTrigger={trigger}");
 			switch (trigger)
 			{
 				case "Hit":
@@ -61,21 +67,21 @@ public static class HuoreimuAnimationPatch
 		var anim = visual.GetNodeOrNull<AnimatedSprite2D>("HuoreimuVisual");
 		if (anim == null) return;
 
+		// 每个节点只连接一次，避免动画播放时不断累积回调
+		if (!anim.HasMeta(IdleReturnConnectedMeta))
+		{
+			anim.SetMeta(IdleReturnConnectedMeta, true);
+			anim.AnimationFinished += () =>
+			{
+				if (!GodotObject.IsInstanceValid(anim)) return;
+				if (anim.Animation == "Dead" || anim.Animation == "Idle") return;
+				anim.Play("Idle");
+			};
+		}
+
 		// 切换动画
 		anim.Frame = 0;
 		anim.Play(animName, 1f, fromEnd);
-
-		// 非 Dead 动画结束后回到 Idle
-		if (animName != "Dead")
-		{
-			anim.Connect("animation_finished", Callable.From(() =>
-			{
-				if (anim.Animation != "Dead")
-				{
-					anim.Play("Idle");
-				}
-			}), 4u);
-		}
 	}
 }
 
@@ -84,10 +90,17 @@ public static class HuoreimuGameOverPatch
 {
 	public static void Postfix(NGameOverScreen __instance)
 	{
-		var _creatureContainer = __instance.GetNodeOrNull<Control>("%CreatureContainer");
-		foreach(Node2D visual in _creatureContainer.GetChildren())
+		var creatureContainer = __instance.GetNodeOrNull<Control>("%CreatureContainer");
+		if (creatureContainer == null) return;
+
+		foreach (var child in creatureContainer.GetChildren())
 		{
-			if (visual.Name.ToString().StartsWith("Huoreimu")) visual.GetNodeOrNull<AnimatedSprite2D>("HuoreimuVisual").Play("Dead");
+			if (child is not Node2D visual) continue;
+			if (!visual.Name.ToString().StartsWith("Huoreimu")) continue;
+
+			var anim = visual.GetNodeOrNull<AnimatedSprite2D>("HuoreimuVisual");
+			if (anim == null) continue;
+			anim.Play("Dead");
 		}
 	}
 }

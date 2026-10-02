@@ -4,7 +4,7 @@
   "author": "古明地绫",
   "description": "Mod 描述",
   "version": "1.0.2",
-  "min_game_version": "0.106.0",
+  "min_game_version": "0.109.0",
   "has_pck": true,
   "has_dll": true,
   "dependencies": [
