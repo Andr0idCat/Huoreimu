@@ -52,6 +52,24 @@ jobs:
           echo "Huoreimu.json version ($JSON_VERSION) matches tag."
         shell: bash
 
+      # actions/checkout 会把 refs/tags/<tag> 强制指向 commit（轻量标签），导致取不到附注标签的说明文字。
+      # 这里先把附注标签对象取回来，并写出一份说明文件（供创意工坊 changenote 与 GitHub Release 正文使用）。
+      - name: Extract tag note
+        run: |
+          git fetch --force origin "+refs/tags/${GITHUB_REF_NAME}:refs/tags/${GITHUB_REF_NAME}" \
+            || echo "::warning::failed to restore annotated tag, falling back to default note"
+          TAG_TYPE=$(git for-each-ref "refs/tags/${GITHUB_REF_NAME}" --format='%(objecttype)')
+          echo "tag object type: $TAG_TYPE"
+          if [ "$TAG_TYPE" = "tag" ]; then
+            git tag -l --format='%(contents)' "${GITHUB_REF_NAME}" > /tmp/release_note.txt
+          fi
+          if [ ! -s /tmp/release_note.txt ]; then
+            echo "Release v${{ steps.version.outputs.version }}" > /tmp/release_note.txt
+          fi
+          echo "----- release note -----"
+          cat /tmp/release_note.txt
+        shell: bash
+
       - name: Check workshop version
         id: check-workshop
         run: |
@@ -115,14 +133,12 @@ jobs:
           TITLE=$(jq -r '.title' workshop.json)
           CONTENTDIR="${{ github.workspace }}/mods_output/huoreimu"
           PREVIEWFILE="${{ github.workspace }}/Huoreimu/mod_image.png"
-          TAG_TYPE=$(git for-each-ref "refs/tags/${{ github.ref_name }}" --format='%(objecttype)')
-          CHANGENOTE="Release v${VERSION}"
-          if [ "$TAG_TYPE" = "tag" ]; then
-            TAG_MSG=$(git tag -l --format='%(contents)' "${{ github.ref_name }}" | head -c -1)
-            if [ -n "$TAG_MSG" ]; then
-              CHANGENOTE="$TAG_MSG"
-            fi
+          # changenote 会内联进 VDF 的引号里：只取首行并去掉双引号
+          CHANGENOTE=$(head -n1 /tmp/release_note.txt 2>/dev/null | tr -d '"')
+          if [ -z "$CHANGENOTE" ]; then
+            CHANGENOTE="Release v${VERSION}"
           fi
+          echo "changenote: $CHANGENOTE"
           {
             cat descriptions/english.bbcode
             echo ""
@@ -168,4 +184,5 @@ jobs:
         with:
           files: |
             huoreimu-v${{ steps.version.outputs.version }}.zip
+          body_path: /tmp/release_note.txt
           generate_release_notes: true
