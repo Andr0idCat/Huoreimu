@@ -23,7 +23,7 @@ public class Meikyoushisui() : HuoreimuCard(1, CardType.Skill, CardRarity.Uncomm
             .ToList();
 
         var count = cards.Count;
-        await CardCmd.DiscardAndDraw(choiceContext, cards, count * 2);
+        await CardCmd.DiscardAndDraw(choiceContext, cards, count * DynamicVars.Cards.IntValue);
         await CreatureCmd.GainBlock(Owner.Creature, DynamicVars.Block.IntValue * count, ValueProp.Move, cardPlay);
     }
 

@@ -12,8 +12,7 @@ public class AkaiYume() : HuoreimuExtraDeckCard<Huo>(1, CardType.Power, CardRari
 {
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new PowerVar<AkaiYumePower>(2),
-        new(HuoreimuConstants.INCREASE_VALUE, 2)
+        new PowerVar<AkaiYumePower>(2)
     ];
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
@@ -30,9 +29,5 @@ public class AkaiYume() : HuoreimuExtraDeckCard<Huo>(1, CardType.Power, CardRari
     protected override void OnUpgrade()
     {
         DynamicVars.Power<AkaiYumePower>().UpgradeValueBy(1);
-        if (DynamicVars.TryGetValue(HuoreimuConstants.INCREASE_VALUE, out var increaseValue))
-        {
-            increaseValue.UpgradeValueBy(1);
-        }
     }
 }

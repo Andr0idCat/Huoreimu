@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://14uvhws0tuac"
-path="res://.godot/imported/sin_gravaton_sfx.wav-f29d0e63b9dc77e3cbff2dfe0632758a.sample"
+path="res://.godot/imported/sin_graviton_sfx.wav-f29d0e63b9dc77e3cbff2dfe0632758a.sample"
 
 [deps]
 
-source_file="res://Huoreimu/Audio/sin_gravaton_sfx.wav"
-dest_files=["res://.godot/imported/sin_gravaton_sfx.wav-f29d0e63b9dc77e3cbff2dfe0632758a.sample"]
+source_file="res://Huoreimu/Audio/sin_graviton_sfx.wav"
+dest_files=["res://.godot/imported/sin_graviton_sfx.wav-f29d0e63b9dc77e3cbff2dfe0632758a.sample"]
 
 [params]
 

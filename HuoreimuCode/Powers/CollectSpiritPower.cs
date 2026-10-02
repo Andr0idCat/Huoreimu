@@ -1,4 +1,4 @@
-﻿using MegaCrit.Sts2.Core.Combat;
+using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Powers;
@@ -13,7 +13,7 @@ public class CollectSpiritPower() : HuoreimuPowerBase(PowerType.Buff, PowerStack
         if (side is not CombatSide.Player) return;
 
         var ctx = new ThrowingPlayerChoiceContext();
-        foreach (var enemy in combatState.Enemies)
+        foreach (var enemy in combatState.HittableEnemies)
         {
             Flash();
             await PowerCmd.Apply<OmenOfDeathPower>(ctx, enemy, Amount, Owner, null, false);

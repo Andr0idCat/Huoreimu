@@ -47,16 +47,23 @@ public abstract class DollPowerBase() : HuoreimuPowerBase(PowerType.Buff, PowerS
             return;
         }
 
-        var hand = PileType.Draw.GetPile(Owner.Player);
-        var items = hand.Cards
+        var drawPile = PileType.Draw.GetPile(Owner.Player);
+        var items = drawPile.Cards
             .Where(c => c.Type == CardType.Attack &&
                         !c.Keywords.Contains(CardKeyword.Unplayable) &&
                         CanAutoPlay(c))
             .ToList();
         var cardModel = Owner.Player.RunState.Rng.Shuffle.NextItem(items);
         if (cardModel == null) return;
+
+        // 攻击牌需要有目标，从可命中的敌人中随机选一个
+        var enemies = CombatState?.HittableEnemies?.ToList();
+        if (enemies is null || enemies.Count == 0) return;
+        var target = Owner.Player.RunState.Rng.CombatTargets.NextItem(enemies);
+        if (target == null) return;
+
         Flash();
-        await CardCmd.AutoPlay(choiceContext, cardModel, null);
+        await CardCmd.AutoPlay(choiceContext, cardModel, target);
     }
 #nullable disable
 

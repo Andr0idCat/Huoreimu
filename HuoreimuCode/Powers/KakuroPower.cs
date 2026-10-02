@@ -43,7 +43,7 @@ public sealed class KakuroPower() : HuoreimuPowerBase(PowerType.Buff, PowerStack
     public override Task AfterCardChangedPiles(CardModel card, PileType oldPileType, AbstractModel source)
     {
         if (card is { Type: CardType.Curse, Pile: { Type: PileType.Hand } } && card.Owner == Owner.Player)
-            SetCard(card, RetainVar.BoolVal);
+            SetCard(card, RetainVar?.BoolVal ?? false);
         return Task.CompletedTask;
     }
 
@@ -51,7 +51,7 @@ public sealed class KakuroPower() : HuoreimuPowerBase(PowerType.Buff, PowerStack
     {
         var player = Owner.Player;
         ArgumentNullException.ThrowIfNull(player);
-        var retain = RetainVar.BoolVal;
+        var retain = RetainVar?.BoolVal ?? false;
         foreach (var card in PileType.Hand.GetPile(player).Cards.Where(c => c.Type is CardType.Curse))
         {
             SetCard(card, retain);

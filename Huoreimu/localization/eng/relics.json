@@ -6,7 +6,7 @@
   "AYAMOD-THIRSTY_BLOOD_JADE.description": "Upon entering and leaving an Elite combat, heal [blue]{Heal:diff()}[/blue] HP.",
   "AYAMOD-THIRSTY_BLOOD_JADE.flavor": "If you stop fighting, death will soon catch up.",
   "AYAMOD-BLACK_GOHEI.title": "Jet-Black Gohei",
-  "AYAMOD-BLACK_GOHEI.description": "Whenever an enemy dies, gain [blue]1[/blue] Intangible.",
+  "AYAMOD-BLACK_GOHEI.description": "Whenever an enemy dies, gain [blue]{IntangiblePower:diff()}[/blue] Intangible.",
   "AYAMOD-BLACK_GOHEI.flavor": "A weapon that spreads calamity, not a ritual tool for purification, for its wielder is no shrine maiden.",
   "AYAMOD-BLOODS_BANE.title": "Blood's Bane",
   "AYAMOD-BLOODS_BANE.description": "At the start of your turn, gain [blue]{Energy:energyIcons()}[/blue]. Upon pickup, add [blue]2[/blue] [gold]Huo[/gold] to your deck.",

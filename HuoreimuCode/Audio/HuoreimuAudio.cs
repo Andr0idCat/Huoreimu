@@ -1,4 +1,4 @@
-﻿using Godot;
+using Godot;
 using MegaCrit.Sts2.Core.Saves;
 
 namespace AyaMod.Huoreimu.Audio;
@@ -7,6 +7,9 @@ public class HuoreimuAudio
 {
     private static readonly Dictionary<string, AudioStream> Cache = new();
     private static readonly Dictionary<string, List<AudioStreamPlayer>> ActivePlayers = new();
+
+    // 记录播放结束的回调，停止播放时用于解绑（Godot 的 C# 事件无法通过 += null 解绑）
+    private static readonly Dictionary<AudioStreamPlayer, Action> FinishedHandlers = new();
 
     public static void Play(string path, float volume, float pitch, bool loop, bool unique)
     {
@@ -24,62 +27,88 @@ public class HuoreimuAudio
             return;
         }
 
-        AudioStreamPlayer player;
-        if (unique && ActivePlayers.TryGetValue(path, out var activePlayer) && activePlayer.Count > 0)
+        // unique：同一音效同时只保留一个播放器，复用第一个并释放多余的
+        if (unique && ActivePlayers.TryGetValue(path, out var activePlayers))
         {
-            player = activePlayer[0];
-            player.Play();
-            for (var i = 1; i < activePlayer.Count; i++)
+            // 先清理已经失效的播放器，避免复用到已释放的对象
+            for (var i = activePlayers.Count - 1; i >= 0; i--)
             {
-                var otherPlayer = activePlayer[i];
-                activePlayer.Remove(otherPlayer);
-                otherPlayer.Stop();
-                otherPlayer.QueueFree();
+                if (GodotObject.IsInstanceValid(activePlayers[i])) continue;
+                DetachFinishedHandler(activePlayers[i]);
+                activePlayers.RemoveAt(i);
             }
-        }
-        else
-        {
-            player = new AudioStreamPlayer
-            {
-                Stream = stream,
-                VolumeDb = ToDb(volume),
-                PitchScale = pitch,
-                Autoplay = true,
-            };
 
-            var tree = Engine.GetMainLoop() as SceneTree;
-            tree?.Root.AddChild(player);
-
-            // 登记播放器以便停止
-            if (!ActivePlayers.ContainsKey(path))
-                ActivePlayers[path] = [];
-            ActivePlayers[path].Add(player);
-        }
-
-        if (loop)
-        {
-            // 循环播放：每次播放结束后重新播放
-            player.Finished += () =>
+            if (activePlayers.Count > 0)
             {
-                if (GodotObject.IsInstanceValid(player) && !player.Playing)
-                    player.Play();
-            };
-        }
-        else
-        {
-            // 非循环：播放完毕后自动清理
-            player.Finished += () =>
-            {
-                if (ActivePlayers.TryGetValue(path, out var list))
+                var currentPlayer = activePlayers[0];
+                foreach (var otherPlayer in activePlayers.Skip(1).ToArray())
                 {
-                    list.Remove(player);
-                    if (list.Count == 0)
-                        ActivePlayers.Remove(path);
+                    activePlayers.Remove(otherPlayer);
+                    DetachFinishedHandler(otherPlayer);
+                    otherPlayer.Stop();
+                    otherPlayer.QueueFree();
                 }
 
-                player.QueueFree();
-            };
+                currentPlayer.VolumeDb = ToDb(volume);
+                currentPlayer.PitchScale = pitch;
+                currentPlayer.Play();
+                return;
+            }
+
+            ActivePlayers.Remove(path);
         }
+
+        var player = new AudioStreamPlayer
+        {
+            Stream = stream,
+            VolumeDb = ToDb(volume),
+            PitchScale = pitch,
+            Autoplay = true,
+        };
+
+        var tree = Engine.GetMainLoop() as SceneTree;
+        tree?.Root.AddChild(player);
+
+        // 登记播放器以便停止
+        if (!ActivePlayers.TryGetValue(path, out var players))
+        {
+            players = [];
+            ActivePlayers[path] = players;
+        }
+
+        players.Add(player);
+
+        Action onFinished = () =>
+        {
+            if (loop)
+            {
+                // 循环播放：每次播放结束后重新播放
+                if (GodotObject.IsInstanceValid(player) && !player.Playing)
+                    player.Play();
+                return;
+            }
+
+            // 非循环：播放完毕后自动清理
+            if (ActivePlayers.TryGetValue(path, out var list))
+            {
+                list.Remove(player);
+                if (list.Count == 0)
+                    ActivePlayers.Remove(path);
+            }
+
+            DetachFinishedHandler(player);
+            if (GodotObject.IsInstanceValid(player))
+                player.QueueFree();
+        };
+
+        FinishedHandlers[player] = onFinished;
+        player.Finished += onFinished;
+    }
+
+    private static void DetachFinishedHandler(AudioStreamPlayer player)
+    {
+        if (FinishedHandlers.Remove(player, out var handler))
+            player.Finished -= handler;
     }
 
     // 立即停止
@@ -101,8 +130,8 @@ public class HuoreimuAudio
 
         foreach (var player in list.ToList())
         {
-            // 断开所有事件，避免循环重新触发
-            player.Finished += null;
+            // 解绑播放结束回调，避免循环播放被重新触发
+            DetachFinishedHandler(player);
 
             if (fadeDuration > 0f)
             {

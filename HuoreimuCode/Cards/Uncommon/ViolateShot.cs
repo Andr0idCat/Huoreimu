@@ -27,6 +27,8 @@ public class ViolateShot() : HuoreimuCard(2, CardType.Attack, CardRarity.Uncommo
 
     public override Task AfterCardDrawn(PlayerChoiceContext choiceContext, CardModel card, bool fromHandDraw)
     {
+        // 只统计自己抽到的诅咒，避免联机时把其他玩家的抽牌也算进来
+        if (card.Owner != Owner) return base.AfterCardDrawn(choiceContext, card, fromHandDraw);
         if (card.Type is CardType.Curse) DynamicVars.Damage.UpgradeValueBy(DynamicVars.ExtraDamage.IntValue);
         return base.AfterCardDrawn(choiceContext, card, fromHandDraw);
     }

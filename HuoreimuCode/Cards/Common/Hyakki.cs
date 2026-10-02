@@ -16,7 +16,8 @@ public class Hyakki() : HuoreimuCard(1, CardType.Skill, CardRarity.Common, Targe
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new BlockVar(9, ValueProp.Move),
-        new PercentVar(25m)
+        new PercentVar(25m),
+        new IntVar(HuoreimuConstants.MAX_HP_LOSS, 1)
     ];
 
     private bool CanCastAdditionalEffect => (decimal)Owner.Creature.CurrentHp / Owner.Creature.MaxHp <=
@@ -29,7 +30,7 @@ public class Hyakki() : HuoreimuCard(1, CardType.Skill, CardRarity.Common, Targe
         await CommonActions.CardBlock(this, cardPlay);
         if (!CanCastAdditionalEffect) return;
 
-        await CreatureCmd.LoseMaxHp(choiceContext, Owner.Creature, 1, true);
+        await CreatureCmd.LoseMaxHp(choiceContext, Owner.Creature, DynamicVars[HuoreimuConstants.MAX_HP_LOSS].IntValue, true);
         await CommonActions.CardBlock(this, cardPlay);
     }
 

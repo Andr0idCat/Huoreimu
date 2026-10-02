@@ -29,6 +29,7 @@ public class HiddenDoom : HuoreimuRelic
             return false;
         }
 
+        var modified = false;
         foreach (var cardReward in cardRewards)
         {
             var card = cardReward.Card;
@@ -36,8 +37,9 @@ public class HiddenDoom : HuoreimuRelic
             var card2 = Owner.RunState.CloneCard(card);
             CardCmd.Upgrade(card2);
             cardReward.ModifyCard(card2, this);
+            modified = true;
         }
 
-        return true;
+        return modified;
     }
 }

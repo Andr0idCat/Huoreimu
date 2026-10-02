@@ -11,11 +11,15 @@ namespace AyaMod.Huoreimu.Cards.Uncommon;
 
 public class PickStar() : HuoreimuCard(1, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy)
 {
+    // 每多少层死兆星抽一张牌
+    private const int OMEN_PER_CARD = 2;
+
     protected override IEnumerable<IHoverTip> ExtraHoverTips => [HoverTipFactory.FromPower<OmenOfDeathPower>()];
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DamageVar(7, ValueProp.Move)
+        new DamageVar(7, ValueProp.Move),
+        new(HuoreimuConstants.INTERVAL, OMEN_PER_CARD)
     ];
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
@@ -23,10 +27,11 @@ public class PickStar() : HuoreimuCard(1, CardType.Attack, CardRarity.Uncommon, 
         await base.OnPlay(choiceContext, cardPlay);
         var target = cardPlay.Target;
         ArgumentNullException.ThrowIfNull(target);
+        var perCard = DynamicVars[HuoreimuConstants.INTERVAL].IntValue;
         var drawAmount = target.GetPower<OmenOfDeathPower>()?.Amount ?? 0;
         await CommonActions.CardAttack(this, target).Execute(choiceContext);
-        var drawAmountAfterAttack = target?.GetPower<OmenOfDeathPower>()?.Amount ?? 0;
-        await CardPileCmd.Draw(choiceContext, Math.Max(drawAmount / 2, drawAmountAfterAttack / 2), Owner);
+        var drawAmountAfterAttack = target.GetPower<OmenOfDeathPower>()?.Amount ?? 0;
+        await CardPileCmd.Draw(choiceContext, Math.Max(drawAmount / perCard, drawAmountAfterAttack / perCard), Owner);
     }
 
     protected override void OnUpgrade()

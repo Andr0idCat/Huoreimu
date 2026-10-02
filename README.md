@@ -46,6 +46,21 @@ dotnet build -t:ExportPck
 
 运行时 `VfxUtil.LoadVfx()` 读取该清单并预加载所有特效场景。添加新 `.tscn` 文件后重新构建即可自动更新，无需手动维护。
 
+### 内容校验
+
+本仓库还包含一个校验工具 `tools/ContentValidator/`，会在 `ExportPck` / `dotnet publish` 之前检查：
+
+- 四种语言的本地化文件是否齐全、键集合是否完全一致；
+- 每个卡牌/能力/遗物/药水/附魔类是否有对应的 `.title` / `.description` 键（并检查是否存在没有对应类名的历史遗留键）；
+- 关键字键是否与 `[CustomEnum]` 定义对应；
+- `Huoreimu/Config/audio_config.json` 与 `Huoreimu/Audio/` 下的音频文件是否互相匹配（文件名拼错会被发现）。
+
+本地化键缺失、键集合不一致、类与键对不上、音频文件与配置不匹配等问题会让打包失败；个别暂时无法修复的问题可以写进 `tools/ContentValidator/known_issues.txt` 降级为警告。文本中的裸数字（应改为动态变量引用的数值）只以 warning 提示，**不会**让构建失败，已确认保留的数值登记在 `tools/ContentValidator/allowed_numbers.txt`。也可以随时手动运行：
+
+```bash
+dotnet run --project tools/ContentValidator -- .
+```
+
 
 ## 贡献
 

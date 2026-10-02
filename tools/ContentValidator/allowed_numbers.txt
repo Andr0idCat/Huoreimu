@@ -1,0 +1,5 @@
+# 允许在本地化文本中保留的裸数字（每行 `键|数字`，'#' 开头为注释）
+# 仅 0 和 1 默认允许（单位与结构性数字，如「每 1 张」「耗能 0」）；其余数字必须来自代码暴露的动态变量。
+AYAMOD-BLOODS_BANE.description|2
+AYAMOD-HUOREIMU.description|20031497
+AYAMOD-MUGEN_BOND_PUNCH.description|3

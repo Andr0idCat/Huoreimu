@@ -25,6 +25,9 @@ public class MugenBondPunch() : HuoreimuCard(0, CardType.Skill, CardRarity.Rare,
         var rng = Owner.RunState.Rng.Niche;
         foreach (var player in CombatState.Players)
         {
+            // 卡面为"所有其他玩家"，不含自己
+            if (player == Owner) continue;
+
             var cards = PileType.Draw.GetPile(player).Cards
                 .Where(c => c.Type is CardType.Attack && c.TargetType is TargetType.AnyEnemy && c.Enchantment is null)
                 .ToArray();

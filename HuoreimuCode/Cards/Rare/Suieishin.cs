@@ -7,18 +7,23 @@ using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization;
+using MegaCrit.Sts2.Core.Localization.DynamicVars;
 
 namespace AyaMod.Huoreimu.Cards.Rare;
 
 public class Suieishin() : HuoreimuCard(1, CardType.Skill, CardRarity.Rare, TargetType.Self)
 {
+    private const int MAX_SELECT = 2;
+
+    protected override IEnumerable<DynamicVar> CanonicalVars => [new CardsVar(MAX_SELECT)];
+
     private static readonly LocString SelectPrompt = new LocString("cards", "AYAMOD-SUIEISHIN.selectionScreenPrompt");
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
         await base.OnPlay(choiceContext, cardPlay);
 
-        var maxSelect = 2;
+        var maxSelect = DynamicVars.Cards.IntValue;
         var prefs = new CardSelectorPrefs(SelectPrompt, maxSelect);
         var selected = (await CardSelectCmd.FromHand(choiceContext, Owner, prefs, _ => true, this)).ToList();
         if (selected.Count == 0) return;

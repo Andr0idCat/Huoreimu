@@ -15,6 +15,8 @@ public class SfairaOsia() : HuoreimuCard(1, CardType.Skill, CardRarity.Uncommon,
     private const int MIN_SELECTION = 0;
     private const int MAX_SELECTION = 2;
 
+    protected override IEnumerable<DynamicVar> CanonicalVars => [new CardsVar(MAX_SELECTION)];
+
     private static readonly LocString ToHandPrompt = new LocString("cards", "AYAMOD-SFAIRA_OSIA.selectionScreenPrompt1");
     private static readonly LocString ToDrawPrompt = new LocString("cards", "AYAMOD-SFAIRA_OSIA.selectionScreenPrompt2");
 

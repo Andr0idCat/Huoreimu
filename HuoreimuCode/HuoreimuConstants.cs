@@ -20,4 +20,5 @@ public static class HuoreimuConstants
     public const string SELECTION_COUNT = "SelectionCount";
     public const string PERCENT_VALUE = "Percent";
     public const string INTERVAL = "Interval";
+    public const string MAX_HP_LOSS = "MaxHpLoss";
 }

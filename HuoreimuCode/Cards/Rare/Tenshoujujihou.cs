@@ -3,6 +3,7 @@ using AyaMod.Huoreimu.DynamicVars;
 using AyaMod.Huoreimu.Extensions;
 using AyaMod.Huoreimu.Keywords;
 using AyaMod.Huoreimu.Tags;
+using BaseLib.Extensions;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
@@ -20,6 +21,7 @@ public class Tenshoujujihou() : HuoreimuUltimateSkillCard(2, CardType.Attack, Ca
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new DamageVar(18, ValueProp.Move),
+        new PowerVar<BufferPower>(1),
         new UltimateSkillVar(4)
     ];
 
@@ -37,7 +39,7 @@ public class Tenshoujujihou() : HuoreimuUltimateSkillCard(2, CardType.Attack, Ca
         await CommonActions.CardAttack(this, cardPlay.Target).Execute(choiceContext);
 
         await UltimateSkillAction.Execute(choiceContext, this, cardPlay,
-            () => CommonActions.ApplySelf<BufferPower>(choiceContext, this, 1));
+            () => CommonActions.ApplySelf<BufferPower>(choiceContext, this, DynamicVars.Power<BufferPower>().IntValue));
     }
 
     protected override void OnUpgrade()

@@ -6,7 +6,7 @@
   "AYAMOD-THIRSTY_BLOOD_JADE.description": "エリート戦の開始時と終了時、HPを[blue]{Heal:diff()}[/blue] 回復する。",
   "AYAMOD-THIRSTY_BLOOD_JADE.flavor": "戦いをやめれば、死はすぐに追いついてくる。",
   "AYAMOD-BLACK_GOHEI.title": "漆黒の御幣",
-  "AYAMOD-BLACK_GOHEI.description": "敵が死ぬたび、[blue]1[/blue] 層の[gold]霊体[/gold]を得る。",
+  "AYAMOD-BLACK_GOHEI.description": "敵が死ぬたび、[blue]{IntangiblePower:diff()}[/blue] 層の[gold]霊体[/gold]を得る。",
   "AYAMOD-BLACK_GOHEI.flavor": "禍を広める武器は、祓いの礼器にあらず。その持ち主もまた巫女ではない。",
   "AYAMOD-BLOODS_BANE.title": "血の禍",
   "AYAMOD-BLOODS_BANE.description": "ターン開始時、[blue]{Energy:energyIcons()}[/blue] を得る。取得時、デッキに[gold]禍[/gold]を[blue]2[/blue]枚加える。",
