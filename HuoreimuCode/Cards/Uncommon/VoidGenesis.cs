@@ -3,6 +3,7 @@ using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Factories;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
+using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Nodes.CommonUi;
 
 namespace AyaMod.Huoreimu.Cards.Uncommon;
@@ -15,6 +16,8 @@ public class VoidGenesis() : HuoreimuExtraDeckCard<Huo>(1, CardType.Skill, CardR
     ];
 
     public override IEnumerable<CardKeyword> CanonicalKeywords => [CardKeyword.Exhaust];
+
+    protected override IEnumerable<DynamicVar> CanonicalVars => [new(HuoreimuConstants.DECREASE_VALUE, 1)];
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
     {
@@ -35,7 +38,7 @@ public class VoidGenesis() : HuoreimuExtraDeckCard<Huo>(1, CardType.Skill, CardR
             Owner.RunState.Rng.CombatCardGeneration).ToList();
         foreach (var c in cards)
         {
-            c.EnergyCost.SetThisCombat(c.EnergyCost.Canonical - 1);
+            c.EnergyCost.SetThisCombat(c.EnergyCost.Canonical - DynamicVars[HuoreimuConstants.DECREASE_VALUE].IntValue);
         }
 
         if (IsUpgraded)

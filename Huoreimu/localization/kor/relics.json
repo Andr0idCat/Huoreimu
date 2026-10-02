@@ -6,7 +6,7 @@
   "AYAMOD-THIRSTY_BLOOD_JADE.description": "엘리트 전투 시작 및 종료 시, 체력을 [blue]{Heal:diff()}[/blue] 회복합니다.",
   "AYAMOD-THIRSTY_BLOOD_JADE.flavor": "싸움을 멈추면 죽음이 곧 따라올 뿐이다.",
   "AYAMOD-BLACK_GOHEI.title": "칠흑의 어폐",
-  "AYAMOD-BLACK_GOHEI.description": "적이 죽을 때마다, [blue]1[/blue] [gold]불가침[/gold]을 얻습니다.",
+  "AYAMOD-BLACK_GOHEI.description": "적이 죽을 때마다, [blue]{IntangiblePower:diff()}[/blue] [gold]불가침[/gold]을 얻습니다.",
   "AYAMOD-BLACK_GOHEI.flavor": "재앙을 퍼뜨리는 무기는 정화의 예기가 아니며, 그 사용자 또한 무녀가 아니다.",
   "AYAMOD-BLOODS_BANE.title": "피의 화",
   "AYAMOD-BLOODS_BANE.description": "턴 시작 시, [blue]{Energy:energyIcons()}[/blue]를 얻습니다. 획득 시, 덱에 [gold]화[/gold]를 [blue]2[/blue]장 추가합니다.",

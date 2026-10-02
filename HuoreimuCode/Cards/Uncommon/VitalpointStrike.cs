@@ -27,6 +27,7 @@ public class VitalpointStrike()
     [
         new DamageVar(1, ValueProp.Move),
         new CardsVar(3),
+        new SelectionVar(1),
         new UltimateSkillVar(3)
     ];
 
@@ -59,7 +60,7 @@ public class VitalpointStrike()
 
         if (IsUpgraded) CardCmd.Upgrade(cards, CardPreviewStyle.None);
 
-        var prefs = new CardSelectorPrefs(SelectionScreenPrompt, 1);
+        var prefs = new CardSelectorPrefs(SelectionScreenPrompt, DynamicVars[HuoreimuConstants.SELECTION_COUNT].IntValue);
         var selection = (await CardSelectCmd.FromSimpleGrid(choiceContext, cards, Owner, prefs)).ToArray();
         if (selection.Length <= 0) return;
         await CardPileCmd.AddGeneratedCardsToCombat(selection, PileType.Hand, Owner);

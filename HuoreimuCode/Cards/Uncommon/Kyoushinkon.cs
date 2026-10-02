@@ -21,7 +21,7 @@ public class Kyoushinkon() : HuoreimuCard(0, CardType.Skill, CardRarity.Uncommon
         await base.OnPlay(choiceContext, cardPlay);
 
         var curseCount = PileType.Hand.GetPile(Owner).Cards.Count(c => c.Type == CardType.Curse);
-        await PlayerCmd.GainEnergy(1 + curseCount, Owner);
+        await PlayerCmd.GainEnergy(DynamicVars.Energy.IntValue * (1 + curseCount), Owner);
     }
 
     protected override void OnUpgrade()

@@ -1,4 +1,4 @@
-﻿<Project Sdk="Godot.NET.Sdk/4.5.1" InitialTargets="DetectBranchForRefLib">
+<Project Sdk="Godot.NET.Sdk/4.5.1" InitialTargets="DetectBranchForRefLib">
     <PropertyGroup>
         <TargetFramework>net9.0</TargetFramework>
         <TargetFramework Condition=" '$(GodotTargetPlatform)' == 'android' ">net9.0</TargetFramework>
@@ -62,7 +62,7 @@
     <Import Project="LocalConfig.targets" Condition="Exists('LocalConfig.targets')"/>
 
     <ItemGroup>
-        <PackageReference Include="Alchyr.Sts2.BaseLib" Version="3.*" PrivateAssets="All" />
+        <PackageReference Include="Alchyr.Sts2.BaseLib" Version="*" PrivateAssets="All" />
     </ItemGroup>
 
     <ItemGroup Condition="Exists('$(Sts2DataDir)/sts2.dll')">
@@ -136,6 +136,13 @@
         <Message Text="Generating VFX manifest..." Importance="high"/>
         <Exec Command="dotnet run --project &quot;$(MSBuildProjectDirectory)/tools/VfxManifestGenerator&quot; -- &quot;$(MSBuildProjectDirectory)/Huoreimu/Scenes/vfx&quot; &quot;$(MSBuildProjectDirectory)/Huoreimu/Scenes/vfx/vfx_manifest.json&quot;"
               ContinueOnError="WarnAndContinue"/>
+    </Target>
+
+    <!-- 校验本地化键与音频配置是否自洽；内容有误时直接让打包失败 -->
+    <Target Name="ValidateContent" BeforeTargets="ExportPck;GodotPublish">
+        <Message Text="Validating localization and audio content..." Importance="high"/>
+        <Exec Command="dotnet run --project &quot;$(MSBuildProjectDirectory)/tools/ContentValidator&quot; -- &quot;$(MSBuildProjectDirectory)&quot;"
+              ContinueOnError="false"/>
     </Target>
 
     <Target Name="ExportPck" Condition="Exists('$(Sts2DataDir)/sts2.dll') and '$(GodotPath)' == ''">

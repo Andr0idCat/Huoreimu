@@ -11,10 +11,12 @@ namespace AyaMod.Huoreimu.Cards.Common;
 public class Fracture() : HuoreimuCard(0, CardType.Attack, CardRarity.Common, TargetType.AnyEnemy)
 {
     private const int BASE_DAMAGE = 9;
+    private const int EXHAUST_COUNT = 2;
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new DamageVar(BASE_DAMAGE, ValueProp.Move)
+        new DamageVar(BASE_DAMAGE, ValueProp.Move),
+        new CardsVar(EXHAUST_COUNT)
     ];
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
@@ -30,7 +32,7 @@ public class Fracture() : HuoreimuCard(0, CardType.Attack, CardRarity.Common, Ta
             .ToList();
         var rng = Owner.RunState.Rng.Niche;
         hand.StableShuffle(rng);
-        foreach (var card in hand.Take(2))
+        foreach (var card in hand.Take(DynamicVars.Cards.IntValue))
         {
             CardCmd.ApplyKeyword(card, CardKeyword.Exhaust);
             CardCmd.Preview(card);

@@ -16,6 +16,7 @@ public class SpellToy() : HuoreimuCard(2, CardType.Power, CardRarity.Uncommon, T
 {
     private const int INITIAL_BLOCK = 4;
     private const int INCREASE_INTERVAL = 2;
+    private const int INCREASE_AMOUNT = 1;
     private int _relicObtainedAmount;
 
     [SavedProperty]
@@ -30,11 +31,12 @@ public class SpellToy() : HuoreimuCard(2, CardType.Power, CardRarity.Uncommon, T
         }
     }
 
-    private int BlockAmount => RelicObtainedAmount / INCREASE_INTERVAL + INITIAL_BLOCK;
+    private int BlockAmount => RelicObtainedAmount / INCREASE_INTERVAL * INCREASE_AMOUNT + INITIAL_BLOCK;
 
     protected override IEnumerable<DynamicVar> CanonicalVars => [
         new PowerVar<SpellToyPower>(BlockAmount),
-        new (HuoreimuConstants.INTERVAL, INCREASE_INTERVAL)
+        new (HuoreimuConstants.INTERVAL, INCREASE_INTERVAL),
+        new (HuoreimuConstants.INCREASE_VALUE, INCREASE_AMOUNT)
     ];
 
     protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay cardPlay)
